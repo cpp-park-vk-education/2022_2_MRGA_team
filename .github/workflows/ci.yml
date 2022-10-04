@@ -1,0 +1,23 @@
+on: push
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx_all
+    steps:
+      - uses: actions/checkout@v2
+      - run: make check
+  build:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx_all
+    needs: [check]
+    steps:
+    - uses: actions/checkout@v2
+    - run: make build
+  test:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx_all
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - run: make test
