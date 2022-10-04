@@ -4,12 +4,13 @@ project(connector)
 set(Include_dir ${CMAKE_CURRENT_SOURCE_DIR}/interface/
         ${CMAKE_CURRENT_SOURCE_DIR}/implementation)
 
-set(deps_include_dir ${MAIN_DIR}/deps/include)
-
-if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
-    set(deps_include_dir ${CMAKE_SOURCE_DIR}/../../../../deps/include)
-    message(STATUS "deps include dir: ${deps_include_dir}")
+if (NOT DEFINED(${MAIN_DIR}))
+    set(MAIN_DIR ${CMAKE_SOURCE_DIR}/../../../.. CACHE PATH MAIN_DIR FORCE)
+    message("MAIN_DIR: ${MAIN_DIR}\n\n")
 endif ()
+
+set(deps_include_dir ${MAIN_DIR}/deps/include)
+message("deps_include_dir: ${deps_include_dir}\n\n")
 
 include_directories(${Include_dir} ${deps_include_dir})
 
