@@ -2,22 +2,20 @@ on: push
 
 jobs:
   check:
-    runs-on: manjarolinux/base
-    container: yakwilik/cxx_all
+    runs-on: ubuntu-latest
+    container: andeo1812/gcc_check_gtest
     steps:
       - uses: actions/checkout@v2
       - run: make check
   build:
-    runs-on: manjarolinux/base
-    container: yakwilik/cxx_all
-    # needs: [check]
+    runs-on: ubuntu-latest
+    container: andeo1812/gcc_check_gtest
     steps:
     - uses: actions/checkout@v2
     - run: make build
   test:
-    runs-on: manjarolinux/base
-    container: yakwilik/cxx_all
-    # needs: [build]
+    runs-on: ubuntu-latest
+    container: andeo1812/gcc_check_gtest
     steps:
       - uses: actions/checkout@v2
       - run: make test
