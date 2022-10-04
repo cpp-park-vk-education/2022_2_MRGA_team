@@ -2,20 +2,20 @@ on: push
 
 jobs:
   check:
-    runs-on: manjarolinux
+    runs-on: manjarolinux/base
     container: yakwilik/cxx_all
     steps:
       - uses: actions/checkout@v2
       - run: make check
   build:
-    runs-on: manjarolinux
+    runs-on: manjarolinux/base
     container: yakwilik/cxx_all
     # needs: [check]
     steps:
     - uses: actions/checkout@v2
     - run: make build
   test:
-    runs-on: manjarolinux
+    runs-on: manjarolinux/base
     container: yakwilik/cxx_all
     # needs: [build]
     steps:
