@@ -1,15 +1,15 @@
 on: push
 
 jobs:
-  check:
+  build:
     runs-on: ubuntu-latest
-    container: andeo1812/gcc_check_gtest
+    container: bodjan/cxx
     steps:
       - uses: actions/checkout@v2
       - run: make build
-  build:
+  clean:
     runs-on: ubuntu-latest
-    container: yakwilik/cxx_all
+    container: bodjan/cxx
     steps:
     - uses: actions/checkout@v2
-    - run: make build
+    - run: make clean
