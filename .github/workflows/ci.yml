@@ -6,16 +6,10 @@ jobs:
     container: andeo1812/gcc_check_gtest
     steps:
       - uses: actions/checkout@v2
-      - run: make check
+      - run: make build
   build:
     runs-on: ubuntu-latest
-    container: andeo1812/gcc_check_gtest
+    container: yakwilik/cxx_all
     steps:
     - uses: actions/checkout@v2
     - run: make build
-  test:
-    runs-on: ubuntu-latest
-    container: andeo1812/gcc_check_gtest
-    steps:
-      - uses: actions/checkout@v2
-      - run: make test
