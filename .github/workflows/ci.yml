@@ -3,15 +3,19 @@ name: CI
 on: push
 
 jobs:
-  check:
+  build:
     runs-on: ubuntu-latest
     container: bodjan/cxx
     steps:
       - uses: actions/checkout@v2
       - run: make build
-  build:
+  clean:
     runs-on: ubuntu-latest
-    container: yakwilik/cxx_all
+    container: bodjan/cxx
     steps:
     - uses: actions/checkout@v2
+<<<<<<< HEAD
     - run: make build
+=======
+    - run: make clean
+>>>>>>> a066746 (корректировка Cmake-файлов и изменение контейнера)
