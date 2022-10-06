@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.23)
 project(connector)
 
 set(Include_dir ${CMAKE_CURRENT_SOURCE_DIR}/interface/
