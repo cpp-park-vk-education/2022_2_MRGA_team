@@ -182,35 +182,7 @@ PartyTime_autogen/timestamp: \
 	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/xlocale.h \
 	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/xlocale/_time.h \
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/stdarg.h \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/GetService/GetService.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/GetService/GetService.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/PostService/PostService.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/PostService/PostService.hpp \
 	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/CMakeLists.txt \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter/EventFilter.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter/EventFilter.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm/EventForm.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm/EventForm.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem/EventItem.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem/EventItem.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList/EventList.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList/EventList.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button/Button.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button/Button.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input/Input.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input/Input.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader/Loader.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader/Loader.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select/Select.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select/Select.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.hpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/EventViewPage/eventView.cpp \
-	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/EventViewPage/eventView.hpp \
 	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/base.cpp \
 	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/base.h \
 	/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/main.cpp \

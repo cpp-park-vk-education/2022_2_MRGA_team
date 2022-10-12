@@ -37,6 +37,14 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/objdump")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/API/cmake_install.cmake")
+  include("/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Pages/cmake_install.cmake")
+  include("/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/cmake_install.cmake")
+
+endif()
+
 if(CMAKE_INSTALL_COMPONENT)
   set(CMAKE_INSTALL_MANIFEST "install_manifest_${CMAKE_INSTALL_COMPONENT}.txt")
 else()

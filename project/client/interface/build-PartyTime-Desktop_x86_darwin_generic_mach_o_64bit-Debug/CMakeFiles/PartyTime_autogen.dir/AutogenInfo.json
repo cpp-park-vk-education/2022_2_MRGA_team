@@ -368,106 +368,16 @@
 	"HEADERS" : 
 	[
 		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/GetService/GetService.hpp",
-			"MU",
-			"AJVGNQ3OB5/moc_GetService.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/PostService/PostService.hpp",
-			"MU",
-			"V53GSVBHHP/moc_PostService.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter/EventFilter.hpp",
-			"MU",
-			"YBXUWF3QLL/moc_EventFilter.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm/EventForm.hpp",
-			"MU",
-			"SVPSHKMPPG/moc_EventForm.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem/EventItem.hpp",
-			"MU",
-			"VTCFJPBRJV/moc_EventItem.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList/EventList.hpp",
-			"MU",
-			"7MCHWI2JF6/moc_EventList.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button/Button.hpp",
-			"MU",
-			"7KTMNBLQ7D/moc_Button.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input/Input.hpp",
-			"MU",
-			"JBWOQSEERO/moc_Input.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader/Loader.hpp",
-			"MU",
-			"TPPTJ3F74D/moc_Loader.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.hpp",
-			"MU",
-			"AKLQ4NVSDS/moc_MyModal.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.hpp",
-			"MU",
-			"HO7B7CIEMJ/moc_Navbar.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select/Select.hpp",
-			"MU",
-			"3E2CEB3N46/moc_Select.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.hpp",
-			"MU",
-			"LR7XKBIW6W/moc_authorization.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/EventViewPage/eventView.hpp",
-			"MU",
-			"ISQVV76AAD/moc_eventView.cpp",
-			null
-		],
-		[
 			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/base.h",
 			"MU",
 			"EWIEGA46WW/moc_base.cpp",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/painter.hpp",
-			"MU",
-			"EWIEGA46WW/moc_painter.cpp",
 			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime_autogen/include",
 	"MOC_COMPILATION_FILE" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime_autogen/mocs_compilation.cpp",
-	"MOC_DEFINITIONS" : [ "QT_CORE_LIB", "QT_GUI_LIB", "QT_WIDGETS_LIB" ],
+	"MOC_DEFINITIONS" : [],
 	"MOC_DEPEND_FILTERS" : 
 	[
 		[
@@ -479,31 +389,31 @@
 	[
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug",
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/api",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/GetService",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/PostService",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/pages",
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Componentes",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/EventViewPage",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/LoadingPage",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/OrganizerPage",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/ProfilePage",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/RegistrationPage",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/VisitorEventListPage",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/VisitorPage",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/components",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Painter",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui",
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button",
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input",
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader",
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal",
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar",
 		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/PostService",
-		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/GetService",
-		"/opt/homebrew/lib/QtCore.framework/Headers",
-		"/opt/homebrew/lib/QtCore.framework",
-		"/opt/homebrew/share/qt/mkspecs/macx-clang",
-		"/opt/homebrew/include",
-		"/opt/homebrew/lib/QtWidgets.framework/Headers",
-		"/opt/homebrew/lib/QtWidgets.framework",
-		"/opt/homebrew/lib/QtGui.framework/Headers",
-		"/opt/homebrew/lib/QtGui.framework",
 		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1",
 		"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include",
 		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include",
@@ -541,87 +451,12 @@
 	"SOURCES" : 
 	[
 		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/GetService/GetService.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/PostService/PostService.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter/EventFilter.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm/EventForm.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem/EventItem.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList/EventList.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button/Button.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input/Input.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader/Loader.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select/Select.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/EventViewPage/eventView.cpp",
-			"MU",
-			null
-		],
-		[
 			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/base.cpp",
 			"MU",
 			null
 		],
 		[
 			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/main.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/painter.cpp",
 			"MU",
 			null
 		]

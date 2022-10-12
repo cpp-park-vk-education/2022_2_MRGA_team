@@ -1,0 +1,43 @@
+cmake_minimum_required(VERSION 3.5)
+
+project("PagesLib")
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic -Werror")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Network)
+
+set(TS_FILES PartyTime_ru_RU.ts)
+set(COMPONENTS)
+
+file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp)
+file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/**/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/**/*.h)
+
+set(LIB_NAME pages)
+set(LIB_DEP ${CMAKE_CURRENT_SOURCE_DIR}/AuthorizationPage ${CMAKE_CURRENT_SOURCE_DIR}/EventViewPage
+${CMAKE_CURRENT_SOURCE_DIR}/LoadingPage ${CMAKE_CURRENT_SOURCE_DIR}/OrganizerPage ${CMAKE_CURRENT_SOURCE_DIR}/ProfilePage ${CMAKE_CURRENT_SOURCE_DIR}/RegistrationPage
+${CMAKE_CURRENT_SOURCE_DIR}/VisitorEventListPage ${CMAKE_CURRENT_SOURCE_DIR}/VisitorPage)
+
+add_library(${LIB_NAME} ${SOURCES} ${HEADERS})
+target_include_directories(${LIB_NAME} PUBLIC ${LIB_DEP})
+
+set(PAGES_LIB ${LIB_NAME})
+set(PAGES_LIB ${PAGES_LIB} PARENT_SCOPE)
+set(PAGES_INCLUDE_DIRS ${LIB_NAME} ${LIB_DEP})
+set(PAGES_INCLUDE_DIRS ${PAGES_INCLUDE_DIRS} PARENT_SCOPE)
+
+message("PAGES_LIB = ${PAGES_LIB}")
+message("PAGES_INCLUDE_DIRS = ${PAGES_INCLUDE_DIRS}")
+
+enable_testing()
+# add_subdirectory(tests)

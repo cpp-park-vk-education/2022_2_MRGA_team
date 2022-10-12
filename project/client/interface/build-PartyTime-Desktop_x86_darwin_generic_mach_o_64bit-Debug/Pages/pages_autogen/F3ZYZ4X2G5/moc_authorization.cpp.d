@@ -1,0 +1,2 @@
+/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Pages/pages_autogen/F3ZYZ4X2G5/moc_authorization.cpp: /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Pages/pages_autogen/moc_predefs.h

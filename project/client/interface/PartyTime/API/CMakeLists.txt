@@ -10,7 +10,7 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic -Werror")
+# set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic -Werror")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
@@ -26,7 +26,6 @@ file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/**/*.hpp ${CMAKE_CURRENT_S
 set(LIB_NAME api)
 
 add_library(${LIB_NAME} ${SOURCES} ${HEADERS})
-
 target_include_directories(${LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/GetService ${CMAKE_CURRENT_SOURCE_DIR}/PostService)
 
 set(API_LIB ${LIB_NAME})

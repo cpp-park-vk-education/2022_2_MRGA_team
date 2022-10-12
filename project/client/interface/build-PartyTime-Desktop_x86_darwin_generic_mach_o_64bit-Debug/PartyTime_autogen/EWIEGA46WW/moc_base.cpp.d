@@ -183,7 +183,6 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/xlocale.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/xlocale/_time.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/stdarg.h \
-  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/painter.hpp \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qabstractitemmodel.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qalgorithms.h \

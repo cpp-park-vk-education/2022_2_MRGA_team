@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(PROJECT_NAME "PartyTime")
+set(PROJECT_NAME "Interface")
 project(${PROJECT_NAME} VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
@@ -25,54 +25,73 @@ set(COMPONENTS)
 
 enable_testing()
 
-#add_subdirectory(Components)
 add_subdirectory(API)
-#add_subdirectory(Pages)
+add_subdirectory(Pages)
+add_subdirectory(Components)
 
-set(PROJECT_SOURCES
-        main.cpp
-        base.cpp
-        base.h
-        base.ui
-        painter.hpp
-        painter.cpp
-        static.qrc
-        ${TS_FILES}
-)
+add_executable(${PROJECT_NAME} main.cpp
+    base.cpp
+    base.h
+    base.ui
+    static.qrc
+    ${TS_FILES})
 
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(${PROJECT_NAME}
-        MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
-    )
+target_link_libraries(${PROJECT_NAME} PRIVATE ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB})
+target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
 
-#    target_link_libraries(${PROJECT_NAME} PRIVATE )
+target_link_libraries(${PAGES_LIB} PRIVATE ${COMPONENTS_LIB})
+target_include_directories(${PAGES_LIB} PUBLIC ${COMPONENTS_INCLUDE_DIRS})
+#add_subdirectory(tests)
 
-    qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-else()
-    if(ANDROID)
-        add_library(PartyTime SHARED
-            ${PROJECT_SOURCES}
-        )
-    else()
-        add_executable(PartyTime
-            ${PROJECT_SOURCES}
-        )
-    endif()
+#set(PROJECT_SOURCES
+#        main.cpp
+#        base.cpp
+#        base.h
+#        base.ui
+#        painter.hpp
+#        painter.cpp
+#        static.qrc
+#        ${TS_FILES}
+#)
 
-    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
-endif()
+#if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+#    qt_add_executable(${PROJECT_NAME}
+#        MANUAL_FINALIZATION
+#        ${PROJECT_SOURCES}
+#    )
 
-target_link_libraries(PartyTime PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${API_LIB} ${PAGES_LIB})
+#target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS})
 
-set_target_properties(PartyTime PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
+#    qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+#else()
+#    if(ANDROID)
+#        add_library(PartyTime SHARED
+#            ${PROJECT_SOURCES}
+#            target_link_libraries(${PROJECT_NAME} PRIVATE ${API_LIB} ${PAGES_LIB})
+#            target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS})
+#        )
+#    else()
+#        add_executable(PartyTime
+#            ${PROJECT_SOURCES}
+#            target_link_libraries(${PROJECT_NAME} PRIVATE ${API_LIB} ${PAGES_LIB})
+#            target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS})
+#        )
+#    endif()
 
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(PartyTime)
-endif()
+#    qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
+#endif()
+
+#target_link_libraries(PartyTime PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+
+#set_target_properties(PartyTime PROPERTIES
+#    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+#    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+#    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+#    MACOSX_BUNDLE TRUE
+#    WIN32_EXECUTABLE TRUE
+#)
+
+#if(QT_VERSION_MAJOR EQUAL 6)
+#    qt_finalize_executable(${PROJECT_NAME})
+#endif()

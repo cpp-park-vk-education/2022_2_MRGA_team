@@ -64,6 +64,7 @@ set(OLD_GLOB
   "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/base.cpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/main.cpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/painter.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/tests/interfaceTest.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
