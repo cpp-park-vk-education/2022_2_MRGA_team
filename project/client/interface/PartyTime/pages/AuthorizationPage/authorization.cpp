@@ -6,7 +6,6 @@ authorization::authorization(QWidget* parent) : painter(parent)
     QGridLayout* authorization_layout = new QGridLayout(this);
     authorization_layout->setSpacing(10);
 
-    QVBoxLayout* title_authorization_layout = new QVBoxLayout;
     QLabel* m_page_title = new QLabel("Вход");
     m_page_title->setObjectName("pageTitle");
     m_page_title->setMaximumSize(100, 100);

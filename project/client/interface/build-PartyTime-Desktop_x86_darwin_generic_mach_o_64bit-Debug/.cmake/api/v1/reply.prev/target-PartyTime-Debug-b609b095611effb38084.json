@@ -30,7 +30,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 59,
+				"line" : 104,
 				"parent" : 0
 			},
 			{
@@ -54,7 +54,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 85,
+				"line" : 130,
 				"parent" : 0
 			},
 			{
@@ -66,7 +66,7 @@
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 26,
+				"line" : 46,
 				"parent" : 0
 			}
 		]
@@ -77,7 +77,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk"
+					"fragment" : "-Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk"
 				},
 				{
 					"fragment" : "-std=gnu++17"
@@ -112,39 +112,71 @@
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/pages"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/pages/AuthorizationPage"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/componentes"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Componentes"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/componentes/UI/Button"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/componentes/UI/Input"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/componentes/UI/Loader"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/componentes/UI/Select"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/componentes/UI/MyModal"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal"
 				},
 				{
 					"backtrace" : 7,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/components/EventFilter"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/PostService"
+				},
+				{
+					"backtrace" : 7,
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/API/GetService"
 				},
 				{
 					"backtrace" : 6,
@@ -192,6 +224,7 @@
 			{
 				"backtraces" : 
 				[
+					6,
 					6
 				],
 				"standard" : "17"
@@ -204,7 +237,19 @@
 				6,
 				7,
 				9,
-				14
+				11,
+				13,
+				15,
+				17,
+				19,
+				21,
+				23,
+				25,
+				27,
+				29,
+				31,
+				33,
+				38
 			]
 		}
 	],
@@ -224,7 +269,7 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
+				"fragment" : "-Wall -Wextra -Wpedantic -Werror -g",
 				"role" : "flags"
 			},
 			{
@@ -307,7 +352,19 @@
 				6,
 				7,
 				9,
-				14
+				11,
+				13,
+				15,
+				17,
+				19,
+				21,
+				23,
+				25,
+				27,
+				29,
+				31,
+				33,
+				38
 			]
 		},
 		{
@@ -317,7 +374,19 @@
 				3,
 				5,
 				8,
-				10
+				10,
+				12,
+				14,
+				16,
+				18,
+				20,
+				22,
+				24,
+				26,
+				28,
+				30,
+				32,
+				34
 			]
 		},
 		{
@@ -325,17 +394,17 @@
 			"sourceIndexes" : 
 			[
 				4,
-				11,
-				12,
-				13
+				35,
+				36,
+				37
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				15,
-				16
+				39,
+				40
 			]
 		}
 	],
@@ -384,23 +453,155 @@
 		{
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
-			"path" : "pages/AuthorizationPage/authorization.cpp",
+			"path" : "Pages/AuthorizationPage/authorization.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 4,
-			"path" : "pages/AuthorizationPage/authorization.hpp",
+			"path" : "Pages/AuthorizationPage/authorization.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
-			"path" : "pages/EventViewPage/eventView.cpp",
+			"path" : "Pages/EventViewPage/eventView.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 4,
-			"path" : "pages/EventViewPage/eventView.hpp",
+			"path" : "Pages/EventViewPage/eventView.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/UI/Button/Button.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/UI/Button/Button.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/UI/Input/Input.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/UI/Input/Input.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/UI/Loader/Loader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/UI/Loader/Loader.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/UI/MyModal/MyModal.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/UI/MyModal/MyModal.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/UI/Navbar/Navbar.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/UI/Navbar/Navbar.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/UI/Select/Select.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/UI/Select/Select.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/EventFilter/EventFilter.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/EventFilter/EventFilter.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/EventForm/EventForm.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/EventForm/EventForm.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/EventItem/EventItem.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/EventItem/EventItem.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "Components/EventList/EventList.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "Components/EventList/EventList.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "API/PostService/PostService.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "API/PostService/PostService.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "API/GetService/GetService.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "API/GetService/GetService.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

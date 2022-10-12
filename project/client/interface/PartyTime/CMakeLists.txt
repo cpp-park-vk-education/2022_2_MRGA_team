@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(PartyTime VERSION 0.1 LANGUAGES CXX)
+set(PROJECT_NAME "PartyTime")
+project(${PROJECT_NAME} VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -9,6 +10,8 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic -Werror")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
@@ -18,14 +21,34 @@ find_package(Qt6 REQUIRED COMPONENTS Network)
 set(TS_FILES PartyTime_ru_RU.ts)
 set(COMPONENTS)
 
-#file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/pages/**/*.cpp)
-#file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/pages/**/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/pages/**/*.h)
+# GENERAL INCLUDES FINISHED
+
+set(LIB_NAME client_interface)
+
+#file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+#file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/*.h ${CMAKE_CURRENT_SOURCE_DIR}/*.qrc)
 
 #add_library(${LIB_NAME} ${SOURCES} ${HEADERS})
 
-include_directories(pages pages/AuthorizationPage componentes componentes/UI/Button componentes/UI/Input componentes/UI/Loader componentes/UI/Select componentes/UI/MyModal components/EventFilter)
-#include_directories(componentes componentes/EventFilter)
-#componentes/EventForm componentes/EventItem componentes/EventList componentes/Ui componentes/Ui/Button componentes/Ui/Input componentes/Ui/Loader componentes/Ui/MyModal componentes/Ui/Navbar componentes/Ui/Select API API/GetService API/PostService
+#target_include_directories(${LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/Pages/AuthorizationPage)
+
+#enable_testing()
+#add_subdirectory(API)
+#add_subdirectory(Components)
+#add_subdirectory(Pages)
+
+#message("NumbersCounterLib_LIB = ${NumbersCounterLib_LIB}")
+#message("NumbersCounterLib_INCLUDE_DIRS = ${NumbersCounterLib_INCLUDE_DIRS}")
+
+#add_executable(${PROJECT_NAME} main.cpp)
+
+#target_link_libraries(${PROJECT_NAME} PRIVATE ${NumbersCounterLib_LIB})
+#target_include_directories(${PROJECT_NAME} PUBLIC ${NumbersCounterLib_INCLUDE_DIRS}
+
+include_directories(Pages Pages/AuthorizationPage
+    Componentes Components/UI Components/UI/Button Components/UI/Input Components/UI/Loader Components/UI/MyModal Components/UI/Navbar Components/UI/Select
+    Components/EventFilter Components/EventForm Components/EventItem Components/EventList
+    API API/PostService API/GetService)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -34,10 +57,34 @@ set(PROJECT_SOURCES
         base.ui
         painter.hpp
         painter.cpp
-        pages/AuthorizationPage/authorization.cpp
-        pages/AuthorizationPage/authorization.hpp
-        pages/EventViewPage/eventView.cpp
-        pages/EventViewPage/eventView.hpp
+        Pages/AuthorizationPage/authorization.cpp
+        Pages/AuthorizationPage/authorization.hpp
+        Pages/EventViewPage/eventView.cpp
+        Pages/EventViewPage/eventView.hpp
+        Components/UI/Button/Button.cpp
+        Components/UI/Button/Button.hpp
+        Components/UI/Input/Input.cpp
+        Components/UI/Input/Input.hpp
+        Components/UI/Loader/Loader.cpp
+        Components/UI/Loader/Loader.hpp
+        Components/UI/MyModal/MyModal.cpp
+        Components/UI/MyModal/MyModal.hpp
+        Components/UI/Navbar/Navbar.cpp
+        Components/UI/Navbar/Navbar.hpp
+        Components/UI/Select/Select.cpp
+        Components/UI/Select/Select.hpp
+        Components/EventFilter/EventFilter.cpp
+        Components/EventFilter/EventFilter.hpp
+        Components/EventForm/EventForm.cpp
+        Components/EventForm/EventForm.hpp
+        Components/EventItem/EventItem.cpp
+        Components/EventItem/EventItem.hpp
+        Components/EventList/EventList.cpp
+        Components/EventList/EventList.hpp
+        API/PostService/PostService.cpp
+        API/PostService/PostService.hpp
+        API/GetService/GetService.cpp
+        API/GetService/GetService.hpp
 
         static.qrc
 #        componentes/EventFilter/EventFilter.cpp
