@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "PartyTime"
+			"path" : "Interface"
 		}
 	],
 	"backtrace" : 1,
@@ -65,7 +65,7 @@
 				},
 				{
 					"backtrace" : 0,
-					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime_autogen/include"
+					"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Interface_autogen/include"
 				},
 				{
 					"backtrace" : 3,
@@ -189,13 +189,6 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "PartyTime_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 0,
-			"id" : "PartyTime_autogen::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 2,
 			"id" : "api::@56cd403aab9bf7a4bc4d"
 		},
@@ -210,9 +203,16 @@
 		{
 			"backtrace" : 2,
 			"id" : "ui::@c56f505415298d744353"
+		},
+		{
+			"id" : "Interface_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "Interface_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
-	"id" : "PartyTime::@6890427a1f51a3e7e1df",
+	"id" : "Interface::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -247,8 +247,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "PartyTime",
-	"nameOnDisk" : "PartyTime",
+	"name" : "Interface",
+	"nameOnDisk" : "Interface",
 	"paths" : 
 	{
 		"build" : ".",
@@ -298,7 +298,7 @@
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime_autogen/mocs_compilation.cpp",
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Interface_autogen/mocs_compilation.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -336,26 +336,26 @@
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime_autogen/timestamp",
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Interface_autogen/timestamp",
 			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 0,
 			"compileGroupIndex" : 0,
 			"isGenerated" : true,
-			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime_autogen/EWIEGA46WW/qrc_static.cpp",
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Interface_autogen/EWIEGA46WW/qrc_static.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime_autogen/timestamp.rule",
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Interface_autogen/timestamp.rule",
 			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime_autogen/EWIEGA46WW/qrc_static.cpp.rule",
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Interface_autogen/EWIEGA46WW/qrc_static.cpp.rule",
 			"sourceGroupIndex" : 3
 		}
 	],

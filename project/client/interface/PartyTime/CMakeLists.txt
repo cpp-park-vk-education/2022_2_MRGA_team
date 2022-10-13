@@ -25,9 +25,11 @@ set(COMPONENTS)
 
 enable_testing()
 
-add_subdirectory(API)
-add_subdirectory(Pages)
 add_subdirectory(Components)
+add_subdirectory(Pages)
+set(INTERFACE_LIB_NAME "interface")
+add_subdirectory(API)
+set(API_LIB_NAME "network")
 
 add_executable(${PROJECT_NAME} main.cpp
     base.cpp
@@ -36,11 +38,12 @@ add_executable(${PROJECT_NAME} main.cpp
     static.qrc
     ${TS_FILES})
 
+target_link_libraries(${PAGES_LIB} PUBLIC ${COMPONENTS_LIB})
+target_include_directories(${PAGES_LIB} PUBLIC ${COMPONENTS_INCLUDE_DIRS})
+
 target_link_libraries(${PROJECT_NAME} PRIVATE ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB})
 target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
 
-target_link_libraries(${PAGES_LIB} PRIVATE ${COMPONENTS_LIB})
-target_include_directories(${PAGES_LIB} PUBLIC ${COMPONENTS_INCLUDE_DIRS})
 #add_subdirectory(tests)
 
 #set(PROJECT_SOURCES

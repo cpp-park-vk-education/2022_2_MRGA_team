@@ -202,7 +202,7 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 CMAKE_PROJECT_INCLUDE_BEFORE:PATH=/Users/sugarbearzelagmail.com/Qt/Qt Creator.app/Contents/Resources/package-manager/auto-setup.cmake
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=PartyTime
+CMAKE_PROJECT_NAME:STATIC=Interface
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1
@@ -289,6 +289,15 @@ ComponentsLib_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 ComponentsLib_SOURCE_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components
+
+//Value Computed by CMake
+Interface_BINARY_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
+
+//Value Computed by CMake
+Interface_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Interface_SOURCE_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime
 
 //Path to a program.
 MACDEPLOYQT_EXECUTABLE:FILEPATH=/opt/homebrew/bin/macdeployqt
