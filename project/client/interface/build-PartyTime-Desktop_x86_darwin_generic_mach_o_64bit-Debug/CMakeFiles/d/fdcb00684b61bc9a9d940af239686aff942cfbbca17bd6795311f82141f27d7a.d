@@ -225,6 +225,17 @@ PartyTime_autogen/timestamp: \
   /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.21/Modules/Platform/Darwin-Initialize.cmake \
   /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.21/Modules/Platform/Darwin.cmake \
   /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.21/Modules/Platform/UnixPaths.cmake \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QFlags \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QIODevice \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QJsonDocument \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QJsonObject \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QList \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QMetaType \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QObject \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QSharedDataPointer \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QString \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QUrl \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QVariant \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qabstractitemmodel.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qalgorithms.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qanystringview.h \
@@ -250,14 +261,10 @@ PartyTime_autogen/timestamp: \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qcontainerinfo.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qcontainertools_impl.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qcontiguouscache.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qcoreapplication.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qcoreapplication_platform.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qcoreevent.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qcryptographichash.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qdatastream.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qdatetime.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qdebug.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qeventloop.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qfactoryinterface.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qflags.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qglobal.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qglobalstatic.h \
@@ -267,6 +274,7 @@ PartyTime_autogen/timestamp: \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qiodevicebase.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qiterable.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qiterator.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qjsondocument.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qjsonobject.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qjsonvalue.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qline.h \
@@ -279,16 +287,13 @@ PartyTime_autogen/timestamp: \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qmetacontainer.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qmetatype.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qnamespace.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qnativeinterface.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qnumeric.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qobject.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qobject_impl.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qobjectdefs.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qobjectdefs_impl.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qpair.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qplugin.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qpoint.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qpointer.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qprocessordetection.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qrect.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qrefcount.h \
@@ -325,7 +330,6 @@ PartyTime_autogen/timestamp: \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/qversiontagging.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/QFont \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/QIcon \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/QMovie \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/QPainter \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/QPalette \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/QPixmap \
@@ -339,10 +343,7 @@ PartyTime_autogen/timestamp: \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qfontmetrics.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qicon.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qimage.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qimageiohandler.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qimagereader.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qkeysequence.h \
-  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qmovie.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qpaintdevice.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qpainter.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qpalette.h \
@@ -364,6 +365,26 @@ PartyTime_autogen/timestamp: \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qtransform.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qvalidator.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/QNetworkAccessManager \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/QNetworkReply \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/QNetworkRequest \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/QSslConfiguration \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/QSslPreSharedKeyAuthenticator \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qabstractsocket.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qhostaddress.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qnetworkaccessmanager.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qnetworkreply.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qnetworkrequest.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qssl.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qsslcertificate.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qsslconfiguration.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qsslerror.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qsslpresharedkeyauthenticator.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qsslsocket.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qtcpsocket.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qtnetwork-config.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qtnetworkexports.h \
+  /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtNetwork.framework/Versions/A/Headers/qtnetworkglobal.h \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtWidgets.framework/Versions/A/Headers/QCalendarWidget \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtWidgets.framework/Versions/A/Headers/QGridLayout \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtWidgets.framework/Versions/A/Headers/QLabel \

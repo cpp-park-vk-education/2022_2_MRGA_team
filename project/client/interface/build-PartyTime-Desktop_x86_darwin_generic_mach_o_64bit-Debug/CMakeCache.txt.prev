@@ -202,7 +202,7 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 CMAKE_PROJECT_INCLUDE_BEFORE:PATH=/Users/sugarbearzelagmail.com/Qt/Qt Creator.app/Contents/Resources/package-manager/auto-setup.cmake
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Interface
+CMAKE_PROJECT_NAME:STATIC=PartyTime
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1
@@ -282,6 +282,15 @@ CMAKE_STRIP:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/Xcode
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
+Client_BINARY_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
+
+//Value Computed by CMake
+Client_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Client_SOURCE_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime
+
+//Value Computed by CMake
 ComponentsLib_BINARY_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components
 
 //Value Computed by CMake
@@ -301,6 +310,15 @@ Interface_SOURCE_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplus
 
 //Path to a program.
 MACDEPLOYQT_EXECUTABLE:FILEPATH=/opt/homebrew/bin/macdeployqt
+
+//Value Computed by CMake
+NewMeeUpClient_BINARY_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
+
+//Value Computed by CMake
+NewMeeUpClient_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+NewMeeUpClient_SOURCE_DIR:STATIC=/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime
 
 //Include for OpenGL on OS X
 OPENGL_INCLUDE_DIR:PATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/OpenGL.framework
@@ -344,6 +362,9 @@ QT_DIR:PATH=/opt/homebrew/lib/cmake/Qt6
 
 //No help, variable specified on the command line.
 QT_QMAKE_EXECUTABLE:STRING=/opt/homebrew/Cellar/qt/6.2.3_1/bin/qmake
+
+//The directory containing a CMake configuration file for Qt5Widgets.
+Qt5Widgets_DIR:PATH=Qt5Widgets_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for Qt6CoreTools.
 Qt6CoreTools_DIR:PATH=/opt/homebrew/lib/cmake/Qt6CoreTools

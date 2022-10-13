@@ -3,6 +3,7 @@
 
 #include <painter.hpp>
 
+
 class authorization : public painter
 {
    Q_OBJECT

@@ -1,5 +1,6 @@
 #include "base.h"
 
+
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>

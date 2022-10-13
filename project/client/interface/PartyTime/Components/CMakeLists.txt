@@ -15,6 +15,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
+find_package(Qt6Widgets) 
+include_directories(${Qt6Widgets_INCLUDE_DIRS})
 find_package(Qt6 REQUIRED COMPONENTS Network)
 
 set(TS_FILES PartyTime_ru_RU.ts)
@@ -23,23 +25,24 @@ set(COMPONENTS)
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp)
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/**/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/**/*.h)
 
-set(LIB_NAME components)
-set(LIB_DEP ${CMAKE_CURRENT_SOURCE_DIR}/EventFilter ${CMAKE_CURRENT_SOURCE_DIR}/EventForm
-${CMAKE_CURRENT_SOURCE_DIR}/EventItem ${CMAKE_CURRENT_SOURCE_DIR}/EventList ${CMAKE_CURRENT_SOURCE_DIR}/Painter)
+set(COMPONENTSLIB_NAME components)
+set(COMPONENTS_LIB_DEP ${CMAKE_CURRENT_SOURCE_DIR}/EventFilter ${CMAKE_CURRENT_SOURCE_DIR}/EventForm
+${CMAKE_CURRENT_SOURCE_DIR}/EventItem ${CMAKE_CURRENT_SOURCE_DIR}/EventList)
 
+include_directories(Qt${QT_VERSION_MAJOR}::Widgets)
 add_subdirectory(UI)
-add_library(${LIB_NAME} ${SOURCES} ${HEADERS})
-target_include_directories(${LIB_NAME} PUBLIC ${LIB_DEP})
-target_link_libraries(${LIB_NAME} PRIVATE ${UI_LIB})
-target_include_directories(${LIB_NAME} PUBLIC ${UI_INCLUDE_DIRS})
+add_library(${COMPONENTSLIB_NAME} ${SOURCES} ${HEADERS})
+target_include_directories(${COMPONENTSLIB_NAME} PUBLIC ${COMPONENTS_LIB_DEP})
+target_link_libraries(${COMPONENTSLIB_NAME} PRIVATE ${UI_LIB})
+target_include_directories(${COMPONENTSLIB_NAME} PUBLIC ${UI_INCLUDE_DIRS})
 
-set(COMPONENTS_LIB ${LIB_NAME})
+set(COMPONENTS_LIB ${COMPONENTSLIB_NAME})
 set(COMPONENTS_LIB ${COMPONENTS_LIB} PARENT_SCOPE)
-set(COMPONENTS_INCLUDE_DIRS ${LIB_NAME} ${LIB_DEP})
+set(COMPONENTS_INCLUDE_DIRS ${COMPONENTSLIB_NAME} ${COMPONENTS_LIB_DEP})
 set(COMPONENTS_INCLUDE_DIRS ${COMPONENTS_INCLUDE_DIRS} PARENT_SCOPE)
 
 message("COMPONENTS_LIB = ${COMPONENTS_LIB}")
 message("COMPONENTS_LIB_INCLUDE_DIRS = ${COMPONENTS_INCLUDE_DIRS}")
 
-enable_testing()
+# enable_testing()
 # add_subdirectory(tests)
