@@ -7,7 +7,7 @@
 #include <QNetworkReply>
 #include <iostream>
 
-//#include "authorization.hpp"
+#include "authorization.hpp"
 
 
 class Base : public QMainWindow
@@ -17,5 +17,9 @@ class Base : public QMainWindow
 public:
     Base(QWidget *parent = nullptr);
     ~Base();
+private:
+    QGridLayout* mainLayout;
+    QStackedWidget* screens;
+    authorization* authorizationPage;
 };
 #endif // BASE_H

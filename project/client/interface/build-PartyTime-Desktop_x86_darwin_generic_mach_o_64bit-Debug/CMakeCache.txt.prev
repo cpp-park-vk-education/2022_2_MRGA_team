@@ -414,6 +414,9 @@ WrapOpenGL_AGL:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/Mac
 //Dependencies for the target
 components_LIB_DEPENDS:STATIC=general;ui;
 
+//Dependencies for the target
+pages_LIB_DEPENDS:STATIC=general;Qt6::Widgets;
+
 
 ########################
 # INTERNAL cache entries

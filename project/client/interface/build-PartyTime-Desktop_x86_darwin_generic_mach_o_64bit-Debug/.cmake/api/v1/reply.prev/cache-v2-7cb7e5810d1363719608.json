@@ -6652,6 +6652,18 @@
 			],
 			"type" : "STATIC",
 			"value" : "general;ui;"
+		},
+		{
+			"name" : "pages_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;Qt6::Widgets;"
 		}
 	],
 	"kind" : "cache",

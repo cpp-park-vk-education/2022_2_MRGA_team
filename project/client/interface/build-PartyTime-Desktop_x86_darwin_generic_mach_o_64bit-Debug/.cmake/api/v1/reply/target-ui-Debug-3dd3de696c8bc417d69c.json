@@ -163,11 +163,11 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "ui_autogen_timestamp_deps::@c56f505415298d744353"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "ui_autogen::@c56f505415298d744353"
+		},
+		{
+			"id" : "ui_autogen_timestamp_deps::@c56f505415298d744353"
 		}
 	],
 	"id" : "ui::@c56f505415298d744353",

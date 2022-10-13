@@ -372,12 +372,6 @@
 			"MU",
 			"EWIEGA46WW/moc_base.cpp",
 			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/painter.hpp",
-			"MU",
-			"EWIEGA46WW/moc_painter.cpp",
-			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -472,11 +466,6 @@
 		],
 		[
 			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/main.cpp",
-			"MU",
-			null
-		],
-		[
-			"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/painter.cpp",
 			"MU",
 			null
 		]
