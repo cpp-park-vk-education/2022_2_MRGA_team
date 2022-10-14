@@ -3,7 +3,6 @@
 
 #include <painter.hpp>
 
-
 class authorization : public painter
 {
    Q_OBJECT
@@ -11,12 +10,17 @@ class authorization : public painter
 public:
    explicit authorization(QWidget* parent = nullptr);
    ~authorization();
-   QPushButton* get_enter_button();
-   QPushButton* get_registration_button();
+   QPushButton* getEnterButton();
+   QPushButton* getRegistrationButton();
 
 private:
-   QLabel *logo;
+   QGridLayout* authMainLayout;
+   QVBoxLayout* titleLayout;
+   QVBoxLayout* formLayout;
+   QVBoxLayout* buttonsLayout;
+
    QLabel* appTitle;
+   QLabel* appLogo;
 
    QLineEdit* login;
    QLineEdit* password;

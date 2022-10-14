@@ -188,18 +188,22 @@
 				6,
 				7,
 				8,
-				9
+				9,
+				10,
+				11,
+				12,
+				13
 			]
 		}
 	],
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "pages_autogen::@ee7c640bc099ce3c6bf7"
+			"id" : "pages_autogen_timestamp_deps::@ee7c640bc099ce3c6bf7"
 		},
 		{
-			"id" : "pages_autogen_timestamp_deps::@ee7c640bc099ce3c6bf7"
+			"backtrace" : 0,
+			"id" : "pages_autogen::@ee7c640bc099ce3c6bf7"
 		}
 	],
 	"id" : "pages::@ee7c640bc099ce3c6bf7",
@@ -225,35 +229,40 @@
 				6,
 				7,
 				8,
-				9
+				9,
+				10,
+				11,
+				12,
+				13
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				10,
-				11,
-				12,
-				13,
 				14,
 				15,
 				16,
-				17
+				17,
+				18,
+				19,
+				20,
+				21,
+				22
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				18
+				23
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				19
+				24
 			]
 		}
 	],
@@ -322,6 +331,30 @@
 		},
 		{
 			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Pages/pages_autogen/F3ZYZ4X2G5/moc_authorization.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Pages/pages_autogen/XK3FLKEYN3/moc_registration.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Pages/pages_autogen/YCDLW3T4OG/moc_painter.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Pages/pages_autogen/mocs_compilation.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
 			"path" : "Pages/AuthorizationPage/authorization.hpp",
 			"sourceGroupIndex" : 1
 		},
@@ -358,6 +391,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "Pages/VisitorPage/visitor.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Pages/pages_autogen/moc_predefs.h",
 			"sourceGroupIndex" : 1
 		},
 		{

@@ -8,6 +8,20 @@
 #include <iostream>
 
 #include "authorization.hpp"
+#include "registration.hpp"
+#include "profile.hpp"
+//#include "settings.hpp"
+#include "eventView.hpp"
+#include "loading.hpp"
+#include "organizer.hpp"
+#include "visitor.hpp"
+#include "visitorEventList.hpp"
+
+enum pagesNumbers {
+    e_authorization = 0,
+    e_registration = 1,
+    e_profile = 2
+};
 
 
 class Base : public QMainWindow
@@ -15,11 +29,22 @@ class Base : public QMainWindow
     Q_OBJECT
 
 public:
-    Base(QWidget *parent = nullptr);
+    explicit Base(QWidget *parent = nullptr);
     ~Base();
 private:
-    QGridLayout* mainLayout;
     QStackedWidget* screens;
     authorization* authorizationPage;
+    registration* registrationPage;
+//    profile* profilePage;
+//    settings* settingsPage;
+//    eventView* eventViewPage;
+//    loading* loadingPage;
+//    organizer* organizerPage;
+//    visitor* visitorPage;
+//    visitorEventList* visitorEventListPage;
+private slots:
+    void onAuthPageClicked();
+    void onRegistrationPageClicked();
+    void onProfilePageClicked();
 };
 #endif // BASE_H

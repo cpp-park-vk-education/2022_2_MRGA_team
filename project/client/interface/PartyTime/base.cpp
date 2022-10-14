@@ -1,51 +1,46 @@
 #include "base.h"
 
 Base::Base(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent),
+      screens(new QStackedWidget()),
+      authorizationPage(new authorization()),
+      registrationPage(new registration())
 {
     setWindowTitle("PartyTime");
     resize(1920, 792);
+//    QGridLayout* main_layout = new QGridLayout(this->centralWidget());
 
-
-    mainLayout = new QGridLayout(this->centralWidget());
-
-    screens = new QStackedWidget();
     screens->setObjectName("screenList");
     this->setCentralWidget(screens);
+    screens->setStyleSheet("background-color: #9a95c9");
+//    main_layout->addWidget(screens);
+//    main_layout->setColumnMinimumWidth(200, 1000);
 
-     QLabel* label = new QLabel();
-     label->setText("I love balls");
-     label->setFont(QFont("Times", 15));
-     label->setStyleSheet("color: red; background-color: green");
+    connect(authorizationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onRegistrationPageClicked);
+    connect(authorizationPage->getRegistrationButton(), &QPushButton::clicked, this, &Base::onRegistrationPageClicked);
 
-     mainLayout->addWidget(screens);
+    connect(registrationPage->getBackButton(), &QPushButton::clicked, this, &Base::onAuthPageClicked);
+    connect(registrationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onAuthPageClicked);
 
-     authorizationPage = new authorization();
-     screens->insertWidget(0, authorizationPage);
 
-     // QLabel *label = new QLabel(this);
-     // label->setText("This is the label ");
-     // label->setFont(QFont("Times", 15));
-     // label->setStyleSheet("color: red; background-color: green");
-     // label->setGeometry(20, 20, 400, 400);
+    screens->insertWidget(e_authorization, authorizationPage);
+    screens->insertWidget(e_registration, registrationPage);
+}
 
-     // add image
-     // QLabel* label = new QLabel(this);
-     // label->setGeometry(20, 20, 400, 400);
-     // label->setStyleSheet("border-radius: 15px");
-     // label->setPixmap(QPixmap(":/image/kingKong.png"));
+void Base::onAuthPageClicked() {
+    screens->setCurrentIndex(e_authorization);
+}
 
-     // add movie (Loader)
-     // QLabel *label = new QLabel(this);
-     // QMovie *movie = new QMovie(":/image/squaresLoader.gif");
-     // label->setGeometry(250, 250, 400, 400);
-     // label->setMovie(movie);
-     // movie->start();
+void Base::onRegistrationPageClicked() {
+    screens->setCurrentIndex(e_registration);
+}
+
+void Base::onProfilePageClicked() {
+    screens->setCurrentIndex(e_profile);
 }
 
 Base::~Base()
 {
-//    delete mainLayout;
-//    delete screens;
-//    delete authorizationPage;
+    delete screens;
+    delete authorizationPage;
 }

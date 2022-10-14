@@ -1,7 +1,56 @@
-#authorizationPage {
-    background: #fff;
+QLineEdit {
+    min-width: 200px;
+    min-height: 40px;
+    padding: 5px 0px 5px 10px;
+    font-size: 16px;
+    border: 2px solid purple;
+    border-radius: 15px;
+    background-color: rgba(152, 128, 203, 1);
+    text-align: center;
 }
 
-#pageTitle {
-    background: black;
+QPushButton {
+    min-width: 200px;
+    min-height: 40px;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 0px;
+    color: #000000;
+    border: 1px solid black;
+}
+
+QPushButton:hover {
+    color: #fff;
+}
+
+QPushButton#enterButton {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+QPushButton#enterButton:hover {
+/*    font-weight: 600px;*/
+}
+
+QPushButton#registrationButton {
+    font-size: 20px;
+}
+
+QPushButton#registrationButton:hover {
+/*    font-weight: 300px;*/
+}
+
+QPushButton#backButton {
+    max-width: 200px;
+    max-height: 40px;
+    border-radius: 15px;
+    font-size: 20px;
+    padding: 0px;
+    color: #000000;
+    border: 1px solid black;
+    text-align: center;
+}
+
+QPushButton#backButton:hover {
+    color: #fff;
 }

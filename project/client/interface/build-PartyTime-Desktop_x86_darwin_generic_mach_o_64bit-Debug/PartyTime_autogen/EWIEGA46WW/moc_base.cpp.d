@@ -184,6 +184,13 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/xlocale/_time.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include/stdarg.h \
   /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/EventViewPage/eventView.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/LoadingPage/loading.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/OrganizerPage/organizer.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/ProfilePage/profile.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/RegistrationPage/registration.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/VisitorEventListPage/visitorEventList.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Pages/VisitorPage/visitor.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/painter.hpp \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QFlags \
   /opt/homebrew/Cellar/qt/6.3.1_1/lib/QtCore.framework/Versions/A/Headers/QIODevice \
