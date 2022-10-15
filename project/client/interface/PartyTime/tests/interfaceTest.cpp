@@ -1,7 +1,8 @@
 #include <gtest/gtest.h>
 
-extern "CPP" {
-}
+// extern "CPP" {
+
+// }
 
 TEST(INTERFACE, create_interface) {
 //    EXPECT_EQ(create_interface(), SUCCESS);

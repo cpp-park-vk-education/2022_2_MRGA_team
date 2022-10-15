@@ -1,4 +1,5 @@
 #include "registration.hpp"
+#include <iostream>
 
 registration::registration(QWidget *parent)
     : painter(parent),
@@ -83,6 +84,248 @@ QPushButton* registration::getBackButton()
 QPushButton* registration::getEnterButton()
 {
     return enterButton;
+}
+
+static bool checkForbiddenCharacters(char& curSymbol) {
+    switch (curSymbol) {
+        case ' ':
+            return true;
+        case ';':
+            return true;
+        case '"':
+            return true;
+        case '/':
+            return true;
+        case '?':
+            return true;
+        case '!':
+            return true;
+    }
+    return false;
+}
+
+bool registration::isIncorrectEmail()
+{
+    std::string userEmail = this->email->text().toStdString();
+    bool incorrectValue = true;
+
+    if (userEmail.at(userEmail.size() - 3) != '.' || userEmail.at(0) == '.') {
+        return incorrectValue;
+    }
+    if (userEmail.at(userEmail.size() - 1) == '@' || userEmail.at(0) == '@') {
+        return incorrectValue;
+    }
+
+    size_t specialСharacterСounter = 0;
+
+    for (auto& elem : userEmail) {
+        if (elem >= 'A' && elem <= 'Z') {
+            incorrectValue = false;
+        } else if (elem >= 'a' && elem <= 'z') {
+            incorrectValue = false;
+        } else if (elem >= '0' && elem <= '9') {
+            incorrectValue = false;
+        } else if (elem == '-' || elem == '_' || elem == '.') {
+            incorrectValue = false;
+        } else if (elem == '@') {
+            ++specialСharacterСounter;
+        } else {
+            return incorrectValue;
+        }
+
+        incorrectValue = true;
+    }
+
+    incorrectValue = false;
+
+//    если данные некорректны, то функция возвращает true
+    if (specialСharacterСounter != 1) {
+        return true;
+    }
+    if (userEmail.substr(userEmail.find("@") + 1) != "mail.ru") {
+        return true;
+    }
+    if (userEmail.find("..") != std::string::npos) {
+        return true;
+    }
+
+    return incorrectValue;
+}
+
+bool registration:: validateLogin() {
+    std::string userInput = this->login->text().toStdString();
+    bool inCorrectValue = false;
+
+    if (userInput.at(userInput.size() - 1) == '.') {
+        inCorrectValue = true;
+        return inCorrectValue;
+    }
+
+    size_t underscoreCounter = 0;
+
+    for (auto& elem : userInput) {
+
+        inCorrectValue = checkForbiddenCharacters(elem);
+
+        switch(elem) {
+            case '@':
+                inCorrectValue = true;
+                break;
+            case ',':
+                inCorrectValue = true;
+                break;
+        }
+
+        if (inCorrectValue == true) {
+            break;
+        }
+
+        if (elem == '_') {
+            ++underscoreCounter;
+        }
+    }
+
+    if (underscoreCounter != 1) {
+        inCorrectValue = true;
+    }
+
+    if (userInput.size() < MIN_CHAR_SIZE_IN_INPUT) {
+        inCorrectValue = true;
+    }
+
+    return inCorrectValue;
+}
+
+bool registration::validatePassword()
+{
+    std::string userInputPassword = this->password->text().toStdString();
+    bool inCorrectValue = false;
+
+    size_t numbersCounter = 0;
+    size_t capsCounter = 0;
+    size_t underscoreCounter = 0;
+    size_t mainSimbolCounter = 0;
+
+    for (auto& elem : userInputPassword) {
+        inCorrectValue = checkForbiddenCharacters(elem);
+
+//        обязательные символы
+        if (elem == '_') {
+            ++underscoreCounter;
+        }
+
+        if (elem >= 'A' && elem <= 'Z') {
+            ++capsCounter;
+        }
+
+        if (elem >= '0' && elem <= '9') {
+            ++numbersCounter;
+        }
+
+        if (elem == '@') {
+            ++mainSimbolCounter;
+        }
+
+    }
+
+    if (mainSimbolCounter != 1) {
+        inCorrectValue = true;
+    }
+
+    if (numbersCounter == 0) {
+        inCorrectValue = true;
+    }
+
+    if (capsCounter == 0) {
+        inCorrectValue = true;
+    }
+
+    if (underscoreCounter == 0) {
+        inCorrectValue = true;
+    }
+
+    if (userInputPassword.size() < MIN_CHAR_SIZE_IN_PASSWORD) {
+        inCorrectValue = true;
+    }
+
+    return inCorrectValue;
+}
+
+bool registration::validateRepeatPasswordField()
+{
+    if (this->password->text().toStdString() == this->repeatPassword->text().toStdString()) {
+        return false;
+    }
+    return true;
+}
+
+void registration::emailWarning()
+{
+    QMessageBox::warning(this, "Warning", "Email entered incorrectly");
+}
+
+void registration::loginWarning()
+{
+    QMessageBox::warning(this, "Warning", "Login is invalid. Login must contain at least 6 characters without spaces(including '.' and '_' not as like the last symbol). Login can contain letters, numbers and symbols");
+}
+
+void registration::passwordWarning()
+{
+    QMessageBox::warning(this, "Warning", "Password is invalid or insecure. The password must be at least 12 characters long without spaces and contain letters, numbers, uppercase letters and symbols. The password must contain the characters '.', '_', '@'");
+}
+
+void registration::passwordRepeatWarning()
+{
+    QMessageBox::warning(this, "Warning", "Password don't match");
+}
+
+void registration::userExistWarning()
+{
+    QMessageBox::warning(this, "Warning", "User with such data already exists");
+}
+
+bool registration::checkUserInputData()
+{
+    bool isIncorrectUserData = false;
+
+    if (this->email->text().toStdString().empty() || this->login->text().toStdString().empty()
+            || this->password->text().toStdString().empty() || this->repeatPassword->text().toStdString().empty()) {
+        QMessageBox::warning(this, "Warning", "Required fields to fill in!");
+        isIncorrectUserData = true;
+        return isIncorrectUserData;
+    }
+
+    if (isIncorrectEmail()) {
+            isIncorrectUserData = true;
+            this->emailWarning();
+            return isIncorrectUserData;
+    }
+
+    if (validateLogin()) {
+            isIncorrectUserData = true;
+            this->loginWarning();
+            return isIncorrectUserData;
+    }
+
+    if (validatePassword()) {
+        isIncorrectUserData = true;
+        this->passwordWarning();
+        return isIncorrectUserData;
+    }
+
+    if (validateRepeatPasswordField()) {
+        isIncorrectUserData = true;
+        this->passwordRepeatWarning();
+        return isIncorrectUserData;
+    }
+
+//    if (isUserExist()) {
+//        isIncorrectUserData = true;
+//        this->userExistWarning();
+//        return isIncorrectUserData;
+//    }
+
+    return isIncorrectUserData;
 }
 
 registration::~registration() {

@@ -85,7 +85,178 @@ QPushButton* authorization::getEnterButton() {
     return enterButton;
 }
 
-QPushButton *authorization::getRegistrationButton() {
+QPushButton* authorization::getRegistrationButton() {
     return registrationButton;
 }
 
+static bool checkForbiddenCharacters(char& curSymbol) {
+    switch (curSymbol) {
+        case ' ':
+            return true;
+        case ';':
+            return true;
+        case '"':
+            return true;
+        case '/':
+            return true;
+        case '?':
+            return true;
+        case '!':
+            return true;
+    }
+    return false;
+}
+
+bool authorization::validateLogin() {
+    std::string userInput = this->login->text().toStdString();
+    bool inCorrectValue = false;
+
+    if (userInput.at(userInput.size() - 1) == '.') {
+        inCorrectValue = true;
+        return inCorrectValue;
+    }
+
+    size_t underscoreCounter = 0;
+
+    for (auto& elem : userInput) {
+
+        inCorrectValue = checkForbiddenCharacters(elem);
+
+        switch(elem) {
+            case '@':
+                inCorrectValue = true;
+                break;
+            case ',':
+                inCorrectValue = true;
+                break;
+        }
+
+        if (inCorrectValue == true) {
+            break;
+        }
+
+        if (elem == '_') {
+            ++underscoreCounter;
+        }
+    }
+
+    if (underscoreCounter != 1) {
+        inCorrectValue = true;
+    }
+
+    if (userInput.size() < MIN_CHAR_SIZE_IN_INPUT) {
+        inCorrectValue = true;
+    }
+
+    return inCorrectValue;
+}
+
+bool authorization::validatePassword()
+{
+    std::string userInputPassword = this->password->text().toStdString();
+    bool inCorrectValue = false;
+
+    size_t numbersCounter = 0;
+    size_t capsCounter = 0;
+    size_t underscoreCounter = 0;
+    size_t mainSimbolCounter = 0;
+
+    for (auto& elem : userInputPassword) {
+        inCorrectValue = checkForbiddenCharacters(elem);
+
+//        обязательные символы
+        if (elem == '_') {
+            ++underscoreCounter;
+        }
+
+        if (elem >= 'A' && elem <= 'Z') {
+            ++capsCounter;
+        }
+
+        if (elem >= '0' && elem <= '9') {
+            ++numbersCounter;
+        }
+
+        if (elem == '@') {
+            ++mainSimbolCounter;
+        }
+
+    }
+
+    if (mainSimbolCounter != 1) {
+        inCorrectValue = true;
+    }
+
+    if (numbersCounter == 0) {
+        inCorrectValue = true;
+    }
+
+    if (capsCounter == 0) {
+        inCorrectValue = true;
+    }
+
+    if (underscoreCounter == 0) {
+        inCorrectValue = true;
+    }
+
+    if (userInputPassword.size() < MIN_CHAR_SIZE_IN_PASSWORD) {
+        inCorrectValue = true;
+    }
+
+    return inCorrectValue;
+}
+
+bool authorization::isUserPasswordMatchUser()
+{
+    std::string userLogin = this->login->text().toStdString();
+    std::string userPassword = this->password->text().toStdString();
+
+//    POST(userLogin, userPassword); - если пользователь существует и пароль соотвествует логину возвращаются данные иначе возвращается nullptr допустим
+
+    return false;
+}
+
+void authorization::loginWarning()
+{
+    QMessageBox::warning(this, "Warning", "Login is invalid. Login must contain at least 6 characters without spaces(including '.' and '_' not as like the last symbol). Login can contain letters, numbers and symbols");
+}
+
+void authorization::passwordWarning()
+{
+    QMessageBox::warning(this, "Warning", "Password is invalid or insecure. The password must be at least 12 characters long without spaces and contain letters, numbers, uppercase letters and symbols. The password must contain the characters '.', '_', '@'");
+}
+
+void authorization::userMatchWarning()
+{
+    QMessageBox::warning(this, "Warning", "Password doesn't match username");
+}
+
+bool authorization::checkUserInputData() {
+    bool isIncorrectUserData = false;
+
+    if (this->login->text().toStdString() == "" || this->password->text().toStdString() == "") {
+        QMessageBox::warning(this, "Warning", "Required fields to fill in!");
+        isIncorrectUserData = true;
+        return isIncorrectUserData;
+    }
+
+    if (validateLogin()) {
+        isIncorrectUserData = true;
+        this->loginWarning();
+        return isIncorrectUserData;
+    }
+
+    if (validatePassword()) {
+        isIncorrectUserData = true;
+        this->passwordWarning();
+        return isIncorrectUserData;
+    }
+
+    if (isUserPasswordMatchUser()) {
+        isIncorrectUserData = true;
+        this->userMatchWarning();
+        return isIncorrectUserData;
+    }
+
+    return isIncorrectUserData;
+}

@@ -1,0 +1,42 @@
+dist:     xenial
+sudo:     required
+
+language: cpp
+
+os: linux
+
+compiler: g++
+
+env:
+  global:
+    - CODECOV_TOKEN="64172ad9-b384-4379-a529-28823530357f"
+
+install:
+    - sudo apt-get update
+    - sudo apt-get install cppcheck
+    - sudo apt-get install valgrind
+    - sudo apt-get install clang-format
+    - sudo apt-get install lcov
+    - sudo apt-get install libstdc++6
+    - sudo apt-get install cmake
+    - sudo apt install qt6-base-dev
+    # Google tests
+    - sudo apt-get install libgtest-dev
+    - cd /usr/src/gtest
+    - sudo cmake .
+    - sudo make
+    - sudo cp *.a /usr/lib
+    - cd -
+
+before_script:
+    - cppcheck --quiet --error-exitcode=1 --force . || travis_terminate 1
+    - ./linters/run.sh || travis_terminate 1
+
+script:
+    - cmake .
+    - make || travis_terminate 1
+    - valgrind --tool=memcheck --show-leak-kinds=definite --leak-resolution=med  --track-origins=yes ./main_test.out || travis_terminate 1
+after_script:
+    - lcov —capture —directory ./CMakeFiles/task_library.dir/lib_subseq/src —output-file coverage.info
+    - bash <(curl -s https://codecov.io/bash)
+    - make clean

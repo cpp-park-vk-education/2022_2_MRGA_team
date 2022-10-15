@@ -16,11 +16,11 @@ Base::Base(QWidget *parent)
 //    main_layout->addWidget(screens);
 //    main_layout->setColumnMinimumWidth(200, 1000);
 
-    connect(authorizationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onRegistrationPageClicked);
+    connect(authorizationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onEnter);
     connect(authorizationPage->getRegistrationButton(), &QPushButton::clicked, this, &Base::onRegistrationPageClicked);
 
     connect(registrationPage->getBackButton(), &QPushButton::clicked, this, &Base::onAuthPageClicked);
-    connect(registrationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onAuthPageClicked);
+    connect(registrationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onRegister);
 
 
     screens->insertWidget(e_authorization, authorizationPage);
@@ -29,10 +29,48 @@ Base::Base(QWidget *parent)
 
 void Base::onAuthPageClicked() {
     screens->setCurrentIndex(e_authorization);
+    registrationPage->emailClear();
+    registrationPage->loginClear();
+    registrationPage->passwordClear();
+    registrationPage->passwordRepeatClear();
+}
+
+void Base::onRegister()
+{
+    try {
+        if (registrationPage->checkUserInputData()) {
+            throw "User input isn't correct !";
+        }
+        screens->setCurrentIndex(e_authorization);
+        registrationPage->emailClear();
+        registrationPage->loginClear();
+        registrationPage->passwordClear();
+        registrationPage->passwordRepeatClear();
+    } catch (const char* exception) {
+        std::cout << "Error: " << exception << "\n";
+        screens->setCurrentIndex(e_registration);
+    }
 }
 
 void Base::onRegistrationPageClicked() {
     screens->setCurrentIndex(e_registration);
+    authorizationPage->loginClear();
+    authorizationPage->passwordClear();
+}
+
+void Base::onEnter()
+{
+    try {
+        if (authorizationPage->checkUserInputData()) {
+            throw "User input isn't correct !";
+        }
+        screens->setCurrentIndex(e_registration);
+        authorizationPage->loginClear();
+        authorizationPage->passwordClear();
+    } catch (const char* exception) {
+        std::cout << "Error: " << exception << "\n";
+        screens->setCurrentIndex(e_authorization);
+    }
 }
 
 void Base::onProfilePageClicked() {

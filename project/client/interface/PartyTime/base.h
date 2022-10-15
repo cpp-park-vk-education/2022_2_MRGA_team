@@ -6,6 +6,8 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <iostream>
+#include <string>
+#include <exception>
 
 #include "authorization.hpp"
 #include "registration.hpp"
@@ -44,7 +46,9 @@ private:
 //    visitorEventList* visitorEventListPage;
 private slots:
     void onAuthPageClicked();
+    void onEnter();
     void onRegistrationPageClicked();
+    void onRegister();
     void onProfilePageClicked();
 };
 #endif // BASE_H
