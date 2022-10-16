@@ -1,0 +1,25 @@
+{
+	"BUILD_DIR" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/NewMeeUpClient_autogen",
+	"CMAKE_BINARY_DIR" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime",
+	"CMAKE_SOURCE_DIR" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime",
+	"INCLUDE_DIR" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/NewMeeUpClient_autogen/include",
+	"INPUTS" : 
+	[
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/style.css",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/squaresLoader.gif",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/kingKong.png",
+		"/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/circleLoader.gif"
+	],
+	"LOCK_FILE" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/NewMeeUpClient_autogen.dir/AutoRcc_static_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "static" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_static.cpp",
+	"RCC_EXECUTABLE" : "/opt/homebrew/share/qt/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/NewMeeUpClient_autogen.dir/AutoRcc_static_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/static.qrc",
+	"VERBOSITY" : 0
+}
