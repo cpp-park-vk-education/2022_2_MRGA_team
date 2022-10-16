@@ -1,0 +1,59 @@
+name: CI
+
+on: push
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container: bodjan/cxx
+    steps:
+      - uses: actions/checkout@v2
+      - run: make check
+  build:
+    needs: [check]
+    runs-on: ubuntu-latest
+    container: bodjan/cxx
+    steps:
+      - uses: actions/checkout@v2
+      - run: make build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          path: build/main
+  test:
+    runs-on: ubuntu-latest
+    container: bodjan/cxx
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - run: make test
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Binary file
+          path: build/main
+  # memtest:
+  #   runs-on: ubuntu-latest
+  #   container: bodjan/cxx
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: make memtest
+  #     - name: Upload artifacts
+  #       uses: actions/upload-artifact@v2
+  #       if: failure()
+  #       with:
+  #         name: Valgrind logs
+  #         path: valgrind.log
+  # covtest:
+  #   runs-on: ubuntu-latest
+  #   container: bodjan/cxx
+  #   needs: [test]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: make covtest
+  #     - name: Upload artifacts
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: Test coverage
+  #         path: build/report/

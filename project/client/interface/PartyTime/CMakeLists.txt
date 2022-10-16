@@ -16,7 +16,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
-find_package(Qt6 REQUIRED COMPONENTS Network)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Network)
 
 set(TS_FILES PartyTime_ru_RU.ts)
 set(COMPONENTS)
@@ -30,8 +30,6 @@ add_subdirectory(Pages)
 set(INTERFACE_LIB_NAME "interface")
 add_subdirectory(API)
 set(API_LIB_NAME "network")
-
-#add_subdirectory(tests)
 
 set(PROJECT_SOURCES
         main.cpp

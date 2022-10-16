@@ -169,7 +169,7 @@ build PartyTime_autogen/EWIEGA46WW/qrc_static.cpp | ${cmake_ninja_workdir}PartyT
 #############################################
 # Phony custom command for CMakeFiles/PartyTime_autogen_timestamp_deps
 
-build CMakeFiles/PartyTime_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/PartyTime_autogen_timestamp_deps: phony Pages/libpages.a Components/libcomponents.a API/libapi.a /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc /opt/homebrew/lib/QtNetwork.framework/Versions/A/QtNetwork || API/api_autogen API/api_autogen_timestamp_deps API/libapi.a Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen Components/components_autogen_timestamp_deps Components/libcomponents.a Pages/libpages.a Pages/pages_autogen Pages/pages_autogen_timestamp_deps
+build CMakeFiles/PartyTime_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/PartyTime_autogen_timestamp_deps: phony Pages/libpages.a API/libapi.a Components/libcomponents.a /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic /opt/homebrew/lib/QtNetwork.framework/Versions/A/QtNetwork || API/api_autogen API/api_autogen_timestamp_deps API/libapi.a Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen Components/components_autogen_timestamp_deps Components/libcomponents.a Pages/libpages.a Pages/pages_autogen Pages/pages_autogen_timestamp_deps
 
 
 #############################################
@@ -347,7 +347,7 @@ build Components/components_autogen/timestamp Components/components_autogen/mocs
 #############################################
 # Phony custom command for Components/CMakeFiles/components_autogen_timestamp_deps
 
-build Components/CMakeFiles/components_autogen_timestamp_deps | ${cmake_ninja_workdir}Components/CMakeFiles/components_autogen_timestamp_deps: phony Components/UI/libui.a /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc || Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps
+build Components/CMakeFiles/components_autogen_timestamp_deps | ${cmake_ninja_workdir}Components/CMakeFiles/components_autogen_timestamp_deps: phony Components/UI/libui.a /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic || Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps
 
 
 #############################################
@@ -497,7 +497,7 @@ build Components/UI/ui_autogen/timestamp Components/UI/ui_autogen/mocs_compilati
 #############################################
 # Phony custom command for Components/UI/CMakeFiles/ui_autogen_timestamp_deps
 
-build Components/UI/CMakeFiles/ui_autogen_timestamp_deps | ${cmake_ninja_workdir}Components/UI/CMakeFiles/ui_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc
+build Components/UI/CMakeFiles/ui_autogen_timestamp_deps | ${cmake_ninja_workdir}Components/UI/CMakeFiles/ui_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic
 
 
 #############################################
@@ -678,7 +678,7 @@ build Pages/pages_autogen/timestamp Pages/pages_autogen/mocs_compilation.cpp | $
 #############################################
 # Phony custom command for Pages/CMakeFiles/pages_autogen_timestamp_deps
 
-build Pages/CMakeFiles/pages_autogen_timestamp_deps | ${cmake_ninja_workdir}Pages/CMakeFiles/pages_autogen_timestamp_deps: phony /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc
+build Pages/CMakeFiles/pages_autogen_timestamp_deps | ${cmake_ninja_workdir}Pages/CMakeFiles/pages_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets
 
 
 #############################################
@@ -800,7 +800,7 @@ build API/api_autogen/timestamp API/api_autogen/mocs_compilation.cpp | ${cmake_n
 #############################################
 # Phony custom command for API/CMakeFiles/api_autogen_timestamp_deps
 
-build API/CMakeFiles/api_autogen_timestamp_deps | ${cmake_ninja_workdir}API/CMakeFiles/api_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc
+build API/CMakeFiles/api_autogen_timestamp_deps | ${cmake_ninja_workdir}API/CMakeFiles/api_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic
 
 
 #############################################

@@ -73,9 +73,9 @@ void Base::onEnter()
     }
 }
 
-void Base::onProfilePageClicked() {
-    screens->setCurrentIndex(e_profile);
-}
+// void Base::onProfilePageClicked() {
+//     screens->setCurrentIndex(e_profile);
+// }
 
 Base::~Base()
 {

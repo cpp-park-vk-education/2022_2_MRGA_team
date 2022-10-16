@@ -49,6 +49,6 @@ private slots:
     void onEnter();
     void onRegistrationPageClicked();
     void onRegister();
-    void onProfilePageClicked();
+    // void onProfilePageClicked();
 };
 #endif // BASE_H

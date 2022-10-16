@@ -28,7 +28,7 @@ class painter : public QWidget
     Q_OBJECT
 
 public:
-    painter(QWidget* parent = nullptr);
+    explicit painter(QWidget* parent = nullptr);
 
 protected:
     void paintEvent(QPaintEvent *event);

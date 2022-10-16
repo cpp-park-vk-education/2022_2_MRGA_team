@@ -259,6 +259,15 @@ bool registration::validateRepeatPasswordField()
     return true;
 }
 
+bool registration::isUserExist()
+{
+    std::string userEmail = this->email->text().toStdString();
+    std::string userLogin = this->login->text().toStdString();
+
+//    bool res = POST(userEmail, userLogin);
+    return true;
+}
+
 void registration::emailWarning()
 {
     QMessageBox::warning(this, "Warning", "Email entered incorrectly");
