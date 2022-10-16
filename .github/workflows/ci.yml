@@ -17,8 +17,6 @@ jobs:
       - run: make build
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
-        with:
-          path: build/main
   test:
     runs-on: ubuntu-latest
     container: bodjan/cxx
@@ -28,9 +26,6 @@ jobs:
       - run: make test
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
-        with:
-          name: Binary file
-          path: build/main
   # memtest:
   #   runs-on: ubuntu-latest
   #   container: bodjan/cxx
