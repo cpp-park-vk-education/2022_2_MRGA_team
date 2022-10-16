@@ -22,8 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: make test
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
   # memtest:
   #   runs-on: ubuntu-latest
   #   container: bodjan/cxx
