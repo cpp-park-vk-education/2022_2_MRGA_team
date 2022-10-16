@@ -3,14 +3,14 @@ name: CI
 on: push
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    container: bodjan/cxx
-    steps:
-      - uses: actions/checkout@v2
-      - run: make check
+  # check:
+  #   runs-on: ubuntu-latest
+  #   container: bodjan/cxx
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: make check
   build:
-    needs: [check]
+    needs:
     runs-on: ubuntu-latest
     container: bodjan/cxx
     steps:
