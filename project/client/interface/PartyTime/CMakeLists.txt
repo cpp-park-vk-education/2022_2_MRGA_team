@@ -28,8 +28,7 @@ enable_testing()
 
 add_subdirectory(Pages)
 add_subdirectory(Components)
-add_subdirectory(API)
-set(API_LIB_NAME "network")
+# add_subdirectory(API)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -46,22 +45,24 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
     )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB})
-target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
+    # ${API_LIB}
+    # ${API_INCLUDE_DIRS}
+target_link_libraries(${PROJECT_NAME} PUBLIC ${PAGES_LIB} ${COMPONENTS_LIB} )
+target_include_directories(${PROJECT_NAME} PUBLIC ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
 
     qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 else()
     if(ANDROID)
         add_library(PartyTime SHARED
             ${PROJECT_SOURCES}
-            target_link_libraries(${PROJECT_NAME} PUBLIC ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB})
-            target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
+            target_link_libraries(${PROJECT_NAME} PUBLIC ${PAGES_LIB} ${COMPONENTS_LIB})
+            target_include_directories(${PROJECT_NAME} PUBLIC ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
         )
     else()
         add_executable(PartyTime
             ${PROJECT_SOURCES}
-            target_link_libraries(${PROJECT_NAME} PUBLIC ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB})
-            target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
+            target_link_libraries(${PROJECT_NAME} PUBLIC ${PAGES_LIB} ${COMPONENTS_LIB})
+            target_include_directories(${PROJECT_NAME} PUBLIC ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
         )
     endif()
 
