@@ -1,2 +1,0 @@
-/usr/sbin/ar qc libapi.a CMakeFiles/api.dir/api_autogen/mocs_compilation.cpp.o CMakeFiles/api.dir/GetService/GetService.cpp.o CMakeFiles/api.dir/PostService/PostService.cpp.o
-/usr/sbin/ranlib libapi.a
