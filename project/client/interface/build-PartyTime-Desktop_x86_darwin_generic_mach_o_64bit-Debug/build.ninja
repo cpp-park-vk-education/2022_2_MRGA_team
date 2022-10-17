@@ -169,341 +169,13 @@ build PartyTime_autogen/EWIEGA46WW/qrc_static.cpp | ${cmake_ninja_workdir}PartyT
 #############################################
 # Phony custom command for CMakeFiles/PartyTime_autogen_timestamp_deps
 
-build CMakeFiles/PartyTime_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/PartyTime_autogen_timestamp_deps: phony Pages/libpages.a API/libapi.a Components/libcomponents.a /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic /opt/homebrew/lib/QtNetwork.framework/Versions/A/QtNetwork || API/api_autogen API/api_autogen_timestamp_deps API/libapi.a Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen Components/components_autogen_timestamp_deps Components/libcomponents.a Pages/libpages.a Pages/pages_autogen Pages/pages_autogen_timestamp_deps
+build CMakeFiles/PartyTime_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/PartyTime_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc /opt/homebrew/lib/QtCore.framework/Versions/A/QtCore /opt/homebrew/lib/QtNetwork.framework/Versions/A/QtNetwork API/libapi.a Components/libcomponents.a Pages/libpages.a || API/api_autogen API/api_autogen_timestamp_deps API/libapi.a Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen Components/components_autogen_timestamp_deps Components/libcomponents.a Pages/libpages.a Pages/pages_autogen Pages/pages_autogen_timestamp_deps
 
 
 #############################################
 # Phony custom command for CMakeFiles/PartyTime_autogen
 
 build CMakeFiles/PartyTime_autogen | ${cmake_ninja_workdir}CMakeFiles/PartyTime_autogen: phony PartyTime_autogen/timestamp || API/api_autogen API/api_autogen_timestamp_deps API/libapi.a Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen Components/components_autogen_timestamp_deps Components/libcomponents.a Pages/libpages.a Pages/pages_autogen Pages/pages_autogen_timestamp_deps PartyTime_autogen_timestamp_deps
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/CMakeLists.txt
-# =============================================================================
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build Components/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime -B/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build Components/rebuild_cache: phony Components/CMakeFiles/rebuild_cache.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build Components/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake-gui -S/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime -B/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build Components/edit_cache: phony Components/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for test
-
-build Components/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/ctest --force-new-ctest-process
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build Components/test: phony Components/CMakeFiles/test.util
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target components
-
-
-#############################################
-# Order-only phony target for components
-
-build cmake_object_order_depends_target_components: phony || Components/components_autogen Components/components_autogen/mocs_compilation.cpp Components/components_autogen/timestamp Components/components_autogen_timestamp_deps cmake_object_order_depends_target_ui
-
-build Components/CMakeFiles/components.dir/components_autogen/mocs_compilation.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/components_autogen/mocs_compilation.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/components_autogen
-
-build Components/CMakeFiles/components.dir/EventFilter/EventFilter.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter/EventFilter.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/EventFilter/EventFilter.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/EventFilter
-
-build Components/CMakeFiles/components.dir/EventForm/EventForm.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm/EventForm.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/EventForm/EventForm.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/EventForm
-
-build Components/CMakeFiles/components.dir/EventItem/EventItem.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem/EventItem.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/EventItem/EventItem.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/EventItem
-
-build Components/CMakeFiles/components.dir/EventList/EventList.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList/EventList.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/EventList/EventList.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/EventList
-
-build Components/CMakeFiles/components.dir/UI/Button/Button.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button/Button.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/UI/Button/Button.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Button
-
-build Components/CMakeFiles/components.dir/UI/Input/Input.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input/Input.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/UI/Input/Input.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Input
-
-build Components/CMakeFiles/components.dir/UI/Loader/Loader.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader/Loader.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/UI/Loader/Loader.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Loader
-
-build Components/CMakeFiles/components.dir/UI/MyModal/MyModal.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/UI/MyModal/MyModal.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/MyModal
-
-build Components/CMakeFiles/components.dir/UI/Navbar/Navbar.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/UI/Navbar/Navbar.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Navbar
-
-build Components/CMakeFiles/components.dir/UI/Select/Select.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select/Select.cpp || cmake_object_order_depends_target_components
-  DEP_FILE = Components/CMakeFiles/components.dir/UI/Select/Select.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Select
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target components
-
-
-#############################################
-# Link the static library Components/libcomponents.a
-
-build Components/libcomponents.a: CXX_STATIC_LIBRARY_LINKER__components_Debug Components/CMakeFiles/components.dir/components_autogen/mocs_compilation.cpp.o Components/CMakeFiles/components.dir/EventFilter/EventFilter.cpp.o Components/CMakeFiles/components.dir/EventForm/EventForm.cpp.o Components/CMakeFiles/components.dir/EventItem/EventItem.cpp.o Components/CMakeFiles/components.dir/EventList/EventList.cpp.o Components/CMakeFiles/components.dir/UI/Button/Button.cpp.o Components/CMakeFiles/components.dir/UI/Input/Input.cpp.o Components/CMakeFiles/components.dir/UI/Loader/Loader.cpp.o Components/CMakeFiles/components.dir/UI/MyModal/MyModal.cpp.o Components/CMakeFiles/components.dir/UI/Navbar/Navbar.cpp.o Components/CMakeFiles/components.dir/UI/Select/Select.cpp.o || Components/UI/libui.a Components/components_autogen Components/components_autogen_timestamp_deps
-  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk
-  LANGUAGE_COMPILE_FLAGS = -Wall -Wextra -Wpedantic -Werror -g
-  OBJECT_DIR = Components/CMakeFiles/components.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = Components/libcomponents.a
-  TARGET_PDB = components.a.dbg
-
-
-#############################################
-# Utility command for components_autogen_timestamp_deps
-
-build Components/components_autogen_timestamp_deps: phony Components/CMakeFiles/components_autogen_timestamp_deps Components/UI/libui.a
-
-
-#############################################
-# Utility command for components_autogen
-
-build Components/components_autogen: phony Components/CMakeFiles/components_autogen Components/components_autogen/timestamp Components/components_autogen/mocs_compilation.cpp Components/components_autogen_timestamp_deps
-
-
-#############################################
-# Custom command for Components/components_autogen/timestamp
-
-build Components/components_autogen/timestamp Components/components_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}Components/components_autogen/timestamp ${cmake_ninja_workdir}Components/components_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic || Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen_timestamp_deps
-  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_autogen /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/CMakeFiles/components_autogen.dir/AutogenInfo.json Debug && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/timestamp && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/deps /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/d/e726cf552088234ff11673b61df428ec47438be7da68ee87b7f9a0ad7b078464.d
-  DESC = Automatic MOC and UIC for target components
-  depfile = /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/d/e726cf552088234ff11673b61df428ec47438be7da68ee87b7f9a0ad7b078464.d
-  restat = 1
-
-
-#############################################
-# Phony custom command for Components/CMakeFiles/components_autogen_timestamp_deps
-
-build Components/CMakeFiles/components_autogen_timestamp_deps | ${cmake_ninja_workdir}Components/CMakeFiles/components_autogen_timestamp_deps: phony Components/UI/libui.a /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic || Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps
-
-
-#############################################
-# Phony custom command for Components/CMakeFiles/components_autogen
-
-build Components/CMakeFiles/components_autogen | ${cmake_ninja_workdir}Components/CMakeFiles/components_autogen: phony Components/components_autogen/timestamp || Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen_timestamp_deps
-
-# =============================================================================
-# Write statements declared in CMakeLists.txt:
-# /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/CMakeLists.txt
-# =============================================================================
-
-
-#############################################
-# Utility command for rebuild_cache
-
-build Components/UI/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime -B/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
-  DESC = Running CMake to regenerate build system...
-  pool = console
-  restat = 1
-
-build Components/UI/rebuild_cache: phony Components/UI/CMakeFiles/rebuild_cache.util
-
-
-#############################################
-# Utility command for edit_cache
-
-build Components/UI/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake-gui -S/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime -B/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
-  DESC = Running CMake cache editor...
-  pool = console
-  restat = 1
-
-build Components/UI/edit_cache: phony Components/UI/CMakeFiles/edit_cache.util
-
-
-#############################################
-# Utility command for test
-
-build Components/UI/CMakeFiles/test.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/ctest --force-new-ctest-process
-  DESC = Running tests...
-  pool = console
-  restat = 1
-
-build Components/UI/test: phony Components/UI/CMakeFiles/test.util
-
-# =============================================================================
-# Object build statements for STATIC_LIBRARY target ui
-
-
-#############################################
-# Order-only phony target for ui
-
-build cmake_object_order_depends_target_ui: phony || Components/UI/ui_autogen Components/UI/ui_autogen/mocs_compilation.cpp Components/UI/ui_autogen/timestamp Components/UI/ui_autogen_timestamp_deps
-
-build Components/UI/CMakeFiles/ui.dir/ui_autogen/mocs_compilation.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_ui
-  DEP_FILE = Components/UI/CMakeFiles/ui.dir/ui_autogen/mocs_compilation.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
-  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/ui_autogen
-
-build Components/UI/CMakeFiles/ui.dir/Button/Button.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button/Button.cpp || cmake_object_order_depends_target_ui
-  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Button/Button.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
-  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Button
-
-build Components/UI/CMakeFiles/ui.dir/Input/Input.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input/Input.cpp || cmake_object_order_depends_target_ui
-  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Input/Input.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
-  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Input
-
-build Components/UI/CMakeFiles/ui.dir/Loader/Loader.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader/Loader.cpp || cmake_object_order_depends_target_ui
-  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Loader/Loader.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
-  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Loader
-
-build Components/UI/CMakeFiles/ui.dir/MyModal/MyModal.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.cpp || cmake_object_order_depends_target_ui
-  DEP_FILE = Components/UI/CMakeFiles/ui.dir/MyModal/MyModal.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
-  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/MyModal
-
-build Components/UI/CMakeFiles/ui.dir/Navbar/Navbar.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.cpp || cmake_object_order_depends_target_ui
-  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Navbar/Navbar.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
-  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Navbar
-
-build Components/UI/CMakeFiles/ui.dir/Select/Select.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select/Select.cpp || cmake_object_order_depends_target_ui
-  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Select/Select.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
-  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
-  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
-  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Select
-
-
-# =============================================================================
-# Link build statements for STATIC_LIBRARY target ui
-
-
-#############################################
-# Link the static library Components/UI/libui.a
-
-build Components/UI/libui.a: CXX_STATIC_LIBRARY_LINKER__ui_Debug Components/UI/CMakeFiles/ui.dir/ui_autogen/mocs_compilation.cpp.o Components/UI/CMakeFiles/ui.dir/Button/Button.cpp.o Components/UI/CMakeFiles/ui.dir/Input/Input.cpp.o Components/UI/CMakeFiles/ui.dir/Loader/Loader.cpp.o Components/UI/CMakeFiles/ui.dir/MyModal/MyModal.cpp.o Components/UI/CMakeFiles/ui.dir/Navbar/Navbar.cpp.o Components/UI/CMakeFiles/ui.dir/Select/Select.cpp.o || Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps
-  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk
-  LANGUAGE_COMPILE_FLAGS = -Wall -Wextra -Wpedantic -Werror -g
-  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = Components/UI/libui.a
-  TARGET_PDB = ui.a.dbg
-
-
-#############################################
-# Utility command for ui_autogen_timestamp_deps
-
-build Components/UI/ui_autogen_timestamp_deps: phony Components/UI/CMakeFiles/ui_autogen_timestamp_deps
-
-
-#############################################
-# Utility command for ui_autogen
-
-build Components/UI/ui_autogen: phony Components/UI/CMakeFiles/ui_autogen Components/UI/ui_autogen/timestamp Components/UI/ui_autogen/mocs_compilation.cpp Components/UI/ui_autogen_timestamp_deps
-
-
-#############################################
-# Custom command for Components/UI/ui_autogen/timestamp
-
-build Components/UI/ui_autogen/timestamp Components/UI/ui_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}Components/UI/ui_autogen/timestamp ${cmake_ninja_workdir}Components/UI/ui_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic || Components/UI/ui_autogen_timestamp_deps
-  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_autogen /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/CMakeFiles/ui_autogen.dir/AutogenInfo.json Debug && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/timestamp && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/deps /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/d/2fc8d5b33e567d2d71753ecc0f2f2b4db6cca72f91db66053e800a38bce4ac82.d
-  DESC = Automatic MOC and UIC for target ui
-  depfile = /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/d/2fc8d5b33e567d2d71753ecc0f2f2b4db6cca72f91db66053e800a38bce4ac82.d
-  restat = 1
-
-
-#############################################
-# Phony custom command for Components/UI/CMakeFiles/ui_autogen_timestamp_deps
-
-build Components/UI/CMakeFiles/ui_autogen_timestamp_deps | ${cmake_ninja_workdir}Components/UI/CMakeFiles/ui_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic
-
-
-#############################################
-# Phony custom command for Components/UI/CMakeFiles/ui_autogen
-
-build Components/UI/CMakeFiles/ui_autogen | ${cmake_ninja_workdir}Components/UI/CMakeFiles/ui_autogen: phony Components/UI/ui_autogen/timestamp || Components/UI/ui_autogen_timestamp_deps
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -678,13 +350,341 @@ build Pages/pages_autogen/timestamp Pages/pages_autogen/mocs_compilation.cpp | $
 #############################################
 # Phony custom command for Pages/CMakeFiles/pages_autogen_timestamp_deps
 
-build Pages/CMakeFiles/pages_autogen_timestamp_deps | ${cmake_ninja_workdir}Pages/CMakeFiles/pages_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets
+build Pages/CMakeFiles/pages_autogen_timestamp_deps | ${cmake_ninja_workdir}Pages/CMakeFiles/pages_autogen_timestamp_deps: phony /opt/homebrew/lib/QtWidgets.framework/Versions/A/QtWidgets /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc
 
 
 #############################################
 # Phony custom command for Pages/CMakeFiles/pages_autogen
 
 build Pages/CMakeFiles/pages_autogen | ${cmake_ninja_workdir}Pages/CMakeFiles/pages_autogen: phony Pages/pages_autogen/timestamp || Pages/pages_autogen_timestamp_deps
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build Components/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime -B/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build Components/rebuild_cache: phony Components/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build Components/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake-gui -S/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime -B/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build Components/edit_cache: phony Components/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for test
+
+build Components/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build Components/test: phony Components/CMakeFiles/test.util
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target components
+
+
+#############################################
+# Order-only phony target for components
+
+build cmake_object_order_depends_target_components: phony || Components/components_autogen Components/components_autogen/mocs_compilation.cpp Components/components_autogen/timestamp Components/components_autogen_timestamp_deps cmake_object_order_depends_target_ui
+
+build Components/CMakeFiles/components.dir/components_autogen/mocs_compilation.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/components_autogen/mocs_compilation.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/components_autogen
+
+build Components/CMakeFiles/components.dir/EventFilter/EventFilter.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter/EventFilter.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/EventFilter/EventFilter.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/EventFilter
+
+build Components/CMakeFiles/components.dir/EventForm/EventForm.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm/EventForm.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/EventForm/EventForm.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/EventForm
+
+build Components/CMakeFiles/components.dir/EventItem/EventItem.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem/EventItem.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/EventItem/EventItem.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/EventItem
+
+build Components/CMakeFiles/components.dir/EventList/EventList.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList/EventList.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/EventList/EventList.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/EventList
+
+build Components/CMakeFiles/components.dir/UI/Button/Button.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button/Button.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/UI/Button/Button.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Button
+
+build Components/CMakeFiles/components.dir/UI/Input/Input.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input/Input.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/UI/Input/Input.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Input
+
+build Components/CMakeFiles/components.dir/UI/Loader/Loader.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader/Loader.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/UI/Loader/Loader.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Loader
+
+build Components/CMakeFiles/components.dir/UI/MyModal/MyModal.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/UI/MyModal/MyModal.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/MyModal
+
+build Components/CMakeFiles/components.dir/UI/Navbar/Navbar.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/UI/Navbar/Navbar.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Navbar
+
+build Components/CMakeFiles/components.dir/UI/Select/Select.cpp.o: CXX_COMPILER__components_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select/Select.cpp || cmake_object_order_depends_target_components
+  DEP_FILE = Components/CMakeFiles/components.dir/UI/Select/Select.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventFilter -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventForm -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventItem -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/EventList -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/ui -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  OBJECT_FILE_DIR = Components/CMakeFiles/components.dir/UI/Select
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target components
+
+
+#############################################
+# Link the static library Components/libcomponents.a
+
+build Components/libcomponents.a: CXX_STATIC_LIBRARY_LINKER__components_Debug Components/CMakeFiles/components.dir/components_autogen/mocs_compilation.cpp.o Components/CMakeFiles/components.dir/EventFilter/EventFilter.cpp.o Components/CMakeFiles/components.dir/EventForm/EventForm.cpp.o Components/CMakeFiles/components.dir/EventItem/EventItem.cpp.o Components/CMakeFiles/components.dir/EventList/EventList.cpp.o Components/CMakeFiles/components.dir/UI/Button/Button.cpp.o Components/CMakeFiles/components.dir/UI/Input/Input.cpp.o Components/CMakeFiles/components.dir/UI/Loader/Loader.cpp.o Components/CMakeFiles/components.dir/UI/MyModal/MyModal.cpp.o Components/CMakeFiles/components.dir/UI/Navbar/Navbar.cpp.o Components/CMakeFiles/components.dir/UI/Select/Select.cpp.o || Components/UI/libui.a Components/components_autogen Components/components_autogen_timestamp_deps
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk
+  LANGUAGE_COMPILE_FLAGS = -Wall -Wextra -Wpedantic -Werror -g
+  OBJECT_DIR = Components/CMakeFiles/components.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Components/libcomponents.a
+  TARGET_PDB = components.a.dbg
+
+
+#############################################
+# Utility command for components_autogen_timestamp_deps
+
+build Components/components_autogen_timestamp_deps: phony Components/CMakeFiles/components_autogen_timestamp_deps Components/UI/libui.a
+
+
+#############################################
+# Utility command for components_autogen
+
+build Components/components_autogen: phony Components/CMakeFiles/components_autogen Components/components_autogen/timestamp Components/components_autogen/mocs_compilation.cpp Components/components_autogen_timestamp_deps
+
+
+#############################################
+# Custom command for Components/components_autogen/timestamp
+
+build Components/components_autogen/timestamp Components/components_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}Components/components_autogen/timestamp ${cmake_ninja_workdir}Components/components_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic || Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen_timestamp_deps
+  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_autogen /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/CMakeFiles/components_autogen.dir/AutogenInfo.json Debug && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/timestamp && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/components_autogen/deps /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/d/e726cf552088234ff11673b61df428ec47438be7da68ee87b7f9a0ad7b078464.d
+  DESC = Automatic MOC and UIC for target components
+  depfile = /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/d/e726cf552088234ff11673b61df428ec47438be7da68ee87b7f9a0ad7b078464.d
+  restat = 1
+
+
+#############################################
+# Phony custom command for Components/CMakeFiles/components_autogen_timestamp_deps
+
+build Components/CMakeFiles/components_autogen_timestamp_deps | ${cmake_ninja_workdir}Components/CMakeFiles/components_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc Components/UI/libui.a || Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps
+
+
+#############################################
+# Phony custom command for Components/CMakeFiles/components_autogen
+
+build Components/CMakeFiles/components_autogen | ${cmake_ninja_workdir}Components/CMakeFiles/components_autogen: phony Components/components_autogen/timestamp || Components/UI/libui.a Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps Components/components_autogen_timestamp_deps
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build Components/UI/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake --regenerate-during-build -S/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime -B/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build Components/UI/rebuild_cache: phony Components/UI/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build Components/UI/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake-gui -S/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime -B/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build Components/UI/edit_cache: phony Components/UI/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for test
+
+build Components/UI/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build Components/UI/test: phony Components/UI/CMakeFiles/test.util
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target ui
+
+
+#############################################
+# Order-only phony target for ui
+
+build cmake_object_order_depends_target_ui: phony || Components/UI/ui_autogen Components/UI/ui_autogen/mocs_compilation.cpp Components/UI/ui_autogen/timestamp Components/UI/ui_autogen_timestamp_deps
+
+build Components/UI/CMakeFiles/ui.dir/ui_autogen/mocs_compilation.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/mocs_compilation.cpp || cmake_object_order_depends_target_ui
+  DEP_FILE = Components/UI/CMakeFiles/ui.dir/ui_autogen/mocs_compilation.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
+  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/ui_autogen
+
+build Components/UI/CMakeFiles/ui.dir/Button/Button.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button/Button.cpp || cmake_object_order_depends_target_ui
+  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Button/Button.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
+  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Button
+
+build Components/UI/CMakeFiles/ui.dir/Input/Input.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input/Input.cpp || cmake_object_order_depends_target_ui
+  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Input/Input.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
+  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Input
+
+build Components/UI/CMakeFiles/ui.dir/Loader/Loader.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader/Loader.cpp || cmake_object_order_depends_target_ui
+  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Loader/Loader.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
+  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Loader
+
+build Components/UI/CMakeFiles/ui.dir/MyModal/MyModal.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.cpp || cmake_object_order_depends_target_ui
+  DEP_FILE = Components/UI/CMakeFiles/ui.dir/MyModal/MyModal.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
+  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/MyModal
+
+build Components/UI/CMakeFiles/ui.dir/Navbar/Navbar.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.cpp || cmake_object_order_depends_target_ui
+  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Navbar/Navbar.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
+  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Navbar
+
+build Components/UI/CMakeFiles/ui.dir/Select/Select.cpp.o: CXX_COMPILER__ui_Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select/Select.cpp || cmake_object_order_depends_target_ui
+  DEP_FILE = Components/UI/CMakeFiles/ui.dir/Select/Select.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Werror -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -std=gnu++17
+  INCLUDES = -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/include -I/opt/homebrew/lib/QtWidgets.framework/Headers -F/opt/homebrew/lib -I/opt/homebrew/lib/QtCore.framework/Headers -I/opt/homebrew/lib/QtGui.framework/Headers -I/opt/homebrew/lib/QtDBus.framework/Headers -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/Qt6::Widgets -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Button -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Input -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Loader -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/MyModal -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Navbar -I/Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI/Select
+  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
+  OBJECT_FILE_DIR = Components/UI/CMakeFiles/ui.dir/Select
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target ui
+
+
+#############################################
+# Link the static library Components/UI/libui.a
+
+build Components/UI/libui.a: CXX_STATIC_LIBRARY_LINKER__ui_Debug Components/UI/CMakeFiles/ui.dir/ui_autogen/mocs_compilation.cpp.o Components/UI/CMakeFiles/ui.dir/Button/Button.cpp.o Components/UI/CMakeFiles/ui.dir/Input/Input.cpp.o Components/UI/CMakeFiles/ui.dir/Loader/Loader.cpp.o Components/UI/CMakeFiles/ui.dir/MyModal/MyModal.cpp.o Components/UI/CMakeFiles/ui.dir/Navbar/Navbar.cpp.o Components/UI/CMakeFiles/ui.dir/Select/Select.cpp.o || Components/UI/ui_autogen Components/UI/ui_autogen_timestamp_deps
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk
+  LANGUAGE_COMPILE_FLAGS = -Wall -Wextra -Wpedantic -Werror -g
+  OBJECT_DIR = Components/UI/CMakeFiles/ui.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = Components/UI/libui.a
+  TARGET_PDB = ui.a.dbg
+
+
+#############################################
+# Utility command for ui_autogen_timestamp_deps
+
+build Components/UI/ui_autogen_timestamp_deps: phony Components/UI/CMakeFiles/ui_autogen_timestamp_deps
+
+
+#############################################
+# Utility command for ui_autogen
+
+build Components/UI/ui_autogen: phony Components/UI/CMakeFiles/ui_autogen Components/UI/ui_autogen/timestamp Components/UI/ui_autogen/mocs_compilation.cpp Components/UI/ui_autogen_timestamp_deps
+
+
+#############################################
+# Custom command for Components/UI/ui_autogen/timestamp
+
+build Components/UI/ui_autogen/timestamp Components/UI/ui_autogen/mocs_compilation.cpp | ${cmake_ninja_workdir}Components/UI/ui_autogen/timestamp ${cmake_ninja_workdir}Components/UI/ui_autogen/mocs_compilation.cpp: CUSTOM_COMMAND /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic || Components/UI/ui_autogen_timestamp_deps
+  COMMAND = cd /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_autogen /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/CMakeFiles/ui_autogen.dir/AutogenInfo.json Debug && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/timestamp && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E cmake_transform_depfile Ninja gccdepfile /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/PartyTime/Components/UI /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/Components/UI/ui_autogen/deps /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/d/2fc8d5b33e567d2d71753ecc0f2f2b4db6cca72f91db66053e800a38bce4ac82.d
+  DESC = Automatic MOC and UIC for target ui
+  depfile = /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/d/2fc8d5b33e567d2d71753ecc0f2f2b4db6cca72f91db66053e800a38bce4ac82.d
+  restat = 1
+
+
+#############################################
+# Phony custom command for Components/UI/CMakeFiles/ui_autogen_timestamp_deps
+
+build Components/UI/CMakeFiles/ui_autogen_timestamp_deps | ${cmake_ninja_workdir}Components/UI/CMakeFiles/ui_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc
+
+
+#############################################
+# Phony custom command for Components/UI/CMakeFiles/ui_autogen
+
+build Components/UI/CMakeFiles/ui_autogen | ${cmake_ninja_workdir}Components/UI/CMakeFiles/ui_autogen: phony Components/UI/ui_autogen/timestamp || Components/UI/ui_autogen_timestamp_deps
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -800,7 +800,7 @@ build API/api_autogen/timestamp API/api_autogen/mocs_compilation.cpp | ${cmake_n
 #############################################
 # Phony custom command for API/CMakeFiles/api_autogen_timestamp_deps
 
-build API/CMakeFiles/api_autogen_timestamp_deps | ${cmake_ninja_workdir}API/CMakeFiles/api_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/moc /opt/homebrew/share/qt/libexec/uic
+build API/CMakeFiles/api_autogen_timestamp_deps | ${cmake_ninja_workdir}API/CMakeFiles/api_autogen_timestamp_deps: phony /opt/homebrew/share/qt/libexec/uic /opt/homebrew/share/qt/libexec/moc
 
 
 #############################################
@@ -853,7 +853,7 @@ build ui_autogen_timestamp_deps: phony Components/UI/ui_autogen_timestamp_deps
 #############################################
 # Folder: /Users/sugarbearzelagmail.com/Documents/IT/cplusplusproject/project/client/interface/build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 
-build all: phony PartyTime.app/Contents/MacOS/PartyTime Components/all Pages/all API/all
+build all: phony PartyTime.app/Contents/MacOS/PartyTime Pages/all Components/all API/all
 
 # =============================================================================
 

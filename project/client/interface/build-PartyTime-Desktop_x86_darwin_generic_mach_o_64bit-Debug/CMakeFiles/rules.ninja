@@ -41,6 +41,25 @@ rule CXX_EXECUTABLE_LINKER__PartyTime_Debug
 #############################################
 # Rule for compiling CXX files.
 
+rule CXX_COMPILER__pages_Debug
+  depfile = $DEP_FILE
+  deps = gcc
+  command = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
+  description = Building CXX object $out
+
+
+#############################################
+# Rule for linking CXX static library.
+
+rule CXX_STATIC_LIBRARY_LINKER__pages_Debug
+  command = $PRE_LINK && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E rm -f $TARGET_FILE && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc $TARGET_FILE $LINK_FLAGS $in && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib $TARGET_FILE && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
+  description = Linking CXX static library $TARGET_FILE
+  restat = $RESTAT
+
+
+#############################################
+# Rule for compiling CXX files.
+
 rule CXX_COMPILER__components_Debug
   depfile = $DEP_FILE
   deps = gcc
@@ -71,25 +90,6 @@ rule CXX_COMPILER__ui_Debug
 # Rule for linking CXX static library.
 
 rule CXX_STATIC_LIBRARY_LINKER__ui_Debug
-  command = $PRE_LINK && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E rm -f $TARGET_FILE && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc $TARGET_FILE $LINK_FLAGS $in && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib $TARGET_FILE && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
-  description = Linking CXX static library $TARGET_FILE
-  restat = $RESTAT
-
-
-#############################################
-# Rule for compiling CXX files.
-
-rule CXX_COMPILER__pages_Debug
-  depfile = $DEP_FILE
-  deps = gcc
-  command = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
-  description = Building CXX object $out
-
-
-#############################################
-# Rule for linking CXX static library.
-
-rule CXX_STATIC_LIBRARY_LINKER__pages_Debug
   command = $PRE_LINK && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E rm -f $TARGET_FILE && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc $TARGET_FILE $LINK_FLAGS $in && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib $TARGET_FILE && /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/bin/cmake -E touch $TARGET_FILE && $POST_BUILD
   description = Linking CXX static library $TARGET_FILE
   restat = $RESTAT

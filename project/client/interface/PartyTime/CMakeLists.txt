@@ -25,11 +25,10 @@ set(COMPONENTS)
 
 enable_testing()
 
-add_subdirectory(Components)
+
 add_subdirectory(Pages)
-set(INTERFACE_LIB_NAME "interface")
+add_subdirectory(Components)
 add_subdirectory(API)
-set(API_LIB_NAME "network")
 
 set(PROJECT_SOURCES
         main.cpp
@@ -46,7 +45,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
     )
 
-target_link_libraries(${PROJECT_NAME} PUBLIC ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB})
+    
+target_link_libraries(${PROJECT_NAME} PUBLIC ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB} )
 target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
 
     qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
@@ -82,3 +82,7 @@ set_target_properties(PartyTime PROPERTIES
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(${PROJECT_NAME})
 endif()
+
+set( ${PROJECT_NAME} PARENT_SCOPE)
+set(ALL_LIB ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB} PARENT_SCOPE)
+set(ALL_LIB_INCLUDES ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS} PARENT_SCOPE)
