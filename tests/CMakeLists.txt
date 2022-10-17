@@ -13,5 +13,4 @@ find_package(GTest REQUIRED)
 set(SOURCE_INTERFACE_TESTS interfaceTest.cpp)
 
 add_executable(interface_tests ${SOURCE_INTERFACE_TESTS})
-target_link_libraries(interface_tests ${PAGES_LIB} ${COMPONENTS_LIB} ${GTEST_LIBRARIES})
-# ${API_LIB}
+target_link_libraries(interface_tests ${ALL_LIB} ${GTEST_LIBRARIES})
