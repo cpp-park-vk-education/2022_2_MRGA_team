@@ -15,13 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: make build
-  test:
-    runs-on: ubuntu-latest
-    container: bodjan/cxx
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v2
-      - run: make test
+  # test:
+  #   runs-on: ubuntu-latest
+  #   container: bodjan/cxx
+  #   needs: [build]
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: make test
   # memtest:
   #   runs-on: ubuntu-latest
   #   container: bodjan/cxx

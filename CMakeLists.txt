@@ -3,4 +3,4 @@ project(hw-1)
 
 add_subdirectory(project/client/interface/PartyTime)
 
-add_subdirectory(tests)
+# add_subdirectory(tests)
