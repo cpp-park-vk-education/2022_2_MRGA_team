@@ -13,21 +13,17 @@ rebuild: clean build
 check:
 	./linters/run.sh
 # запуск на маке
-run:
-	./build.sh
+run: build
 	./${TARGET_APP}
 
-test:
-	./build.sh
+test: build
 	./${TARGET_TEST}
 
-memtest:
-	./build.sh
+memtest: build
 	./tests/memtest.sh ./${TARGET_TEST}
 
-covtest:
-	./build.sh
-	./coverage.sh ./${TARGET_TEST}
+covtest: build
+	scripts/coverage.sh ./${TARGET_TEST}
 
 clean:
 	rm -rf build valgrind.log coverage.info
