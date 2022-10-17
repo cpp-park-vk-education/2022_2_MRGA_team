@@ -13,7 +13,7 @@ struct session_token {
     string token;
     date expire_date;
     bool is_set = false;
-    void set_token(size_t user_id, const string &token, const string &date);
+//    void set_token(size_t _user_id, const string &_token, const string &_date);
 };
 // логины сохраняем все, чтобы предлагать при входе. Пару логина и пароля
 // предлагаем сохранить.

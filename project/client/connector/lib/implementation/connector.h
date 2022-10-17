@@ -1,8 +1,6 @@
 #pragma once
 #include "IConnector.hpp"
 #include "state.h"
-#include <HTTPRequest.hpp>
-
 namespace {
     using std::string;
 };  // namespace
