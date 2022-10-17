@@ -6,28 +6,24 @@ TARGET_TEST = build/tests/interface_tests
 all: clean check build test
 
 build:
-	./build.sh
+	scripts/build.sh
 
 rebuild: clean build
 
 check:
 	./linters/run.sh
 
-run:
-	./build.sh
+run: build
 	./${TARGET_APP}
 
-test:
-	./build.sh
+test: build
 	./${TARGET_TEST}
 
-memtest:
-	./build.sh
+memtest: build
 	./tests/memtest.sh ./interface_tests
 
-covtest:
-	./build.sh
-	./coverage.sh ./${TARGET_TEST}
+covtest: build
+	scripts/coverage.sh ./${TARGET_TEST}
 
 clean:
 	rm -rf build valgrind.log coverage.info
