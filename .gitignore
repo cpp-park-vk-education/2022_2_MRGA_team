@@ -36,6 +36,7 @@ Thumbs.db
 
 # qtcreator generated files
 *.pro.user*
+build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 
 # xemacs temporary files
 *.flc
