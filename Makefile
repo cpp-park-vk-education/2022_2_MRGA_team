@@ -6,7 +6,7 @@ TARGET_TEST = build/tests/interface_tests
 all: clean check build test
 
 build:
-	./build.sh
+	scripts/build.sh
 
 rebuild: clean build
 
