@@ -12,7 +12,7 @@ rebuild: clean build
 
 check:
 	./linters/run.sh
-# запуск на маке
+
 run: build
 	./${TARGET_APP}
 
