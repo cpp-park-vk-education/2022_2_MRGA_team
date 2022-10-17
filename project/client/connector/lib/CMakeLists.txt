@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.18)
 project(connector)
 
 set(Include_dir ${CMAKE_CURRENT_SOURCE_DIR}/interface/
@@ -15,9 +15,11 @@ set(deps_include_dir ${MAIN_DIR}/deps/include)
 
 include_directories(${Include_dir} ${deps_include_dir})
 
-
-file(GLOB SOURCES implementation/source/*.cpp)
+AUX_SOURCE_DIRECTORY(implementation/source SOURCES)
 
 add_library(${PROJECT_NAME} ${SOURCES})
-
-# message("SOURCES = ${SOURCES}, \n Include_dir = ${Include_dir} \n deps_include_dir = ${deps_include_dir}")
+message(WARNING "building library with these flags: ${CMAKE_CXX_FLAGS}")
+if (WITH_TESTING)
+    message(WARNING "testing flags: ${testing_flags}")
+endif()
+message("SOURCES = ${SOURCES}, \n Include_dir = ${Include_dir} \n deps_include_dir = ${deps_include_dir}")

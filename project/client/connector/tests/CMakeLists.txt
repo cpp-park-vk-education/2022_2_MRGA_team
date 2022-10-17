@@ -16,6 +16,7 @@ include_directories(${deps_include_dir} ${Include_dir})
 
 file(GLOB SOURCES src/*.cpp)
 
+
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} connector ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
