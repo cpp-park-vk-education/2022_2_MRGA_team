@@ -25,9 +25,9 @@ set(COMPONENTS)
 
 enable_testing()
 
-add_subdirectory(Components)
+
 add_subdirectory(Pages)
-set(INTERFACE_LIB_NAME "interface")
+add_subdirectory(Components)
 add_subdirectory(API)
 set(API_LIB_NAME "network")
 
