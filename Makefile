@@ -12,7 +12,7 @@ rebuild: clean build
 
 check:
 	./linters/run.sh
-
+# запуск на маке
 run:
 	./build.sh
 	./${TARGET_APP}
@@ -23,7 +23,7 @@ test:
 
 memtest:
 	./build.sh
-	./tests/memtest.sh ./interface_tests
+	./tests/memtest.sh ./${TARGET_TEST}
 
 covtest:
 	./build.sh
