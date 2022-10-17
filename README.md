@@ -1,6 +1,11 @@
 # 2022_2_MRGA_team
 PartyTime - сервис для создания и поиска вечеринок
 
+Status of last Deployment: <br>
+<img src="https://github.com/cpp-park-vk-education/2022_2_MRGA_team/workflows/CI/badge.svg?branch=ZelenkoDev"><br>
+
+<p>Copyleft by MRGA team 2022</p>
+
 <div class="app">
     <h1 class="app__name">PartyTime</h1>
     <p class="app__descr">Проект на курсе по углубленному C++</p>
