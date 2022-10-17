@@ -2,4 +2,4 @@
 
 cd build || exit
 echo $PWD
-lcov -t "tests/connector_test" -o coverage.info -c -d lib/
+lcov -t "tests/connector_test" -o coverage.info -c -d lib/CMakeFiles/connector.dir

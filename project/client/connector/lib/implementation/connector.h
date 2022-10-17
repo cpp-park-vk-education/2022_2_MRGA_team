@@ -16,3 +16,5 @@ class http_request_connector : public IConnector {
     virtual Response<bool> registration(const string &login,
                                         const string &password) override;
 };
+
+int test_func(int a, int b);
