@@ -2,4 +2,4 @@
 
 echo $PWD
 cd build || exit
-ctest -VV
+ctest -VV --output-on-failure
