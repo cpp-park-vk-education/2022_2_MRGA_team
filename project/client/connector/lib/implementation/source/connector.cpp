@@ -15,3 +15,7 @@ Response<bool> connector::registration(const string &login,
     std::cout << login << password;
     return {true, error_code::success};
 }
+
+int test_func(int a, int b) {
+    return a + b;
+}

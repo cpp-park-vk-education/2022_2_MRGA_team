@@ -1,6 +1,8 @@
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
+**/Testing
+**/*valgrind
 *~
 *.autosave
 *.a
@@ -78,3 +80,5 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 **/.idea/
 **/build
 **/cmake-build-debug
+**/valgrind*
+**/test*

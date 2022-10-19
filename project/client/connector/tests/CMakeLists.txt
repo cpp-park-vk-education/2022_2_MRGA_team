@@ -20,4 +20,12 @@ file(GLOB SOURCES src/*.cpp)
 add_executable(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} connector ${GTEST_BOTH_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
+if (WITH_MEMCHECK)
+    message("ADDING VALGRIND COMMAND")
+    ADD_TEST(
+            NAME TEST_WITH_VALGRIND
+            COMMAND ../../scripts/memtest.sh ./${PROJECT_NAME}
+    )
+else()
 gtest_discover_tests(${PROJECT_NAME})
+endif()

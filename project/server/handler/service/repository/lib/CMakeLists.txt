@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.14)
+project(postgres_lib)
+
+if(WITH_TESTING)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${MY_TEST_FLAGS}")
+endif()
+
+
+set(MY_SRC_FILES "src/utils.cpp")
+set(MY_INCLUDE_DIRS "include")
+
+file(GLOB SOURCES ${MY_SRC_FILES})
+file(GLOB INCLUDE_DIRS ${MY_INCLUDE_DIRS})
+
+add_library(${PROJECT_NAME} STATIC ${MY_SRC_FILES})
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${MY_INCLUDE_DIRS})
+
+#
+set(POSTGRES_LIB_LIBRARIES ${PROJECT_NAME} PARENT_SCOPE)
+set(POSTGRES_LIB_INCLUDE_DIRS ${INCLUDE_DIRS} PARENT_SCOPE)
