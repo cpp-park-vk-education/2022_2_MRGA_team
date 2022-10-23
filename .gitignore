@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
@@ -82,3 +83,8 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 **/cmake-build-debug
 **/valgrind*
 **/test*
+=======
+build/
+.vscode/
+.DS_Store
+>>>>>>> upstream/Naberezhnaya
