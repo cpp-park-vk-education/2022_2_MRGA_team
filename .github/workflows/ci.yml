@@ -14,8 +14,4 @@ jobs:
     container: bodjan/cxx
     steps:
     - uses: actions/checkout@v2
-<<<<<<< HEAD
-    - run: make build
-=======
     - run: make clean
->>>>>>> a066746 (корректировка Cmake-файлов и изменение контейнера)
