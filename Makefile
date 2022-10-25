@@ -1,10 +1,29 @@
-.PHONY: build clean
+TARGET_APP = build/project/client/interface/PartyTime/PartyTime.app/Contents/MacOS/PartyTime
+TARGET_TEST = build/tests/interface_tests
+
+.PHONY: all build rebuild check test memtest covtest clean
+
+all: clean check build test
 
 build:
 	scripts/build.sh
-<<<<<<< HEAD
-=======
+
+rebuild: clean build
+
+check:
+	./linters/run.sh
+# запуск на маке
+run: build
+	./${TARGET_APP}
+
+test: build
+	./${TARGET_TEST}
+
+memtest: build
+	./tests/memtest.sh ./${TARGET_TEST}
+
+covtest: build
+	scripts/coverage.sh ./${TARGET_TEST}
 
 clean:
-	rm -rf build
->>>>>>> a066746 (корректировка Cmake-файлов и изменение контейнера)
+	rm -rf build valgrind.log coverage.info
