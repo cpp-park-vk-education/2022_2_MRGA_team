@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 set -e
-./build/tests/interface_tests
-# /build/имя до папки с тестами/имя исполняемого файла для тестов
-#                                                            директория которую нужно покрыть тестами
-lcov -t build/tests/sync_tests -o coverage.info -c -d build/project/client/interface/PartyTime
-genhtml -o build/report/ coverage.info
+
+project_dir=$(pwd)
+
+cd build/
+lcov -d project/client/interface/Pages  -t "tests/interface_tests" -o coverage.info -c --include "$project_dir/project/client/interface/Pages"
+genhtml -o report coverage.info

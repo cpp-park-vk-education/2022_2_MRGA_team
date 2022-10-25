@@ -5,7 +5,13 @@
 // }
 
 TEST(INTERFACE, create_interface) {
-//    EXPECT_EQ(create_interface(), SUCCESS);
+    int* new_list = NULL;
+    EXPECT_TRUE(new_list == NULL);
+
+    new_list = new int[5];
+    EXPECT_FALSE(new_list == NULL);
+
+    delete[] new_list;
 }
 
 TEST(INTERFACE, free_interface) {

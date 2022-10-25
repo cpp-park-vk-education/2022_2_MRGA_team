@@ -1,9 +1,9 @@
-==832== Memcheck, a memory error detector
-==832== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==832== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
-==832== Command: ./build/tests/interface_tests
-==832== Parent PID: 830
-==832== 
+==2731== Memcheck, a memory error detector
+==2731== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2731== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==2731== Command: ./build/tests/interface_tests
+==2731== Parent PID: 2729
+==2731== 
 
 valgrind:  Fatal error at startup: a function redirection
 valgrind:  which is mandatory for this platform-tool combination
