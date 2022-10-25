@@ -20,7 +20,7 @@ test: build
 	./${TARGET_TEST}
 
 memtest: build
-	./tests/memtest.sh ./${TARGET_TEST}
+	./tests/memtest.sh
 
 covtest: build
 	scripts/coverage.sh ./${TARGET_TEST}
