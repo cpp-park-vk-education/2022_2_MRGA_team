@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: yakwilik/cxx_project:26102022_2
+    needs: [check]
     steps:
       - uses: actions/checkout@v2
       - run: cd project/client/interface && make build
