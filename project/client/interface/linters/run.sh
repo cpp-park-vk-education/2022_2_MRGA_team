@@ -24,7 +24,7 @@ function check_log() {
 }
 
 print_header "RUN cppcheck"
-check_log "cppcheck PartyTime/painter.cpp PartyTime/base.cpp -I PartyTime/painter.hpp -I PartyTime/base.h - --suppress=missingIncludeSystem" "\(information\)"
+check_log "cppcheck PartyTime/painter.cpp PartyTime/base.cpp -I PartyTime/painter.hpp -I PartyTime/base.h --suppress=missingIncludeSystem" "\(information\)"
 
 print_header "RUN clang-tidy"
 # check_log "clang-tidy ${SUM_CPP} ${SUM_HPP} -warnings-as-errors=* -extra-arg=-std=c99 -- -Iproject/include" "Error (?:reading|while processing)"

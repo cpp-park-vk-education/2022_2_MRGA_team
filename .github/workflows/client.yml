@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-            sudo pacman -S tree
+            sudo pacman -S -y tree
             cd project/client/interface && tree build && make covtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
