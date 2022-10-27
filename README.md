@@ -1,6 +1,5 @@
 # 2022_2_MRGA_team
 PartyTime - сервис для создания и поиска вечеринок
-# cplusplusproject
 Status of last Deployment: <br>
 <img src="https://github.com/cpp-park-vk-education/2022_2_MRGA_team/workflows/client/badge.svg?branch=develop"><br>
 
@@ -40,7 +39,7 @@ Copyleft by MRGaTeAM 2022
         <li class="list__item item">Созданы экраны авторизации и регистрации</li>
         <li class="list__item item">Реализованы функции валидации данных при пользовательском вводе</li>
         <li class="list__item item">Настроена автоматическая сборку проекта с использованием инструментария CMake</li>
-        <li class="list__item item">Настроен инструментарий для статического анализа, линтеров, unit-тестов и др. проверок и внедрение в рабочий процесс для будущего проекта<li>
+        <li class="list__item item">Настроен инструментарий для статического анализа, линтеров, unit-тестов и др. проверок и внедрение в рабочий процесс для будущего проекта</li>
         <li class="list__item item">Настроен собственный CI для будущего поддержания проекта</li>
     <ul>
 </section>

@@ -12,7 +12,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: yakwilik/cxx:valgrind_gcc
-    needs: [check]
     steps:
       - uses: actions/checkout@v2
       - run: cd project/client/interface && make build
