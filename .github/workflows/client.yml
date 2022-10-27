@@ -44,7 +44,7 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v2
-      - run: cd project/client/interface && make covtest
+      - run: cd project/client/interface && make test && make covtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
