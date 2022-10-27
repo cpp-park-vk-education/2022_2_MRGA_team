@@ -1,5 +1,6 @@
 TARGET=libconnector.a
 host_dir=
+container=yakwilik/cxx_project:27102022
 
 .PHONY: all build rebuild check memcheck cov_test clean debug_build  run_docker get_home
 
@@ -28,10 +29,10 @@ clean:
 	rm -rf build
 
 run_docker:
-	docker run -it -v "${PWD}:/project" -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm yakwilik/gcc_gdb
+	docker run -it -v "${PWD}:/project" --net=host -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm $(container)
 
 cov: test
-	scripts/cov.sh
+	scripts/cov.sh 10 10
 
 get_home:
 	echo "$(HOME)"
