@@ -5,26 +5,26 @@ on: push
 jobs:
   check:
     runs-on: ubuntu-latest
-    container: yakwilik/cxx:valgrind_gcc
+    container: yakwilik/cxx_project:26102022_2
     steps:
       - uses: actions/checkout@v2
       - run: cd project/client/interface && make check
   build:
     runs-on: ubuntu-latest
-    container: yakwilik/cxx:valgrind_gcc
+    container: yakwilik/cxx_project:26102022_2
     steps:
       - uses: actions/checkout@v2
       - run: cd project/client/interface && make build
   test:
     runs-on: ubuntu-latest
-    container: yakwilik/cxx:valgrind_gcc
+    container: yakwilik/cxx_project:26102022_2
     needs: [build]
     steps:
       - uses: actions/checkout@v2
       - run: cd project/client/interface && make test
   memtest:
     runs-on: ubuntu-latest
-    container: yakwilik/cxx:valgrind_gcc
+    container: yakwilik/cxx_project:26102022_2
     needs: [build]
     steps:
       - uses: actions/checkout@v2
@@ -37,7 +37,7 @@ jobs:
           path: valgrind.log
   covtest:
     runs-on: ubuntu-latest
-    container: yakwilik/cxx:valgrind_gcc
+    container: yakwilik/cxx_project:26102022_2
     needs: [test]
     steps:
       - uses: actions/checkout@v2

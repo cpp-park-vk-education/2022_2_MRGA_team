@@ -65,20 +65,17 @@ authorization::authorization(QWidget* parent) : painter(parent),
 }
 
 authorization::~authorization() {
-    delete appLogo;
     delete appTitle;
+    delete appLogo;
     delete login;
     delete password;
     delete enterButton;
     delete registrationButton;
-    delete authMainLayout;
+
     delete titleLayout;
     delete formLayout;
-    delete login;
-    delete password;
     delete buttonsLayout;
-    delete enterButton;
-    delete registrationButton;
+    delete authMainLayout;
 }
 
 QPushButton* authorization::getEnterButton() {
