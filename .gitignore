@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
+**/Testing
+**/*valgrind
 *~
 *.autosave
 *.a
@@ -33,7 +36,6 @@ Thumbs.db
 *.rc
 /.qmake.cache
 /.qmake.stash
-.qt
 
 # qtcreator generated files
 *.pro.user*
@@ -75,3 +77,13 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 *.dll
 *.exe
 
+**/.DS_Store
+**/.idea/
+**/build
+**/cmake-build-debug
+**/valgrind*
+=======
+build/
+.vscode/
+.DS_Store
+>>>>>>> upstream/Naberezhnaya

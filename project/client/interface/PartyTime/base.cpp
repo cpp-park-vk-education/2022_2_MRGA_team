@@ -8,13 +8,10 @@ Base::Base(QWidget *parent)
 {
     setWindowTitle("PartyTime");
     resize(1920, 792);
-//    QGridLayout* main_layout = new QGridLayout(this->centralWidget());
 
     screens->setObjectName("screenList");
     this->setCentralWidget(screens);
     screens->setStyleSheet("background-color: #9a95c9");
-//    main_layout->addWidget(screens);
-//    main_layout->setColumnMinimumWidth(200, 1000);
 
     connect(authorizationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onEnter);
     connect(authorizationPage->getRegistrationButton(), &QPushButton::clicked, this, &Base::onRegistrationPageClicked);
@@ -79,6 +76,7 @@ void Base::onEnter()
 
 Base::~Base()
 {
-    delete screens;
     delete authorizationPage;
+    delete registrationPage;
+    delete screens;
 }
