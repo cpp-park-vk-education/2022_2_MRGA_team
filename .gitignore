@@ -82,7 +82,6 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 **/build
 **/cmake-build-debug
 **/valgrind*
-**/test*
 =======
 build/
 .vscode/

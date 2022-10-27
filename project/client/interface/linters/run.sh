@@ -1,5 +1,5 @@
-# CLIENT_INTERFACE_HPP = "-I project/client/interface/PartyTime/painter.hpp -I project/client/interface/PartyTime/base.h -I project/client/interface/PartyTime/*/*/.hpp -I project/client/interface/PartyTime/*/*/*/.hpp"
-# CLIENT_INTERFACE_CPP = "project/client/interface/PartyTime/painter.cpp project/client/interface/PartyTime/base.cpp project/client/interface/PartyTime/*/*/.cpp project/client/interface/PartyTime/*/*/*/.cpp"
+# CLIENT_INTERFACE_HPP = "-I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp"
+# CLIENT_INTERFACE_CPP = "PartyTime/painter.cpp PartyTime/base.cpp PartyTime/*/*/.cpp PartyTime/*/*/*/.cpp"
 
 # SUM_HPP = "${CLIENT_INTERFACE_HPP}"
 # SUM_CPP = "${CLIENT_INTERFACE_CPP}"
@@ -24,12 +24,12 @@ function check_log() {
 }
 
 # print_header "RUN cppcheck"
-# check_log "cppcheck project/client/interface/PartyTime/painter.cpp project/client/interface/PartyTime/base.cpp project/client/interface/PartyTime/*/*/.cpp project/client/interface/PartyTime/*/*/*/.cpp -I project/client/interface/PartyTime/painter.hpp -I project/client/interface/PartyTime/base.h -I project/client/interface/PartyTime/*/*/.hpp -I project/client/interface/PartyTime/*/*/*/.hpp --enable=all --inconclusive --error-exitcode=1 -I project/client/interface/PartyTime/painter.hpp -I project/client/interface/PartyTime/base.h -I project/client/interface/PartyTime/*/*/.hpp -I project/client/interface/PartyTime/*/*/*/.hpp --suppress=missingIncludeSystem" "\(information\)"
+# check_log "cppcheck PartyTime/painter.cpp PartyTime/base.cpp PartyTime/*/*/.cpp PartyTime/*/*/*/.cpp -I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp --enable=all --inconclusive --error-exitcode=1 -I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp --suppress=missingIncludeSystem" "\(information\)"
 
 # print_header "RUN clang-tidy"
 # check_log "clang-tidy ${SUM_CPP} ${SUM_HPP} -warnings-as-errors=* -extra-arg=-std=c99 -- -Iproject/include" "Error (?:reading|while processing)"
 
 # print_header "RUN cpplint"
-# check_log "cpplint --extensions=c project/client/interface/PartyTime/painter.cpp project/client/interface/PartyTime/base.cpp project/client/interface/PartyTime/*/*/.cpp project/client/interface/PartyTime/*/*/*/.cpp -I project/client/interface/PartyTime/painter.hpp -I project/client/interface/PartyTime/base.h -I project/client/interface/PartyTime/*/*/.hpp -I project/client/interface/PartyTime/*/*/*/.hpp" "Can't open for reading"
+# check_log "cpplint --extensions=c PartyTime/painter.cpp PartyTime/base.cpp PartyTime/*/*/.cpp PartyTime/*/*/*/.cpp -I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp" "Can't open for reading"
 
 print_header "SUCCESS"
