@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: yakwilik/cxx_project:26102022_2
-    needs: [check]
+    needs: [build]
     steps:
       - uses: actions/checkout@v2
       - run: cd project/client/interface && make build
@@ -32,7 +32,7 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v2
-      - run: make memtest
+      - run: cd project/client/interface && make memtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         if: failure()
@@ -45,7 +45,7 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v2
-      - run:  make covtest
+      - run:  cd project/client/interface && make test && make covtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
