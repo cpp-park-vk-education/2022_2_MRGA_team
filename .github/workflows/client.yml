@@ -1,7 +1,5 @@
 name: client
-
 on: push
-
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -12,7 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: yakwilik/cxx_project:26102022_2
-    needs: [build]
     steps:
       - uses: actions/checkout@v2
       - run: cd project/client/interface && make build
@@ -45,7 +42,8 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v2
-      - run:  cd project/client/interface && make test && make covtest
+      - run: cd project/client/interface && make covtest
+      - run: cd project/client/interface && make test && make covtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
