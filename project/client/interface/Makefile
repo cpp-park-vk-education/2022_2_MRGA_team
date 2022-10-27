@@ -23,7 +23,7 @@ memtest: build
 	scripts/memtest.sh
 
 covtest: build
-	scripts/coverage.sh ./${TARGET_TEST}
+	scripts/coverage.sh
 
 clean:
 	rm -rf build valgrind.log coverage.info
