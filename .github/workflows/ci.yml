@@ -1,4 +1,4 @@
-name: CI
+name: client
 
 on: push
 
@@ -23,28 +23,28 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: make test
-  # memtest:
-  #   runs-on: ubuntu-latest
-  #   container: bodjan/cxx
-  #   needs: [build]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: make memtest
-  #     - name: Upload artifacts
-  #       uses: actions/upload-artifact@v2
-  #       if: failure()
-  #       with:
-  #         name: Valgrind logs
-  #         path: valgrind.log
-  # covtest:
-  #   runs-on: ubuntu-latest
-  #   container: bodjan/cxx
-  #   needs: [test]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: make covtest
-  #     - name: Upload artifacts
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: Test coverage
-  #         path: build/report/
+  memtest:
+    runs-on: ubuntu-latest
+    container: bodjan/cxx
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - run: make memtest
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: Valgrind logs
+          path: valgrind.log
+  covtest:
+    runs-on: ubuntu-latest
+    container: bodjan/cxx
+    needs: [test]
+    steps:
+      - uses: actions/checkout@v2
+      - run: make covtest
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test coverage
+          path: build/report/

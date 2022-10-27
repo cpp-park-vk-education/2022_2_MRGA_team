@@ -2,7 +2,7 @@
 PartyTime - сервис для создания и поиска вечеринок
 # cplusplusproject
 Status of last Deployment: <br>
-<img src="https://github.com/Yakwilik/cplusplusproject/workflows/CI/badge.svg?branch=ZelenkoDevFixed"><br>
+<img src="https://github.com/Yakwilik/cplusplusproject/workflows/client/badge.svg?branch=ZelenkoDevFixed"><br>
 
 Copyleft by MRGaTeAM 2022
 

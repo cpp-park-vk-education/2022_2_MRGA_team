@@ -5,5 +5,5 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(project/client/interface/PartyTime)
 add_subdirectory(tests)
-add_subdirectory(deps)
-add_subdirectory(project)
+# add_subdirectory(deps)
+# add_subdirectory(project)
