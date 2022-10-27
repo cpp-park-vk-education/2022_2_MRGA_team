@@ -5,46 +5,46 @@ on: push
 jobs:
   check:
     runs-on: ubuntu-latest
-    container: bodjan/cxx
+    container: yakwilik/cxx:valgrind_gcc
     steps:
       - uses: actions/checkout@v2
-      - run: make check
+      - run: cd project/client/interface && make check
   build:
     runs-on: ubuntu-latest
-    container: bodjan/cxx
+    container: yakwilik/cxx:valgrind_gcc
     needs: [check]
     steps:
       - uses: actions/checkout@v2
-      - run: make build
+      - run: cd project/client/interface && make build
   test:
     runs-on: ubuntu-latest
-    container: bodjan/cxx
+    container: yakwilik/cxx:valgrind_gcc
     needs: [build]
     steps:
       - uses: actions/checkout@v2
-      - run: make test
-  # memtest:
-  #   runs-on: ubuntu-latest
-  #   container: bodjan/cxx
-  #   needs: [build]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: make memtest
-  #     - name: Upload artifacts
-  #       uses: actions/upload-artifact@v2
-  #       if: failure()
-  #       with:
-  #         name: Valgrind logs
-  #         path: valgrind.log
-  # covtest:
-  #   runs-on: ubuntu-latest
-  #   container: bodjan/cxx
-  #   needs: [test]
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - run: make covtest
-  #     - name: Upload artifacts
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: Test coverage
-  #         path: build/report/
+      - run: cd project/client/interface && make test
+  memtest:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx:valgrind_gcc
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd project/client/interface && make memtest
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: Valgrind logs
+          path: valgrind.log
+  covtest:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx:valgrind_gcc
+    needs: [test]
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd project/client/interface && make covtest
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test coverage
+          path: build/report/
