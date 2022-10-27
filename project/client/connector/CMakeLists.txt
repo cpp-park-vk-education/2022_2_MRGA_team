@@ -5,8 +5,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(cxx_flags "-Werror -Wall -Wextra -Wpedantic\
         -Wredundant-decls -Wsign-conversion\
         -Wcast-align -Wcast-qual -Wconversion -Wfloat-equal")
-set(sanitizers_flags "-fsanitize=address,undefined -fno-sanitize-recover=all -fsanitize-undefined-trap-on-error")
-set(testing_flags "-fprofile-arcs -ftest-coverage -fPIC -O0")
+set(sanitizers_flags "-fsanitize=address -fsanitize-undefined-trap-on-error -fno-sanitize-recover=all -g -O0")
+
+
+set(testing_flags "-fprofile-arcs -ftest-coverage -fPIC -O0 -coverage")
 set(CMAKE_CXX_FLAGS ${cxx_flags})
 
 if (NOT DEFINED MAIN_DIR)
@@ -30,9 +32,17 @@ endif()
 if(WITH_TESTING)
     message(WARNING "RUN with testing")
     set(cxx_flags "${cxx_flags} ${testing_flags}")
-    set(CMAKE_CXX_FLAGS ${cxx_flags})
+    set(CMAKE_CXX_FLAGS "${cxx_flags}")
     message(WARNING "********\t new cxx flags while testing:\n ${testing_flags}\n")
     message(WARNING "********\t new cxx-linker flags while testing:\n ${CMAKE_EXE_LINKER_FLAGS}\n")
+endif()
+
+if(WITH_SANITIZE)
+    set(cxx_flags "${cxx_flags} ${sanitizers_flags}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${sanitizers_flags}")
+    set(CMAKE_CXX_FLAGS ${cxx_flags})
+    message("cxx flags = ${CMAKE_CXX_FLAGS}")
+    message("\n\nRun with sanitize\n\n")
 endif()
 
 add_subdirectory(lib)
@@ -40,18 +50,11 @@ add_subdirectory(lib)
 if(WITH_TESTING)
     if(WITH_MEMCHECK)
         message("\n\nRun with memcheck\n\n")
-
-    elseif(WITH_SANITIZE)
-        set(cxx_flags "${cxx_flags} ${sanitizers_flags}")
-        set(CMAKE_CXX_FLAGS ${cxx_flags})
-        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -coverage")
-        message("cxx flags = ${CMAKE_CXX_FLAGS}")
-
-        message("\n\nRun with sanitize\n\n")
     endif()
+
     message("\nrun with testing\n")
     set(MEMORYCHECK_COMMAND "/usr/local/bin/valgrind")
-#    include(CTest)
-    enable_testing()
+    include(CTest)
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
     add_subdirectory(tests)
 endif()

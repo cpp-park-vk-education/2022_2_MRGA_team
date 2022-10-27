@@ -4,7 +4,7 @@ container=yakwilik/cxx_project:27102022
 
 .PHONY: all build rebuild check memcheck cov_test clean debug_build  run_docker get_home
 
-all: clean check build test memtest sanitize cov_test cov
+all: clean check build test memtest sanitize cov
 
 check:
 	scripts/check.sh
@@ -22,8 +22,15 @@ test:
 	scripts/build.sh -D WITH_TESTING=ON -D WITH_DEBUG=ON
 	scripts/test.sh
 
+memtest:
+	scripts/build.sh -D WITH_TESTING=ON -D WITH_MEMCHECK=ON -D WITH_DEBUG=ON
+	scripts/test.sh
+
+
+
 sanitize:
 	scripts/build.sh -D WITH_TESTING=ON -D WITH_SANITIZE=ON
+	scripts/test.sh
 
 clean:
 	rm -rf build

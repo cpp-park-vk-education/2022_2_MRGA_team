@@ -66,3 +66,5 @@ class HttpRequestConnector : public IConnector {
 
     void test_request();
 };
+
+int test_func(int a, int b);
