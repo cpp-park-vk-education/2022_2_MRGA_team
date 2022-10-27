@@ -1,8 +1,6 @@
 TARGET=libconnector.a
-required_lines_cov=4
-required_functions_cov=1
-
-container=yakwilik/cxx:valgrind
+host_dir=
+container=yakwilik/cxx_project:26102022_2
 
 .PHONY: all build rebuild check memcheck cov_test clean debug_build  run_docker get_home
 
@@ -38,13 +36,10 @@ clean:
 	rm -rf build
 
 run_docker:
-	docker run -it -v "${PWD}:/project" -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm $(container)
+	docker run -it -v "${PWD}:/project" --net=host -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm $(container)
 
 cov: test
-	scripts/cov.sh $(required_lines_cov) $(required_functions_cov)
+	scripts/cov.sh 10 10
 
 get_home:
 	echo "$(HOME)"
-
-some:
-	scripts/catfile.sh

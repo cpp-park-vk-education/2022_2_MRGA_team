@@ -24,7 +24,7 @@ clang-tidy $source/* -warnings-as-errors=* -extra-arg=-std=c++20 -- -I$interface
 
 
 print_header "RUN cpplint"
-filter="-build/c++,-readability,-legal/copyright,-build/namespaces_headers"
+filter="-build/c++,-readability,-legal/copyright,-build/namespaces_headers,-build/include_subdir,-whitespace/indent,-runtime/references,-build/namespaces"
 cpplint --extensions=c,h,hpp,cpp --filter=$filter --headers=h,hpp $source/* $implementation/* $interface/*
 
 
