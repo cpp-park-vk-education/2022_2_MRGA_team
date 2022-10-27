@@ -41,7 +41,9 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v2
-      - run: cd project/client/interface && make covtest
+      - run: |
+            sudo pacman -S tree
+            cd project/client/interface && tree build && make covtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
