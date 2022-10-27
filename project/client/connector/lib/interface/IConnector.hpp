@@ -1,14 +1,13 @@
 #pragma once
 #include <string>
+#include <boost/beast/core.hpp>
 
 namespace {
     using std::string;
+    using boost::beast::error_code;
 };
 
-enum class error_code {
-    success = 0,
 
-};
 
 template <typename T> struct Response {
     T body;

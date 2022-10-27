@@ -1,6 +1,6 @@
 TARGET=libconnector.a
 host_dir=
-container=yakwilik/cxx_project:27102022
+container=yakwilik/cxx_project:26102022_2
 
 .PHONY: all build rebuild check memcheck cov_test clean debug_build  run_docker get_home
 

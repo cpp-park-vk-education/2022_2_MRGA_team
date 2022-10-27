@@ -15,7 +15,7 @@ class Deferrer {
     vector<deferred_function> funcs;
     public:
     Deferrer() = default;
-    Deferrer(init_list<deferred_function> functions);
+    explicit Deferrer(init_list<deferred_function> functions);
     void append(deferred_function func);
 
     ~Deferrer();

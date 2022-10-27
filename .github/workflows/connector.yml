@@ -1,0 +1,39 @@
+on: push
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        container: yakwilik/cxx_project:26102022_2
+        steps:
+            - uses: actions/checkout@v2
+            - run: cd project/client/connector && make build
+    check:
+        runs-on: ubuntu-latest
+        container: yakwilik/cxx_project:26102022_2
+        steps:
+            - uses: actions/checkout@v2
+            - run: cd project/client/connector && make check
+    test:
+        runs-on: ubuntu-latest
+        container: yakwilik/cxx_project:26102022_2
+        steps:
+            - uses: actions/checkout@v2
+            - run: cd project/client/connector && make test
+    coverage:
+        runs-on: ubuntu-latest
+        container: yakwilik/cxx_project:26102022_2
+        steps:
+            - uses: actions/checkout@v2
+            - run:  cd project/client/connector && make cov
+    sanitize:
+        runs-on: ubuntu-latest
+        container: yakwilik/cxx_project:26102022_2
+        steps:
+            - uses: actions/checkout@v2
+            - run:  cd project/client/connector && make memtest
+    memtest:
+        runs-on: ubuntu-latest
+        container: yakwilik/cxx_project:26102022_2
+        steps:
+            - uses: actions/checkout@v2
+            - run:  cd project/client/connector && make memtest

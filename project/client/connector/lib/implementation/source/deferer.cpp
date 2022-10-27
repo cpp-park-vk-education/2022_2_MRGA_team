@@ -1,16 +1,14 @@
 #include "deferer.h"
 
 Deferrer::Deferrer(init_list<deferred_function> functions) {
-    for (auto& func: functions) {
-        funcs.push_back(func);
-    }
+    std::copy(functions.begin(), functions.end(), funcs.begin());
 }
 
 void Deferrer::append(deferred_function func) {
     funcs.push_back(func);
 }
 Deferrer::~Deferrer() {
-    for (auto& func: funcs) {
+    for (auto & func : funcs) {
         func();
     }
 }
