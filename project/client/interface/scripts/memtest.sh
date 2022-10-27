@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
+# valgrind --tool=memcheck --leak-check=yes build/tests/interface_tests
+
 VALGRIND_LOG="valgrind.log"
 NO_LOST_PATTERN="All heap blocks were freed -- no leaks are possible"
 NO_ERROR_PATTERN="ERROR SUMMARY: 0 errors"
 
 rm -f VALGRIND_LOG
-
-# 
 
 valgrind --tool=memcheck -s --show-leak-kinds=all --leak-check=summary --leak-check=full --track-origins=yes --log-file=${VALGRIND_LOG} build/tests/interface_tests || exit 1
 NO_LOST=$(grep "${NO_LOST_PATTERN}" "${VALGRIND_LOG}")

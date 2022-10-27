@@ -21,7 +21,10 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v2
-      - run: cd project/client/interface && make test
+      - run: | 
+            cd project/client/interface && make test
+            sudo pacman -S --noconfirm tree
+            tree build
   memtest:
     runs-on: ubuntu-latest
     container: yakwilik/cxx_project:26102022_2
@@ -41,9 +44,7 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v2
-      - run: |
-            sudo pacman -S --noconfirm tree
-            cd project/client/interface && tree build && make covtest
+      - run: cd project/client/interface && make covtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
