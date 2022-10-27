@@ -1,6 +1,7 @@
 #include "connector.h"
-#include "deferer.hpp"
+#include "deferer.h"
 #include <iostream>
+
 
 using Connector = HttpRequestConnector;
 
@@ -8,22 +9,21 @@ using Connector = HttpRequestConnector;
 // HttpRequestConnector::res(Connector::ioc);
 
 
-Connector::HttpRequestConnector(const string& host, const string& port):host(host), port(port), resolver(ioc), stream(ioc) {
+// Connector конструктор. Принимает два аргумента: ip-адрес хоста и порт.
+Connector::HttpRequestConnector(const string& host, const string& port):host(host), port(port), resolver(ioc), stream(ioc) {}
 
-}
-
+// Метод, возвращающий текстовый запрос beast::http::request
 str_request Connector::string_request(const string &target, const http::verb& method) const {
     return http::request<http::string_body>{method, target, version};
 }
 
-
-
+// метод конвертирующий массив байт в строку std::string
 string Connector::body_to_str(beast::multi_buffer const& buffers) {
     return beast::buffers_to_string(buffers.data());
 }
 
 
-
+// функция, которая вызывает лямбду закрятия для соединения в своем деструкторе;
 void Connector::defer_close(Deferrer& def) {
     def.append([&st = stream](){
         beast::error_code ec;
@@ -32,6 +32,7 @@ void Connector::defer_close(Deferrer& def) {
             throw beast::system_error{ec};
         });
 }
+
 
 void Connector::test_request() {
     beast::error_code ec;
@@ -43,7 +44,7 @@ void Connector::test_request() {
     } else {
         return ;
     }
-    const auto target = "/admin/login/?next=/admin/";
+    const auto target = R"(~/admin/login/?next=/admin/~)";
     str_request req = string_request(target);
     req.set(http::field::host, host);
     req.set(http::field::user_agent, user_agent);
@@ -88,26 +89,33 @@ Response<bool> Connector::registration(const string &login,
     return {true, error_code::success};
 }
 
+// задать новый ip-адрес хоста
 void Connector::set_host(const string& new_host) {
     host = new_host;
 }
+
+// задать новый порт
 void Connector::set_port(const string& new_port) {
     port = new_port;
 }
 
+// при изменении host или порт нужно вызвать этот метод для подключения к серверу.
 void Connector::resolve_url() {
     url = resolver.resolve(host, port);
 }
 
+// можно задать новые host и порт и сразу вызвать resolve_url
 void Connector::resolve_url(const string& host, const string& port) {
     set_host(host);
     set_port(port);
     url = resolver.resolve(host, port);
 }
 
+// получение хоста подключения
 const string& Connector::get_host() const {
     return host;
 }
+// получение порта подключения
 const string& Connector::get_port() const {
     return port;
 }

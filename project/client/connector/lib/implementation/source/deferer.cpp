@@ -1,4 +1,4 @@
-#include "deferer.hpp"
+#include "deferer.h"
 
 Deferrer::Deferrer(init_list<deferred_function> functions) {
     for (auto& func: functions) {
