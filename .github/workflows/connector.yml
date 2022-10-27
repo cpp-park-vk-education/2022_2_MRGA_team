@@ -30,7 +30,7 @@ jobs:
         container: yakwilik/cxx_project:26102022_2
         steps:
             - uses: actions/checkout@v2
-            - run:  cd project/client/connector && make memtest
+            - run:  cd project/client/connector && make sanitize
     memtest:
         runs-on: ubuntu-latest
         container: yakwilik/cxx_project:26102022_2
