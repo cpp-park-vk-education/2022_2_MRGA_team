@@ -23,11 +23,11 @@ function check_log() {
     fi
 }
 
-# print_header "RUN cppcheck"
-# check_log "cppcheck PartyTime/painter.cpp PartyTime/base.cpp PartyTime/*/*/.cpp PartyTime/*/*/*/.cpp -I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp --enable=all --inconclusive --error-exitcode=1 -I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp --suppress=missingIncludeSystem" "\(information\)"
+print_header "RUN cppcheck"
+check_log "cppcheck PartyTime/painter.cpp PartyTime/base.cpp PartyTime/*/*/.cpp PartyTime/*/*/*/.cpp -I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp --enable=all --inconclusive --error-exitcode=1 -I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp --suppress=missingIncludeSystem" "\(information\)"
 
-# print_header "RUN clang-tidy"
-# check_log "clang-tidy ${SUM_CPP} ${SUM_HPP} -warnings-as-errors=* -extra-arg=-std=c99 -- -Iproject/include" "Error (?:reading|while processing)"
+print_header "RUN clang-tidy"
+check_log "clang-tidy ${SUM_CPP} ${SUM_HPP} -warnings-as-errors=* -extra-arg=-std=c99 -- -Iproject/include" "Error (?:reading|while processing)"
 
 # print_header "RUN cpplint"
 # check_log "cpplint --extensions=c PartyTime/painter.cpp PartyTime/base.cpp PartyTime/*/*/.cpp PartyTime/*/*/*/.cpp -I PartyTime/painter.hpp -I PartyTime/base.h -I PartyTime/*/*/.hpp -I PartyTime/*/*/*/.hpp" "Can't open for reading"
