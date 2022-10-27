@@ -1,11 +1,14 @@
 #include <gtest/gtest.h>
 
-// extern "CPP" {
-
-// }
 
 TEST(INTERFACE, create_interface) {
-//    EXPECT_EQ(create_interface(), SUCCESS);
+    // int *arr = new int[5];
+    // for (size_t i = 0; i < 5; ++i) {
+    //     arr[i] = i;
+    // }
+    int a = 1;
+    EXPECT_EQ(1, a);
+    // delete[] arr;
 }
 
 TEST(INTERFACE, free_interface) {

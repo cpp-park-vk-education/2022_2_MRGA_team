@@ -84,3 +84,8 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 **/valgrind*
 
 **/*.vscode
+
+build/
+.vscode/
+.DS_Store
+>>>>>>> 9e0860bccc48c003cf340db43644cc3e0c80042e

@@ -338,16 +338,17 @@ bool registration::checkUserInputData()
 }
 
 registration::~registration() {
-    delete registrationMainLayout;
-    delete headerLayout;
-    delete backButton;
-    delete appTitle;
-    delete appLogo;
     delete email;
     delete login;
     delete password;
     delete repeatPassword;
+    delete backButton;
+    delete appTitle;
+    delete appLogo;
     delete enterButton;
-    delete formLayout;
+    delete titleLayout;
     delete buttonsLayout;
+    delete headerLayout;
+    delete formLayout;
+    delete registrationMainLayout;
 }
