@@ -9,7 +9,7 @@
 
 
 
-#include "IConnector.hpp"
+#include "IPartyTimeConnector.hpp"
 #include "deferer.h"
 #include "state.h"
 
@@ -27,7 +27,7 @@ namespace {
 };  // namespace
 
 
-class HttpRequestConnector : public IConnector {
+class HttpRequestConnector : public IPartyTimeConnector {
   private:
     // base data
     string host;
@@ -82,6 +82,7 @@ class HttpRequestConnector : public IConnector {
                                         const string &password) override;
 
     void test_request();
+
+    ~HttpRequestConnector() override = default;
 };
 
-int test_func(int a, int b);
