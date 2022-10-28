@@ -76,7 +76,7 @@ void Base::onEnter()
 
 Base::~Base()
 {
-    delete authorizationPage;
-    delete registrationPage;
+//    delete authorizationPage;
+//    delete registrationPage;
     delete screens;
 }

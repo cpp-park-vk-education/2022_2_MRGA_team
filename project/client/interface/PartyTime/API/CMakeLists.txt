@@ -1,24 +1,6 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.14)
 
 project("ApiLib")
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD 17)
-# set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic -Werror")
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
-find_package(Qt6 REQUIRED COMPONENTS Network)
-
-set(TS_FILES PartyTime_ru_RU.ts)
-set(COMPONENTS)
 
 file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp)
 file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/**/*.hpp)
@@ -35,6 +17,3 @@ set(API_INCLUDE_DIRS ${API_INCLUDE_DIRS} PARENT_SCOPE)
 
 message("API_LIB = ${API_LIB}")
 message("API_INCLUDE_DIRS = ${API_INCLUDE_DIRS}")
-
-# enable_testing()s
-# add_subdirectory(tests)

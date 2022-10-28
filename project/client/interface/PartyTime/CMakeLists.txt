@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.14)
 
 set(PROJECT_NAME "PartyTime")
 project(${PROJECT_NAME} VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-set(CMAKE_PREFIX_PATH "/usr/lib/cmake/Qt6Widgets")
+#set(CMAKE_PREFIX_PATH "/usr/lib/cmake/Qt6Widgets")
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -54,13 +54,13 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_IN
     qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})
 else()
     if(ANDROID)
-        add_library(PartyTime SHARED
+        add_library(${PROJECT_NAME} SHARED
             ${PROJECT_SOURCES}
             target_link_libraries(${PROJECT_NAME} PUBLIC ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB})
             target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
         )
     else()
-        add_executable(PartyTime
+        add_executable(${PROJECT_NAME}
             ${PROJECT_SOURCES}
             target_link_libraries(${PROJECT_NAME} PUBLIC ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB})
             target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
@@ -71,9 +71,9 @@ else()
 endif()
 
 #target_link_libraries(PartyTime PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-target_link_libraries(PartyTime PRIVATE Qt6::Network)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Network)
 
-set_target_properties(PartyTime PROPERTIES
+set_target_properties(${PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -85,6 +85,5 @@ if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(${PROJECT_NAME})
 endif()
 
-set( ${PROJECT_NAME} PARENT_SCOPE)
 set(ALL_LIB ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB} PARENT_SCOPE)
 set(ALL_LIB_INCLUDES ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS} PARENT_SCOPE)

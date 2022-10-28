@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 project(interface_tests)
 
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD 17)
@@ -12,5 +14,10 @@ find_package(GTest REQUIRED)
 
 set(SOURCE_INTERFACE_TESTS interfaceTest.cpp)
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../PartyTime)
+
 add_executable(interface_tests ${SOURCE_INTERFACE_TESTS})
 target_link_libraries(interface_tests ${ALL_LIB} ${GTEST_LIBRARIES})
+
+# ../PartyTime/painter.hpp
+# ../PartyTime/painter.cpp
