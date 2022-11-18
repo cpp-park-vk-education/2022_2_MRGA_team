@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include <memory>
 
 #include "authorization.hpp"
 #include "registration.hpp"
@@ -44,6 +45,7 @@ private:
 //    organizer* organizerPage;
 //    visitor* visitorPage;
 //    visitorEventList* visitorEventListPage;
+//    std::shared_ptr<PostService> postRequestHandler;
 private slots:
     void onAuthPageClicked();
     void onEnter();

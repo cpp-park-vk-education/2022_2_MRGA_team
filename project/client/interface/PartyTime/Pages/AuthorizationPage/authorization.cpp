@@ -57,6 +57,8 @@ authorization::authorization(QWidget* parent) : painter(parent),
     registrationButton->setObjectName("registrationButton");
     registrationButton->setMaximumWidth(200);
 
+
+
     buttonsLayout->addWidget(enterButton);
     buttonsLayout->addWidget(registrationButton);
 
