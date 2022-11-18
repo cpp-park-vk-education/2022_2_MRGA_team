@@ -8,11 +8,11 @@ all: clean check build test
 build:
 	scripts/build.sh
 
-# check:
-# 	./scripts/check.sh
-
 rebuild: clean build
 
+check:
+	./linters/run.sh
+# запуск на маке
 run: build
 	./${TARGET_APP}
 
@@ -24,9 +24,6 @@ memtest: build
 
 covtest: build
 	scripts/coverage.sh
-
-check:
-	./scripts/run.sh
 
 clean:
 	rm -rf build valgrind.log coverage.info
