@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpostgres_lib.a CMakeFiles/postgres_lib.dir/src/authorizetion_connector.cpp.o CMakeFiles/postgres_lib.dir/src/connector.cpp.o CMakeFiles/postgres_lib.dir/src/event_connector.cpp.o
-/usr/bin/ranlib libpostgres_lib.a
