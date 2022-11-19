@@ -5,7 +5,7 @@
 #include <istream>
 #include <string>
 
-namespace struct_mapping::detail
+namespace sm::detail
 {
 
 template<
@@ -350,4 +350,4 @@ private:
 	char wait_char = '\0';
 };
 
-} // struct_mapping::detail
+} // sm::detail

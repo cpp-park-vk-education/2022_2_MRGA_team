@@ -3,7 +3,7 @@
 #include <functional>
 #include <string>
 
-namespace struct_mapping::detail
+namespace sm::detail
 {
 
 class IterateOver
@@ -29,4 +29,4 @@ public:
 	static inline std::function<EndArray> end_array;
 };
 
-} // struct_mapping::detail
+} // sm::detail

@@ -5,7 +5,7 @@
 #include <functional>
 #include <string>
 
-namespace struct_mapping
+namespace sm
 {
 
 template<
@@ -59,4 +59,4 @@ private:
 	static inline std::function<ToString> function_to_string;
 };
 
-} // struct_mapping
+} // sm

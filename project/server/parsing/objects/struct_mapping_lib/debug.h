@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-namespace struct_mapping
+namespace sm
 {
 
 #ifdef DEBUG_OUTPUT
@@ -175,4 +175,4 @@ void print_info(
 
 } // nsdebug
 
-} // struct_mapping
+} // sm

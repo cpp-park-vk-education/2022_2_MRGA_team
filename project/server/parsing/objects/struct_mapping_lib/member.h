@@ -13,7 +13,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace struct_mapping::detail
+namespace sm::detail
 {
 
 template<
@@ -425,4 +425,4 @@ private:
 	}
 };
 
-} // struct_mapping::detail
+} // sm::detail

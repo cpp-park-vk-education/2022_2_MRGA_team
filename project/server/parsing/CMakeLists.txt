@@ -3,6 +3,8 @@ project(project)
 
 add_subdirectory(objects)
 
+set(CMAKE_CXX_STANDARD 20)
+
 message("PARSING_LIB_INCLUDE_DIRS = ${PARSING_LIB_INCLUDE_DIRS}")
 message("PARSING_LIB_LIBRARIES = ${PARSING_LIB_LIBRARIES}")
 

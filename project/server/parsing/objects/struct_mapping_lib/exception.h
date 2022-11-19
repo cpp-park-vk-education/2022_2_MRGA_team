@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-namespace struct_mapping
+namespace sm
 {
 
 class StructMappingException : public std::runtime_error
@@ -12,4 +12,4 @@ public:
 	using std::runtime_error::operator=;
 };
 
-} // struct_mapping
+} // sm

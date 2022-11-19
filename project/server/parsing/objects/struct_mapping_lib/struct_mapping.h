@@ -12,7 +12,7 @@
 #include <string>
 #include <utility>
 
-namespace struct_mapping
+namespace sm
 {
 
 template<
@@ -25,7 +25,7 @@ inline void reg(V T::* ptr, const std::string& name, Options<U>&& ... options)
 	detail::Object<T>::reg(ptr, name, std::forward<Options<U>>(options)...);
 }
 
-} // struct_mapping
+} // sm
 
 #define BEGIN_STRUCT(STRUCT_NAME) struct STRUCT_NAME {using Self_Q5w6E7r8 = STRUCT_NAME;
 

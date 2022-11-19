@@ -6,7 +6,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace struct_mapping::detail
+namespace sm::detail
 {
 
 template<typename>
@@ -124,4 +124,4 @@ inline bool in_limits(V value)
 	}
 }
 
-} // struct_mapping::detail
+} // sm::detail

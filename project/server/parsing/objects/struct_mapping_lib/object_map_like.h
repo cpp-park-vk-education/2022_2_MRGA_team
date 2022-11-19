@@ -11,7 +11,7 @@
 #include <type_traits>
 #include <utility>
 
-namespace struct_mapping::detail
+namespace sm::detail
 {
 					
 template<typename T>
@@ -277,4 +277,4 @@ private:
 	static inline bool used = false;
 };
 
-} // struct_mapping::detail
+} // sm::detail

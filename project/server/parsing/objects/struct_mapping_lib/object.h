@@ -14,7 +14,7 @@
 #include <utility>
 #include <vector>
 
-namespace struct_mapping::detail
+namespace sm::detail
 {
 
 template<
@@ -449,4 +449,4 @@ private:
 	static inline std::vector<MemberPtr<T, V>> members_ptr{};
 };
 
-} // struct_mapping::detail
+} // sm::detail

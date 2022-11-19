@@ -2,7 +2,7 @@
 
 #include <vector>
 
-namespace struct_mapping::detail
+namespace sm::detail
 {
 
 class Reset
@@ -28,4 +28,4 @@ private:
 	static inline std::vector<ResetFunction> reset_functions;
 };
 
-} // struct_mapping::detail
+} // sm::detail

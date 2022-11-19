@@ -6,7 +6,7 @@
 #include <limits>
 #include <string>
 
-namespace struct_mapping
+namespace sm
 {
 
 template<typename T>
@@ -145,4 +145,4 @@ private:
 	T upper;
 };
 
-} // struct_mapping
+} // sm

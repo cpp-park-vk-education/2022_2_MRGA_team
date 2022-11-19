@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-namespace struct_mapping::detail
+namespace sm::detail
 {
 
 template<
@@ -106,4 +106,4 @@ public:
 	std::vector<std::function<Use>> use;
 };
 
-} // struct_mapping::detail
+} // sm::detail

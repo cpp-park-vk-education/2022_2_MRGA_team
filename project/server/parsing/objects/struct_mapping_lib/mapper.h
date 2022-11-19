@@ -13,7 +13,7 @@
 #include <ostream>
 #include <string>
 
-namespace struct_mapping
+namespace sm
 {
 
 template<typename T>
@@ -28,7 +28,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 		if constexpr (debug)
 		{
 			std::cout
-				<< "struct_mapping: map_json_to_struct.set_bool: "
+				<< "sm: map_json_to_struct.set_bool: "
 				<< name
 				<< " : "
 				<< std::boolalpha
@@ -43,7 +43,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 	{
 		if constexpr (debug)
 		{
-			std::cout << "struct_mapping: map_json_to_struct.set_integral: " << name << " : " << value << std::endl;
+			std::cout << "sm: map_json_to_struct.set_integral: " << name << " : " << value << std::endl;
 		}
 
 		detail::Object<T>::set_integral(result_struct, name, value);
@@ -53,7 +53,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 	{
 		if constexpr (debug)
 		{
-			std::cout << "struct_mapping: map_json_to_struct.set_floating_point: " << name << " : " << value << std::endl;
+			std::cout << "sm: map_json_to_struct.set_floating_point: " << name << " : " << value << std::endl;
 		}
 
 		detail::Object<T>::set_floating_point(result_struct, name, value);
@@ -63,7 +63,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 	{
 		if constexpr (debug)
 		{
-			std::cout << "struct_mapping: map_json_to_struct.set_string: " << name << " : " << value << std::endl;
+			std::cout << "sm: map_json_to_struct.set_string: " << name << " : " << value << std::endl;
 		}
 
 		detail::Object<T>::set_string(result_struct, name, value);
@@ -73,7 +73,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 	{
 		if constexpr (debug)
 		{
-			std::cout << "struct_mapping: map_json_to_struct.set_null: " << name << std::endl;
+			std::cout << "sm: map_json_to_struct.set_null: " << name << std::endl;
 		}
 	};
 
@@ -81,7 +81,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 	{
 		if constexpr (debug)
 		{
-			std::cout << "struct_mapping: map_json_to_struct.start_struct: " << name << std::endl;
+			std::cout << "sm: map_json_to_struct.start_struct: " << name << std::endl;
 		}
 
 		if (++struct_level == 1)
@@ -98,7 +98,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 	{
 		if constexpr (debug)
 		{
-			std::cout << "struct_mapping: map_json_to_struct.end_struct:" << std::endl;
+			std::cout << "sm: map_json_to_struct.end_struct:" << std::endl;
 		}
 
 		detail::Object<T>::release(result_struct);
@@ -109,7 +109,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 	{
 		if constexpr (debug)
 		{
-			std::cout << "struct_mapping: map_json_to_struct.start_array: " << name << std::endl;
+			std::cout << "sm: map_json_to_struct.start_array: " << name << std::endl;
 		}
 
 		detail::Object<T>::use(result_struct, name);
@@ -119,7 +119,7 @@ inline void map_json_to_struct(T& result_struct, std::basic_istream<char>& json_
 	{
 		if constexpr (debug)
 		{
-			std::cout << "struct_mapping: map_json_to_struct.end_array:" << std::endl;
+			std::cout << "sm: map_json_to_struct.end_array:" << std::endl;
 		}
 
 		detail::Object<T>::release(result_struct);
@@ -154,7 +154,7 @@ inline void map_struct_to_json(
 			if constexpr (debug)
 			{
 				std::cout
-					<< "struct_mapping: map_struct_to_json.set_null: "
+					<< "sm: map_struct_to_json.set_null: "
 					<< name
 					<< std::endl;
 			}
@@ -201,7 +201,7 @@ inline void map_struct_to_json(
 			if constexpr (debug)
 			{
 				std::cout
-					<< "struct_mapping: map_struct_to_json.set<bool>: "
+					<< "sm: map_struct_to_json.set<bool>: "
 					<< name
 					<< " : "
 					<< std::boolalpha
@@ -248,7 +248,7 @@ inline void map_struct_to_json(
 		{
 			if constexpr (debug)
 			{
-				std::cout << "struct_mapping: map_struct_to_json.set<long long>: " << name << " : " << value << std::endl;
+				std::cout << "sm: map_struct_to_json.set<long long>: " << name << " : " << value << std::endl;
 			}
 
 			if (!first_element)
@@ -289,7 +289,7 @@ inline void map_struct_to_json(
 		{
 			if constexpr (debug)
 			{
-				std::cout << "struct_mapping: map_struct_to_json.set<double>: " << name << " : " << value << std::endl;
+				std::cout << "sm: map_struct_to_json.set<double>: " << name << " : " << value << std::endl;
 			}
 
 			if (!first_element)
@@ -331,7 +331,7 @@ inline void map_struct_to_json(
 			if constexpr (debug)
 			{
 				std::cout
-					<< "struct_mapping: map_struct_to_json.set<std::string>string: "
+					<< "sm: map_struct_to_json.set<std::string>string: "
 					<< name
 					<< " : "
 					<< value
@@ -376,7 +376,7 @@ inline void map_struct_to_json(
 		{
 			if constexpr (debug)
 			{
-				std::cout << "struct_mapping: map_struct_to_json.start_struct: " << name << std::endl;
+				std::cout << "sm: map_struct_to_json.start_struct: " << name << std::endl;
 			}
 
 			if (!first_element)
@@ -421,7 +421,7 @@ inline void map_struct_to_json(
 		{
 			if constexpr (debug)
 			{
-				std::cout << "struct_mapping: map_struct_to_json.end_struct:" << std::endl;
+				std::cout << "sm: map_struct_to_json.end_struct:" << std::endl;
 			}
 
 			--indent_count;
@@ -444,7 +444,7 @@ inline void map_struct_to_json(
 		{
 			if constexpr (debug)
 			{
-				std::cout << "struct_mapping: map_struct_to_json.start_array: " << name << std::endl;
+				std::cout << "sm: map_struct_to_json.start_array: " << name << std::endl;
 			}
 
 			if (!first_element)
@@ -486,7 +486,7 @@ inline void map_struct_to_json(
 		{
 			if constexpr (debug)
 			{
-				std::cout << "struct_mapping: map_struct_to_json.end_array:" << std::endl;
+				std::cout << "sm: map_struct_to_json.end_array:" << std::endl;
 			}
 
 			--indent_count;
@@ -508,4 +508,4 @@ inline void map_struct_to_json(
 	detail::Object<T>::iterate_over(source_struct, "");
 }
 
-} // struct_mapping
+} // sm

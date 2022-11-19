@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace struct_mapping
+namespace sm
 {
 
 template<typename T = void>
@@ -25,4 +25,4 @@ public:
 	}
 };
 
-} // struct_mapping
+} // sm

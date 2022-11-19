@@ -3,73 +3,134 @@
 #include "struct_mapping.h"
 #include <sstream>
 
+/* ========== USER ========== */
+
 std::string User::toJSON() {
-    struct_mapping::reg(&User::_id, "id");
-    struct_mapping::reg(&User::_nickname, "nickname");
-    struct_mapping::reg(&User::_email, "email");
-    struct_mapping::reg(&User::_password, "password");
-    struct_mapping::reg(&User::_description, "description");
-    struct_mapping::reg(&User::_age, "age");
-    std::ostringstream out_json_data;
-    struct_mapping::map_struct_to_json(*(this), out_json_data);
-    return out_json_data.str();
+    sm::reg(&User::_id,       "id");
+    sm::reg(&User::_nickname, "nickname");
+    sm::reg(&User::_password, "password");
+
+    std::ostringstream outJsonData;
+    sm::map_struct_to_json(*(this), outJsonData);
+    return outJsonData.str();
 }
 
 User::User(const std::string &json) {
-    struct_mapping::reg(&User::_id, "id");
-    struct_mapping::reg(&User::_nickname, "nickname");
-    struct_mapping::reg(&User::_email, "email");
-    struct_mapping::reg(&User::_password, "password");
-    struct_mapping::reg(&User::_description, "description");
-    struct_mapping::reg(&User::_age, "age");
+    sm::reg(&User::_id,       "id");
+    sm::reg(&User::_nickname, "nickname");
+    sm::reg(&User::_password, "password");
+
     std::stringstream ss(json);
-    struct_mapping::map_json_to_struct(*this, ss);
+    sm::map_json_to_struct(*this, ss);
 }
 
-std::string Party::toJSON() {
-    struct_mapping::reg(&Party::_id, "id");
-    struct_mapping::reg(&Party::_description, "description");
-    struct_mapping::reg(&Party::_time, "time");
-    struct_mapping::reg(&Party::_date, "date");
-    struct_mapping::reg(&Party::_max_visitors, "max_visitors");
-    struct_mapping::reg(&Party::_members, "members");
-    struct_mapping::reg(&Party::_title, "title");
-    struct_mapping::reg(&Party::_fk_address, "fk_address");
-    std::ostringstream out_json_data;
-    struct_mapping::map_struct_to_json(*(this), out_json_data);
-    return out_json_data.str();
+/* ========== PROFILE ========== */
+
+std::string Profile::toJSON() {
+    sm::reg(&Profile::_id,          "id");
+    sm::reg(&Profile::_email,       "email");
+    sm::reg(&Profile::_description, "description");
+    sm::reg(&Profile::_birthDate,   "birthDate");
+    sm::reg(&Profile::_user,        "user");
+
+    sm::reg(&User::_nickname,       "nickname");
+    sm::reg(&User::_password,       "password");
+
+    std::ostringstream outJsonData;
+    sm::map_struct_to_json(*(this), outJsonData);
+    return outJsonData.str();
 }
 
-Party::Party(const std::string &json) {
-    struct_mapping::reg(&Party::_id, "id");
-    struct_mapping::reg(&Party::_description, "description");
-    struct_mapping::reg(&Party::_time, "time");
-    struct_mapping::reg(&Party::_date, "date");
-    struct_mapping::reg(&Party::_max_visitors, "max_visitors");
-    struct_mapping::reg(&Party::_members, "members");
-    struct_mapping::reg(&Party::_title, "title");
-    struct_mapping::reg(&Party::_fk_address, "fk_address");
+Profile::Profile(const std::string &json) {
+    sm::reg(&Profile::_id,          "id");
+    sm::reg(&Profile::_email,       "email");
+    sm::reg(&Profile::_description, "description");
+    sm::reg(&Profile::_birthDate,   "birthDate");
+    sm::reg(&Profile::_user,        "user");
+
+    sm::reg(&User::_nickname,       "nickname");
+    sm::reg(&User::_password,       "password");
+
+    std::stringstream ss(json);
+    sm::map_json_to_struct(*this, ss);
+}
+
+/* ========== EVENT ========== */
+
+std::string Event::toJSON() {
+    sm::reg(&Event::_id,          "id");
+    sm::reg(&Event::_description, "description");
+    sm::reg(&Event::_dateTime,    "dateTime");
+    sm::reg(&Event::_maxVisitors, "maxVisitors");
+    //sm::reg(&Event::_members,     "members");
+    sm::reg(&Event::_title,       "title");
+
+    std::ostringstream outJsonData;
+    sm::map_struct_to_json(*(this), outJsonData);
+    return outJsonData.str();
+}
+
+Event::Event(const std::string &json) {
+    sm::reg(&Event::_id,          "id");
+    sm::reg(&Event::_description, "description");
+    sm::reg(&Event::_dateTime,    "dateTime");
+    sm::reg(&Event::_maxVisitors, "maxVisitors");
+    //sm::reg(&Event::_members,     "members");
+    sm::reg(&Event::_title,       "title");
+
     std::ostringstream out_json_data;
     std::stringstream ss(json);
-    struct_mapping::map_json_to_struct(*this, ss);
+    sm::map_json_to_struct(*this, ss);
 }
+
+/* ========== ADDRESS ========== */
 
 std::string Address::toJSON() {
-    struct_mapping::reg(&Address::_id, "id");
-    struct_mapping::reg(&Address::_address, "address");
-    struct_mapping::reg(&Address::_longitude, "longitude");
-    struct_mapping::reg(&Address::_latitude, "latitude");
-    std::ostringstream out_json_data;
-    struct_mapping::map_struct_to_json(*(this), out_json_data);
-    return out_json_data.str();
+    sm::reg(&Address::_id,        "id");
+    sm::reg(&Address::_address,   "address");
+    sm::reg(&Address::_longitude, "longitude");
+    sm::reg(&Address::_latitude,  "latitude");
+
+    std::ostringstream outJsonData;
+    sm::map_struct_to_json(*(this), outJsonData);
+    return outJsonData.str();
 }
 
 Address::Address(const std::string &json) {
-    struct_mapping::reg(&Address::_id, "id");
-    struct_mapping::reg(&Address::_address, "address");
-    struct_mapping::reg(&Address::_longitude, "longitude");
-    struct_mapping::reg(&Address::_latitude, "latitude");
-    std::ostringstream out_json_data;
+    sm::reg(&Address::_id,        "id");
+    sm::reg(&Address::_address,   "address");
+    sm::reg(&Address::_longitude, "longitude");
+    sm::reg(&Address::_latitude,  "latitude");
+
     std::stringstream ss(json);
-    struct_mapping::map_json_to_struct(*this, ss);
+    sm::map_json_to_struct(*this, ss);
+}
+
+/* ========== TOKEN ========== */
+
+std::string Token::toJSON() {
+    sm::reg(&Token::_id,             "id");
+    sm::reg(&Token::_token,          "token");
+    sm::reg(&Token::_expireDateTime, "expireDateTime");
+    sm::reg(&Token::_user,           "user");
+
+    sm::reg(&User::_nickname,        "nickname");
+    sm::reg(&User::_password,        "password");
+
+    std::ostringstream outJsonData;
+    sm::map_struct_to_json(*(this), outJsonData);
+    return outJsonData.str();
+}
+
+Token::Token(const std::string &json) {
+    sm::reg(&Token::_id,             "id");
+    sm::reg(&Token::_token,          "token");
+    sm::reg(&Token::_expireDateTime, "expireDateTime");
+    sm::reg(&Token::_user,           "user");
+
+    sm::reg(&User::_nickname,        "nickname");
+    sm::reg(&User::_password,        "password");
+
+    std::stringstream ss(json);
+    sm::map_json_to_struct(*this, ss);
 }
