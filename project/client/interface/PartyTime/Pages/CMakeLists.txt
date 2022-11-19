@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.14)
 
 project("PagesLib")
 
-file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/../painter.cpp)
-file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/**/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/**/*.h {CMAKE_CURRENT_SOURCE_DIR}/../painter.hpp)
+file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp)
+file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/**/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/**/*.h)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 set(PAGES_LIB_NAME pages)
@@ -12,8 +12,8 @@ ${CMAKE_CURRENT_SOURCE_DIR}/LoadingPage ${CMAKE_CURRENT_SOURCE_DIR}/OrganizerPag
 ${CMAKE_CURRENT_SOURCE_DIR}/VisitorEventListPage ${CMAKE_CURRENT_SOURCE_DIR}/VisitorPage)
 
 add_library(${PAGES_LIB_NAME} ${SOURCES} ${HEADERS})
-target_link_libraries(${PAGES_LIB_NAME} Qt${QT_VERSION_MAJOR}::Widgets)
-target_include_directories(${PAGES_LIB_NAME} PUBLIC ${PAGES_LIB_DEP})
+target_link_libraries(${PAGES_LIB_NAME} ${COMPONENTS_LIB} Qt${QT_VERSION_MAJOR}::Widgets)
+target_include_directories(${PAGES_LIB_NAME} PUBLIC ${PAGES_LIB_DEP} ${COMPONENTS_INCLUDE_DIRS})
 
 set(PAGES_LIB ${PAGES_LIB_NAME})
 set(PAGES_LIB ${PAGES_LIB} PARENT_SCOPE)

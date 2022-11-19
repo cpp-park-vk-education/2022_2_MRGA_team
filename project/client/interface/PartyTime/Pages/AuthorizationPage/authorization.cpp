@@ -51,6 +51,7 @@ authorization::authorization(QWidget* parent) : painter(parent),
 
     buttonsLayout->setSpacing(0);
 
+//    enterButton->text();
     enterButton->setObjectName("enterButton");
     enterButton->setMaximumWidth(200);
 

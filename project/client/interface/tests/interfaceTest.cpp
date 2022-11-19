@@ -14,10 +14,14 @@ private slots:
 void TestQString::toUpper()
 {
     authorization* page = new authorization();
-    page->getEnterButton();
+    // QPushButton btn = page->getEnterButton();
+    // btn.setText("Other");
     QString str = "Hello";
+    QCOMPARE(page->getEnterButton()->text(), QString("Войти"));
     QCOMPARE(str.toUpper(), QString("HELLO"));
+
     delete page;
+    // delete btn;
 }
 
 QTEST_MAIN(TestQString)

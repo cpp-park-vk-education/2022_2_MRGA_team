@@ -20,14 +20,15 @@ find_package(Qt6 REQUIRED COMPONENTS Network)
 set(TS_FILES PartyTime_ru_RU.ts)
 set(COMPONENTS)
 
-file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp)
-file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/**/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/**/*.h)
+file(GLOB_RECURSE SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/painter.cpp)
+file(GLOB_RECURSE HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/**/*.hpp ${CMAKE_CURRENT_SOURCE_DIR}/**/*.h ${CMAKE_CURRENT_SOURCE_DIR}/painter.hpp)
 
 set(LIB_NAME ui)
 set(LIB_DEP ${CMAKE_CURRENT_SOURCE_DIR}/Button ${CMAKE_CURRENT_SOURCE_DIR}/Input
 ${CMAKE_CURRENT_SOURCE_DIR}/Loader ${CMAKE_CURRENT_SOURCE_DIR}/MyModal ${CMAKE_CURRENT_SOURCE_DIR}/Navbar ${CMAKE_CURRENT_SOURCE_DIR}/Select)
 
 add_library(${LIB_NAME} ${SOURCES} ${HEADERS})
+target_link_libraries(${LIB_NAME} Qt${QT_VERSION_MAJOR}::Widgets)
 target_include_directories(${LIB_NAME} PUBLIC ${LIB_DEP})
 
 set(UI_LIB ${LIB_NAME})
@@ -39,4 +40,3 @@ message("UI_LIB = ${UI_LIB}")
 message("UI_LIB_INCLUDE_DIRS = ${UI_INCLUDE_DIRS}")
 
 enable_testing()
-# add_subdirectory(tests)

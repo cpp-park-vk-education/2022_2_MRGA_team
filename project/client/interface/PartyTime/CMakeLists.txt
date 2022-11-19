@@ -27,16 +27,17 @@ set(COMPONENTS)
 
 enable_testing()
 
-
-add_subdirectory(Pages)
 add_subdirectory(Components)
 add_subdirectory(API)
+add_subdirectory(Pages)
 
 set(PROJECT_SOURCES
         main.cpp
         base.cpp
         base.h
         base.ui
+#        painter.hpp
+#        painter.cpp
         static.qrc
         ${TS_FILES}
 )
@@ -47,7 +48,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
     )
 
-    
+
 target_link_libraries(${PROJECT_NAME} PUBLIC ${API_LIB} ${PAGES_LIB} ${COMPONENTS_LIB} )
 target_include_directories(${PROJECT_NAME} PUBLIC ${API_INCLUDE_DIRS} ${PAGES_INCLUDE_DIRS} ${COMPONENTS_INCLUDE_DIRS})
 
