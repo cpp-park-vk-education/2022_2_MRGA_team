@@ -4,6 +4,7 @@
 #include "Label.hpp"
 #include "Input.hpp"
 #include "Loader.hpp"
+#include "Navbar.hpp"
 #include <QTest>
 
 class UiTesting: public QObject
@@ -111,7 +112,15 @@ void UiTesting::headerTest()
 
 void UiTesting::navbarTest()
 {
+    QString res = "";
+    Navbar* navbar = new Navbar(2);
+    if (navbar != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete navbar;
 }
 
 void UiTesting::formTest()

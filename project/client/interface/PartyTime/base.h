@@ -48,9 +48,22 @@ private:
 //    std::shared_ptr<PostService> postRequestHandler;
 private slots:
     void onAuthPageClicked();
-    void onEnter();
+    void onEnter(); // check validation function
     void onRegistrationPageClicked();
-    void onRegister();
+    void onRegister(); // check validation function
     // void onProfilePageClicked();
+    // void onProfile();
+    // void onSettingsPageClicked();
+    // void onSettings();
+    // void onEventViewPageClicked();
+    // void onEvent();
+    // void onLoadingPageClicked();
+    // void onLoading();
+    // void onVisitorPageClicked();
+    // void onVisitor();
+    // void onOrganizerPageClicked();
+    // void onOrganizer();
+    // void onVisitorEventListPageClicked();
+    // void onVisitorEventList();
 };
 #endif // BASE_H

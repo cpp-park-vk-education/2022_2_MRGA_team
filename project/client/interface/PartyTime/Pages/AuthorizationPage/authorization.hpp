@@ -50,6 +50,7 @@ private:
    QPushButton* registrationButton;
 
 private slots:
+
 };
 
 #endif // AUTHORIZATION_H

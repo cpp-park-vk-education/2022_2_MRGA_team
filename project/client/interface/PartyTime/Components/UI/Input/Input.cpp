@@ -3,7 +3,8 @@
 
 UiInput::UiInput(QWidget *parent) : painter(parent), layout(new QGridLayout())
 {
-
+    layout->addWidget(&label);
+    layout->addWidget(&edit);
 }
 
 UiInput::UiInput(const UiInput &other) : painter(new QWidget)

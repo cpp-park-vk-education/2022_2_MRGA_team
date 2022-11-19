@@ -3,7 +3,7 @@
 
 UiEdit::UiEdit(QWidget *parent) : painter(parent), value(new QLineEdit()), editLayout(new QHBoxLayout(this))
 {
-
+    editLayout->addWidget(value);
 }
 
 UiEdit::UiEdit(const UiEdit &other) : painter(new QWidget)
