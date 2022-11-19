@@ -12,6 +12,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QPalette>
+#include <QMovie>
 #include <QSpacerItem>
 #include <QFont>
 #include <QIcon>
