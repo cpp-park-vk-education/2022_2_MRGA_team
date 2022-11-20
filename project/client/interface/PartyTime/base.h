@@ -63,11 +63,13 @@ private slots:
     // void onOrganizer();
     // void onVisitorEventListPageClicked();
     // void onVisitorEventList();
-    // void headerRedraw();
-    // void navbarRedraw();
-    // void formRedraw();
-    // void eventListRedraw();
-    // void eventItemRedraw();
-    // void footerRedraw();
+    // void authRedraw();
+    // void regRedraw();
+    // void profileRedraw();
+    // void eventViewRedraw();
+    // void loadingRedraw();
+    // void organizerRedraw();
+    // void visitorRedraw();
+    // void visitorEventListRedraw();
 };
 #endif // BASE_H
