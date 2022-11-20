@@ -1,6 +1,6 @@
 #pragma once // pragma once
 
-#include "painter.hpp"
+#include "../painter.hpp"
 
 
 class UiEdit : public painter {
