@@ -8,19 +8,8 @@ class EventItem : public painter {
 
 public:
     explicit EventItem(QWidget* parent = nullptr);
-    EventItem(const QString& _userPhoto, const std::initializer_list<QString>& list);
-//    EventItem(const EventItem& other);
-//    EventItem& operator=(const EventItem& other);
+    EventItem(const QString& _userPhoto, const std::initializer_list<QString>& list); // буду из структур делать строки
     ~EventItem();
-
-//    void setDescription(const QString& _descr);
-//    void setData(const QString& _data);
-//    void setTime(const QString& _time);
-//    void setPeopleNumber(const QString& _number);
-//    void setEventTime(const QString& _time);
-//    void setAddress(const QString& _address);
-//    void setCheck(const QString& _check);
-//    void setMaxPeople(const QString& _maxCount);
 
     EventItem* create(const QString& typeEvent);
 private:
@@ -33,14 +22,4 @@ private:
     UiLabel userAvatar;
     UiButton subScribe;
     std::map<QString, QString> fieldsMap;
-
-//    UiLabel description;
-//    UiLabel data;
-//    UiLabel time;
-//    UiLabel peopleNumber;
-
-//    UiLabel eventTime;
-//    UiLabel address;
-//    UiLabel averageCheck;
-//    UiLabel maxPeopleCount;
 };
