@@ -24,6 +24,7 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <vector>
+#include <map>
 
 class painter : public QWidget
 {

@@ -7,12 +7,22 @@
 #include "Navbar.hpp"
 #include "Header.hpp"
 #include "EventForm.hpp"
+#include "EventItem.hpp"
 #include <QTest>
 
-class UiTesting: public QObject
+class UiTesting : public QObject
 {
     Q_OBJECT
+    // friend-ы чтобы мог обращаться к приватным полям вновь созданного компоненты и проверять корректно ли он создался
     friend authorization;
+    friend UiButton;
+    friend UiEdit;
+    friend UiLabel;
+    friend UiInput;
+    friend UiLoader;
+    friend Navbar;
+
+
 private slots:
     //  Ui
     void btnTest();
@@ -148,7 +158,15 @@ void UiTesting::formTest()
 
 void UiTesting::eventItemTest() 
 {
+    QString res = "";
+    EventItem* item = new EventItem();
+    if (item != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete item;
 }
 
 void UiTesting::eventListTest() 

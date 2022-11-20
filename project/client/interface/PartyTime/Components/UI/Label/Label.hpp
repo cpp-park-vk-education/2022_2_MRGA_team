@@ -4,7 +4,6 @@
 
 class UiLabel : public painter {
     Q_OBJECT
-
 public:
     explicit UiLabel(QWidget* parent = nullptr);
     UiLabel(const UiLabel& other);
