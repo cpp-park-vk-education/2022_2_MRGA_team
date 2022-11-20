@@ -1,6 +1,6 @@
 #pragma once // pragma once
 
-#include "painter.hpp"
+#include "../painter.hpp"
 #include "Button.hpp"
 
 class Navbar : public painter {

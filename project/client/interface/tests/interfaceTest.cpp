@@ -23,7 +23,7 @@
 class UiTesting : public QObject
 {
     Q_OBJECT
-    // friend-ы чтобы мог обращаться к приватным полям вновь созданного компоненты и проверять корректно ли он создался
+    // friend-ы, чтобы мог обращаться к приватным полям вновь созданного компоненты и проверять корректно ли он создался
     friend authorization;
     friend UiButton;
     friend UiEdit;
@@ -68,6 +68,11 @@ void UiTesting::btnTest()
         res = "component working";
     }
     QCOMPARE(res, QString("component working"));
+
+    // UiButton* defaultBtn = btn->create("defaultButton");
+    // defaultBtn->getButton()->setText("new button");
+    // QCOMPARE(defaultBtn->getButton()->text(), QString("new button"));
+    // delete defaultBtn;
     delete btn;
 }
 

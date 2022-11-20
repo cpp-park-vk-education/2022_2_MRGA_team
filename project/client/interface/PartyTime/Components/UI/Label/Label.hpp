@@ -1,6 +1,6 @@
 #pragma once // pragma once
 
-#include "painter.hpp"
+#include "../painter.hpp"
 
 class UiLabel : public painter {
     Q_OBJECT
