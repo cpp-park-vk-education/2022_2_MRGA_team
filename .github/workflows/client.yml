@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: | 
-            cd project/client/interface && make test
+            cd project/client/interface && export QT_QPA_PLATFORM=offscreen && make test
             sudo pacman -S --noconfirm tree
             tree build
   memtest:
@@ -30,7 +30,7 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v2
-      - run: cd project/client/interface && make test && make memtest
+      - run: cd project/client/interface && export QT_QPA_PLATFORM=offscreen && make test && make memtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         if: failure()
@@ -43,7 +43,7 @@ jobs:
     needs: [test]
     steps:
       - uses: actions/checkout@v2
-      - run: cd project/client/interface && make test && make covtest
+      - run: cd project/client/interface && export QT_QPA_PLATFORM=offscreen && make test && make covtest
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
