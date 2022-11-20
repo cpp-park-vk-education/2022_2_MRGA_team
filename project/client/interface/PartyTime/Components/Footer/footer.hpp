@@ -8,8 +8,8 @@ class Footer : public painter {
 
 public:
     explicit Footer(QWidget* parent = nullptr);
-//    Footer(const Footer&);
-//    Footer& operator=(const Footer& ohter);
+    Footer(const Footer& other);
+    Footer& operator=(const Footer& other);
     ~Footer();
     void redraw() {}
     Footer *create(const QString& typeObject);

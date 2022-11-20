@@ -21,6 +21,7 @@
 #include <QTextEdit>
 #include <QTimeEdit>
 #include <QCalendarWidget>
+#include <QComboBox>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <vector>

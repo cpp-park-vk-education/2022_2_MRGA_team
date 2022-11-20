@@ -13,7 +13,6 @@
 #include "authorization.hpp"
 #include "registration.hpp"
 #include "profile.hpp"
-//#include "settings.hpp"
 #include "eventView.hpp"
 #include "loading.hpp"
 #include "organizer.hpp"
@@ -38,13 +37,12 @@ private:
     QStackedWidget* screens;
     authorization* authorizationPage;
     registration* registrationPage;
-//    profile* profilePage;
-//    settings* settingsPage;
-//    eventView* eventViewPage;
-//    loading* loadingPage;
-//    organizer* organizerPage;
-//    visitor* visitorPage;
-//    visitorEventList* visitorEventListPage;
+    ProfilePage* profilePage;
+    EventViewPage* eventViewPage;
+    LoadingPage* loadingPage;
+    OrganizerPage* organizerPage;
+    VisitorPage* visitorPage;
+    VisitorEventListPage* visitorEventListPage;
 //    std::shared_ptr<PostService> postRequestHandler;
 private slots:
     void onAuthPageClicked();

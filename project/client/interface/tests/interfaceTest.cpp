@@ -1,5 +1,13 @@
 #include "authorization.hpp"
 #include "registration.hpp"
+#include "loading.hpp"
+#include "organizer.hpp"
+#include "footer.hpp"
+#include "profile.hpp"
+#include "eventView.hpp"
+#include "visitorEventList.hpp"
+#include "visitor.hpp"
+
 #include "Button.hpp"
 #include "Edit.hpp"
 #include "Label.hpp"
@@ -10,7 +18,6 @@
 #include "EventForm.hpp"
 #include "EventItem.hpp"
 #include "EventList.hpp"
-#include "footer.hpp"
 #include <QTest>
 
 class UiTesting : public QObject
@@ -54,10 +61,6 @@ private slots:
 // UI
 void UiTesting::btnTest()
 {
-    authorization* page = new authorization();
-    QCOMPARE(page->getEnterButton()->text(), QString("Войти"));
-    delete page;
-
     UiButton* btn = new UiButton();
     QString res = "";
     if (btn != nullptr) {
@@ -198,45 +201,97 @@ void UiTesting::footerTest()
     delete footer;
 }
 
-//pages
+// pages
 void UiTesting::loadingPageTest() 
 {
+    QString res = "";
+    LoadingPage* page = new LoadingPage("kk", "oo");
+    if (page != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete page;
 }
 
 void UiTesting::authorizationTest() 
 {
-
+    authorization* page = new authorization();
+    QCOMPARE(page->getEnterButton()->text(), QString("Войти"));
+    delete page;
 }
 
 void UiTesting::registrationTest() 
 {
-
+    registration* page = new registration();
+    QCOMPARE(page->getBackButton()->text(), QString("назад"));
+    delete page;
 }
 
 void UiTesting::eventViewPageTest() 
 {
+    QString res = "";
+    EventViewPage* page = new EventViewPage();
+    if (page != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete page;
 }
 
 void UiTesting::visitorPageTest() 
 {
+    QString res = "";
+    VisitorPage* page = new VisitorPage();
+    if (page != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete page;
 }
 
 void UiTesting::orgnizerPageTest() 
 {
+    QString res = "";
+    OrganizerPage* page = new OrganizerPage();
+    if (page != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete page;
 }
 
 void UiTesting::profilePageTest()
 {
+    QString res = "";
+    ProfilePage* page = new ProfilePage();
+    if (page != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete page;
 }
 
 void UiTesting::visitorEventListPageTest() 
 {
+    QString res = "";
+    VisitorEventListPage* page = new VisitorEventListPage();
+    if (page != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete page;
 }
 
 

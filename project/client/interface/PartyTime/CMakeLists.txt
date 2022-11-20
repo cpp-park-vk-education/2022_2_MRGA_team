@@ -28,7 +28,7 @@ set(COMPONENTS)
 enable_testing()
 
 add_subdirectory(Components)
-add_subdirectory(API)
+# add_subdirectory(API)
 add_subdirectory(Pages)
 
 set(PROJECT_SOURCES
