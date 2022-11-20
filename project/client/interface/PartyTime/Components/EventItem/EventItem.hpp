@@ -9,6 +9,8 @@ class EventItem : public painter {
 public:
     explicit EventItem(QWidget* parent = nullptr);
     EventItem(const QString& _userPhoto, const std::initializer_list<QString>& list);
+//    EventItem(const EventItem& other);
+//    EventItem& operator=(const EventItem& other);
     ~EventItem();
 
 //    void setDescription(const QString& _descr);

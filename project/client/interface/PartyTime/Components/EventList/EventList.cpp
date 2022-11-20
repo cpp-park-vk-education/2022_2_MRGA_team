@@ -9,3 +9,11 @@ EventList::~EventList()
 {
 
 }
+
+EventList *EventList::create(const QString &objType)
+{
+    if (objType == "") {
+        return new EventList();
+    }
+    return new EventList();
+}

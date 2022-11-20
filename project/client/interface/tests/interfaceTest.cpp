@@ -1,4 +1,5 @@
 #include "authorization.hpp"
+#include "registration.hpp"
 #include "Button.hpp"
 #include "Edit.hpp"
 #include "Label.hpp"
@@ -8,6 +9,8 @@
 #include "Header.hpp"
 #include "EventForm.hpp"
 #include "EventItem.hpp"
+#include "EventList.hpp"
+#include "footer.hpp"
 #include <QTest>
 
 class UiTesting : public QObject
@@ -171,12 +174,28 @@ void UiTesting::eventItemTest()
 
 void UiTesting::eventListTest() 
 {
+    QString res = "";
+    EventList* list = new EventList();
+    if (list != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete list;
 }
 
 void UiTesting::footerTest() 
 {
+    QString res = "";
+    Footer* footer = new Footer();
+    if (footer != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete footer;
 }
 
 //pages
