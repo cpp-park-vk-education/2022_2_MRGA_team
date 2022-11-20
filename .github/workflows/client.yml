@@ -24,19 +24,6 @@ jobs:
             cd project/client/interface && export QT_QPA_PLATFORM=offscreen && make test
             sudo pacman -S --noconfirm tree
             tree build
-  memtest:
-    runs-on: ubuntu-latest
-    container: yakwilik/cxx_project:26102022_2
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v2
-      - run: cd project/client/interface && export QT_QPA_PLATFORM=offscreen && make test && make memtest
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: Valgrind logs
-          path: valgrind.log
   covtest:
     runs-on: ubuntu-latest
     container: yakwilik/cxx_project:26102022_2

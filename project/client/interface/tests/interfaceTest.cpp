@@ -23,15 +23,6 @@
 class UiTesting : public QObject
 {
     Q_OBJECT
-    // friend-ы, чтобы мог обращаться к приватным полям вновь созданного компоненты и проверять корректно ли он создался
-    friend authorization;
-    friend UiButton;
-    friend UiEdit;
-    friend UiLabel;
-    friend UiInput;
-    friend UiLoader;
-    friend Navbar;
-
 
 private slots:
     //  Ui
