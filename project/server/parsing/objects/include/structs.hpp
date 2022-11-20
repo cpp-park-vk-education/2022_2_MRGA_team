@@ -11,13 +11,13 @@ struct Event;
 struct Address;
 struct Token;
 
-using ll = long long;
+using ui = unsigned int;
 
 struct DBObject {
-    ll _id;
+    ui _id;
 public:
     DBObject() : _id(0) {};
-    explicit DBObject(ll id) : _id(id) {};
+    explicit DBObject(ui id) : _id(id) {};
     virtual std::string toJSON() = 0;
 };
 
@@ -26,7 +26,7 @@ struct User : public DBObject {
     std::string _password;
 public:
     User() = default;
-    User(ll id, std::string  &nickname, std::string &password) :
+    User(ui id, std::string  &nickname, std::string &password) :
         DBObject(id),
         _nickname (std::move(nickname)),
         _password (std::move(password)) {};
@@ -42,7 +42,7 @@ struct Profile : public DBObject {
     std::string _description;  // ALLOW NULL
 public:
     Profile() = default;
-    Profile(ll id, std::string &email, std::string &birthDate, User &user, std::string &description = (std::string &) "") :
+    Profile(ui id, std::string &email, std::string &birthDate, User &user, std::string &description = (std::string &) "") :
         DBObject(id),
         _user        (std::move(user)),
         _email       (std::move(email)),
@@ -54,19 +54,19 @@ public:
 };
 
 struct Event : public DBObject {
-    //std::set<uint> _members;
+    //std::set<ui> _members;
     std::string    _title;
     std::string    _description;
     std::string    _dateTime;
-    uint           _maxVisitors;
+    ui             _maxVisitors;
 public:
     Event() = default;
-    Event(ll id,
-          //std::set<uint> &members,
+    Event(ui id,
+          //std::set<ui> &members,
           std::string    &tittle,
           std::string    &description,
           std::string    &dateTime,
-          uint            maxVisitors = 0) :
+          ui            maxVisitors = 0) :
 
           DBObject(id),
           //_members     (std::move(members)),
@@ -85,7 +85,7 @@ struct Address : public DBObject {
     double      _latitude;
 public:
     Address() = default;
-    Address(ll id, std::string &address, double longitude, double latitude) :
+    Address(ui id, std::string &address, double longitude, double latitude) :
         DBObject(id),
         _address   (std::move(address)),
         _longitude (longitude),
@@ -98,11 +98,10 @@ public:
 struct Token : public DBObject {
     std::string _token;           // UNIQUE
     std::string _expireDateTime;  // Format: "yyyy-mm-dd hh:mm:ss"
-
     User        _user;
 public:
     Token() = default;
-    Token(ll id, std::string &token, std::string &expireDateTime, User& user) :
+    Token(ui id, std::string &token, std::string &expireDateTime, User& user) :
         DBObject(id),
         _token          (std::move(token)),
         _expireDateTime (std::move(expireDateTime)),
