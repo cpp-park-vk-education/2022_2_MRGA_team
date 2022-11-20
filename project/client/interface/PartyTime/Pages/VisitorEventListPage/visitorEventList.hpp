@@ -14,7 +14,7 @@ public:
     VisitorEventListPage(const QString& headerType, const QString& navbarType,
                   const QString& eventListType, const QString& footerType);
     ~VisitorEventListPage();
-    void redraw() {};
+    void redraw() {}; // параметр const std::initisializer_list<QSting>
 private:
     QVBoxLayout* mainLayout;
     Header header;

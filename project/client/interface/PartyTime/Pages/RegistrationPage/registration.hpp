@@ -1,7 +1,8 @@
 #ifndef REGISTRATION_H
 #define REGISTRATION_H
 
-#include <painter.hpp>
+//#include <painter.hpp>
+#include "Header.hpp"
 
 #define MIN_CHAR_SIZE_IN_INPUT 6
 #define MIN_CHAR_SIZE_IN_PASSWORD 12

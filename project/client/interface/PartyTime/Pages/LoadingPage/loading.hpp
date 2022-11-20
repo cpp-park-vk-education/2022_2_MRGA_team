@@ -10,7 +10,7 @@ public:
     LoadingPage(const QString& loaderType = "default", const QString& messageType = "default");
     ~LoadingPage();
 
-    void redraw(){}
+    void redraw() {}; // параметр const std::initisializer_list<QSting>
 
 private:
     QVBoxLayout* layout;
