@@ -22,7 +22,7 @@ class AuthorizationConnector : public IAuthorizationConnector {
 
   void delete_profile(size_t profile_id);
 
-  void create_token(size_t profile_id);
+  Token create_token(size_t profile_id);
   void delete_token(size_t profile_id);
-  bool is_actual_token(size_t profile_id);  // Удаляю токен при устаревании
+  std::string get_expiration_date_time(size_t profile_id);  // Удаляю токен при устаревании
 };

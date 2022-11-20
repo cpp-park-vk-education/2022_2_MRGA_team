@@ -27,7 +27,7 @@ public:
 
   virtual void delete_profile(size_t profile_id) = 0;
 
-  virtual void create_token(size_t profile_id) = 0;
+  virtual Token create_token(size_t profile_id) = 0;
   virtual void delete_token(size_t profile_id) = 0;
-  virtual bool is_actual_token(size_t profile_id) = 0;
+  virtual std::string get_expiration_date_time(size_t profile_id) = 0;
 };

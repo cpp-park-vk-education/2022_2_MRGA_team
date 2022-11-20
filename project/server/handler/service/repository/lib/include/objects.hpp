@@ -3,14 +3,16 @@
 #include <cstddef>
 #include <string>
 
-struct User {
+class User {
+ public:
   size_t id;
 
   std::string nickname;  // UNIQUE
   std::string password;
 };
 
-struct Profile {
+class Profile {
+ public:
   size_t id;
 
   std::string email;  // UNIQUE
@@ -20,7 +22,8 @@ struct Profile {
   User user;
 };
 
-struct Token {
+class Token {
+ public:
   size_t id;
 
   std::string token;             // UNIQUE
@@ -29,7 +32,8 @@ struct Token {
   User user;
 };
 
-struct Address {
+class Address {
+ public:
   size_t id;
 
   std::string address;
@@ -37,7 +41,8 @@ struct Address {
   double latitude;
 };
 
-struct Event {
+class Event {
+ public:
   size_t id;
 
   std::string title;

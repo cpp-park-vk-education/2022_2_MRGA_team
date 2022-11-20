@@ -34,8 +34,11 @@ bool AuthorizationConnector::check_password(size_t profile_id,
 
 void AuthorizationConnector::delete_profile(size_t profile_id) {}
 
-void AuthorizationConnector::create_token(size_t profile_id) {}
+Token AuthorizationConnector::create_token(size_t profile_id) {
+  Token token;
+  return token;
+}
 void AuthorizationConnector::delete_token(size_t profile_id) {}
-bool AuthorizationConnector::is_actual_token(size_t profile_id) {
-  return true;
+std::string AuthorizationConnector::get_expiration_date_time(size_t profile_id) {
+  return "2022-11-22 18:03:05";
 }

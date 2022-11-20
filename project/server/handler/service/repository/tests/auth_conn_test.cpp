@@ -67,7 +67,7 @@ TEST_F(AuthConnTest, DeleteProfile) {
 }
 
 TEST_F(AuthConnTest, CreateToken) {
-    EXPECT_NO_THROW(connector.auth_conn->create_token(1234));
+    EXPECT_NO_THROW(Token token_data = connector.auth_conn->create_token(1234));
 }
 
 TEST_F(AuthConnTest, DeleteToken) {
@@ -75,5 +75,5 @@ TEST_F(AuthConnTest, DeleteToken) {
 }
 
 TEST_F(AuthConnTest, IsActualToken) {
-    EXPECT_TRUE(connector.auth_conn->is_actual_token(1234));
+    EXPECT_NO_THROW(std::string expiration_date_time = connector.auth_conn->get_expiration_date_time(1234));
 }
