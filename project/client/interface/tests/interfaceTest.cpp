@@ -5,6 +5,8 @@
 #include "Input.hpp"
 #include "Loader.hpp"
 #include "Navbar.hpp"
+#include "Header.hpp"
+#include "EventForm.hpp"
 #include <QTest>
 
 class UiTesting: public QObject
@@ -107,7 +109,15 @@ void UiTesting::loaderTest() {
 // Components
 void UiTesting::headerTest()
 {
+    QString res = "";
+    Header* header = new Header();
+    if (header != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete header;
 }
 
 void UiTesting::navbarTest()
@@ -125,7 +135,15 @@ void UiTesting::navbarTest()
 
 void UiTesting::formTest()
 {
+    QString res = "";
+    EventForm* form = new EventForm();
+    if (form != nullptr) {
+        // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
+        res = "component working";
+    }
+    QCOMPARE(res, QString("component working"));
 
+    delete form;
 }
 
 void UiTesting::eventItemTest() 

@@ -23,6 +23,7 @@
 #include <QCalendarWidget>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <vector>
 
 class painter : public QWidget
 {
