@@ -17,6 +17,7 @@ public:
     UiInput(const QString& styleSheet, const UiEdit& _edit);
 
     UiInput* create(const QString& objectType); // паттерн псевдофабрика
+    void updateState(){}; // const std::initializer_list<QString>&
 private:
     UiLabel* label;
     UiEdit* edit;

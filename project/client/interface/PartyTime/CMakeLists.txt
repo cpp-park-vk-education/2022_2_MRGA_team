@@ -36,8 +36,6 @@ set(PROJECT_SOURCES
         base.cpp
         base.h
         base.ui
-#        painter.hpp
-#        painter.cpp
         static.qrc
         ${TS_FILES}
 )

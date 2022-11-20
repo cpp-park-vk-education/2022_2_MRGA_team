@@ -13,6 +13,7 @@ public:
     ~Header();
 
     void setState(bool _state){headerState = _state;}
+    void updateState(){}; // const std::initializer_list<QString>&
     Header* create(const QString& objectType);
 private:
     QHBoxLayout* layout;

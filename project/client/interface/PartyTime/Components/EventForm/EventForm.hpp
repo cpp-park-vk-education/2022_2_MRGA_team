@@ -12,6 +12,8 @@ public:
     EventForm& operator=(const EventForm& other);
    ~EventForm();
     EventForm* create(const QString& objType);
+
+    void updateState(){}; // const std::initializer_list<QString>&
 private:
     QVBoxLayout* mainLayout;
     QGridLayout* inputLayout;

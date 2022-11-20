@@ -19,7 +19,7 @@ public:
     void minPriceSort() {}
     void minRoadSort() {}
 
-    void redraw() {}
+    void updateState(){}; // const std::initializer_list<QString>&
 
     EventList* create(const QString& objType);
 

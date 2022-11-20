@@ -17,7 +17,7 @@ public:
     Navbar *create(const QString& objectType);
 
     bool getState(){return true;}
-    void setState(){};
+    void updateState(){}; // const std::initializer_list<QString>&
 
 private:
     QHBoxLayout* layout;

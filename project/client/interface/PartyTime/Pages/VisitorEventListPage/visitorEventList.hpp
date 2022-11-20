@@ -13,8 +13,6 @@ public:
     VisitorEventListPage(const std::initializer_list<QString> typesList);
     VisitorEventListPage(const QString& headerType, const QString& navbarType,
                   const QString& eventListType, const QString& footerType);
-//    VisitorEventListPage(const VisitorEventListPage&) = delete;
-//    VisitorEventListPage& operator=(const VisitorEventListPage&) = delete;
     ~VisitorEventListPage();
     void redraw() {};
 private:

@@ -16,11 +16,9 @@ public:
     ProfilePage(const QString& _header = "default", const QString& _navbar = "default",
                 const QString& _leftForm = "default", const QString& _rightForm = "default",
                 const QString& _userAvatar = "default", const QString& _saveBtn = "default", const QString& _footer = "default");
-//    ProfilePage(const ProfilePage&) = delete;
-//    ProfilePage& operator=(const ProfilePage&) = delete;
     ~ProfilePage();
 
-//    void redraw() {}
+    void redraw() {}; // параметр const std::initisializer_list<QSting>
 private:
     QVBoxLayout* mainLayout;
     QHBoxLayout* contentLayout;

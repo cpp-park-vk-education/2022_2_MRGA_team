@@ -15,6 +15,7 @@ public:
     UiEdit(const QString& styleSheet, int width, int height, int coordX, int coordY); // создание стилизованного input-a с конкретным расположением в layout-e и заданными размерами
 
     UiEdit* create(const QString& objectType); // паттерн псевдофабрика
+    void updateState(){}; // const std::initializer_list<QString>&
 private:
     QLineEdit* value;
     QHBoxLayout* editLayout;

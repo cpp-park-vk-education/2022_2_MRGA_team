@@ -12,7 +12,7 @@ public:
     ~UiLoader();
     UiLoader(const QString& styleSheet, const QString& pathToImage);
     UiLoader(const QString& pathToImage, int labelOffsetX, int labelOffsetY, int width, int height);
-
+    void updateState(){};
 private:
     QLabel* loader;
     QMovie* movie;

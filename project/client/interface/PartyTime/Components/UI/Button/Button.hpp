@@ -15,6 +15,7 @@ public:
     UiButton(const QString& styleSheet, const QString& text,const QIcon& backgroundImage, size_t width, size_t height); // создание кнопки с текстом и картинкой
 
     UiButton* create(const QString& objectType); // паттерн псевдофабрика
+    void updateState(){}; // const std::initializer_list<QString>&
 private:
     QPushButton* button;
     QHBoxLayout* btnLayout;

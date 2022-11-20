@@ -16,7 +16,7 @@ public:
 //    OrganizerPage(const OrganizerPage&) = delete;
 //    OrganizerPage& operator=(const OrganizerPage&) = delete;
     ~OrganizerPage();
-    void redraw() {};
+    void redraw() {}; // параметр const std::initisializer_list<QSting>
 private:
     QVBoxLayout* mainLayout;
     Header header;

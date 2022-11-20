@@ -12,6 +12,7 @@ public:
     ~EventItem();
 
     EventItem* create(const QString& typeEvent);
+    void updateState(){}; // const std::initializer_list<QString>&
 private:
     QGridLayout* mainLayout;
     QVBoxLayout* leftSide;

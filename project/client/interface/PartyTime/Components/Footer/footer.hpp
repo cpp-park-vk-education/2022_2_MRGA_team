@@ -11,8 +11,9 @@ public:
     Footer(const Footer& other);
     Footer& operator=(const Footer& other);
     ~Footer();
-    void redraw() {}
+
     Footer *create(const QString& typeObject);
+    void updateState(){}; // const std::initializer_list<QString>&
 private:
     QHBoxLayout* mainLayout;
     QVBoxLayout* firstCol;

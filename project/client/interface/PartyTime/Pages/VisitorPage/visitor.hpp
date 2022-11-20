@@ -13,10 +13,8 @@ public:
     VisitorPage(const std::initializer_list<QString> typesList);
     VisitorPage(const QString& headerType, const QString& navbarType,
                   const QString& eventListType, const QString& footerType);
-//    VisitorPage(const VisitorPage&) = delete;
-//    VisitorPage& operator=(const VisitorPage&) = delete;
     ~VisitorPage();
-    void redraw() {};
+    void redraw() {}; // параметр const std::initisializer_list<QSting>
 private:
     QVBoxLayout* mainLayout;
     Header header;
