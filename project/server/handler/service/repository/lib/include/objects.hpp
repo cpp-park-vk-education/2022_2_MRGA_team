@@ -3,23 +3,16 @@
 #include <cstddef>
 #include <string>
 
+
 class User {
  public:
   size_t id;
 
   std::string nickname;  // UNIQUE
   std::string password;
-};
-
-class Profile {
- public:
-  size_t id;
-
   std::string email;  // UNIQUE
   std::string birth_date;  // Format: "yyyy-mm-dd"
   std::string description = "";  // ALLOW NULL
-
-  User user;
 };
 
 class Token {
@@ -29,7 +22,7 @@ class Token {
   std::string token;             // UNIQUE
   std::string expire_date_time;  // Format: "yyyy-mm-dd hh:mm:ss"
 
-  User user;
+  size_t user_id;
 };
 
 class Address {
