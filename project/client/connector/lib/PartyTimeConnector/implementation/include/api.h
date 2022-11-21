@@ -5,19 +5,17 @@
 namespace {
     using std::string;
 };
+
 struct PartyTimeApi {
     // base_url
 
     /*-----------AUTH_SERVICE URLS-----------*/
-    /*принимает ?token={str}*
-    http-method – POST*/
-    const string auth = "/api/v1/auth";
 
     /*принимает ?login={str}&password={str}
     http-method – POST*/
     const string login = "/api/v1/auth/login";
 
-    /*ничего не принимает, просто внутри себя вкладывает /auth,
+    /*принимает ?token={str}*,
     чтобы получить доступ к удалению токена
     http-method - DELETE*/
     const string logout = "/api/v1/auth/logout";
@@ -33,7 +31,7 @@ struct PartyTimeApi {
     http-method - GET*/
     const string profile = "/api/v1/profile";
 
-    /*принимает ?id={int} и параметры для настройки
+    /*принимает ?id={int} и параметры для настройки + токен
     http-method - PUT*/
     const string settings = "/api/v1/profile/setting";
 

@@ -1,24 +1,63 @@
-#include "connector.h"
+#include "PartyTimeConnector.hpp"
+#include "HttpConnector.hpp"
+#include "LocalStorageInMemory.hpp"
+#include "HttpConnectorErrorCategory.hpp"
 #include <gtest/gtest.h>
 #include <iostream>
 #include <string_view>
 #include <string>
 
-TEST(Init_Test, post) { EXPECT_FALSE(1 == 0);
-    // int* a = new int[30];
-    // std::cout << a << std::endl;
 
-    HttpRequestConnector conn("0.0.0.0", "8080");
+class HttpConnectorTest: public  ::testing::Test {
+protected:
+    void SetUp() override{
+    }
+    void TearDown() override{}
+    HttpConnector* connector;
+};
 
-    std::cout << conn.get_host() << " " << conn.get_port() << std::endl;
-
-    std::cout << conn.get_host() << " " << conn.get_port() << std::endl;
-
-    conn.test_request();
-
-    conn.test_request();
-    std::string_view sv = "string view";
-    std::cout << std::string(sv) + "tt";
-
+TEST_F(HttpConnectorTest, constructor) {
+    ASSERT_EQ(1, 1);
 }
 
+
+
+class LocalStorageInMemoryTest: public  ::testing::Test {
+protected:
+    void SetUp() override{
+
+    }
+    void TearDown() override{}
+    LocalStorageInMemory* storage;
+};
+
+
+TEST_F(LocalStorageInMemoryTest, constructor) {
+    ASSERT_EQ(1, 1);
+}
+
+
+class PartyTimeConnectorTest: public  ::testing::Test {
+protected:
+    void SetUp() override{}
+    void TearDown() override{}
+    PartyTimeConnector* party;
+};
+
+
+TEST_F(PartyTimeConnectorTest, constructor) {
+    ASSERT_EQ(1, 1);
+}
+
+
+class HttpConnectorErrorCategoryTest: public  ::testing::Test {
+protected:
+    void SetUp() override{
+    }
+    void TearDown() override{}
+    HttpConnectorErrorCategory* connector;
+};
+
+TEST_F(HttpConnectorErrorCategoryTest, constructor) {
+    ASSERT_EQ(1, 1);
+}

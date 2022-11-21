@@ -19,7 +19,7 @@ cppcheck lib  --enable=all --inconclusive --error-exitcode=1 -I $interface -I $i
 
 
 print_header "RUN clang-tidy"
-source="$implementation/source"
+src="$implementation/source"
 clang-tidy $source/* -warnings-as-errors=* -extra-arg=-std=c++20 -- -I$interface -I$implementation
 
 
