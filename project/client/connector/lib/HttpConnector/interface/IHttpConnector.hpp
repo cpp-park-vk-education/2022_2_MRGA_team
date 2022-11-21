@@ -40,15 +40,15 @@ class IHttpConnector {
     [[nodiscard]] virtual const string& get_port() const = 0;
 
 
-//    virtual optional<HTTPResponse<string>> GET(
-//            const string& target,
-//            const optional<unordered_map<name, value>>& headers) = 0;
-//
-//    virtual optional<HTTPResponse<string>> POST(
-//            const string& target,
-//            const string& body,
-//            const optional<unordered_map<name, value>>& headers) = 0;
-//    virtual ~IHttpConnector() {}
+    virtual optional<HTTPResponse<string>> GET(
+            const string& target,
+            const optional<unordered_map<name, value>>& headers) = 0;
+
+    virtual optional<HTTPResponse<string>> POST(
+            const string& target,
+            const string& body,
+            const optional<unordered_map<name, value>>& headers) = 0;
+    virtual ~IHttpConnector() {}
 };
 
 

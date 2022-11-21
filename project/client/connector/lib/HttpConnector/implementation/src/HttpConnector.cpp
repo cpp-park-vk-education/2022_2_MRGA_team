@@ -34,99 +34,99 @@ const string &HttpConnector::get_port() const {
     return port;
 }
 
-//optional<HTTPResponse<string>>
-//HttpConnector::GET(const string &target,
-//                   const optional<unordered_map<name, value>>& headers) {
-//    resolve_url();
-//    beast::error_code ec;
-//    stream.connect(url, ec);
-//    Deferrer def;
-//    if (ec == beast::errc::success) {
-//        defer_close(def);
-//    } else {
-//        return std::nullopt;
-//    }
-//
-//    auto req = string_request(target, "GET");
-//
-//    req.set(http::field::host, host);
-//    req.set(http::field::user_agent, user_agent);
-//    if (headers) {
-//        for (const auto& [key, value]: *headers) {
-//            req.set(key, value);
-//        }
-//    }
-//    http::write(stream, req, ec);
-//
-//    if (ec) {
-//        return std::nullopt;
-//    }
-//    Response response;
-//    http::read(stream, buffer, response);
-//    const unordered_map<name, value> response_headers = [&response]{
-//        unordered_map<name, value> h;
-//        for (const auto& header: response.base()) {
-//            h[string(header.name_string())] = string(header.value());
-//        }
-//        return h;
-//    }();
-//    const Status status = [&response] {
-//        Status s;
-//        s.code = response.result_int();
-//        s.str = string(response.reason());
-//        return  s;
-//    }();
-//
-//    auto body_str = body_to_str(response.body());
-//    HTTPResponse<string> res(body_str, response_headers, status);
-//    return res;
-//}
-//
-//optional<HTTPResponse<string>>
-//HttpConnector::POST(const string &target, const string &body,
-//                    const optional<unordered_map<name, value>>& headers) {
-//    resolve_url();
-//    beast::error_code ec;
-//    stream.connect(url, ec);
-//    Deferrer def;
-//    if (ec == beast::errc::success) {
-//        defer_close(def);
-//    } else {
-//        return std::nullopt;
-//    }
-//    auto req = string_request(target, "POST");
-//    req.set(http::field::host, host);
-//    req.set(http::field::user_agent, user_agent);
-//    if (headers) {
-//        for (const auto& [key, value]: *headers) {
-//            req.set(key, value);
-//        }
-//    }
-//    req.body() = body;
-//    http::write(stream, req, ec);
-//
-//    if (ec) {
-//        return std::nullopt;
-//    }
-//    Response response;
-//    http::read(stream, buffer, response);
-//    const unordered_map<name, value> response_headers = [&response]{
-//        unordered_map<name, value> h;
-//        for (const auto& header: response.base()) {
-//            h[string(header.name_string())] = string(header.value());
-//        }
-//        return h;
-//    }();
-//    const Status status = [&response] {
-//        Status s;
-//        s.code = response.result_int();
-//        s.str = string(response.reason());
-//        return  s;
-//    }();
-//    auto body_str = body_to_str(response.body());
-//    HTTPResponse<string> res(body_str, response_headers, status);
-//    return res;
-//}
+optional<HTTPResponse<string>>
+HttpConnector::GET(const string &target,
+                   const optional<unordered_map<name, value>>& headers) {
+    resolve_url();
+    beast::error_code ec;
+    stream.connect(url, ec);
+    Deferrer def;
+    if (ec == beast::errc::success) {
+        defer_close(def);
+    } else {
+        return std::nullopt;
+    }
+
+    auto req = string_request(target, "GET");
+
+    req.set(http::field::host, host);
+    req.set(http::field::user_agent, user_agent);
+    if (headers) {
+        for (const auto& [key, value]: *headers) {
+            req.set(key, value);
+        }
+    }
+    http::write(stream, req, ec);
+
+    if (ec) {
+        return std::nullopt;
+    }
+    Response response;
+    http::read(stream, buffer, response);
+    const unordered_map<name, value> response_headers = [&response]{
+        unordered_map<name, value> h;
+        for (const auto& header: response.base()) {
+            h[string(header.name_string())] = string(header.value());
+        }
+        return h;
+    }();
+    const Status status = [&response] {
+        Status s;
+        s.code = response.result_int();
+        s.str = string(response.reason());
+        return  s;
+    }();
+
+    auto body_str = body_to_str(response.body());
+    HTTPResponse<string> res(body_str, response_headers, status);
+    return res;
+}
+
+optional<HTTPResponse<string>>
+HttpConnector::POST(const string &target, const string &body,
+                    const optional<unordered_map<name, value>>& headers) {
+    resolve_url();
+    beast::error_code ec;
+    stream.connect(url, ec);
+    Deferrer def;
+    if (ec == beast::errc::success) {
+        defer_close(def);
+    } else {
+        return std::nullopt;
+    }
+    auto req = string_request(target, "POST");
+    req.set(http::field::host, host);
+    req.set(http::field::user_agent, user_agent);
+    if (headers) {
+        for (const auto& [key, value]: *headers) {
+            req.set(key, value);
+        }
+    }
+    req.body() = body;
+    http::write(stream, req, ec);
+
+    if (ec) {
+        return std::nullopt;
+    }
+    Response response;
+    http::read(stream, buffer, response);
+    const unordered_map<name, value> response_headers = [&response]{
+        unordered_map<name, value> h;
+        for (const auto& header: response.base()) {
+            h[string(header.name_string())] = string(header.value());
+        }
+        return h;
+    }();
+    const Status status = [&response] {
+        Status s;
+        s.code = response.result_int();
+        s.str = string(response.reason());
+        return  s;
+    }();
+    auto body_str = body_to_str(response.body());
+    HTTPResponse<string> res(body_str, response_headers, status);
+    return res;
+}
 
 void HttpConnector::defer_close(Deferrer &def) {
     def.append([ &st = stream ]() {

@@ -55,14 +55,14 @@ public:
     [[nodiscard]] const string& get_host() const override;
     [[nodiscard]] const string& get_port() const override;
 
-//    optional<HTTPResponse<string>> GET(
-//            const string& target,
-//            const optional<unordered_map<name, value>>& headers) override;
-//
-//    optional<HTTPResponse<string>> POST(
-//            const string& target,
-//            const string& body,
-//            const optional<unordered_map<name, value>>& headers) override;
+    optional<HTTPResponse<string>> GET(
+            const string& target,
+            const optional<unordered_map<name, value>>& headers) override;
+
+    optional<HTTPResponse<string>> POST(
+            const string& target,
+            const string& body,
+            const optional<unordered_map<name, value>>& headers) override;
 
     ~HttpConnector() {}
 };
