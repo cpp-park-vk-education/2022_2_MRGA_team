@@ -5,7 +5,7 @@
 
 #include "isession_repository.hpp"
 
-class SessionRepository {
+class SessionRepository : public ISessionRepository {
  public:
   Token create_token(size_t user_id);
   void delete_token(Token token);

@@ -5,7 +5,7 @@
 
 #include "iuser_repository.hpp"
 
-class UserRepository {
+class UserRepository : public IUserRepository {
  public:
   User get_user_data(size_t user_id);
 

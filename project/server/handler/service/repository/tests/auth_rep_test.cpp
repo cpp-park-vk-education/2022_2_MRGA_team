@@ -7,11 +7,11 @@ class AuthConnTest : public ::testing::Test {
  protected:
     void SetUp() override {
         user = {
+            .nickname = "jumpy",
+            .password = "1234",
             .email = "jump@mail.ru",
             .birth_date = "2003-12-01",
-            .description = "Im a boy",
-            .nickname = "jumpy",
-            .password = "1234"
+            .description = "Im a boy"
         };
     }
 
@@ -28,6 +28,10 @@ TEST_F(AuthConnTest, CreateUser) {
 
 TEST_F(AuthConnTest, ExistenceNickname) { 
     EXPECT_TRUE(auth_rep.existence_nickname("anna_kitty"));
+}
+
+TEST_F(AuthConnTest, ExistenceEmail) { 
+    EXPECT_TRUE(auth_rep.existence_email("anna_kitty"));
 }
 
 TEST_F(AuthConnTest, CheckPassword) {
