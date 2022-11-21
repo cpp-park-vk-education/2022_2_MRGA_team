@@ -8,11 +8,11 @@ class UserConnTest : public ::testing::Test {
  protected:
     void SetUp() override {
         user = {
+            .nickname = "jumpy",
+            .password = "1234",
             .email = "jump@mail.ru",
             .birth_date = "2003-12-01",
-            .description = "Im a boy",
-            .nickname = "jumpy",
-            .password = "1234"
+            .description = "Im a boy"
         };
     }
 
