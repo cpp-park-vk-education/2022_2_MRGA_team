@@ -48,6 +48,7 @@ class IHttpConnector {
             const string& target,
             const string& body,
             const optional<unordered_map<name, value>>& headers) = 0;
+
     virtual ~IHttpConnector() {}
 };
 

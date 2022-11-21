@@ -16,5 +16,5 @@ class PartyTimeConnector {
     std::shared_ptr<IAuthConnector> auth;
     std::shared_ptr<IEventsConnector> events;
     std::shared_ptr<IUsersConnector> users;
-    ~PartyTimeConnector() {}
+    ~PartyTimeConnector() = default;
 };
