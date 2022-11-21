@@ -25,7 +25,6 @@ enum pagesNumbers {
     e_profile = 2
 };
 
-
 class Base : public QMainWindow
 {
     Q_OBJECT
