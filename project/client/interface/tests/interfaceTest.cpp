@@ -30,15 +30,21 @@ using ::testing::AtLeast;
 class UiTesting : public QObject
 {
     Q_OBJECT
-// сделать fried-ами все компоненты или потом прописать им гетеры, 
+// сделать для компонентов гетеры 
 // чтобы можно было привязать вызовы обработчиков к QPushButton в приватных полях
 private slots:
-    // factory testing
+    // Factory testing
     void buttonFactoryTest();
-    // Change State test
+    // void editFactoryTest();
+
+    // StateUpdate testing
     void btnHandlerTest();
 
-    // Creating components test cases:
+    // SignalsCall testing - handler
+    void signalTesting();
+    void testGuiDataTesting();
+
+    // Сonstructor testing
     //  Ui
     void btnTest();
     void editTest();
@@ -63,16 +69,18 @@ private slots:
     void visitorEventListPageTest();
 };
 
-// сначала надо протестировать фарбрики создания UI-компонентов для этого создадим интерфейс. Будем переопределять у него метод create
+/////////////////////////////////////TEST FACTORY///////////////////////////////////////////////////
+// painter - компоновщик от которого наследуются все UI компоненты
+// тестируем псевдофабрики, корректное создание компонентов
 class IFactory {
     public:
         ~IFactory() = default;
-        virtual UiButton* create(const QString& objType) = 0;
+        virtual painter* create(const QString& objType) = 0;
 };
 
-class MockButttonFactory : public IFactory {
+class MockFactory : public IFactory {
     public:
-        MOCK_METHOD(UiButton*, create, (const QString& objType), (override));
+        MOCK_METHOD(painter*, create, (const QString& objType), (override));
 };
 
 class Button {
@@ -81,7 +89,7 @@ class Button {
 
     bool drawComponent(const QString& objType) {
         if (objType == "regButton") {
-            m_button = m_factory->create(objType);
+            m_button = static_cast<UiButton*>(m_factory->create(objType));
             std::cout << "component button has been created" << std::endl;
             return true;
         }
@@ -92,17 +100,35 @@ class Button {
     IFactory* m_factory;
 };
 
+// далее по аналогии тестируем остальные классы ui компонентов
+class Edit {
+    public:
+        explicit Edit(IFactory* factory) : m_factory(factory) {}
+
+    bool drawComponent(const QString& objType) {
+        if (objType == "regEdit") {
+            m_Edit = static_cast<UiEdit*>(m_factory->create(objType));
+            std::cout << "component Edit has been created" << std::endl;
+            return true;
+        }
+        return false;
+    }
+
+    UiEdit* m_Edit; // сделать QPushButton, QLabel и т.д. - это когда буду тестировать вызовы событий (сейчас просто создания компонентов через фабрики)
+    IFactory* m_factory;
+};
+
 void UiTesting::buttonFactoryTest() {
-    MockButttonFactory factory;
+    MockFactory factory;
     EXPECT_CALL(factory, create(QString("regButton"))).Times(AtLeast(1));
 
     Button button(&factory);
     EXPECT_TRUE(button.drawComponent("regButton"));
 }
 
-// вместо IEventHandler возможно стоить написать IButton
-// вообще да, для каждого компонента в qt разные слоты вызываются, поэтому тут должен IButton
-// и протестированы все обработчики, которые буду вызывать для кнопок
+
+/////////////////////////////////////TEST STATE_UPDATE///////////////////////////////////////////////////
+// тестируем вызов обработчиков при воздействие на интерфейс, обновления состояния компонента
 class IEventHandler {
     public:
         virtual ~IEventHandler() = default;
@@ -147,36 +173,69 @@ void UiTesting::btnHandlerTest()
     EXPECT_TRUE(painter.redrawComponent("colorRed"));
 }
 
+/////////////////////////////////////TEST SIGNALS_CALL_CHECK///////////////////////////////////////////////////
+
 class IEventPageHandler {
     public:
         virtual ~IEventPageHandler() = default;
         // должно быть два переопределенных обработчика, которые будут вызываться на каждой странице
         virtual void onPageClicked() = 0;
         virtual void checkTransition() = 0;
-        // virtual void onAutnClicked() = 0;
-        // virtual void onEnter() = 0; // функция, которая чекает валадацию и осуществляет переход на другой экран
-        // virtual void onRegistrationPageClicked() = 0;
-        // virtual void onRegister() = 0;
-        // virtual void onProfilePageClicked() = 0;
-        // virtual void onProfile() = 0;
-        // virtual void onSettingsPageClicked() = 0;
-        // virtual void onSettings() = 0;
-        // virtual void onEventViewPageClicked() = 0;
-        // virtual void onEvent() = 0;
-        // virtual void onLoadingPageClicked() = 0;
-        // virtual void onLoading() = 0;
-        // virtual void onVisitorPageClicked() = 0;
-        // virtual void onVisitor() = 0;
-        // virtual void onOrganizerPageClicked() = 0;
-        // virtual void onOrganizer() = 0;
-        // virtual void onVisitorEventListPageClicked() = 0;
-        // virtual void onVisitorEventList() = 0;
 };
 
-// class MockPage : public IEventPageHandler {
+class MockPage : public IEventPageHandler {
+public:
+        MOCK_METHOD(void, onPageClicked, (), (override));
+        MOCK_METHOD(void, checkTransition, (), (override));
+};
 
-// };
+class AuthorizationPageTest {
+    public:
+        explicit AuthorizationPageTest(IEventPageHandler* handler) : m_handler(handler){}
 
+    bool handleEvent(const QString& someEvent) {
+        if (someEvent == "isValid") {
+            std::cout << "correct data" << std::endl;
+            m_handler->checkTransition();
+            m_handler->onPageClicked();
+        }
+        return true;
+    }
+
+    IEventPageHandler* m_handler;
+};
+
+void UiTesting::signalTesting()
+{
+    authorization* page = new authorization();
+    // QTest::keyClicks(page->getEnterButton(), "Войти");
+    QCOMPARE(page->getEnterButton()->text(), QString("Войти"));
+
+    MockPage testPage;
+    EXPECT_CALL(testPage, checkTransition()).Times(AtLeast(1));
+    EXPECT_CALL(testPage, onPageClicked()).Times(AtLeast(1));
+
+    AuthorizationPageTest handler(&testPage);
+    EXPECT_TRUE(handler.handleEvent("isValid"));
+    delete page;
+}
+
+void UiTesting::testGuiDataTesting()
+{
+    QTest::addColumn<QTestEventList>("events");
+    QTest::addColumn<QString>("expected");
+
+    QTestEventList list1;
+    list1.addKeyClick('a');
+    QTest::newRow("char") << list1 << "a";
+
+    QTestEventList list2;
+    list2.addKeyClick('a');
+    list2.addKeyClick(Qt::Key_Backspace);
+    QTest::newRow("there+back-again") << list2 << "";
+}
+
+/////////////////////////////////////TEST CONSTRUCTOR_CALL_CHECK///////////////////////////////////////////////////
 // UI
 void UiTesting::btnTest()
 {

@@ -16,6 +16,8 @@ public:
 
     UiButton* create(const QString& objectType); // паттерн псевдофабрика
     void updateState(){}; // const std::initializer_list<QString>&
+
+    QPushButton* getButton() {return button;}
 private:
     QPushButton* button;
     QHBoxLayout* btnLayout;
