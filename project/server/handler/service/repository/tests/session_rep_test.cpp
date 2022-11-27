@@ -3,8 +3,7 @@
 
 #include "session_repository.hpp"
 
-
-class SessionConnTest : public ::testing::Test {
+class SessionRepTest : public ::testing::Test {
  protected:
     void SetUp() override {
         token = {
@@ -21,17 +20,17 @@ class SessionConnTest : public ::testing::Test {
     Token token;
 };
 
-TEST_F(SessionConnTest, CreateToken) {
+TEST_F(SessionRepTest, CreateToken) {
     SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(Token token_data = session_rep.create_token(1234));
 }
 
-TEST_F(SessionConnTest, DeleteToken) {
+TEST_F(SessionRepTest, DeleteToken) {
     SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(session_rep.delete_token(token));
 }
 
-TEST_F(SessionConnTest, GetTokens) {
+TEST_F(SessionRepTest, GetTokens) {
     SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(std::vector<Token> tokens = session_rep.get_tokens(1234));
 }

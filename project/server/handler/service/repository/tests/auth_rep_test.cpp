@@ -3,7 +3,7 @@
 
 #include "authorization_repository.hpp"
 
-class AuthConnTest : public ::testing::Test {
+class AuthRepTest : public ::testing::Test {
  protected:
     void SetUp() override {
         user = {
@@ -22,22 +22,22 @@ class AuthConnTest : public ::testing::Test {
 };
 
 
-TEST_F(AuthConnTest, CreateUser) {
+TEST_F(AuthRepTest, CreateUser) {
     AuthorizationRepository auth_rep(db_manager);
     EXPECT_NO_THROW(User user_data = auth_rep.create_user(user));
 }
 
-TEST_F(AuthConnTest, ExistenceNickname) {
+TEST_F(AuthRepTest, ExistenceNickname) {
     AuthorizationRepository auth_rep(db_manager);
     EXPECT_TRUE(auth_rep.existence_nickname("anna_kitty"));
 }
 
-TEST_F(AuthConnTest, ExistenceEmail) {
+TEST_F(AuthRepTest, ExistenceEmail) {
     AuthorizationRepository auth_rep(db_manager);
     EXPECT_TRUE(auth_rep.existence_email("anna_kitty"));
 }
 
-TEST_F(AuthConnTest, CheckPassword) {
+TEST_F(AuthRepTest, CheckPassword) {
     AuthorizationRepository auth_rep(db_manager);
     EXPECT_TRUE(auth_rep.check_password(1234, "2234"));
 }
