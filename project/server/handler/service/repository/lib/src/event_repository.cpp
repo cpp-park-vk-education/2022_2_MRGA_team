@@ -7,9 +7,13 @@ Event EventRepository::create_event(Event event) {
   return created_event;
 }
 
-void EventRepository::update_event_data(Event event) {}
+int EventRepository::update_event_data(Event event) {
+  return 1;
+}
 
-void EventRepository::delete_event(size_t event_id) {}
+int EventRepository::delete_event(size_t event_id) {
+  return 1;
+}
 
 Event EventRepository::get_event_data(size_t event_id) {
   Event event;

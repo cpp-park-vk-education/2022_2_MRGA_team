@@ -7,7 +7,9 @@ Token SessionRepository::create_token(size_t user_id) {
   Token token;
   return token;
 }
-void SessionRepository::delete_token(Token token) {}
+int SessionRepository::delete_token(Token token) {
+  return 1;
+}
 
 std::vector<Token> SessionRepository::get_tokens(size_t user_id) {
   return {};

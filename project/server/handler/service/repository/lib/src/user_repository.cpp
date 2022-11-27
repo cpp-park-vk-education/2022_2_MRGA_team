@@ -7,8 +7,14 @@ User UserRepository::get_user_data(size_t user_id) {
   return user;
 }
 
-void UserRepository::update_user_data(User user) {}
+int UserRepository::update_user_data(User user) {
+  return 1;
+}
 
-void UserRepository::add_visitor(size_t event_id, size_t user_id) {}
+int UserRepository::add_visitor(size_t event_id, size_t user_id) {
+  return 1;
+}
 
-void UserRepository::delete_visitor(size_t event_id, size_t user_id) {}
+int UserRepository::delete_visitor(size_t event_id, size_t user_id) {
+  return 1;
+}

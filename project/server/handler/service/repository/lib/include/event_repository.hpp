@@ -13,9 +13,9 @@ class EventRepository : public IEventRepository {
 
   Event create_event(Event event);
 
-  void update_event_data(Event event);
+  int update_event_data(Event event);
 
-  void delete_event(size_t event_id);
+  int delete_event(size_t event_id);
 
   Event get_event_data(size_t event_id);
 
