@@ -2,11 +2,12 @@
 
 #include <cstddef>
 #include <string>
+#include <vector>
 
 #include "objects.hpp"
 
 class IEventRepository {
-public:
+ public:
   virtual Event create_event(Event event) = 0;
 
   virtual void update_event_data(Event event) = 0;

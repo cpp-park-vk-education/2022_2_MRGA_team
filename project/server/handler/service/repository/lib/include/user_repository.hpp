@@ -8,7 +8,7 @@
 
 class UserRepository : public IUserRepository {
  public:
-  UserRepository(DbManager &dbm);
+  explicit UserRepository(DbManager &dbm);
   User get_user_data(size_t user_id);
 
   void update_user_data(User user);

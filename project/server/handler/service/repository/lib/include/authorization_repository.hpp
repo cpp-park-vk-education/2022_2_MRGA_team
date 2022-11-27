@@ -8,14 +8,14 @@
 
 class AuthorizationRepository : public IAuthorizationRepository {
  public:
-  AuthorizationRepository(DbManager &dbm);
+  explicit AuthorizationRepository(DbManager &dbm);
 
   User create_user(User user);
 
-  bool existence_nickname(std::string nickname);
-  bool existence_email(std::string email);
+  bool existence_nickname(const std::string &nickname);
+  bool existence_email(const std::string &email);
 
-  bool check_password(size_t user_id, std::string input_password);
+  bool check_password(size_t user_id, const std::string &input_password);
  private:
   DbManager &db_manager;
 };

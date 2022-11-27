@@ -6,7 +6,7 @@
 #include "objects.hpp"
 
 class IUserRepository {
-public:
+ public:
   virtual User get_user_data(size_t user_id) = 0;
 
   virtual void update_user_data(User user) = 0;

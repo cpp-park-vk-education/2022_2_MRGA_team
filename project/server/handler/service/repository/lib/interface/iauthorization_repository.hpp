@@ -6,12 +6,12 @@
 #include "objects.hpp"
 
 class IAuthorizationRepository {
-public:
+ public:
   virtual User create_user(User user) = 0;
 
-  virtual bool existence_nickname(std::string nickname) = 0;
-  virtual bool existence_email(std::string email) = 0;
+  virtual bool existence_nickname(const std::string &nickname) = 0;
+  virtual bool existence_email(const std::string &email) = 0;
 
   virtual bool check_password(size_t user_id,
-                              std::string input_password) = 0;
+                          const std::string &input_password) = 0;
 };
