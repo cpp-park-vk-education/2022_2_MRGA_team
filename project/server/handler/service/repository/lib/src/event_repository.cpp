@@ -1,5 +1,7 @@
 #include "event_repository.hpp"
 
+EventRepository::EventRepository(DbManager &dbm): db_manager(dbm) {}
+
 Event EventRepository::create_event(Event event) {
   Event created_event;
   return created_event;

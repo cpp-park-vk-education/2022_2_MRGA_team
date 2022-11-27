@@ -1,5 +1,7 @@
 #include "authorization_repository.hpp"
 
+AuthorizationRepository::AuthorizationRepository(DbManager &dbm): db_manager(dbm) {}
+
 User AuthorizationRepository::create_user(User user) {
   User created_user;
   return created_user;

@@ -1,5 +1,7 @@
 #include "user_repository.hpp"
 
+UserRepository::UserRepository(DbManager &dbm):db_manager(dbm) {}
+
 User UserRepository::get_user_data(size_t user_id) {
   User user;
   return user;

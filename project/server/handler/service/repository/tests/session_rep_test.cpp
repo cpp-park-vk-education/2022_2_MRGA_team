@@ -17,18 +17,21 @@ class SessionConnTest : public ::testing::Test {
 
     void TearDown() override {}
 
-    SessionRepository session_rep;
+    DbManager db_manager;
     Token token;
 };
 
 TEST_F(SessionConnTest, CreateToken) {
+    SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(Token token_data = session_rep.create_token(1234));
 }
 
 TEST_F(SessionConnTest, DeleteToken) {
+    SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(session_rep.delete_token(token));
 }
 
 TEST_F(SessionConnTest, GetTokens) {
+    SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(std::vector<Token> tokens = session_rep.get_tokens(1234));
 }
