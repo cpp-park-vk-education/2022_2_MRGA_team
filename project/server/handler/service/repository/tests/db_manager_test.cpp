@@ -16,3 +16,7 @@ class DbManagerRepTest : public ::testing::Test {
 TEST_F(DbManagerRepTest, GetFreeConnection) {
     EXPECT_NO_THROW(db_manager.get_free_connection());
 }
+
+TEST_F(DbManagerRepTest, ReturnConnection) {
+    EXPECT_NO_THROW(db_manager.return_connection(4));
+}
