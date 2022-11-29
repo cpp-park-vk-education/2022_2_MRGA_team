@@ -60,4 +60,12 @@ protected:
 
 TEST_F(HttpConnectorErrorCategoryTest, constructor) {
     ASSERT_EQ(1, 1);
+    HttpConnector connector("contest.yandex.ru");
+    auto res = connector.GET("/");
+    std::cout << "has value" << res.has_value() << std::endl;
+    std::cout << res->response_body << std::endl;
+    std::cout << res->status.str << std::endl;
+    for (auto&[h, v] : res->headers) {
+        std::cout << "header " << h << " value " << v << std::endl;
+    }
 }

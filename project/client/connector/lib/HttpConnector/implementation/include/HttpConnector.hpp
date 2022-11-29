@@ -46,7 +46,7 @@ private:
 
 public:
 
-    HttpConnector(const string &host, const string &port);
+    HttpConnector(const string &host, const string &port = "80");
 
     void set_host(const string& new_host) override;
     void set_port(const string& new_port) override;
@@ -57,12 +57,12 @@ public:
 
     optional<HTTPResponse<string>> GET(
             const string& target,
-            const optional<unordered_map<name, value>>& headers) override;
+            const optional<unordered_map<name, value>>& headers = std::nullopt) override;
 
     optional<HTTPResponse<string>> POST(
             const string& target,
             const string& body,
-            const optional<unordered_map<name, value>>& headers) override;
+            const optional<unordered_map<name, value>>& headers = std::nullopt) override;
 
     ~HttpConnector() {}
 };
