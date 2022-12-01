@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.18)
-project(parsing_lib)
+project(json_struct_mapping)
 
 add_subdirectory(struct_mapping_lib)
 
 message("STRUCT_MAPPING_LIB_INCLUDE_DIRS = ${STRUCT_MAPPING_LIB_INCLUDE_DIRS}")
 message("STRUCT_MAPPING_LIB_LIBRARIES = ${STRUCT_MAPPING_LIB_LIBRARIES}")
 
-file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/* )
-file(GLOB INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/include ${STRUCT_MAPPING_LIB_INCLUDE_DIRS})
+file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp )
+file(GLOB INCLUDE_DIRS objects ${STRUCT_MAPPING_LIB_INCLUDE_DIRS})
 
 include_directories(include ${STRUCT_MAPPING_LIB_INCLUDE_DIRS})
 
