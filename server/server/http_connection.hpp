@@ -19,7 +19,7 @@ using tcp = net::ip::tcp;           // from <boost/asio/ip/tcp.hpp>
 
 class http_connection : public std::enable_shared_from_this<http_connection> {
 public:
-    http_connection(tcp::socket socket)
+    explicit http_connection(tcp::socket socket)
             : socket_(std::move(socket)) {}
 
     void start() {
@@ -37,7 +37,7 @@ private:
     http::response<http::dynamic_body> response_;
 
     net::steady_timer deadline_ {
-            socket_.get_executor(), std::chrono::seconds(60)
+        socket_.get_executor(), std::chrono::seconds(60)
     };
 
     void read_request();

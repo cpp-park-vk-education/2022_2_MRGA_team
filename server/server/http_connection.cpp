@@ -1,6 +1,15 @@
 #include "http_connection.hpp"
 
-#include "../tmp/router.hpp"
+
+#include <boost/url/url.hpp>
+#include <boost/url/parse.hpp>
+
+
+#include "router.hpp"
+
+
+using namespace boost::urls;
+
 
 void http_connection::read_request() {
     auto self = shared_from_this();
@@ -21,38 +30,56 @@ void http_connection::process_request() {
     response_.version(request_.version());
     response_.keep_alive(false);
 
-    switch (request_.method()) {
+    auto url = parse_absolute_uri(request_.target());
 
-        case http::verb::get: {
-            // здесь какая-то логика дальнейшего отправления запроса (до базы), возвращающей код ошибки
-            response_.result(http::status::ok);
-            response_.set(http::field::server, "MRGA");
-            create_response();
-            break;
-        }
+    try {
+
+        switch (request_.method()) {
+
+            case http::verb::get: {
+//            // здесь какая-то логика дальнейшего отправления запроса (до базы), возвращающей код ошибки
+//            response_.result(http::status::ok);
+//            response_.set(http::field::server, "MRGA");
+//            create_response();
+                std::make_shared<router>(url->query())->get_handler.at(url->path());
+                break;
+            }
                 /*
                  * отдельную логику, вызываемую в случае ошибки */
-        case http::verb::post: {
-            break;
+            case http::verb::post: {
+                std::make_shared<router>(url->query())->post_handler.at(url->path());
+                break;
+            }
+
+            case http::verb::put: {
+                std::make_shared<router>(url->query())->put_handler.at(url->path());
+                break;
+            }
+
+            case http::verb::delete_: {
+                std::make_shared<router>(url->query())->delete_handler.at(url->path());
+                break;
+            }
+
+            default: {
+                response_.result(http::status::bad_request);
+                response_.set(http::field::content_type, "");
+                beast::ostream(response_.body())
+                        << "Invalid request-method '"
+                        << std::string(request_.method_string())
+                        << "'";
+                break;
+            }
         }
 
-        case http::verb::put: {
-            break;
-        }
-
-        case http::verb::delete_: {
-            break;
-        }
-
-        default: {
-            response_.result(http::status::bad_request);
-            response_.set(http::field::content_type, "");
-            beast::ostream(response_.body())
-                    << "Invalid request-method '"
-                    << std::string(request_.method_string())
-                    << "'";
-            break;
-        }
+    } catch (std::out_of_range &ec) {
+        response_.result(http::status::not_found);
+        response_.set(http::field::content_type, "");
+        beast::ostream(response_.body())
+                << "File not found\r\n"
+                << "Invalid url-path '"
+                << std::string(url->path())
+                << "'";
     }
 
     write_response();
@@ -116,7 +143,7 @@ void http_connection::write_response() {
             [self](beast::error_code ec, std::size_t)
             {
                 self->socket_.shutdown(tcp::socket::shutdown_send, ec);
-                self->deadline_.cancel();
+                self->deadline_.cancel(ec);
             });
 }
 
