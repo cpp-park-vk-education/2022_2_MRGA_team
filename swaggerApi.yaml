@@ -1,0 +1,1507 @@
+openapi: 3.0.0
+# All API endpoints are relative to the base URL
+servers:
+    # Added by API Auto Mocking Plugin
+    - description: SwaggerHub API Auto Mocking
+      url: https://virtserver.swaggerhub.com/KHAS2015/PartyTime/0.1.0
+    - description: base url
+      url: https://api.openweathermap.org/data/2.5/
+info:
+  title: PartyTime
+  description: The client-server application for creating parties that are really deleted into your memory for a long time. Take part in an event or become its creator. Share your opinion about the vibe in clubs or at exciting events.
+  version: 0.1.0
+  contact:
+    email: mrgacompany@ourcontact.com
+    name: PartyTime
+tags:
+  - name: Сonfirmed
+  - name: To review
+  - name: Possible implementation
+paths:
+ /v1/auth/signup:
+   post:
+      tags:
+        - Сonfirmed
+      operationId: signUpUser
+      summary: New user registration
+      description: Sending login and password for registration, create cookie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpRequest'
+      responses:
+        '200':
+          description: 'A user with such a mail already exists'
+        '201':
+          description: 'Registration success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogInSuccess'
+        '400':
+          description: 'return Error'
+        '405':
+          description: 'Method Not Allowed'
+        '415':
+          description: 'Unsupported Media Type'
+        '500':
+          description: 'Something unusual has happened'
+ /v1/auth/login:
+   post:
+      tags:
+        - Сonfirmed
+      operationId: logInUser
+      summary: User authentication
+      description: Sending login and password, create cookie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LogInRequest'
+      responses:
+        '200':
+          description: 'Authentification success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LogInSuccess'
+        '400':
+          description: 'return Error'
+        '405':
+          description: 'Method Not Allowed'
+        '415':
+          description: 'Unsupported Media Type'
+        '500':
+          description: 'Something unusual has happened'
+ /v1/auth/logout:
+   get:
+      tags:
+        - Сonfirmed
+      operationId: logOutUser
+      summary: User logout
+      description: Session delete
+      responses:
+        '200':
+          description: 'Session delete'
+        '400':
+          description: 'return Error'
+        '405':
+          description: 'Method Not Allowed'
+        '500':
+          description: 'Something unusual has happened'
+ /v1/auth:
+   get:
+      tags:
+        - Сonfirmed
+      operationId: getUser
+      summary: Defining an authorized user
+      description: Sending login and password, check cookie
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthSuccess'
+        '400':
+          description: 'return Error'
+        '403':
+          description: 'User not authorized'
+        '405':
+          description: 'Method Not Allowed'
+        '500':
+          description: 'Something unusual has happened'
+ /v1/profile:
+    post:
+        tags:
+         - Confirmed
+        operationId: getProfileInfo
+        summary: Get user data
+        description: Sends the user id and gets all the information about the user
+        requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ProfileRequest'
+        responses:
+            '200':
+              description: 'Authentification success'
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/ProfileResponse'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+ /v1/settings:
+    put:
+        tags:
+         - Confirmed
+        operationId: setUserData
+        summary: Defining additional user fields
+        description: Sending all updated user information
+        requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SettingsUpdate'
+        responses:
+            '200':
+              description: 'User data updated successfully'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+ /v1/organizator/{newevent_id}:
+    post:
+        tags:
+          - Confirmed
+        operationId: createEvent
+        summary: The organizer creates an event
+        description: Send - user ID, status, created event object; contains - eventId, an updated list of host events.
+        parameters:
+        - in: path
+          name: newevent_id
+          description: ID is needed to go to the event creation page
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEventRequest'
+        responses:
+            '200':
+              description: 'Get list of events success'
+              content:
+               application/json:
+                  schema:
+                    $ref: '#/components/schemas/CreateEventResponse'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+ /v1/myevents:
+    post:
+        tags:
+          - Confirmed
+        operationId: getVisitedEventList
+        summary: Returns a list of events visited by the user or created by the user
+        description: Send (userId, status), get (a list of all events that the user subscribed to or the user created to - this connection will already be in the database).
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventListRequest'
+        responses:
+            '200':
+              description: 'Get list of events success'
+              content:
+               application/json:
+                  schema:
+                    $ref: '#/components/schemas/EventListResponse'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+ /v1/myevents/{event_id}:
+    post:
+        tags:
+          - Confirmed
+        operationId: getEventInfo
+        summary: Returns information about the selected event
+        description: Send (userId, status), get (object with information about this event - get by id from the database)
+        parameters:
+        - in: path
+          name: event_id
+          description: ID is needed to get information about the event
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventRequest'
+        responses:
+            '200':
+              description: 'Get list of events success'
+              content:
+               application/json:
+                  schema:
+                    $ref: '#/components/schemas/EventResponse'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+ /v1/visitor:
+    post:
+        tags:
+         - Confirmed
+        operationId: getEvents
+        summary: Get list of comfortable events
+        description: Returns a list of events sorted by closest distance to the client
+        requestBody:
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/VisitorRequest'
+        responses:
+            '200':
+              description: 'Get list of events success'
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/VisitorEventListResponse'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+ /v1/visitor/{event_id}:
+    post:
+        tags:
+            - Confirmed
+        operationId: selectEvent
+        summary: Subscribe to the event
+        description: Select an event, after selecting an event it becomes available in the /My events/ section
+        parameters:
+        - in: path
+          name: event_id
+          description: ID is needed to return the information page of a specific event
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/JoinEventRequest'
+        responses:
+            '200':
+              description: 'Select event was successed'
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/JoinEventResponse'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+ /v1/visitor/{event_id}/delete:
+    post:
+        tags:
+            - Confirmed
+        operationId: deleteEvent
+        summary: Unsubscribe from an event or deleted self event
+        description: Send (userId, eventId, status), get (updated list of events).
+        parameters:
+        - in: path
+          name: event_id
+          description: ID is needed to return the information page of a specific event
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/DeleteEventRequest'
+        responses:
+            '200':
+              description: 'Deleted event was successed'
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/DeleteEventResponse'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+ /v1/visitor/{event_id}/newpost:
+    post:
+        tags:
+            - Possible implementation
+        operationId: addNewPost
+        summary: Add a new event post
+        description: You can leave a review both during the event and after it ends
+        parameters:
+        - in: path
+          name: event_id
+          description: ID is needed to return the information page of a specific event
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/CreateCommentRequest'
+        responses:
+            '200':
+              description: 'Сomment was created successfully'
+            '400':
+              description: 'return Error'
+            '405':
+              description: 'Method Not Allowed'
+            '415':
+              description: 'Unsupported Media Type'
+            '500':
+              description: 'Something unusual has happened'
+components:
+  schemas:
+    SignUpRequest:
+      type: object
+      required:
+        - nickname
+        - password
+        - email
+      properties:
+        nickname:
+          type: string
+          example: "zela0293"
+        email:
+          type: string
+          example: "mrga@mail.ru"
+        password:
+          type: string
+          example: "kinderSurprise"
+    LogInRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: "mrga@mail.ru"
+        password:
+          type: string
+          example: "kinderSurprise"
+    LogInSuccess:
+      type: object
+      required:
+        - userId
+        - nickname
+        - email
+        - avatar
+        - first_name
+        - second_name
+        - city
+        - age
+      properties:
+        userId:
+            type: string
+            example: "1201801929"
+        nickname:
+          type: string
+          example: "zela0293"
+        email:
+          type: string
+          example: "mrga@mail.ru"
+        avatar:
+          type: string
+          example: "*ссылка*"
+        first_name:
+            type: string
+            example: null
+        second_name:
+            type: string
+            example: null
+        city:
+            type: string
+            example: null
+        age:
+            type: integer
+            example: null
+    AuthSuccess:
+        type: object
+        required:
+            - userId
+            - nickname
+            - email
+            - avatar
+            - first_name
+            - second_name
+            - city
+            - age
+        properties:
+            userId:
+                type: string
+                example: "1201801929"
+            nickname:
+              type: string
+              example: "zela0293"
+            email:
+              type: string
+              example: "mrga@mail.ru"
+            avatar:
+              type: string
+              example: "*ссылка*"
+            first_name:
+                type: string
+                example: "Daniil"
+            second_name:
+                type: string
+                example: "Zelenko"
+            city:
+                type: string
+                example: "Moscow"
+            age:
+                type: integer
+                example: 22
+    SettingsUpdate:
+        type: object
+        required:
+            - nickname
+            - email
+            - avatar
+            - first_name
+            - second_name
+            - city
+            - age
+        properties:
+            nickname:
+              type: string
+              example: "zela0293"
+            email:
+              type: string
+              example: "mrga@mail.ru"
+            avatar:
+              type: string
+              example: "*ссылка*"
+            first_name:
+                type: string
+                example: "Daniil"
+            second_name:
+                type: string
+                example: "Zelenko"
+            city:
+                type: string
+                example: "Moscow"
+            age:
+                type: integer
+                example: 22
+    ProfileRequest:
+        type: object
+        required:
+          - userId
+        properties:
+            userId:
+                type: string
+                example: "2183239"
+    ProfileResponse:
+        type: object
+        required:
+            - nickname
+            - email
+            - avatar
+            - first_name
+            - second_name
+            - city
+            - age
+        properties:
+            nickname:
+              type: string
+              example: "zela0293"
+            email:
+              type: string
+              example: "mrga@mail.ru"
+            avatar:
+              type: string
+              example: "*ссылка*"
+            first_name:
+                type: string
+                example: "Daniil"
+            second_name:
+                type: string
+                example: "Zelenko"
+            city:
+                type: string
+                example: "Moscow"
+            age:
+                type: integer
+                example: 22
+    VisitorRequest:
+        type: object
+        required:
+            - userId
+            - latitude
+            - longitude
+            - city
+            - disrtict
+            - cutTime
+            - date
+        properties:
+            userId:
+                type: string
+                example: "123"
+            latitude:
+              type: string
+              example: "25.122133"
+            lognitude:
+              type: string
+              example: "45.230910"
+            city:
+                type: string
+                example: "Moscow"
+            disrtict:
+                type: string
+                example: "Северный административный округ"
+            curTime:
+                type: object
+                required:
+                    - hours
+                    - minutes
+                properties:
+                    hours:
+                        type: integer
+                        example: 20
+                    minutes:
+                        type: integer
+                        example: 30
+            date:
+              type: object
+              required:
+                  - year
+                  - month
+                  - number
+              properties:
+                  year:
+                    type: integer
+                    example: 2022
+                  month:
+                    type: integer
+                    example: 02
+                  number:
+                    type: integer
+                    example: 02
+    VisitorEventListResponse:
+        type: array
+        items:
+            type: object
+            required:
+                - organizatorId
+                - userAvatar
+                - userRating
+                - title
+                - eventRating
+                - description
+                - date
+                - time
+                - address
+                - averageCheck
+                - visitorCounter
+            properties:
+                organizatorId:
+                    type: string
+                    example: "123"
+                userAvatar:
+                    type: string
+                    example: "*ссылка*"
+                userRating:
+                    type: string
+                    example: "4.5"
+                title:
+                    type: string
+                    example: "Клубный event"
+                eventRating:
+                    type: string
+                    example: "4.2"
+                description:
+                    type: string
+                    example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+                date:
+                    type: object
+                    required:
+                        - year
+                        - month
+                        - number
+                    properties:
+                        year:
+                            type: integer
+                            example: 2022
+                        month:
+                            type: integer
+                            example: 02
+                        number:
+                            type: integer
+                            example: 10
+                time:
+                    type: object
+                    required:
+                        - hours
+                        - minutes
+                    properties:
+                        hours:
+                            type: integer
+                            example: 21
+                        minutes:
+                            type: integer
+                            example: 30
+                address:
+                    type: object
+                    required:
+                        - city
+                        - street
+                        - homeNumber
+                        - corpsNumber
+                    properties:
+                        city:
+                            type: "string"
+                            example: "Москва"
+                        street:
+                            type: "string"
+                            example: "Тверская"
+                        homeNumber:
+                            type: integer
+                            example: 18
+                        corpsNumber:
+                            type: integer
+                            example: 1
+                averageCheck:
+                    type: integer
+                    example: 2600
+                visitorCounter:
+                    type: integer
+                    example: 20
+    JoinEventRequest:
+            type: object
+            required:
+                - userId
+                - eventId
+            properties:
+                userId:
+                    type: string
+                    example: "1"
+                eventId:
+                    type: string
+                    example: "2"
+    JoinEventResponse:
+            type: object
+            required:
+                - visitorEventListObj
+                - organizeEvent
+            properties:
+              visitorEventListObj:
+                type: object
+                required:
+                    - userId
+                    - visitorEventList
+                properties:
+                    userId:
+                        type: string
+                        example: "123"
+                    visitorEventList:
+                        type: array
+                        items:
+                            type: object
+                            required:
+                                - organizatorId
+                                - userAvatar
+                                - userRating
+                                - title
+                                - eventRating
+                                - description
+                                - date
+                                - time
+                                - address
+                                - averageCheck
+                                - visitorCounter
+                            properties:
+                                organizatorId:
+                                    type: string
+                                    example: "12"
+                                userAvatar:
+                                    type: string
+                                    example: "*ссылка*"
+                                userRating:
+                                    type: string
+                                    example: "4.5"
+                                title:
+                                    type: string
+                                    example: "Клубный event"
+                                eventRating:
+                                    type: string
+                                    example: "4.2"
+                                description:
+                                    type: string
+                                    example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+                                date:
+                                    type: object
+                                    required:
+                                        - year
+                                        - month
+                                        - number
+                                    properties:
+                                        year:
+                                            type: integer
+                                            example: 2022
+                                        month:
+                                            type: integer
+                                            example: 02
+                                        number:
+                                            type: integer
+                                            example: 10
+                                time:
+                                    type: object
+                                    required:
+                                        - hours
+                                        - minutes
+                                    properties:
+                                        hours:
+                                            type: integer
+                                            example: 21
+                                        minutes:
+                                            type: integer
+                                            example: 30
+                                address:
+                                    type: object
+                                    required:
+                                        - city
+                                        - street
+                                        - homeNumber
+                                        - corpsNumber
+                                    properties:
+                                        city:
+                                            type: "string"
+                                            example: "Москва"
+                                        street:
+                                            type: "string"
+                                            example: "Тверская"
+                                        homeNumber:
+                                            type: integer
+                                            example: 18
+                                        corpsNumber:
+                                            type: integer
+                                            example: 1
+                                averageCheck:
+                                    type: integer
+                                    example: 2600
+                                visitorCounter:
+                                    type: integer
+                                    example: 20
+              organizeEvent:
+                type: object
+                required:
+                    - organizatorId
+                    - event
+                properties:
+                    organizatorId:
+                        type: string
+                        example: "123"
+                    event:
+                        type: object
+                        required:
+                            - userAvatar
+                            - userRating
+                            - title
+                            - eventRating
+                            - description
+                            - date
+                            - time
+                            - address
+                            - averageCheck
+                            - visitorCounter
+                        properties:
+                            organizatorId:
+                                type: string
+                                example: "123"
+                            userAvatar:
+                                type: string
+                                example: "*ссылка*"
+                            userRating:
+                                type: string
+                                example: "4.5"
+                            title:
+                                type: string
+                                example: "Клубный event"
+                            eventRating:
+                                type: string
+                                example: "4.2"
+                            description:
+                                type: string
+                                example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+                            date:
+                                type: object
+                                required:
+                                    - year
+                                    - month
+                                    - number
+                                properties:
+                                    year:
+                                        type: integer
+                                        example: 2022
+                                    month:
+                                        type: integer
+                                        example: 02
+                                    number:
+                                        type: integer
+                                        example: 10
+                            time:
+                                type: object
+                                required:
+                                    - hours
+                                    - minutes
+                                properties:
+                                    hours:
+                                        type: integer
+                                        example: 21
+                                    minutes:
+                                        type: integer
+                                        example: 30
+                            address:
+                                type: object
+                                required:
+                                    - city
+                                    - street
+                                    - homeNumber
+                                    - corpsNumber
+                                properties:
+                                    city:
+                                        type: "string"
+                                        example: "Москва"
+                                    street:
+                                        type: "string"
+                                        example: "Тверская"
+                                    homeNumber:
+                                        type: integer
+                                        example: 18
+                                    corpsNumber:
+                                        type: integer
+                                        example: 1
+                            averageCheck:
+                                type: integer
+                                example: 2600
+                            visitorCounter:
+                                type: integer
+                                example: 20
+    CreateEventRequest:
+      type: object
+      required:
+        - userId
+        - status
+        - event
+      properties:
+        userId:
+          type: string
+          example: "123"
+        status:
+          type: string
+          example: "organizator"
+        event:
+          type: object
+          required:
+            - userAvatar
+            - userRating
+            - title
+            - eventRating
+            - description
+            - date
+            - time
+            - address
+            - averageCheck
+            - visitorCounter
+          properties:
+                userAvatar:
+                    type: string
+                    example: "*ссылка*"
+                userRating:
+                    type: string
+                    example: "4.5"
+                title:
+                    type: string
+                    example: "Клубный event"
+                eventRating:
+                    type: string
+                    example: "4.2"
+                description:
+                    type: string
+                    example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+                date:
+                    type: object
+                    required:
+                        - year
+                        - month
+                        - number
+                    properties:
+                        year:
+                            type: integer
+                            example: 2022
+                        month:
+                            type: integer
+                            example: 02
+                        number:
+                            type: integer
+                            example: 10
+                time:
+                    type: object
+                    required:
+                        - hours
+                        - minutes
+                    properties:
+                        hours:
+                            type: integer
+                            example: 21
+                        minutes:
+                            type: integer
+                            example: 30
+                address:
+                    type: object
+                    required:
+                        - city
+                        - street
+                        - homeNumber
+                        - corpsNumber
+                    properties:
+                        city:
+                            type: "string"
+                            example: "Москва"
+                        street:
+                            type: "string"
+                            example: "Тверская"
+                        homeNumber:
+                            type: integer
+                            example: 18
+                        corpsNumber:
+                            type: integer
+                            example: 1
+                averageCheck:
+                    type: integer
+                    example: 2600
+                visitorCounter:
+                    type: integer
+                    example: 0
+    CreateEventResponse:
+      type: object
+      required:
+        - eventId
+        - organizatorEventList
+      properties:
+        eventId:
+          type: string
+          example: "123"
+        organizatorEventList:
+          type: array
+          items:
+            type: object
+            required:
+                - userAvatar
+                - userRating
+                - title
+                - eventRating
+                - description
+                - date
+                - time
+                - address
+                - averageCheck
+                - visitorCounter
+            properties:
+                userAvatar:
+                    type: string
+                    example: "*ссылка*"
+                userRating:
+                    type: string
+                    example: "4.5"
+                title:
+                    type: string
+                    example: "Клубный event"
+                eventRating:
+                    type: string
+                    example: "4.2"
+                description:
+                    type: string
+                    example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+                date:
+                    type: object
+                    required:
+                        - year
+                        - month
+                        - number
+                    properties:
+                        year:
+                            type: integer
+                            example: 2022
+                        month:
+                            type: integer
+                            example: 02
+                        number:
+                            type: integer
+                            example: 10
+                time:
+                    type: object
+                    required:
+                        - hours
+                        - minutes
+                    properties:
+                        hours:
+                            type: integer
+                            example: 21
+                        minutes:
+                            type: integer
+                            example: 30
+                address:
+                    type: object
+                    required:
+                        - city
+                        - street
+                        - homeNumber
+                        - corpsNumber
+                    properties:
+                        city:
+                            type: "string"
+                            example: "Москва"
+                        street:
+                            type: "string"
+                            example: "Тверская"
+                        homeNumber:
+                            type: integer
+                            example: 18
+                        corpsNumber:
+                            type: integer
+                            example: 1
+                averageCheck:
+                    type: integer
+                    example: 2600
+                visitorCounter:
+                    type: integer
+                    example: 20
+    EventRequest:
+      type: object
+      required:
+        - userId
+        - status
+      properties:
+        userId:
+          type: string
+          example: "123"
+        status:
+          type: string
+          example: "visitor"
+    EventResponse:
+      type: object
+      required:
+            - userAvatar
+            - userRating
+            - title
+            - eventRating
+            - description
+            - date
+            - time
+            - address
+            - averageCheck
+            - visitorCounter
+      properties:
+          userAvatar:
+              type: string
+              example: "*ссылка*"
+          userRating:
+              type: string
+              example: "4.5"
+          title:
+              type: string
+              example: "Клубный event"
+          eventRating:
+              type: string
+              example: "4.2"
+          description:
+              type: string
+              example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+          date:
+              type: object
+              required:
+                  - year
+                  - month
+                  - number
+              properties:
+                  year:
+                      type: integer
+                      example: 2022
+                  month:
+                      type: integer
+                      example: 02
+                  number:
+                      type: integer
+                      example: 10
+          time:
+              type: object
+              required:
+                  - hours
+                  - minutes
+              properties:
+                  hours:
+                      type: integer
+                      example: 21
+                  minutes:
+                      type: integer
+                      example: 30
+          address:
+              type: object
+              required:
+                  - city
+                  - street
+                  - homeNumber
+                  - corpsNumber
+              properties:
+                  city:
+                      type: "string"
+                      example: "Москва"
+                  street:
+                      type: "string"
+                      example: "Тверская"
+                  homeNumber:
+                      type: integer
+                      example: 18
+                  corpsNumber:
+                      type: integer
+                      example: 1
+          averageCheck:
+              type: integer
+              example: 2600
+          visitorCounter:
+              type: integer
+              example: 20
+    EventListRequest:
+        type: object
+        required:
+          - userId
+          - status
+        properties:
+          userId:
+            type: string
+            example: "123"
+          status:
+            type: string
+            example: "visitor"
+    EventListResponse:
+        type: array
+        items:
+          type: object
+          required:
+              - userAvatar
+              - userRating
+              - title
+              - eventRating
+              - description
+              - date
+              - time
+              - address
+              - averageCheck
+              - visitorCounter
+          properties:
+              userAvatar:
+                  type: string
+                  example: "*ссылка*"
+              userRating:
+                  type: string
+                  example: "4.5"
+              title:
+                  type: string
+                  example: "Клубный event"
+              eventRating:
+                  type: string
+                  example: "4.2"
+              description:
+                  type: string
+                  example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+              date:
+                  type: object
+                  required:
+                      - year
+                      - month
+                      - number
+                  properties:
+                      year:
+                          type: integer
+                          example: 2022
+                      month:
+                          type: integer
+                          example: 02
+                      number:
+                          type: integer
+                          example: 10
+              time:
+                  type: object
+                  required:
+                      - hours
+                      - minutes
+                  properties:
+                      hours:
+                          type: integer
+                          example: 21
+                      minutes:
+                          type: integer
+                          example: 30
+              address:
+                  type: object
+                  required:
+                      - city
+                      - street
+                      - homeNumber
+                      - corpsNumber
+                  properties:
+                      city:
+                          type: "string"
+                          example: "Москва"
+                      street:
+                          type: "string"
+                          example: "Тверская"
+                      homeNumber:
+                          type: integer
+                          example: 18
+                      corpsNumber:
+                          type: integer
+                          example: 1
+              averageCheck:
+                  type: integer
+                  example: 2600
+              visitorCounter:
+                  type: integer
+                  example: 20
+    DeleteEventRequest:
+      type: object
+      required:
+        - userId
+        - eventId
+        - status
+      properties:
+        userId:
+          type: string
+          example: "1234"
+        eventId:
+          type: string
+          example: "4231"
+        status:
+          type: string
+          example: "visitor"
+    DeleteEventResponse:
+      type: object
+      required:
+        - visitorEventList
+        - organizatorEventList
+      properties:
+        visitorEventList:
+          type: array
+          items:
+            type: object
+            required:
+                - userAvatar
+                - userRating
+                - title
+                - eventRating
+                - description
+                - date
+                - time
+                - address
+                - averageCheck
+                - visitorCounter
+            properties:
+                userAvatar:
+                    type: string
+                    example: "*ссылка*"
+                userRating:
+                    type: string
+                    example: "4.5"
+                title:
+                    type: string
+                    example: "Клубный event"
+                eventRating:
+                    type: string
+                    example: "4.2"
+                description:
+                    type: string
+                    example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+                date:
+                    type: object
+                    required:
+                        - year
+                        - month
+                        - number
+                    properties:
+                        year:
+                            type: integer
+                            example: 2022
+                        month:
+                            type: integer
+                            example: 02
+                        number:
+                            type: integer
+                            example: 10
+                time:
+                    type: object
+                    required:
+                        - hours
+                        - minutes
+                    properties:
+                        hours:
+                            type: integer
+                            example: 21
+                        minutes:
+                            type: integer
+                            example: 30
+                address:
+                    type: object
+                    required:
+                        - city
+                        - street
+                        - homeNumber
+                        - corpsNumber
+                    properties:
+                        city:
+                            type: "string"
+                            example: "Москва"
+                        street:
+                            type: "string"
+                            example: "Тверская"
+                        homeNumber:
+                            type: integer
+                            example: 18
+                        corpsNumber:
+                            type: integer
+                            example: 1
+                averageCheck:
+                    type: integer
+                    example: 2600
+                visitorCounter:
+                    type: integer
+                    example: 20
+        organizatorEventList:
+          type: array
+          items:
+            type: object
+            required:
+                - userAvatar
+                - userRating
+                - title
+                - eventRating
+                - description
+                - date
+                - time
+                - address
+                - averageCheck
+                - visitorCounter
+            properties:
+                userAvatar:
+                    type: string
+                    example: "*ссылка*"
+                userRating:
+                    type: string
+                    example: "4.5"
+                title:
+                    type: string
+                    example: "Клубный event"
+                eventRating:
+                    type: string
+                    example: "4.2"
+                description:
+                    type: string
+                    example: "Электроника, рэп и хип-хоп, помещение на 3000 человек, возрастное ограничение 18+"
+                date:
+                    type: object
+                    required:
+                        - year
+                        - month
+                        - number
+                    properties:
+                        year:
+                            type: integer
+                            example: 2022
+                        month:
+                            type: integer
+                            example: 02
+                        number:
+                            type: integer
+                            example: 10
+                time:
+                    type: object
+                    required:
+                        - hours
+                        - minutes
+                    properties:
+                        hours:
+                            type: integer
+                            example: 21
+                        minutes:
+                            type: integer
+                            example: 30
+                address:
+                    type: object
+                    required:
+                        - city
+                        - street
+                        - homeNumber
+                        - corpsNumber
+                    properties:
+                        city:
+                            type: "string"
+                            example: "Москва"
+                        street:
+                            type: "string"
+                            example: "Тверская"
+                        homeNumber:
+                            type: integer
+                            example: 18
+                        corpsNumber:
+                            type: integer
+                            example: 1
+                averageCheck:
+                    type: integer
+                    example: 2600
+                visitorCounter:
+                    type: integer
+                    example: 20
+    CreateCommentRequest:
+        type: object
+        required:
+            - userId
+            - description
+            - eventRating
+        properties:
+            userId:
+                type: string
+                example: "123"
+            description:
+                type: string
+                example: "тут круто"
+            eventRating:
+                type: string
+                example: "4.5"
