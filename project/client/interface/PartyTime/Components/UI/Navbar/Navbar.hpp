@@ -1,7 +1,7 @@
 #pragma once // pragma once
 
 #include "../painter.hpp"
-#include <styleHelper.hpp>
+#include <../styleHelper.hpp>
 #include "Button.hpp"
 
 class Navbar : public painter {
