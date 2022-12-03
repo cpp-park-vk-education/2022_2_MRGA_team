@@ -3,7 +3,7 @@
 
 //#include <painter.hpp>
 #include "Header.hpp"
-#include <styleHelper.hpp>
+#include <../styleHelper.hpp>
 
 #define MIN_CHAR_SIZE_IN_INPUT 6
 #define MIN_CHAR_SIZE_IN_PASSWORD 12

@@ -3,7 +3,7 @@
 #include "EventForm.hpp"
 #include "Button.hpp"
 #include "Label.hpp"
-#include <styleHelper.hpp>
+#include <../styleHelper.hpp>
 #include "Header.hpp"
 #include "Navbar.hpp"
 #include "footer.hpp"

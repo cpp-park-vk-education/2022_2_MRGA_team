@@ -4,7 +4,7 @@
 #include "Navbar.hpp"
 #include "EventList.hpp"
 #include "footer.hpp"
-#include <styleHelper.hpp>
+#include <../styleHelper.hpp>
 
 class VisitorEventListPage : public painter {
     Q_OBJECT
