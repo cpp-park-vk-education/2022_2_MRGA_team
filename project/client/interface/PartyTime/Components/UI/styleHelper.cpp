@@ -1,4 +1,4 @@
-#include "styleHelper.hpp"
+#include "../styleHelper.hpp"
 #include <QColor>
 
 QString stylehelper::profileBackgroundStyle()
