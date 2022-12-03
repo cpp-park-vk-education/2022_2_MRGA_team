@@ -1,0 +1,23 @@
+if(WITH_DEBUG)
+    message(STATUS"RUN with debugging")
+    set(cxx_flags "${cxx_flags} -g -O0")
+    set(CMAKE_CXX_FLAGS ${cxx_flags})
+    message(NOTICE"********\tnew cxx flags while debugging:\n ${CMAKE_CXX_FLAGS}")
+endif()
+
+if(WITH_TESTING)
+    message(STATUS "RUN with testing")
+    set(cxx_flags "${cxx_flags} ${testing_flags}")
+    set(CMAKE_CXX_FLAGS "${cxx_flags}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${testing_flags} ")
+    # -lgcov
+    message(NOTICE"********\t new cxx flags while testing:\n ${testing_flags}\n")
+    include(CTest)
+endif()
+
+if(WITH_SANITIZE)
+    set(cxx_flags "${cxx_flags} ${sanitizers_flags}")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${sanitizers_flags}")
+    set(CMAKE_CXX_FLAGS ${cxx_flags})
+    message(STATUS"********nRun with sanitize\n\n")
+endif()
