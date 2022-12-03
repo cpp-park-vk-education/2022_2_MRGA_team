@@ -12,7 +12,8 @@ public:
     ~UiLoader();
     UiLoader(const QString& styleSheet, const QString& pathToImage);
     UiLoader(const QString& pathToImage, int labelOffsetX, int labelOffsetY, int width, int height);
-    void updateState(){}; // const std::initializer_list<QString>&
+    void updateState(){} // const std::initializer_list<QString>&
+    UiLoader* create(const QString& objectType) {if (objectType == "") {return new UiLoader("");}return new UiLoader("");};
 private:
     QLabel* loader;
     QMovie* movie;

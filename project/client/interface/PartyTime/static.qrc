@@ -4,6 +4,7 @@
         <file>circleLoader.gif</file>
         <file>squaresLoader.gif</file>
         <file>tyanochka.png</file>
+        <file>MainLayout.png</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>

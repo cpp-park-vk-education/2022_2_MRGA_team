@@ -12,7 +12,7 @@ public:
     ~UiEdit();
 
     UiEdit(const QString& styleSheet, const QString& placeHolder = nullptr, const QFont& font = QFont()); // создание стилизованного input-a с placeholder-ом
-    UiEdit(const QString& styleSheet, int width, int height, int coordX, int coordY); // создание стилизованного input-a с конкретным расположением в layout-e и заданными размерами
+    UiEdit(const QString& styleSheet, int width = 0, int height = 0, int coordX = 0, int coordY = 0); // создание стилизованного input-a с конкретным расположением в layout-e и заданными размерами
 
     UiEdit* create(const QString& objectType); // паттерн псевдофабрика
     void updateState(){}; // const std::initializer_list<QString>&

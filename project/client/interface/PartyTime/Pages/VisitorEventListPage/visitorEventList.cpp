@@ -1,8 +1,19 @@
 #include "visitorEventList.hpp"
+#include <iostream>
 
-VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), mainLayout(new QVBoxLayout())
+VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), mainLayout(new QVBoxLayout(this))
 {
+    // задаем id страницы
+    this->setObjectName("visitorPage");
 
+    // создаем фабрики
+    Navbar* navbarFactory = new Navbar("", 3);
+    this->navbar = *navbarFactory->create("visitor");
+    EventList* eventListFactory = new EventList();
+    this->eventList = *eventListFactory->create("");
+
+    mainLayout->addWidget(&this->navbar, 1, Qt::AlignTop);
+    mainLayout->addWidget(&this->eventList, 2, Qt::AlignTop);
 }
 
 VisitorEventListPage::VisitorEventListPage(const std::initializer_list<QString> typesList) : mainLayout(new QVBoxLayout())
@@ -39,5 +50,5 @@ VisitorEventListPage::VisitorEventListPage(const QString &headerType, const QStr
 
 VisitorEventListPage::~VisitorEventListPage()
 {
-    delete mainLayout;
+//    delete mainLayout;
 }

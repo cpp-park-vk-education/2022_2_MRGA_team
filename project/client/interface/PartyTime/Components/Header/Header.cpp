@@ -8,12 +8,16 @@ Header::Header(QWidget *parent) : painter(parent), layout(new QHBoxLayout())
     layout->addWidget(&stateButton);
 }
 
-Header::Header(const UiLabel &_userAvatar, const UiLabel &_appLogo, const UiButton &_stateButton, bool _state) : layout(new QHBoxLayout()),
+Header::Header(const QString& userAvatarType, const QString& appLogoType, const QString& stateButtonType) : layout(new QHBoxLayout())
+{
+    if (userAvatarType == "default" && appLogoType != "default" && stateButtonType == "default") {
+        
+    }
+}
+
+Header::Header(const UiLabel &_userAvatar, const UiLabel &_appLogo, const UiButton &_stateButton) : layout(new QHBoxLayout()),
     userAvatar(std::move(_userAvatar)), appLogo(std::move(_appLogo)), stateButton(std::move(_stateButton))
 {
-    if (_state) {
-        // изменяем header
-    }
 }
 
 Header::Header(const Header &other) : painter(new QWidget)

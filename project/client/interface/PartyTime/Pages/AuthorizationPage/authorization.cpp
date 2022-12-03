@@ -58,13 +58,10 @@ authorization::authorization(QWidget* parent) : painter(parent),
     registrationButton->setObjectName("registrationButton");
     registrationButton->setMaximumWidth(200);
 
-
-
     buttonsLayout->addWidget(enterButton);
     buttonsLayout->addWidget(registrationButton);
 
     authMainLayout->addLayout(buttonsLayout, 2, 0, 1, 1, Qt::AlignCenter | Qt::AlignTop);
-
 }
 
 authorization::~authorization() {

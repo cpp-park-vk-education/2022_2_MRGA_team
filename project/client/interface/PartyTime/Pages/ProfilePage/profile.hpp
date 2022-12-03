@@ -3,7 +3,7 @@
 #include "EventForm.hpp"
 #include "Button.hpp"
 #include "Label.hpp"
-
+#include <styleHelper.hpp>
 #include "Header.hpp"
 #include "Navbar.hpp"
 #include "footer.hpp"
@@ -12,10 +12,10 @@ class ProfilePage : public painter {
     Q_OBJECT
 
 public:
-    explicit ProfilePage(QWidget* parent);
-    ProfilePage(const QString& _header = "default", const QString& _navbar = "default",
+    explicit ProfilePage(QWidget* parent = nullptr);
+    ProfilePage(const QString& _header, const QString& _navbar,
                 const QString& _leftForm = "default", const QString& _rightForm = "default",
-                const QString& _userAvatar = "default", const QString& _saveBtn = "default", const QString& _footer = "default");
+                const QString& _userAvatar = "default", const QString& _saveBtn = "default", const QString& _footer = "default"); // параметр const std::initisializer_list<QSting>
     ~ProfilePage();
 
     void redraw() {}; // параметр const std::initisializer_list<QSting>
@@ -31,7 +31,10 @@ private:
     EventForm rightForm;
 
     UiLabel userAvatar;
-    UiButton saveButton;
+    UiButton* saveButton;
 
     Footer footer;
+
+
+    void set_interface_style();
 };

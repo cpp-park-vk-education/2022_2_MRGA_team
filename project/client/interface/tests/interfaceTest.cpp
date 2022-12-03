@@ -317,7 +317,7 @@ void UiTesting::headerTest()
 void UiTesting::navbarTest()
 {
     QString res = "";
-    Navbar* navbar = new Navbar(2);
+    Navbar* navbar = new Navbar("", 2);
     if (navbar != nullptr) {
         // проверяем корректно ли создался компонент, правильный ли вызвался конструктор и заполнились поля объекта
         res = "component working";

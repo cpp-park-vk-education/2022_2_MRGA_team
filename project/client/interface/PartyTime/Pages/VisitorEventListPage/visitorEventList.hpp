@@ -4,9 +4,11 @@
 #include "Navbar.hpp"
 #include "EventList.hpp"
 #include "footer.hpp"
+#include <styleHelper.hpp>
 
 class VisitorEventListPage : public painter {
     Q_OBJECT
+    friend Navbar;
 public:
     explicit VisitorEventListPage(QWidget* parent = nullptr);
     // конструктор, который принимает список строк, которые укзаывают какого типа navbar создавать

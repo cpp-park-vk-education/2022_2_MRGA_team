@@ -43,7 +43,7 @@ UiEdit::UiEdit(const QString &styleSheet, int width, int height, int coordX, int
 UiEdit *UiEdit::create(const QString &objectType)
 {
     if (objectType == "regEdit") {
-        return new UiEdit("padding: 10px");
+        return new UiEdit("padding: 10px", "");
     }
     return new UiEdit();
 }

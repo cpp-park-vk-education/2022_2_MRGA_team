@@ -1,8 +1,8 @@
 #ifndef AUTHORIZATION_H
 #define AUTHORIZATION_H
 
-//#include <painter.hpp>
 #include "Header.hpp"
+#include <styleHelper.hpp>
 #include <iostream>
 #include <string>
 

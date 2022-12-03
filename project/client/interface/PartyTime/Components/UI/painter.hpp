@@ -23,6 +23,8 @@
 #include <QCalendarWidget>
 #include <QComboBox>
 #include <QJsonObject>
+#include <QLinearGradient>
+#include <QVariant>
 #include <QJsonDocument>
 #include <vector>
 #include <map>

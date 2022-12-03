@@ -48,8 +48,9 @@ private slots:
     void onEnter(); // check validation function
     void onRegistrationPageClicked();
     void onRegister(); // check validation function
-    // void onProfilePageClicked();
-    // void onProfile();
+    void onProfilePageClicked();
+    void onProfile();
+//     void paintEvent(QPaintEvent* );
     // void onSettingsPageClicked();
     // void onSettings();
     // void onEventViewPageClicked();

@@ -4,14 +4,14 @@ Base::Base(QWidget *parent)
     : QMainWindow(parent),
       screens(new QStackedWidget()),
       authorizationPage(new authorization()),
-      registrationPage(new registration())
+      registrationPage(new registration()),
+//      profilePage(new ProfilePage()),
+      visitorEventListPage(new VisitorEventListPage())
 {
     setWindowTitle("PartyTime");
-    resize(1920, 792);
 
-    screens->setObjectName("screenList");
+    screens->setObjectName("generalBackground");
     this->setCentralWidget(screens);
-    screens->setStyleSheet("background-color: #9a95c9");
 
     connect(authorizationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onEnter);
     connect(authorizationPage->getRegistrationButton(), &QPushButton::clicked, this, &Base::onRegistrationPageClicked);
@@ -19,8 +19,9 @@ Base::Base(QWidget *parent)
     connect(registrationPage->getBackButton(), &QPushButton::clicked, this, &Base::onAuthPageClicked);
     connect(registrationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onRegister);
 
-
-    screens->insertWidget(e_authorization, authorizationPage);
+//    screens->insertWidget(e_authorization, authorizationPage);
+//    screens->insertWidget(0, profilePage);
+    screens->insertWidget(0, visitorEventListPage);
     screens->insertWidget(e_registration, registrationPage);
 }
 
@@ -49,6 +50,16 @@ void Base::onRegister()
     }
 }
 
+void Base::onProfilePageClicked()
+{
+
+}
+
+void Base::onProfile()
+{
+
+}
+
 void Base::onRegistrationPageClicked() {
     screens->setCurrentIndex(e_registration);
     authorizationPage->loginClear();
@@ -61,7 +72,7 @@ void Base::onEnter()
         if (authorizationPage->checkUserInputData()) {
             throw "User input isn't correct !";
         }
-        screens->setCurrentIndex(e_registration);
+        screens->setCurrentIndex(e_profile);
         authorizationPage->loginClear();
         authorizationPage->passwordClear();
     } catch (const char* exception) {

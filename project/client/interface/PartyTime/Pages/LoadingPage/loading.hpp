@@ -1,6 +1,7 @@
 #pragma once // pragma once
 
 #include "Label.hpp"
+#include <styleHelper.hpp>
 
 class LoadingPage : public painter {
     Q_OBJECT

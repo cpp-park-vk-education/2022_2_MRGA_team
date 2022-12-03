@@ -8,8 +8,7 @@ painter::painter(QWidget *parent)
 }
 
 void painter::paintEvent(QPaintEvent *event)
-{
-
+{   
     QStyleOption opt;
     opt.initFrom(this);
     QPainter p(this);
