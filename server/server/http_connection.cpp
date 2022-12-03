@@ -1,8 +1,7 @@
 #include "http_connection.hpp"
 
-
-#include <boost/url/url.hpp>
 #include <boost/url/parse.hpp>
+#include <boost/url/src.hpp>
 
 
 #include "router.hpp"
@@ -30,7 +29,7 @@ void http_connection::process_request() {
     response_.version(request_.version());
     response_.keep_alive(false);
 
-    auto url = parse_absolute_uri(request_.target());
+    boost::url url = parse_origin_form(request_.target()).value();
 
     try {
 
@@ -41,23 +40,23 @@ void http_connection::process_request() {
 //            response_.result(http::status::ok);
 //            response_.set(http::field::server, "MRGA");
 //            create_response();
-                std::make_shared<router>(url->query())->get_handler.at(url->path());
+                std::make_shared<router>(url.query())->get_handler.at(url.path());
                 break;
             }
                 /*
                  * отдельную логику, вызываемую в случае ошибки */
             case http::verb::post: {
-                std::make_shared<router>(url->query())->post_handler.at(url->path());
+                std::make_shared<router>(url.query())->post_handler.at(url.path());
                 break;
             }
 
             case http::verb::put: {
-                std::make_shared<router>(url->query())->put_handler.at(url->path());
+                std::make_shared<router>(url.query())->put_handler.at(url.path());
                 break;
             }
 
             case http::verb::delete_: {
-                std::make_shared<router>(url->query())->delete_handler.at(url->path());
+                std::make_shared<router>(url.query())->delete_handler.at(url.path());
                 break;
             }
 
@@ -78,7 +77,7 @@ void http_connection::process_request() {
         beast::ostream(response_.body())
                 << "File not found\r\n"
                 << "Invalid url-path '"
-                << std::string(url->path())
+                << std::string(url.path())
                 << "'";
     }
 

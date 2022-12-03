@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 
+#include "service.hpp"
 
 namespace beast = boost::beast;     // from <boost/beast.hpp>
 namespace http = beast::http;       // from <boost/beast/http.hpp>
@@ -30,38 +31,21 @@ struct router {
     std::map<bsv, std::function<void(bsv)>> delete_handler;
 
 private:
-    void login(bsv);
-    void logout(bsv);
-    void signup(bsv);
-
-    void profile(bsv);
-    void settings(bsv);
-
-    void events(bsv);
-    void visit_event(bsv);
-    void create_event(bsv);
+    std::shared_ptr<service> service_ = nullptr;
 
 public:
-    explicit router(bsv query_params) {
-        get_handler    ["/api/v1/profile"]         = [&](bsv) {      profile(query_params);          };
+    explicit router(bsv query_params);
 
-        get_handler    ["/api/v1/events/"]         = [&](bsv) {      events(query_params);           };
-
-
-        post_handler   ["/api/v1/auth/login"]      = [&](bsv) {      login(query_params);            };
-
-        post_handler   ["/api/v1/auth/signup"]     = [&](bsv) {      signup(query_params);           };
-
-        post_handler   ["/api/v1/events/visit"]    = [&](bsv) {      visit_event(query_params);      };
-
-        post_handler   ["/api/v1/events/create"]   = [&](bsv) {      create_event(query_params);     };
-
-
-        put_handler    ["/api/v1/profile/setting"] = [&](bsv) {      settings(query_params);         };
-
-
-        delete_handler ["/api/v1/auth/logout"]     = [&](bsv) {      logout(query_params);           };
-    }
+    /*
+     * в приватном поле Класс Service, у которого есть поля Auth, и т.д. (названия сервисов)
+     * у этих полей будет метод, который вызывается вместо функций profile signup и т.д.
+     * внутри сервиса есть уникальный шаред на класс DBObject или как-то так
+     * и поля класса сервис имеют функции который по параметрам будут писать данные в респонс.
+     *
+     * Возможно мне не нужно проталкивать респонс, а проталкивать структуру, которая будет формироваться уже
+     * внутри сервиса. А внутри метода http connection уже писать эту структуру в качестве тела запроса или
+     * таргета
+     */
 };
 
 

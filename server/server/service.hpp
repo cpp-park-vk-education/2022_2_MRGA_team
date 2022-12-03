@@ -11,6 +11,11 @@
 #include <iostream>
 #include <string>
 
+//#include "structs.hpp"
+
+#include "db_manager.hpp"
+#include "authorization_repository.hpp"
+
 namespace beast = boost::beast;     // from <boost/beast.hpp>
 namespace http = beast::http;       // from <boost/beast/http.hpp>
 namespace net = boost::asio;        // from <boost/asio.hpp>
@@ -18,20 +23,26 @@ using tcp = net::ip::tcp;           // from <boost/asio/ip/tcp.hpp>
 
 
 class service {
+    class auth_service {
+    private:
+
+    };
+    class event_service {
+    private:
+    };
+    class user_service {
+    private:
+
+    };
 public:
-    virtual int handle(boost::string_view target, http::response<http::dynamic_body> &response) = 0;
-};
+    service() = default;
 
-class auth_service : public service {
-    int handle(boost::string_view target, http::response<http::dynamic_body> &response) override;
-};
+    int run_auth_service (boost::string_view query_params);
+    int run_event_service(boost::string_view query_params);
+    int run_user_service (boost::string_view query_params);
 
-class events_service : public service {
-    int handle(boost::string_view target, http::response<http::dynamic_body> &response) override;
-};
-
-class users_service : public service {
-    int handle(boost::string_view target, http::response<http::dynamic_body> &response) override;
+private:
+    std::shared_ptr<DbManager> db_manager_ = std::make_shared<DbManager>();
 };
 
 

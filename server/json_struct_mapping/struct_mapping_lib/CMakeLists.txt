@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.18)
 project(struct_mapping_lib)
 
-file(GLOB SOURCES ${PROJECT_SOURCE_DIR})
-file(GLOB INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
+file(GLOB SOURCES *.cpp)
+file(GLOB INCLUDE_DIRS *.hpp)
 
 include_directories(options)
 

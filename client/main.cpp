@@ -19,7 +19,7 @@ int main(int argc, char** argv)
     {
         auto const host = std::string("127.0.0.1");
         auto const port = std::string("8080");
-        auto const target = std::string("/login");
+        auto const target = std::string("/api/v1/profile/index.html?key=20");
         int version = 10;
 
         // The io_context is required for all I/O

@@ -1,36 +1,23 @@
 #include "router.hpp"
 
+router::router(bsv query_params) {
 
-void router::login(bsv) {
+    get_handler    ["/api/v1/profile/index.html"]         = [&](bsv) {   service_->run_user_service(query_params);    };
 
-}
-
-
-void router::logout(bsv) {
-
-}
-
-void router::signup(bsv) {
-
-}
+    get_handler    ["/api/v1/events/index.html"]          = [&](bsv) {   service_->run_event_service(query_params);   };
 
 
-void router::profile(bsv) {
+    post_handler   ["/api/v1/auth/login/index.html"]      = [&](bsv) {   service_->run_auth_service(query_params);    };
 
-}
+    post_handler   ["/api/v1/auth/signup/index.html"]     = [&](bsv) {   service_->run_auth_service(query_params);    };
 
-void router::settings(bsv) {
+    post_handler   ["/api/v1/events/visit/index.html"]    = [&](bsv) {   service_->run_event_service(query_params);   };
 
-}
+    post_handler   ["/api/v1/events/create/index.html/"]  = [&](bsv) {   service_->run_event_service(query_params);   };
 
-void router::events(bsv) {
 
-}
+    put_handler    ["/api/v1/profile/setting/index.html"] = [&](bsv) {   service_->run_user_service(query_params);    };
 
-void router::visit_event(bsv) {
 
-}
-
-void router::create_event(bsv) {
-
+    delete_handler ["/api/v1/auth/logout/index.html"]     = [&](bsv) {   service_->run_auth_service(query_params);    };
 }
