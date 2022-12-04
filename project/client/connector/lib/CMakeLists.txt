@@ -15,7 +15,10 @@ message(WARNING "building library with these flags: ${CMAKE_CXX_FLAGS}")
 if (WITH_TESTING)
     message(WARNING "testing flags: ${testing_flags}")
 endif()
+
 set(PartyTimeConnectorLibs ${PartyTimeConnectorLibs} ${HTTPConnectorLibs} ${LocalStorageLibs} PARENT_SCOPE)
+set(HTTPConnectorLibs ${HTTPConnectorLibs} PARENT_SCOPE)
+set(LocalStorageLibs ${LocalStorageLibs} PARENT_SCOPE)
 
 set(PartyTimeConnectorIncludeDirs ${PartyTimeConnectorIncludeDirs} PARENT_SCOPE)
 set(LocalStorageIncludeDirs ${LocalStorageIncludeDirs} PARENT_SCOPE)
