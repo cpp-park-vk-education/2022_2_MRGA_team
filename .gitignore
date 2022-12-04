@@ -3,10 +3,6 @@
 **/build
 **/cmake-build-debug
 **/*.vscode
-<<<<<<< HEAD
-# This file is used to ignore files which are generated
-# ----------------------------------------------------------------------------
-
 **/Testing
 **/*valgrind
 *~
