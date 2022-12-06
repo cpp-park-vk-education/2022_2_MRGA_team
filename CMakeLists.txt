@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
-project(project)
+project(project LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 
-find_package(Boost 1.81.0 REQUIRED)
-
-add_subdirectory(server)
-add_subdirectory(client)
+add_subdirectory(project/client)
+add_subdirectory(project/server)

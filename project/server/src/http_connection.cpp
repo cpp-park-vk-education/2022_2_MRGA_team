@@ -4,7 +4,7 @@
 #include <boost/url/src.hpp>
 
 
-#include "../handler/router.hpp"
+#include "router.hpp"
 
 
 using namespace boost::urls;
