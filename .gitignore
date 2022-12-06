@@ -36,8 +36,8 @@
 **/build
 **/cmake-build-debug
 
-/project/client
+**/project/client
 
-/project/server/handler/service/repository
+**/project/server/handler/service/repository
 
 *.log
