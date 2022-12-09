@@ -6,7 +6,7 @@ OPTION(WITH_TESTING "RUN_WITH_TESTING" OFF)
 OPTION(WITH_MEMCHECK "RUN_WITH_MEMCHECK" OFF)
 OPTION(WITH_SANITIZE "RUN_WITH_SANITIZE" OFF)
 
-set(MY_CXX_FLAGS "-Wall -Wextra -Wpedantic -fprofile -fprofile-arcs -Wredundant-decls -Wsign-conversion -Wcast-align -Wcast-qual -Wconversion -Wfloat-equal")
+set(MY_CXX_FLAGS "-Wall -lpqxx -lpq -Wextra -Wpedantic -fprofile -fprofile-arcs -Wredundant-decls -Wsign-conversion -Wcast-align -Wcast-qual -Wconversion -Wfloat-equal")
 set(MY_SANITIZERS_FLAGS "-fsanitize=address,undefined -fno-sanitize-recover=all -fsanitize-undefined-trap-on-error")
 set(MY_DEBUG_FLAGS "-g -O0")
 set(MY_TEST_FLAGS "-fprofile-arcs -ftest-coverage -fPIC -O0")
@@ -14,6 +14,8 @@ set(MY_TEST_LINKER_FLAGS "-coverage")
 
 set(CMAKE_CXX_FLAGS ${MY_CXX_FLAGS})
 
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 20)
 
 if(WITH_DEBUGING)

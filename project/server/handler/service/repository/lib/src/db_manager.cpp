@@ -1,11 +1,14 @@
 #include "db_manager.hpp"
 
 DbManager::DbManager() {
-  connections.resize(20);
+  connections.resize(1);
+  Connection c("dbname = mashadb user = mashapg password = mashapg \
+      hostaddr = 127.0.0.1 port = 5432");
+  connections[0] = 3;
 }
 
-Connection DbManager::get_free_connection() {
-  return 1;
+int DbManager::get_free_connection() {
+  return connections[0];
 }
 
 int DbManager::return_connection(Connection connection) {

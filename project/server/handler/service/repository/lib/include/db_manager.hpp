@@ -1,18 +1,18 @@
 #pragma once
 
 #include <vector>
-// #include <pqxx/pqxx>
+#include <pqxx/pqxx>
 
-using Connection = int;
+using Connection = pqxx::connection;
 
 class DbManager {
  public:
   DbManager();
 
-  Connection get_free_connection();
+  int get_free_connection();
 
   int return_connection(Connection connection);
 
  private:
-  std::vector<Connection> connections;
+  std::vector<int> connections;
 };
