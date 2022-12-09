@@ -1,8 +1,10 @@
 #include "Navbar.hpp"
 #include <iostream>
+#include <QSvgWidget>
 
 Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : painter(parent), layout(new QHBoxLayout(this))
 {
+
     // создаём UI компоненты для Navbar-a
     UiButton* buttonFactory = new UiButton("", styleSheet);
     // по дефолту все кнопки одинаковые
@@ -20,6 +22,8 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
     eventsButton.updateState("eventsBtn", "");
     eventsButton.button->setText("Events");
 
+//    UiButton* svgButton = new UiButton("navbarSvg", QSize(24, 24));
+
     // Выбираем navbar
     if (navbarSize == 3) {
         // Navbar клиента. Закидываем в layout, созданные UI компоненты.
@@ -29,12 +33,13 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
         layout->addWidget(&mainButton);
         layout->addWidget(&profileButton);
         layout->addWidget(&eventsButton);
+//        layout->addWidget(svgButton);
     } else {
         this->setObjectName("idOrganizerNavbar");        // установили id-ик navbar-у, которым в теории сможем потом воспользоваться
         this->setProperty("cssClass", "organizerNavbar");    // установили class navbar-у, который сейчас используется
-
         layout->addWidget(&mainButton);
         layout->addWidget(&profileButton);
+//        layout->addWidget(svgButton);
     }
     delete buttonFactory;
 }

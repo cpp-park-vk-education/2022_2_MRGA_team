@@ -1,6 +1,7 @@
 #pragma once // pragma once
 
 #include "EventItem.hpp"
+#include <vector>
 
 class EventList : public painter {
     Q_OBJECT
@@ -27,7 +28,7 @@ private:
     QVBoxLayout* mainLayout;
     QScrollArea* scroll;
     painter* scrollWidget;
-    QVBoxLayout* scrollLayout;
+    QVBoxLayout scrollLayout;
+    std::vector<EventItem*> eventList;
     UiButton sortButton;
-//    QComboBox filters;
 };

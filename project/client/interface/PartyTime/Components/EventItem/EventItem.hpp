@@ -7,20 +7,26 @@ class EventItem : public painter {
     Q_OBJECT
 
 public:
-    explicit EventItem(QWidget* parent = nullptr);
-    EventItem(const QString& _userPhoto, const std::initializer_list<QString>& list); // буду из структур делать строки
+    explicit EventItem(QWidget *parent = nullptr);
     ~EventItem();
 
-    EventItem* create(const QString& typeEvent);
-    void updateState(){}; // const std::initializer_list<QString>&
-private:
-    QGridLayout* mainLayout;
-    QVBoxLayout* leftSide;
-    QVBoxLayout* rightSide;
-    QVBoxLayout* rigthTop;
-    QHBoxLayout* rightBottom;
+//    EventItem* create(const QString& typeEvent);
+    void updateState(){}; // либо человек подписан на событие либо не подписан
 
-    UiLabel userAvatar;
-    UiButton subScribe;
-    std::map<QString, QString> fieldsMap;
+    friend class EventList;
+    friend class VisitorEventListPage;
+private:
+    QHBoxLayout eventItemLayout;
+    QVBoxLayout* leftSide;
+    QVBoxLayout* informationLayout;
+    QVBoxLayout* visitorsInfoLayout;
+    QHBoxLayout* dateTimeLayout;
+    // TODO: переделать все в UI компоненты
+    QPushButton subscibeButton;
+    QLabel eventDecsription;
+    QLabel userAvatar;
+    QLabel eventTitle;
+
+private slots:
+    void onSubcribeClicked();
 };

@@ -7,15 +7,18 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+SET(QT_USE_QTMULTIMEDIA TRUE)
+SET(QT_USE_QTMULTIMEDIAWIDGETS TRUE)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 # set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-Wall -Wextra -Wpedantic -Werror")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets LinguistTools REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets LinguistTools REQUIRED)
-find_package(Qt6 REQUIRED COMPONENTS Network)
+
+find_package(QT NAMES Qt6 COMPONENTS Widgets SvgWidgets LinguistTools test REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets SvgWidgets LinguistTools Multimedia MultimediaWidgets REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS SvgWidgets Network Multimedia MultimediaWidgets)
 
 set(TS_FILES PartyTime_ru_RU.ts)
 set(COMPONENTS)
@@ -28,7 +31,7 @@ set(LIB_DEP ${CMAKE_CURRENT_SOURCE_DIR}/Button ${CMAKE_CURRENT_SOURCE_DIR}/Input
 ${CMAKE_CURRENT_SOURCE_DIR}/Loader ${CMAKE_CURRENT_SOURCE_DIR}/Navbar)
 
 add_library(${LIB_NAME} ${SOURCES} ${HEADERS})
-target_link_libraries(${LIB_NAME} Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(${LIB_NAME} Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::SvgWidgets Qt${QT_VERSION_MAJOR}::Multimedia Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
 target_include_directories(${LIB_NAME} PUBLIC ${LIB_DEP})
 
 set(UI_LIB ${LIB_NAME})

@@ -2,15 +2,38 @@
 
 #include <iostream>
 
+
 ProfilePage::ProfilePage(QWidget *parent) : painter(parent),
     mainLayout(new QVBoxLayout(this))
 {
     this->setObjectName("profilePage");
     this->set_interface_style();
 
-    Navbar* navbarFactory = new Navbar();
-    this->navbar = *navbarFactory;
-    mainLayout->addWidget(&this->navbar, 1, Qt::AlignTop);
+    QHBoxLayout *titleContainer = new QHBoxLayout;
+    QPushButton* backButton = new QPushButton();
+    backButton->setStyleSheet("min-width: 20px; min-height: 20px; border-image: url(:/image/arrow_back.svg); background-repeat: no-repeat; background-position: center; border-style:none;");
+    QLabel *titleLabel = new QLabel("Main");
+    titleLabel->setStyleSheet("font-size: 30px; color: #fffffff;");
+    titleLabel->setContentsMargins(16, 0, 16, 0);
+
+    titleContainer->addWidget(backButton);
+    titleContainer->setContentsMargins(0,10,5,25);
+    titleContainer->setAlignment(Qt::AlignLeft);
+    titleContainer->addWidget(titleLabel);
+
+    QLabel* gifka = new QLabel();
+    QMovie* movie = new QMovie(":/image/setting_45px.gif");
+    gifka->setMovie(movie);
+    movie->start();
+    titleContainer->addWidget(gifka);
+
+    Navbar* navbarFactory = new Navbar("", 3);
+    this->navbar = *navbarFactory->create("visitor");
+    this->navbar.setGeometry(this->x(), this->y(), 1440, 100);
+    mainLayout->addLayout(titleContainer, 0);
+    mainLayout->addWidget(&this->navbar, 1, Qt::AlignTop | Qt::AlignCenter);
+
+//    connect(backButton, &QPushButton::clicked, this, &ProfilePage::onBackPressed);
 }
 
 ProfilePage::ProfilePage(const QString &headerType, const QString &navbarType,
@@ -28,9 +51,11 @@ ProfilePage::~ProfilePage()
 
 void ProfilePage::set_interface_style()
 {
-//    this->setStyleSheet(stylehelper::profileBackgroundStyle());
-// ПОПЫТКИ ИЗМЕНИТЬ Background у ребенка. ДОЛЖНО БЫТЬ В КОНСТРУКОРЕ
-//    this->navbar.setStyleSheet("border: 1px solid black; max-width: 900px; max-height: 300px; border-radius: 20px;");
-//    this->navbar.setProperty("cssClass", "large");
-//    this->navbar.setStyleSheet(".large {background-color: black;}");
+
 }
+
+//void ProfilePage::onBackPressed()
+//{
+//    back();
+//}
+

@@ -1,4 +1,4 @@
-#pragma once // pragma once
+ #pragma once // pragma once
 
 #include "EventForm.hpp"
 #include "Button.hpp"
@@ -10,7 +10,7 @@
 
 class ProfilePage : public painter {
     Q_OBJECT
-
+    friend class Base;
 public:
     explicit ProfilePage(QWidget* parent = nullptr);
     ProfilePage(const QString& _header, const QString& _navbar,
@@ -34,7 +34,15 @@ private:
     UiButton* saveButton;
 
     Footer footer;
-
+    QAudioOutput* m_audioOuput;
+    QFile* m_musicPath;
 
     void set_interface_style();
+
+private slots:
+//    void onBackPressed();
+
+signals:
+    void back(); // int numberOfPrevPage
+
 };
