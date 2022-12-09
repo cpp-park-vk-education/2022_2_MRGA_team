@@ -41,6 +41,11 @@ TEST_F(EventRepTest, DeleteEvent) {
     EXPECT_NO_THROW(event_rep.delete_event(1234));
 }
 
+TEST_F(EventRepTest, ExistenceEvent) {
+    EventRepository event_rep(db_manager);
+    EXPECT_NO_THROW(event_rep.existence_event(1343));
+}
+
 TEST_F(EventRepTest, GetEventData) {
     EventRepository event_rep(db_manager);
     EXPECT_NO_THROW(Event event_data = event_rep.get_event_data(1343));

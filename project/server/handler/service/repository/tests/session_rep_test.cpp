@@ -7,7 +7,6 @@ class SessionRepTest : public ::testing::Test {
  protected:
     void SetUp() override {
         token = {
-            .id = 45,
             .token = "DFGTFVGG",
             .expire_date_time = "2022-11-11 11:11:11",
             .user_id = 3526
@@ -22,7 +21,7 @@ class SessionRepTest : public ::testing::Test {
 
 TEST_F(SessionRepTest, CreateToken) {
     SessionRepository session_rep(db_manager);
-    EXPECT_NO_THROW(Token token_data = session_rep.create_token(1234));
+    EXPECT_NO_THROW(session_rep.create_token(token));
 }
 
 TEST_F(SessionRepTest, DeleteToken) {
@@ -30,7 +29,12 @@ TEST_F(SessionRepTest, DeleteToken) {
     EXPECT_NO_THROW(session_rep.delete_token(token));
 }
 
-TEST_F(SessionRepTest, GetTokens) {
+TEST_F(SessionRepTest, CheckToken) {
     SessionRepository session_rep(db_manager);
-    EXPECT_NO_THROW(std::vector<Token> tokens = session_rep.get_tokens(1234));
+    EXPECT_NO_THROW(session_rep.check_token("CJJFJDKDK"));
+}
+
+TEST_F(SessionRepTest, GetUserByToken) {
+    SessionRepository session_rep(db_manager);
+    EXPECT_NO_THROW(User user = session_rep.get_user_by_token(token));
 }

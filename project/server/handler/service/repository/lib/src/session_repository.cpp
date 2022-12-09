@@ -3,14 +3,18 @@
 SessionRepository::SessionRepository(DbManager &dbm)
 : db_manager(dbm) {}
 
-Token SessionRepository::create_token(size_t user_id) {
-  Token token;
-  return token;
+int SessionRepository::create_token(Token token) {
+  return 1;
 }
 int SessionRepository::delete_token(Token token) {
   return 1;
 }
 
-std::vector<Token> SessionRepository::get_tokens(size_t user_id) {
-  return {};
+int SessionRepository::check_token(const std::string &token) {
+  return 1;
+}
+
+User SessionRepository::get_user_by_token(Token token) {
+  User user;
+  return user;
 }

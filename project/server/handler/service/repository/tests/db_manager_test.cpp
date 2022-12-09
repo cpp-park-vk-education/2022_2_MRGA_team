@@ -18,5 +18,9 @@ TEST_F(DbManagerRepTest, GetFreeConnection) {
 }
 
 TEST_F(DbManagerRepTest, ReturnConnection) {
-    EXPECT_NO_THROW(db_manager.return_connection(4));
+    Connection c("dbname = mashadb user = mashapg password = mashapg \
+      hostaddr = 127.0.0.1 port = 5432");
+    
+    // EXPECT_NO_THROW(db_manager.return_connection(c));
+
 }

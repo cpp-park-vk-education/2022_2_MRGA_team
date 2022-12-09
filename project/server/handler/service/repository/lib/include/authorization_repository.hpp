@@ -12,10 +12,10 @@ class AuthorizationRepository : public IAuthorizationRepository {
 
   User create_user(User user);
 
-  bool existence_nickname(const std::string &nickname);
-  bool existence_email(const std::string &email);
+  int existence_nickname(const std::string &nickname);
+  int existence_email(const std::string &email);
 
-  bool check_password(size_t user_id, const std::string &input_password);
+  int check_password(size_t user_id, const std::string &input_password);
  private:
   DbManager &db_manager;
 };

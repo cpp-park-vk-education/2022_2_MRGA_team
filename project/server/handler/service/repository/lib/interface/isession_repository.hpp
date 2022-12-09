@@ -8,7 +8,9 @@
 
 class ISessionRepository {
  public:
-  virtual Token create_token(size_t user_id) = 0;
+  virtual int create_token(Token token) = 0;
   virtual int delete_token(Token token) = 0;
-  virtual std::vector<Token> get_tokens(size_t user_id) = 0;
+
+  virtual int check_token(const std::string &token) = 0;
+  virtual User get_user_by_token(Token token) = 0;
 };

@@ -21,6 +21,11 @@ class UserRepTest : public ::testing::Test {
     User user;
 };
 
+TEST_F(UserRepTest, ExistenceUser) {
+    UserRepository user_rep(db_manager);
+    EXPECT_NO_THROW(user_rep.existence_user(1232));
+}
+
 TEST_F(UserRepTest, GetUserData) {
     UserRepository user_rep(db_manager);
     EXPECT_NO_THROW(User user_data = user_rep.get_user_data(1232));

@@ -10,9 +10,11 @@
 class SessionRepository : public ISessionRepository {
  public:
   explicit SessionRepository(DbManager &dbm);
-  Token create_token(size_t user_id);
+  int create_token(Token token);
   int delete_token(Token token);
-  std::vector<Token> get_tokens(size_t user_id);
+
+  int check_token(const std::string &token);
+  User get_user_by_token(Token token);
  private:
   DbManager &db_manager;
 };

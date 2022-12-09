@@ -17,6 +17,7 @@ class EventRepository : public IEventRepository {
 
   int delete_event(size_t event_id);
 
+  int existence_event(size_t event_id);
   Event get_event_data(size_t event_id);
 
   std::vector<Event> get_visited_events_by_user(size_t user_id);

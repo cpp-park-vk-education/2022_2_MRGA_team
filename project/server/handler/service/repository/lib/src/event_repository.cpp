@@ -15,6 +15,10 @@ int EventRepository::delete_event(size_t event_id) {
   return 1;
 }
 
+int EventRepository::existence_event(size_t event_id) {
+  return 1;
+}
+
 Event EventRepository::get_event_data(size_t event_id) {
   Event event;
   return event;
