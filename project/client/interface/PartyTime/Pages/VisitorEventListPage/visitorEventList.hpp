@@ -8,7 +8,7 @@
 
 class VisitorEventListPage : public painter {
     Q_OBJECT
-    friend Navbar;
+    friend class Base;
 public:
     explicit VisitorEventListPage(QWidget* parent = nullptr);
     // конструктор, который принимает список строк, которые укзаывают какого типа navbar создавать
@@ -21,6 +21,14 @@ private:
     QVBoxLayout* mainLayout;
     Header header;
     Navbar navbar;
-    EventList eventList;
+    EventList* eventList;
     Footer footer;
+
+    QComboBox *comboBox;
+    QPushButton *hideButton; // Click on which we will hide the specified element
+    QLineEdit *lineEdit;  // LineEdit, in which we will set the element to hide
+    QListView *listView; // pointer to the list of elements
+
+private slots:
+    void hideRow();
 };

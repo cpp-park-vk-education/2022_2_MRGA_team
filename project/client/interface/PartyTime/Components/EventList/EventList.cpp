@@ -1,37 +1,92 @@
 #include "EventList.hpp"
 
-EventList::EventList(QWidget* parent) : painter(parent)
+
+EventList::EventList(QWidget* parent) : painter(parent), 
+    mainLayout(new QVBoxLayout(this)),
+    scroll(new QScrollArea()),
+    scrollWidget(new painter()),
+    scrollLayout(),
+    eventList(std::vector<EventItem*>())
 {
+    this->setProperty("cssClass", "eventList");
+    scrollWidget->setStyleSheet("border-radius: 15px;");
+    scrollWidget->setLayout(&scrollLayout);
+    scroll->setWidget(scrollWidget);
+    scroll->setWidgetResizable(true);
 
-}
+    mainLayout->addWidget(scroll);
 
-EventList::EventList(const QString &evnentListType, size_t size, const QString &styleSheet)
-{
-    if (evnentListType == "" && size != 0 && styleSheet == "") {
-
+    for (int i = 0; i < 10; ++i) {
+        EventItem* event = new EventItem();
+        eventList.push_back(event);
+        scrollLayout.addWidget(event);
     }
 }
 
+
+EventList::EventList(const QString &evnentListType, size_t size, const QString &styleSheet) : mainLayout(new QVBoxLayout(this)),
+    scroll(new QScrollArea()),
+    scrollWidget(new painter()),
+    scrollLayout(),
+    eventList(std::vector<EventItem*>())
+{
+    this->setProperty("cssClass", "eventList");
+    scrollWidget->setStyleSheet("border-radius: 15px;");
+    scrollWidget->setLayout(&scrollLayout);
+    scroll->setWidget(scrollWidget);
+    scroll->setWidgetResizable(true);
+
+    if (styleSheet != "") {
+        this->setStyleSheet(styleSheet);
+    }
+
+    mainLayout->addWidget(scroll);
+
+    for (size_t i = 0; i < size; ++i) {
+        EventItem* event = new EventItem(evnentListType);
+        eventList.push_back(event);
+        scrollLayout.addWidget(event);
+    }
+}
+
+
 EventList::EventList(const EventList &other) : painter(new QWidget)
 {
-    this->mainLayout = other.mainLayout;
-    this->scroll = other.scroll;
-    this->scrollWidget = other.scrollWidget;
-    this->scrollLayout = other.scrollLayout;
-    this->sortButton = other.sortButton;
+    this->eventList.clear();
+    for (auto& elem : other.eventList) {
+        this->eventList.push_back(elem);
+        scrollLayout.addWidget(elem);
+    }
 }
 
 EventList &EventList::operator=(const EventList &other)
 {
-    this->mainLayout = other.mainLayout;
-    this->scroll = other.scroll;
-    this->scrollWidget = other.scrollWidget;
-    this->scrollLayout = other.scrollLayout;
-    this->sortButton = other.sortButton;
+    this->eventList.clear();
+    for (auto& elem : other.eventList) {
+        this->eventList.push_back(elem);
+        scrollLayout.addWidget(elem);
+    }
     return *this;
 }
 
 EventList::~EventList()
+{
+
+}
+
+void EventList::addEvent(const std::initializer_list<QString>& list)
+{
+    EventItem* newEvent = new EventItem(list); // ("organizer", list)
+
+//    std::vector<QString> initFieldList(list.size());
+//    for (const auto& elem : list) {
+//        initFieldList.push_back(elem);
+//    }
+    this->eventList.push_back(newEvent);
+    scrollLayout.addWidget(newEvent);
+}
+
+void EventList::removeEvent()
 {
 
 }

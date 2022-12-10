@@ -2,7 +2,7 @@
 /*General widgets styles*/
 QStackedWidget#generalBackground {
     border-image: url(:/image/MainLayout.png) 0 0 0 0 stretch stretch;
-/*    padding-top: 20px;*/
+    padding-top: 0px;
     padding-bottom: 20px;
     min-width: 1440px;
     max-height: 1024px;
@@ -27,12 +27,12 @@ QPushButton {
     border-radius: 15px;
     font-size: 20px;
     padding: 0px;
-    color: #000000;
+    color: #ffffff;
     border: 1px solid black;
 }
 
 QPushButton:hover {
-    color: #fff;
+    color: rgba(87, 174, 180, 1);
 }
 
 /*Pages Buttons*/
@@ -87,11 +87,47 @@ QPushButton#eventsBtn {
     max-height: 50px;
 }
 
+QPushButton#navbarSvg {
+    border-image: url(:/image/back_black_arrow.png) 0 0 0 0;
+}
+
+*[cssClass~="searchButton"] {
+    padding: 10px;
+    margin: 10px;
+    min-width: 200px;
+    max-height: 40px;
+    background-color: rgba(152, 128, 203, 1);
+    border-radius: 15px;
+}
+
+/*Labels*/
+QLabel#eventUserPhoto {
+    border-radius: 15px;
+}
+
+QLabel#addressTitle {
+    max-width: 100px;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+
+QLabel#eventDescription {
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px;
+    margin-right: 20px;
+}
+
 /*Components styles*/
 *[cssClass~="clientNavbar"] {
-    min-height: 100%;
-    background-color: rgba(25, 113, 125, 0.599);
+    min-width: 1440px;
+/*    background-color: rgba(97, 137, 105, 1);*/
+    background-color: rgba(77, 8, 70, 1);
     border: 1px solid rgba(23, 7, 57, 1);
+    padding-left: 0px;
+    margin-left: 0px;
     border-radius: 15px;
 }
 
@@ -101,3 +137,204 @@ QPushButton#eventsBtn {
     border: 1px solid rgba(23, 7, 57, 1);
     border-radius: 15px;
 }
+
+*[cssClass~="eventItem"] {
+    border-image: url(:/image/event1.png);
+    min-width: 1000px;
+    max-height: 350px;
+}
+
+*[cssClass~="header"] {
+    background-color: none;
+    color: #000000;
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+*[cssClass~="value"] {
+    min-width: 600px;
+    min-height: 50px;
+    color: rgba(6, 6, 6, 1);
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+*[cssClass~="eventItemUserPhoto"] {
+    border-image: url(:/image/Эстетика жизни.jpeg);
+}
+
+*[cssClass~="subscribeButton"] {
+    max-width: 200px;
+    min-height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0px;
+    color: rgba(240, 191, 95, 1);
+    border: none;
+    text-align: center;
+    background-color: black;
+}
+
+*[cssClass~="subscribeButton"]:hover {
+    color: rgba(204, 153, 51, 1);
+}
+
+*[cssClass~="subscribeButton"]:pressed {
+    color: rgba(164, 115, 18, 1);
+}
+
+EventItem#TaskCard {
+    min-width: 1000px;
+    min-height: 200px;
+    background-color: purple;
+    border-radius: 15px;
+}
+
+*[cssClass~="eventList"] {
+    min-width: 1440px;
+    min-height: 750px;
+    border-radius: 15px;
+/*    background-color: rgba(77, 8, 70, 1);*/
+    background-color: rgba(0, 80, 70, 1);
+}
+
+
+/*Other widgets*/
+*[cssClass~="comboBoxList"] {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 900;
+    min-width: 200px;
+    min-height: 40px;
+}
+
+*[cssClass~="toolBarBackground"] {
+    background: none;
+    background-color: transparent;
+}
+
+*[cssClass~="createEventButton"] {
+    max-width: 200px;
+    max-height: 50px;
+    background-color: rgba(77, 8, 70, 1);;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-left: 330px;
+}
+
+*[cssClass~="createEventButton"]:hover {
+    max-width: 200px;
+    max-height: 50px;
+    background-color: rgba(240, 191, 95, 1);
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+*[cssClass~="createEventButton"]:pressed {
+    max-width: 200px;
+    max-height: 50px;
+    background-color: rgba(77, 8, 70, 1);;
+    color: rgba(164, 115, 18, 1);
+    border-radius: 5px;
+}
+
+QComboBox {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    selection-background-color: #111;
+    selection-color: yellow;
+    color: white;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+    border-style: solid;
+    border: 1px solid #000000;
+    border-radius: 5;
+    padding: 1px 0px 1px 20px;
+    font-size: 24px;
+    min-width: 200px;
+    min-height: 50px;
+}
+
+QComboBox::drop-down {
+     subcontrol-origin: padding;
+     subcontrol-position: top right;
+     width: 15px;
+     color: white;
+     border-left-width: 0px;
+     border-left-color: darkgray;
+     border-left-style: solid; /* just a single line */
+     border-top-right-radius: 3px; /* same radius as the QComboBox */
+     border-bottom-right-radius: 3px;
+     padding-left: 10px;
+ }
+
+QComboBox:hover {
+    border: 1px solid #ffffff;
+    color: white;
+}
+
+QComboBox:editable {
+    background: red;
+    color: pink;
+}
+
+QComboBox:on {
+    padding-top: 0px;
+    padding-left: 0px;
+    color: white;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
+    selection-background-color: #ffaa00;
+}
+
+QComboBox:!on {
+    color: white;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #666, stop: 0.1 #555, stop: 0.5 #555, stop: 0.9 #444, stop: 1 #333);
+}
+
+*[cssClass~="deleteEventBtn"] {
+    border-image: url(:/image/delete.svg);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+*[cssClass~="addButton"] {
+    border-image: url(:/image/addButton.png);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+*[cssClass~="formEvent"] {
+    background-color: #ffffff;
+    border-radius: 15;
+}
+    /*QToolBar::item {
+    border-radius: 15px;
+}*/
+/*QListView#pendingList {
+    max-width: 500px; background-color: purple; border-radius: 10px; font-size: 20pt; font-weight: bold;
+}*/
+
+/*QListView::item {
+    background-color: #E74C3C; padding: 10%;
+    border: 1px solid #C0392B;
+}
+
+QListView::item::hover {
+    background-color: #C0392B;
+}*/
+
+/*QListView#completedList {
+    font-size: 20pt; font-weight: bold;
+}
+
+QListView::item {
+    background-color: #2ECC71; padding: 10%;"
+    border: 1px solid #27AE60;
+}
+
+QListView::item::hover {
+    background-color: #27AE60;
+}*/

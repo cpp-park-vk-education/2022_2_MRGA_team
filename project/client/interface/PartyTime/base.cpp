@@ -1,11 +1,13 @@
 #include "base.h"
+#include <QSvgWidget>
 
 Base::Base(QWidget *parent)
     : QMainWindow(parent),
       screens(new QStackedWidget()),
       authorizationPage(new authorization()),
       registrationPage(new registration()),
-//      profilePage(new ProfilePage()),
+      profilePage(),
+      myEvents(new EventViewPage),
       visitorEventListPage(new VisitorEventListPage())
 {
     setWindowTitle("PartyTime");
@@ -13,16 +15,35 @@ Base::Base(QWidget *parent)
     screens->setObjectName("generalBackground");
     this->setCentralWidget(screens);
 
+    // авторизация
     connect(authorizationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onEnter);
     connect(authorizationPage->getRegistrationButton(), &QPushButton::clicked, this, &Base::onRegistrationPageClicked);
 
+    // регистрация
     connect(registrationPage->getBackButton(), &QPushButton::clicked, this, &Base::onAuthPageClicked);
     connect(registrationPage->getEnterButton(), &QPushButton::clicked, this, &Base::onRegister);
 
+    // главная
+    connect(visitorEventListPage->navbar.getMainButton()->getButton(),  &QPushButton::clicked, this, &Base::onVisitorEventListPageClicked);
+    connect(visitorEventListPage->navbar.getProfileButton()->getButton(),  &QPushButton::clicked, this, &Base::onProfilePageClicked);
+    connect(visitorEventListPage->navbar.getEventsButton()->getButton(),  &QPushButton::clicked, this, &Base::onEventViewPageClicked);
+
+    // профиль
+    connect(profilePage.navbar.getMainButton()->getButton(),  &QPushButton::clicked, this, &Base::onVisitorEventListPageClicked);
+    connect(profilePage.navbar.getProfileButton()->getButton(),  &QPushButton::clicked, this, &Base::onProfilePageClicked);
+    connect(profilePage.navbar.getEventsButton()->getButton(),  &QPushButton::clicked, this, &Base::onEventViewPageClicked);
+    connect(&profilePage, &ProfilePage::back, this, &Base::getPrev);
+
+    // мои ивенты
+    connect(myEvents->navbar.getMainButton()->getButton(),  &QPushButton::clicked, this, &Base::onVisitorEventListPageClicked);
+    connect(myEvents->navbar.getProfileButton()->getButton(),  &QPushButton::clicked, this, &Base::onProfilePageClicked);
+    connect(myEvents->navbar.getEventsButton()->getButton(),  &QPushButton::clicked, this, &Base::onEventViewPageClicked);
+
 //    screens->insertWidget(e_authorization, authorizationPage);
-//    screens->insertWidget(0, profilePage);
+//    screens->insertWidget(e_registration, registrationPage);
     screens->insertWidget(0, visitorEventListPage);
-    screens->insertWidget(e_registration, registrationPage);
+    screens->insertWidget(1, &profilePage);
+    screens->insertWidget(2, myEvents);
 }
 
 void Base::onAuthPageClicked() {
@@ -52,12 +73,24 @@ void Base::onRegister()
 
 void Base::onProfilePageClicked()
 {
-
+//    screens->setCurrentIndex(e_profile);
+    screens->setCurrentIndex(1);
 }
 
-void Base::onProfile()
+void Base::getPrev()
 {
+    screens->setCurrentIndex(screens->currentIndex() - 1);
+}
 
+void Base::onEventViewPageClicked()
+{
+    screens->setCurrentIndex(2);
+}
+
+void Base::onVisitorEventListPageClicked()
+{
+//    screens->setCurrentIndex(e_main);
+    screens->setCurrentIndex(0);
 }
 
 void Base::onRegistrationPageClicked() {
@@ -81,13 +114,9 @@ void Base::onEnter()
     }
 }
 
-// void Base::onProfilePageClicked() {
-//     screens->setCurrentIndex(e_profile);
-// }
-
 Base::~Base()
 {
-//    delete authorizationPage;
-//    delete registrationPage;
+    delete authorizationPage;
+    delete registrationPage;
     delete screens;
 }

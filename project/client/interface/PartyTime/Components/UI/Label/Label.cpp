@@ -25,6 +25,29 @@ UiLabel::~UiLabel()
     delete labelLayout;
 }
 
+UiLabel::UiLabel(const QString &styleSheet, const QString &pathToImage, const QString &imageType) : label(new QLabel()), labelLayout(new QHBoxLayout(this))
+{
+    label->setStyleSheet(styleSheet);
+    if (imageType == "userAvatar") {
+        QPixmap userPhoto(pathToImage);
+        QBitmap map(100, 100);
+        map.fill(Qt::color0);
+        QPainter painter(&map);
+        painter.setBrush(Qt::color1);
+        painter.drawRoundedRect(0, 0, 100, 100, 25, 25);
+        QPixmap scaled = userPhoto.scaled(100, 100, Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
+        scaled.setMask(map);
+        label->setPixmap(scaled);
+    }
+    labelLayout->addWidget(label, 1, Qt::AlignLeft);
+}
+
+UiLabel::UiLabel(const QString &styleSheet, const QString &text) : label(new QLabel(text)), labelLayout(new QHBoxLayout(this))
+{
+    label->setStyleSheet(styleSheet);
+    labelLayout->addWidget(label);
+}
+
 UiLabel::UiLabel(const QString &styleSheet, const QPixmap &labelImage, int width, int height, int coordX, int coordY)
 {
     label->setStyleSheet(styleSheet);
@@ -52,6 +75,12 @@ UiLabel *UiLabel::create(const QString &objectType)
 {
     if (objectType == "regLabel") {
         return new UiLabel("padding: 10px");
+    }
+    if (objectType == "text") {
+        return new UiLabel("", QFont());
+    }
+    if (objectType == "image") {
+        return new UiLabel("", QPixmap());
     }
     return new UiLabel();
 }

@@ -6,7 +6,10 @@
 
 class Navbar : public painter {
     Q_OBJECT
-    friend UiButton;
+    friend class UiButton;
+    friend class Navbar;
+    friend class ProfilePage;
+
 public:
     explicit Navbar(const QString& styleSheet = nullptr, size_t navbarSize = 0, QWidget* parent = nullptr);
     Navbar(const QString& mainBtnType, const QString& profileBtnType, const QString& eventsBtnType);
@@ -19,7 +22,10 @@ public:
     Navbar *create(const QString& objectType);
 
     void updateState(){}; // const std::initializer_list<QString>&
-    friend class ProfilePage;
+    UiButton* getMainButton() {return &mainButton;}
+    UiButton* getProfileButton() {return &profileButton;}
+    UiButton* getEventsButton() {return &eventsButton;}
+
 private:
     QHBoxLayout* layout;
     UiButton mainButton;

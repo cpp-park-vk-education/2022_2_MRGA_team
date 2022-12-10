@@ -22,7 +22,9 @@
 enum pagesNumbers {
     e_authorization = 0,
     e_registration = 1,
-    e_profile = 2
+    e_profile = 2,
+    e_main = 3,
+    e_events = 4
 };
 
 class Base : public QMainWindow
@@ -32,12 +34,13 @@ class Base : public QMainWindow
 public:
     explicit Base(QWidget *parent = nullptr);
     ~Base();
+
 private:
     QStackedWidget* screens;
     authorization* authorizationPage;
     registration* registrationPage;
-    ProfilePage* profilePage;
-    EventViewPage* eventViewPage;
+    ProfilePage profilePage;
+    EventViewPage* myEvents;
     LoadingPage* loadingPage;
     OrganizerPage* organizerPage;
     VisitorPage* visitorPage;
@@ -49,19 +52,17 @@ private slots:
     void onRegistrationPageClicked();
     void onRegister(); // check validation function
     void onProfilePageClicked();
-    void onProfile();
-//     void paintEvent(QPaintEvent* );
+    void getPrev();
+    // void paintEvent(QPaintEvent* );
     // void onSettingsPageClicked();
     // void onSettings();
-    // void onEventViewPageClicked();
-    // void onEvent();
+     void onEventViewPageClicked();
     // void onLoadingPageClicked();
     // void onLoading();
     // void onVisitorPageClicked();
     // void onVisitor();
     // void onOrganizerPageClicked();
     // void onOrganizer();
-    // void onVisitorEventListPageClicked();
-    // void onVisitorEventList();
+     void onVisitorEventListPageClicked();
 };
 #endif // BASE_H
