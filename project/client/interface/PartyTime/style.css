@@ -141,9 +141,25 @@ QLabel#eventDescription {
 *[cssClass~="eventItem"] {
     border-image: url(:/image/event1.png);
     min-width: 1000px;
-    max-height: 300px;
+    max-height: 350px;
 }
 
+*[cssClass~="header"] {
+    background-color: none;
+    color: #000000;
+    margin-left: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+*[cssClass~="value"] {
+    min-width: 600px;
+    min-height: 50px;
+    color: rgba(6, 6, 6, 1);
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 18px;
+}
 
 *[cssClass~="eventItemUserPhoto"] {
     border-image: url(:/image/Эстетика жизни.jpeg);
@@ -197,6 +213,31 @@ EventItem#TaskCard {
 *[cssClass~="toolBarBackground"] {
     background: none;
     background-color: transparent;
+}
+
+*[cssClass~="createEventButton"] {
+    max-width: 200px;
+    max-height: 50px;
+    background-color: rgba(77, 8, 70, 1);;
+    color: #ffffff;
+    border-radius: 5px;
+    margin-left: 330px;
+}
+
+*[cssClass~="createEventButton"]:hover {
+    max-width: 200px;
+    max-height: 50px;
+    background-color: rgba(240, 191, 95, 1);
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+*[cssClass~="createEventButton"]:pressed {
+    max-width: 200px;
+    max-height: 50px;
+    background-color: rgba(77, 8, 70, 1);;
+    color: rgba(164, 115, 18, 1);
+    border-radius: 5px;
 }
 
 QComboBox {

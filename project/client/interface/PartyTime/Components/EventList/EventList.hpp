@@ -14,8 +14,8 @@ public:
     EventList& operator=(const EventList& other);
     ~EventList();
 
-    void addEvent() {}
-    void removeEvent() {}
+    void addEvent(const std::initializer_list<QString>& list);
+    void removeEvent();
 
     void minPriceSort() {}
     void minRoadSort() {}

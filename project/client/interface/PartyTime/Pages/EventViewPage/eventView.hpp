@@ -34,10 +34,26 @@ private:
     painter* form;
     QPushButton* addButton;
     QPushButton* closeFormButton;
+    QPushButton* createEventButton;
+
+    QLineEdit* eventName;
+    QLineEdit* description;
+    QLineEdit* date;
+    QLineEdit* time;
+    QLineEdit* address;
+    QLineEdit* visitors;
+    QLineEdit* maxVisitors;
+
+
 
 protected slots:
     void onAdd();
     void onRemove();
+    void onCreate();
+
+//signals:
+//    void addItem() {}
+//    void deleteItem() {}
 
 private:
     QListView* m_pwPending = nullptr;

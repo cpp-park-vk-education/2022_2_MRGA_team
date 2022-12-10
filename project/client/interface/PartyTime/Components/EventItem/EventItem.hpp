@@ -9,12 +9,12 @@ class EventItem : public painter {
 public:
     explicit EventItem(QWidget *parent = nullptr);
     EventItem(const QString& itemType);
-//    EventItem(const EventItem&);
-//    EventItem& operator=(const EventItem&);
     ~EventItem();
 
+    EventItem(const std::initializer_list<QString>& list);
+
 //    EventItem* create(const QString& typeEvent);
-    void updateState(){}; // либо человек подписан на событие либо не подписан
+    void updateState(const std::initializer_list<QString>& list); // либо человек подписан на событие либо не подписан
 
     friend class EventList;
     friend class VisitorEventListPage;
@@ -29,6 +29,11 @@ private:
     QLabel eventDecsription;
     QLabel userAvatar;
     QLabel eventTitle;
+    QLabel* visitors;
+    QLabel* maxVisitors;
+    QLabel* address;
+    QLabel* time;
+    QLabel* date;
 
     QPushButton* deleteButton;
 

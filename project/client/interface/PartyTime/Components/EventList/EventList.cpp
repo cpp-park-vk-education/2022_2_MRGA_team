@@ -74,6 +74,23 @@ EventList::~EventList()
 
 }
 
+void EventList::addEvent(const std::initializer_list<QString>& list)
+{
+    EventItem* newEvent = new EventItem(list); // ("organizer", list)
+
+//    std::vector<QString> initFieldList(list.size());
+//    for (const auto& elem : list) {
+//        initFieldList.push_back(elem);
+//    }
+    this->eventList.push_back(newEvent);
+    scrollLayout.addWidget(newEvent);
+}
+
+void EventList::removeEvent()
+{
+
+}
+
 EventList *EventList::create(const QString &objType)
 {
     if (objType == "") {
