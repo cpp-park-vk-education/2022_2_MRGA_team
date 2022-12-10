@@ -1,4 +1,5 @@
 #include "HttpConnector.hpp"
+#include "HttpConnectorErrorCategory.hpp"
 
 HttpConnector::HttpConnector(const string &host, const string &port)
     :
@@ -34,7 +35,7 @@ const string &HttpConnector::get_port() const {
     return port;
 }
 
-optional<HTTPResponse<string>>
+RequestResult<string>
 HttpConnector::GET(const string &target,
                    const optional<unordered_map<name, value>>& headers) {
     resolve_url();
@@ -44,7 +45,7 @@ HttpConnector::GET(const string &target,
     if (ec == beast::errc::success) {
         defer_close(def);
     } else {
-        return std::nullopt;
+        return {std::nullopt, ec};
     }
 
     auto req = string_request(target, "GET");
@@ -59,7 +60,7 @@ HttpConnector::GET(const string &target,
     http::write(stream, req, ec);
 
     if (ec) {
-        return std::nullopt;
+        return {std::nullopt, ec};
     }
     Response response;
     http::read(stream, buffer, response);
@@ -79,10 +80,10 @@ HttpConnector::GET(const string &target,
 
     auto body_str = body_to_str(response.body());
     HTTPResponse<string> res(body_str, response_headers, status);
-    return res;
+    return {res, beast::error_code(0, HttpConnectorErrorCategory())};
 }
 
-optional<HTTPResponse<string>>
+RequestResult<string>
 HttpConnector::POST(const string &target, const string &body,
                     const optional<unordered_map<name, value>>& headers) {
     resolve_url();
@@ -92,7 +93,7 @@ HttpConnector::POST(const string &target, const string &body,
     if (ec == beast::errc::success) {
         defer_close(def);
     } else {
-        return std::nullopt;
+        return {std::nullopt, ec};
     }
     auto req = string_request(target, "POST");
     req.set(http::field::host, host);
@@ -106,7 +107,7 @@ HttpConnector::POST(const string &target, const string &body,
     http::write(stream, req, ec);
 
     if (ec) {
-        return std::nullopt;
+        return {std::nullopt, ec};
     }
     Response response;
     http::read(stream, buffer, response);
@@ -125,7 +126,7 @@ HttpConnector::POST(const string &target, const string &body,
     }();
     auto body_str = body_to_str(response.body());
     HTTPResponse<string> res(body_str, response_headers, status);
-    return res;
+    return {res, beast::error_code(0, HttpConnectorErrorCategory())};
 }
 
 void HttpConnector::defer_close(Deferrer &def) {

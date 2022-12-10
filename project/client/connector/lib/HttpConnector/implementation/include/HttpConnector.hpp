@@ -55,11 +55,11 @@ public:
     [[nodiscard]] const string& get_host() const override;
     [[nodiscard]] const string& get_port() const override;
 
-    optional<HTTPResponse<string>> GET(
+    RequestResult<string> GET(
             const string& target,
             const optional<unordered_map<name, value>>& headers = std::nullopt) override;
 
-    optional<HTTPResponse<string>> POST(
+    RequestResult<string> POST(
             const string& target,
             const string& body,
             const optional<unordered_map<name, value>>& headers = std::nullopt) override;

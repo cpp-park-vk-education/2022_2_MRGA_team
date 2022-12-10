@@ -57,4 +57,23 @@ struct PartyTimeApi {
     /*принимает запрос через тело запроса.
     http-method - POST*/
     const string create_event = "/api/v1/events/create";
+
+    const string auth_header = "Authorization";
 };
+/*
+ user {
+    id = 0,
+    email = "admin@admin.ru"
+    birth_date = "1970-01-01",
+    description = "this user is admin",
+    nickname = "admin",
+    password = "qwerty"
+}
+
+token {
+    id = 0,
+    token = "admin02022",
+    expire_date_time = "2050-01-02 12:00:00",
+    user_id = 0
+}
+ */

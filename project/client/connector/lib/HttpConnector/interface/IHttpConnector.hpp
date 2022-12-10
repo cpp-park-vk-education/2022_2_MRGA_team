@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 #include <optional>
+#include <boost/beast/core.hpp>
 
 namespace {
     using std::string;
@@ -10,6 +11,7 @@ namespace {
     using std::unordered_map;
     using name = string;
     using value = string;
+    using boost::beast::error_code;
     using std::optional;
 };  // namespace
 
@@ -28,6 +30,11 @@ template <typename T> struct HTTPResponse {
 
 };
 
+template <typename T> struct RequestResult {
+    optional<HTTPResponse<T>> response;
+    error_code result;
+};
+
 
 class IHttpConnector {
     public:
@@ -40,11 +47,11 @@ class IHttpConnector {
     [[nodiscard]] virtual const string& get_port() const = 0;
 
 
-    virtual optional<HTTPResponse<string>> GET(
+    virtual RequestResult<string> GET(
             const string& target,
             const optional<unordered_map<name, value>>& headers) = 0;
 
-    virtual optional<HTTPResponse<string>> POST(
+    virtual RequestResult<string> POST(
             const string& target,
             const string& body,
             const optional<unordered_map<name, value>>& headers) = 0;
