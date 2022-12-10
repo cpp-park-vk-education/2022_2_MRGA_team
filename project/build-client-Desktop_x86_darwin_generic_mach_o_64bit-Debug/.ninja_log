@@ -1,0 +1,23 @@
+# ninja log v5
+2	919	1670700676131296337	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/Components/UI/ui_autogen/timestamp	56cb290070172fff
+2	41	1670700675251916046	PartyTime/connector/lib/HttpConnector/HttpConnector_autogen/mocs_compilation.cpp	ed3b4ffc8238bf84
+47	85	1670700675290614715	PartyTime/connector/lib/LocalStorage/CMakeFiles/LocalStorage.dir/LocalStorage_autogen/mocs_compilation.cpp.o	9dcda66c72d9b363
+1	32	0	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/cmake.verify_globs	5d93c53c7e166181
+2	919	1670700676131296337	PartyTime/Components/UI/ui_autogen/mocs_compilation.cpp	56cb290070172fff
+2	39	1670700675251916380	PartyTime/connector/lib/PartyTimeConnector/PartyTimeConnector_autogen/timestamp	5f869859ec661d7d
+2	39	1670700675251916380	PartyTime/connector/lib/PartyTimeConnector/PartyTimeConnector_autogen/mocs_compilation.cpp	5f869859ec661d7d
+2	47	1670700675252161295	PartyTime/connector/lib/LocalStorage/LocalStorage_autogen/timestamp	4488176361bd24eb
+41	92	1670700675296733176	PartyTime/connector/lib/HttpConnector/CMakeFiles/HttpConnector.dir/HttpConnector_autogen/mocs_compilation.cpp.o	792eefe7eb09f2a8
+85	646	1670700675853855404	PartyTime/connector/lib/LocalStorage/CMakeFiles/LocalStorage.dir/implementation/src/LocalStorageInMemory.cpp.o	17432440f6fe45fe
+2	41	1670700675251916046	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/HttpConnector/HttpConnector_autogen/timestamp	ed3b4ffc8238bf84
+2	39	1670700675251916380	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/PartyTimeConnector/PartyTimeConnector_autogen/mocs_compilation.cpp	5f869859ec661d7d
+2	919	1670700676131296337	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/Components/UI/ui_autogen/mocs_compilation.cpp	56cb290070172fff
+2	39	1670700675251916380	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/PartyTimeConnector/PartyTimeConnector_autogen/timestamp	5f869859ec661d7d
+39	84	1670700675290606215	PartyTime/connector/lib/PartyTimeConnector/CMakeFiles/PartyTimeConnector.dir/PartyTimeConnector_autogen/mocs_compilation.cpp.o	647977548c063335
+2	41	1670700675251916046	PartyTime/connector/lib/HttpConnector/HttpConnector_autogen/timestamp	ed3b4ffc8238bf84
+2	41	1670700675251916046	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/HttpConnector/HttpConnector_autogen/mocs_compilation.cpp	ed3b4ffc8238bf84
+2	919	1670700676131296337	PartyTime/Components/UI/ui_autogen/timestamp	56cb290070172fff
+2	47	1670700675252161295	PartyTime/connector/lib/LocalStorage/LocalStorage_autogen/mocs_compilation.cpp	4488176361bd24eb
+44	503	1670700675718435395	PartyTime/connector/lib/HttpConnector/CMakeFiles/HttpConnector.dir/implementation/src/deferer.cpp.o	a67a390828cc1ccf
+2	47	1670700675252161295	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/LocalStorage/LocalStorage_autogen/timestamp	4488176361bd24eb
+2	47	1670700675252161295	/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/LocalStorage/LocalStorage_autogen/mocs_compilation.cpp	4488176361bd24eb

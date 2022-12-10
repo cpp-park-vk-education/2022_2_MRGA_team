@@ -1,0 +1,70 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"PartyTime/connector/tests/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "HttpConnector::@768f39361f658952fae9"
+		},
+		{
+			"id" : "LocalStorage::@f3cd337261df3efa2699"
+		},
+		{
+			"id" : "PartyTimeConnector::@6191d4cf3dd5273815e9"
+		}
+	],
+	"id" : "connector_test_autogen_timestamp_deps::@054e04d63264c5e57ba3",
+	"isGeneratorProvided" : true,
+	"name" : "connector_test_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "PartyTime/connector/tests",
+		"source" : "PartyTime/connector/tests"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/tests/CMakeFiles/connector_test_autogen_timestamp_deps",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/tests/CMakeFiles/connector_test_autogen_timestamp_deps.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}
