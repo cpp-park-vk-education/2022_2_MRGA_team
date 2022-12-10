@@ -21,6 +21,10 @@ add_library(${PAGES_LIB_NAME} ${SOURCES} ${HEADERS})
 target_link_libraries(${PAGES_LIB_NAME} ${COMPONENTS_LIB} Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::SvgWidgets Qt${QT_VERSION_MAJOR}::Multimedia Qt${QT_VERSION_MAJOR}::MultimediaWidgets)
 target_include_directories(${PAGES_LIB_NAME} PUBLIC ${PAGES_LIB_DEP} ${COMPONENTS_INCLUDE_DIRS})
 
+# подключение зависимости connector.
+target_include_directories(${PAGES_LIB_NAME} PUBLIC ${PartyTimeConnectorIncludeDirs})
+target_link_libraries(${PAGES_LIB_NAME}  ${PartyTimeConnectorLibs})
+
 set(PAGES_LIB ${PAGES_LIB_NAME})
 set(PAGES_LIB ${PAGES_LIB} PARENT_SCOPE)
 set(PAGES_INCLUDE_DIRS ${PAGES_LIB_NAME} ${PAGES_LIB_DEP})
