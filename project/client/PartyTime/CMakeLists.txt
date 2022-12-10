@@ -28,6 +28,8 @@ set(COMPONENTS)
 
 enable_testing()
 
+include_directories(SYSTEM /opt/homebrew/include)
+
 add_subdirectory(Components)
 add_subdirectory(connector)
 add_subdirectory(Pages)

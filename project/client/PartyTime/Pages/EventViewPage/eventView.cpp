@@ -6,6 +6,7 @@
 #include <QAction>
 #include <iostream>
 #include <QWidget>
+#include <iostream>
 
 EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new QVBoxLayout(this)),
     addButton(new QPushButton()),
@@ -16,17 +17,22 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     maxVisitors(new QLineEdit())
 {
 
-    HttpConnector connector("contest.yandex.ru");
-    auto res = connector.GET("/");
-    std::cout << "result = " << res.result.category().name() << std::endl;
-        if (res.response) {
-            std::cout << "has value" << res.response.has_value() << std::endl;
-            std::cout << res.response->response_body << std::endl;
-            std::cout << res.response->status.str << std::endl;
-            for (auto&[h, v] : res.response->headers) {
-                std::cout << "header " << h << " value " << v << std::endl;
+    try {
+        HttpConnector connector("contest.yandex.ru");
+        auto res = connector.GET("/");
+        std::cout << "result = " << res.result << std::endl;
+            if (res.response) {
+                std::cout << "has value" << res.response.has_value() << std::endl;
+                std::cout << res.response->response_body << std::endl;
+                std::cout << res.response->status.str << std::endl;
+                for (auto&[h, v] : res.response->headers) {
+                    std::cout << "header " << h << " value " << v << std::endl;
+                }
             }
-        }
+    } catch(std::exception& error) {
+        std::cout << error.what() << std::endl;
+    }
+
     this->createEventButton->setProperty("cssClass", "createEventButton");
 //    this->createEventButton->setStyleSheet("min-width: 200px; min-height: 50px; background-color: #ffffff; color: #000000; border-radius: 5px;");
     this->setContentsMargins(0, 20, 0, 0);
