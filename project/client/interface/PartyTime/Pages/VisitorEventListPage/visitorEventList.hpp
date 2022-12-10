@@ -21,7 +21,7 @@ private:
     QVBoxLayout* mainLayout;
     Header header;
     Navbar navbar;
-    EventList eventList;
+    EventList* eventList;
     Footer footer;
 
     QComboBox *comboBox;

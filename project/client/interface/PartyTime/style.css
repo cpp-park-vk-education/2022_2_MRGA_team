@@ -8,10 +8,6 @@ QStackedWidget#generalBackground {
     max-height: 1024px;
 }
 
-#scrollBackground::-webkit-scrollbar {
-    display: none;
-}
-
 /*Text fiels*/
 QLineEdit {
     min-width: 200px;
@@ -145,7 +141,7 @@ QLabel#eventDescription {
 *[cssClass~="eventItem"] {
     border-image: url(:/image/event1.png);
     min-width: 1000px;
-    min-height: 200px;
+    max-height: 300px;
 }
 
 
@@ -255,8 +251,25 @@ QComboBox:!on {
     background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #666, stop: 0.1 #555, stop: 0.5 #555, stop: 0.9 #444, stop: 1 #333);
 }
 
+*[cssClass~="deleteEventBtn"] {
+    border-image: url(:/image/delete.svg);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
 
-/*QToolBar::item {
+*[cssClass~="addButton"] {
+    border-image: url(:/image/addButton.png);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+*[cssClass~="formEvent"] {
+    background-color: #ffffff;
+    border-radius: 15;
+}
+    /*QToolBar::item {
     border-radius: 15px;
 }*/
 /*QListView#pendingList {

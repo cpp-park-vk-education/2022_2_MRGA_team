@@ -7,12 +7,14 @@
 #include <../styleHelper.hpp>
 #include <QListView>
 #include <QStringListModel>
+#include <../painter.hpp>
 
 
 class EventViewPage : public painter {
     Q_OBJECT
 
     friend class Base;
+    friend class painter;
 public:
     explicit EventViewPage(QWidget* parent = nullptr);
     // конструктор, который принимает список строк, которые укзаывают какого типа navbar создавать
@@ -26,8 +28,12 @@ private:
     QVBoxLayout* mainLayout;
     Header header;
     Navbar navbar;
-    EventList eventList;
+    EventList* eventList;
     Footer footer;
+
+    painter* form;
+    QPushButton* addButton;
+    QPushButton* closeFormButton;
 
 protected slots:
     void onAdd();

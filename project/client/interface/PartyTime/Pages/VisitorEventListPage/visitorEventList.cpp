@@ -56,10 +56,10 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
 
     connect(hideButton, &QPushButton::clicked, this, &VisitorEventListPage::hideRow);
 
-
     mainLayout->addWidget(&this->navbar, 0, Qt::AlignCenter | Qt::AlignTop);
     mainLayout->addLayout(comboBoxLayout, Qt::AlignTop | Qt::AlignCenter);
-    mainLayout->addWidget(new EventList(), 2, Qt::AlignTop | Qt::AlignCenter);
+    this->eventList = new EventList("visitor", 10);
+    mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);
 }
 
 VisitorEventListPage::VisitorEventListPage(const std::initializer_list<QString> typesList) : mainLayout(new QVBoxLayout())
@@ -84,7 +84,7 @@ VisitorEventListPage::VisitorEventListPage(const QString &headerType, const QStr
     navbarFactory = nullptr;
 
     EventList* eventListFactory = new EventList();
-    this->eventList = *(eventListFactory->create(eventListType));
+    this->eventList = (eventListFactory->create(eventListType));
     delete eventListFactory;
     eventListFactory = nullptr;
 

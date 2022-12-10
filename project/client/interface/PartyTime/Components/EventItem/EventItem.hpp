@@ -8,6 +8,9 @@ class EventItem : public painter {
 
 public:
     explicit EventItem(QWidget *parent = nullptr);
+    EventItem(const QString& itemType);
+//    EventItem(const EventItem&);
+//    EventItem& operator=(const EventItem&);
     ~EventItem();
 
 //    EventItem* create(const QString& typeEvent);
@@ -26,6 +29,8 @@ private:
     QLabel eventDecsription;
     QLabel userAvatar;
     QLabel eventTitle;
+
+    QPushButton* deleteButton;
 
 private slots:
     void onSubcribeClicked();
