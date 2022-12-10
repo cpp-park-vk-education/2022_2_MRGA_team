@@ -75,7 +75,7 @@ public:
           _dateTime    (std::move(dateTime)),
           _maxVisitors (maxVisitors) {};
 
-    Event(const std::string &json);
+    explicit Event(const std::string &json);
     std::string toJSON() override;
 };
 

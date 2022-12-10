@@ -25,16 +25,16 @@ using tcp = net::ip::tcp;           // from <boost/asio/ip/tcp.hpp>
 using bsv = boost::string_view;
 
 struct router {
-    std::map<bsv, std::function<void(bsv)>> get_handler;
-    std::map<bsv, std::function<void(bsv)>> post_handler;
-    std::map<bsv, std::function<void(bsv)>> put_handler;
-    std::map<bsv, std::function<void(bsv)>> delete_handler;
+    std::map<bsv, std::function<void(bsv path)>> get_handler;
+    std::map<bsv, std::function<void(bsv path)>> post_handler;
+    std::map<bsv, std::function<void(bsv path)>> put_handler;
+    std::map<bsv, std::function<void(bsv path)>> delete_handler;
 
 private:
     std::shared_ptr<service> service_ = nullptr;
 
 public:
-    explicit router(bsv query_params);
+    explicit router(HCKey hcKey, bsv query_params);
 
     /*
      * в приватном поле Класс Service, у которого есть поля Auth, и т.д. (названия сервисов)

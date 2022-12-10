@@ -13,6 +13,7 @@
 
 #include "structs.hpp"
 #include "db_manager.hpp"
+#include "constants.hpp"
 
 namespace beast = boost::beast;     // from <boost/beast.hpp>
 namespace http = beast::http;       // from <boost/beast/http.hpp>
@@ -35,9 +36,10 @@ class service {
 public:
     service() = default;
 
-    int run_auth_service (boost::string_view query_params);
-    int run_event_service(boost::string_view query_params);
-    int run_user_service (boost::string_view query_params);
+    int run_auth_service (HCKey hcKey, boost::string_view query_params);
+    int run_event_service(HCKey hcKey, boost::string_view query_params);
+    int run_user_service (HCKey hcKey, boost::string_view query_params);
+    int run_session_service (HCKey hcKey, boost::string_view query_params);
 
 private:
     std::shared_ptr<DbManager> db_manager_ = std::make_shared<DbManager>();

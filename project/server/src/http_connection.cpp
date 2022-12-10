@@ -32,6 +32,7 @@ void http_connection::process_request() {
     boost::url url = parse_uri_reference(request_.target()).value();
 
     try {
+        HCKey hcKey = parseHCKey(url.query());
 
         switch (request_.method()) {
 
@@ -40,23 +41,23 @@ void http_connection::process_request() {
 //            response_.result(http::status::ok);
 //            response_.set(http::field::project, "MRGA");
 //            create_response();
-                std::make_shared<router>(url.query())->get_handler.at(url.path());
+                std::make_shared<router>(hcKey, url.query())->get_handler.at(url.path());
                 break;
             }
                 /*
                  * отдельную логику, вызываемую в случае ошибки */
             case http::verb::post: {
-                std::make_shared<router>(url.query())->post_handler.at(url.path());
+                std::make_shared<router>(hcKey, url.query())->post_handler.at(url.path());
                 break;
             }
 
             case http::verb::put: {
-                std::make_shared<router>(url.query())->put_handler.at(url.path());
+                std::make_shared<router>(hcKey, url.query())->put_handler.at(url.path());
                 break;
             }
 
             case http::verb::delete_: {
-                std::make_shared<router>(url.query())->delete_handler.at(url.path());
+                std::make_shared<router>(hcKey, url.query())->delete_handler.at(url.path());
                 break;
             }
 
