@@ -27,13 +27,7 @@
 //    return 0;
 //}
 //
-int service::run_event_service(/*HCKey hcKey,*/ boost::string_view query_params, Base &base) {
-    if (query_params.empty()) {
-        //base.events = std::make_shared<EventRepository>(*db_manager_)->get_all_events();
-    }
 
-    return 0;
-}
 //
 //int service::run_user_service(HCKey hcKey, boost::string_view query_params) {
 //    User u(query_params.to_string());
@@ -80,3 +74,23 @@ int service::run_event_service(/*HCKey hcKey,*/ boost::string_view query_params,
 //    }
 //    return 0;
 //}
+int service::run_event_service(bsv query_params, std::string &response_body) {
+    if (query_params.empty()) {
+        Event eventExample;
+
+        eventExample._id = 1;
+        eventExample._description = "_description";
+        eventExample._title = "_title";
+        eventExample._dateTime = "2000-10-12";
+        eventExample._maxVisitors = 13;
+
+        Events eventsExample;
+
+        for (int i = 0; i < 3; ++i) {
+            eventsExample._events.push_back(eventExample);
+        }
+
+        response_body = eventsExample.toJSON();
+    }
+    return 0;
+}

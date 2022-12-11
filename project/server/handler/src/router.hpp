@@ -21,14 +21,18 @@ namespace http = beast::http;       // from <boost/beast/http.hpp>
 namespace net = boost::asio;        // from <boost/asio.hpp>
 using tcp = net::ip::tcp;           // from <boost/asio/ip/tcp.hpp>
 
+using res = http::response<http::dynamic_body>;
+using req = http::request<http::dynamic_body>;
+
 
 using bsv = boost::string_view;
 
-struct router {
+class router {
+public:
     std::map<bsv, std::function<void()>> get_handler;
-    std::map<bsv, std::function<void(bsv path)>> post_handler;
-    std::map<bsv, std::function<void(bsv path)>> put_handler;
-    std::map<bsv, std::function<void(bsv path)>> delete_handler;
+    std::map<bsv, std::function<void()>> post_handler;
+    std::map<bsv, std::function<void()>> put_handler;
+    std::map<bsv, std::function<void()>> delete_handler;
 
     router(const router&) = delete;
     router(router&&) = delete;
@@ -36,26 +40,23 @@ struct router {
 private:
     std::shared_ptr<service> service_ = std::make_shared<service>();
 
-    //HCKey _hcKey;
-    bsv _query_params;
-    //Base _base;
-    //std::string _body;
+    void events_handle               (res &response, const req &request);
 
-    void events_handle(std::string &);
+    void create_event_handle         (res &response, const req &request);
+
+    void visit_events_handle         (res &response, const req &request);
+
+    void login_handle                (res &response, const req &request);
+
+    void signup_handle               (res &response, const req &request);
+
+    void logout_handle               (res &response, const req &request);
+
+    void setting_handle              (res &response, const req &request);
 
 public:
-    explicit router(bsv query_params, std::string &response_body);
+    explicit router                  (res &response, const req &request);
 
-    /*
-     * в приватном поле Класс Service, у которого есть поля Auth, и т.д. (названия сервисов)
-     * у этих полей будет метод, который вызывается вместо функций profile signup и т.д.
-     * внутри сервиса есть уникальный шаред на класс DBObject или как-то так
-     * и поля класса сервис имеют функции который по параметрам будут писать данные в респонс.
-     *
-     * Возможно мне не нужно проталкивать респонс, а проталкивать структуру, которая будет формироваться уже
-     * внутри сервиса. А внутри метода http connection уже писать эту структуру в качестве тела запроса или
-     * таргета
-     */
 };
 
 

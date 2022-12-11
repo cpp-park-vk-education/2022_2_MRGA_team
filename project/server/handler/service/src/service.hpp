@@ -15,7 +15,7 @@
 #include "db_manager.hpp"
 #include "constants.hpp"
 
-//using namespace structs;
+using bsv = boost::string_view;
 
 
 namespace beast = boost::beast;     // from <boost/beast.hpp>
@@ -54,7 +54,7 @@ public:
     service() = default;
 
 //    int run_auth_service (HCKey hcKey, boost::string_view query_params);
-    int run_event_service(/*HCKey hcKey,*/ boost::string_view query_params, Base &base);
+    static int run_event_service(bsv, std::string &response_body);
 //    int run_user_service (HCKey hcKey, boost::string_view query_params);
 //    int run_session_service (HCKey hcKey, boost::string_view query_params);
 

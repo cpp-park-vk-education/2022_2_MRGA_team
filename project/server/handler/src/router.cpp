@@ -1,43 +1,74 @@
 #include "router.hpp"
 
-router::router(bsv query_params, std::string &response_body) : _query_params(query_params) {
+#define BOOST_URL_NO_LIB
+#include <boost/url.hpp>
+
+using namespace boost::urls;
+
+router::router(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
 
     //get_handler    ["/api/v1/profile"]         = [&](bsv) {   service_->run_user_service(hcKey, query_params);    };
 
-    get_handler    ["/api/v1/events"]          = [&] () { events_handle(response_body); };
+    get_handler    ["/api/v1/events"]          = [&] () { events_handle(response, request); };
 
-//    post_handler   ["/api/v1/auth/login"]      = [&](bsv) {   service_->run_auth_service(hcKey, query_params);    };
+    post_handler   ["/api/v1/auth/login"]      = [&] () {   login_handle(response, request) ;   };
+
+    post_handler   ["/api/v1/auth/signup"]     = [&] () { signup_handle(response, request); };
 //
-//    post_handler   ["/api/v1/auth/signup"]     = [&](bsv) {   service_->run_auth_service(hcKey, query_params);    };
+    post_handler   ["/api/v1/events/visit"]    = [&] () {   visit_events_handle(response, request); };
 //
-//    post_handler   ["/api/v1/events/visit"]    = [&](bsv) {   service_->run_event_service(hcKey, query_params);   };
-//
-//    post_handler   ["/api/v1/events/create"]   = [&](bsv) {   service_->run_event_service(hcKey, query_params);   };
-//
-//
-//    put_handler    ["/api/v1/profile/setting"] = [&](bsv) {   service_->run_user_service(hcKey, query_params);    };
+    post_handler   ["/api/v1/events/create"]   = [&]() {  create_event_handle(response, request);   };
 //
 //
-//    delete_handler ["/api/v1/auth/logout"]     = [&](bsv) {   service_->run_auth_service(hcKey, query_params);    };
+    put_handler    ["/api/v1/profile/setting"] = [&]() {    setting_handle(response, request) ;  };
+
+
+    delete_handler ["/api/v1/auth/logout"]     = [&]() {     logout_handle(response, request)  ;};
 }
 
-void router::events_handle(std::string &response_body) {
-    //if (_query_params.empty()) {
+void router::events_handle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
 
-        Event eventExample;
+    boost::url url = parse_uri_reference(request.target()).value();
 
-        eventExample._id = 1;
-        eventExample._description = "_description";
-        eventExample._title = "_title";
-        eventExample._dateTime = "2000-10-12";
-        eventExample._maxVisitors = 13;
+    std::string response_body;
 
-        Events eventsExample;
+    if (url.query().empty()) {
+        int ec = service_->run_event_service(url.query(), response_body);
+    } else {
+        /// сервис авторизации, сервис ивентов
+    }
 
-        for (int i = 0; i < 3; ++i) {
-            eventsExample._events.push_back(eventExample);
-        }
+    // проверяем код ошибки
+    if (true) {
+        response.result(http::status::ok);
+        beast::ostream(response.body()) << response_body;
 
-        response_body = eventsExample.toJSON();
-    //}
+    } else {
+        // ошибка бд
+    }
 }
+
+void router::create_event_handle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
+
+}
+
+void router::visit_events_handle(res &response, const req &request) {
+
+}
+
+void router::login_handle(res &response, const req &request) {
+
+}
+
+void router::signup_handle(res &response, const req &request) {
+
+}
+
+void router::logout_handle(res &response, const req &request) {
+
+}
+
+void router::setting_handle(res &response, const req &request) {
+
+}
+

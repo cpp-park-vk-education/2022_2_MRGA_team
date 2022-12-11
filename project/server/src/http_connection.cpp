@@ -1,6 +1,5 @@
 #include "http_connection.hpp"
 
-#include <boost/url/parse.hpp>
 #include <boost/url/src.hpp>
 
 #include "router.hpp"
@@ -36,36 +35,30 @@ void http_connection::process_request() {
         switch (request_.method()) {
 
             case http::verb::get: {
-//            // здесь какая-то логика дальнейшего отправления запроса (до базы), возвращающей код ошибки
-//            response_.result(http::status::ok);
-//            response_.set(http::field::project, "MRGA");
-//            create_response();
-                std::string json_body;
-                std::shared_ptr<router> r = std::make_shared<router>(url.query(), json_body);
-                auto a = r->get_handler[url.path()];
-                a();
-                //std::make_shared<router>(url.query(), json_body)->get_handler.at(url.path());
+                response_.set(http::field::server, "MRGA");
+                std::string response_body;
 
-                beast::ostream(response_.body())
-                    << json_body;
+                std::make_shared<router>(response_, request_)->get_handler.at(url.path())();
                 break;
             }
-                /*
-//                 * отдельную логику, вызываемую в случае ошибки */
-//            case http::verb::post: {
-//                std::make_shared<router>(hcKey, url.query())->post_handler.at(url.path());
-//                break;
-//            }
-//
-//            case http::verb::put: {
-//                std::make_shared<router>(hcKey, url.query())->put_handler.at(url.path());
-//                break;
-//            }
-//
-//            case http::verb::delete_: {
-//                std::make_shared<router>(hcKey, url.query())->delete_handler.at(url.path());
-//                break;
-//            }
+
+            case http::verb::post: {
+                std::string response_body;
+                std::make_shared<router>(response_, request_)->post_handler.at(url.path())();
+                break;
+            }
+
+            case http::verb::put: {
+                std::string response_body;
+                std::make_shared<router>(response_, request_)->put_handler.at(url.path())();
+                break;
+            }
+
+            case http::verb::delete_: {
+                std::string response_body;
+                std::make_shared<router>(response_, request_)->delete_handler.at(url.path())();
+                break;
+            }
 
             default: {
                 response_.result(http::status::bad_request);
@@ -141,7 +134,7 @@ void http_connection::write_response() {
     auto self = shared_from_this();
 
     response_.content_length(response_.body().size());
-    response_.body();
+    //response_.body();
 
     http::async_write(
             socket_,
