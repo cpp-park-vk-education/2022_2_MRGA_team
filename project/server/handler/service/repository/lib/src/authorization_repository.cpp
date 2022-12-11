@@ -3,9 +3,8 @@
 AuthorizationRepository::AuthorizationRepository(DbManager &dbm)
 : db_manager(dbm) {}
 
-User AuthorizationRepository::create_user(User user) {
-  User created_user;
-  return created_user;
+int AuthorizationRepository::create_user(User user) {
+  return 1;
 }
 
 int AuthorizationRepository::existence_nickname(const std::string &nickname) {

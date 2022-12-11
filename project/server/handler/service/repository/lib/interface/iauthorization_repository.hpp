@@ -7,7 +7,7 @@
 
 class IAuthorizationRepository {
  public:
-  virtual User create_user(User user) = 0;
+  virtual int create_user(User user) = 0;
 
   virtual int existence_nickname(const std::string &nickname) = 0;
   virtual int existence_email(const std::string &email) = 0;
