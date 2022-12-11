@@ -5,7 +5,6 @@ if(WITH_TESTING)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${MY_TEST_FLAGS}")
 endif()
 
-
 set(MY_INCLUDE_DIRS "include")
 set(MY_INTERFACE_DIRS "interface")
 

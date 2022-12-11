@@ -17,8 +17,6 @@ class User {
 
 class Token {
  public:
-  size_t id;
-
   std::string token;             // UNIQUE
   std::string expire_date_time;  // Format: "yyyy-mm-dd hh:mm:ss"
 
@@ -42,6 +40,7 @@ class Event {
   std::string description;
   std::string date_time;    // Format: "yyyy-mm-dd hh:mm:ss"
   size_t max_visitors = 0;  // ALLOW NULL
+  size_t curr_visitors = 0; // Annotation
 
   Address address;
 };

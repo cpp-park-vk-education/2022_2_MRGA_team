@@ -8,14 +8,14 @@ User AuthorizationRepository::create_user(User user) {
   return created_user;
 }
 
-bool AuthorizationRepository::existence_nickname(const std::string &nickname) {
+int AuthorizationRepository::existence_nickname(const std::string &nickname) {
   return true;
 }
-bool AuthorizationRepository::existence_email(const std::string &email) {
+int AuthorizationRepository::existence_email(const std::string &email) {
   return true;
 }
 
-bool AuthorizationRepository::check_password(size_t user_id,
+int AuthorizationRepository::check_password(size_t user_id,
                                     const std::string &input_password) {
   return true;
 }

@@ -13,10 +13,13 @@ class EventRepository : public IEventRepository {
 
   Event create_event(Event event);
 
+  std::vector<Event> get_events();
+
   int update_event_data(Event event);
 
   int delete_event(size_t event_id);
 
+  int existence_event(size_t event_id);
   Event get_event_data(size_t event_id);
 
   std::vector<Event> get_visited_events_by_user(size_t user_id);

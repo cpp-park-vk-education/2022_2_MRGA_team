@@ -1,5 +1,5 @@
 DOCKERFILE=./Dockerfile
-IMAGE_NAME=mashanab/gcc_linters_valgrind_cmake_gtest
+IMAGE_NAME=yakwilik/gcc_qt6_boost_libpqxx_gtest_lcov
 CONTEXT=.
 
 
@@ -14,7 +14,7 @@ docker_push:
 	docker push $(IMAGE_NAME)
 
 docker_run: 
-	docker run --rm -v "$(PWD):/Project" -w /Project -it $(IMAGE_NAME) bash
+	docker run -it -v "${PWD}:/project" --net=host -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm $(IMAGE_NAME)
 
 test: clean
 	scripts/build.sh -D WITH_TESTING=ON -D WITH_DEBUGING=ON -D WITH_MEMCHECK=OFF -D WITH_SANITIZE=OFF

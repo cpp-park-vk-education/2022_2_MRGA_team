@@ -2,6 +2,10 @@
 
 UserRepository::UserRepository(DbManager &dbm):db_manager(dbm) {}
 
+int UserRepository::existence_user(size_t user_id) {
+  return 1;
+}
+
 User UserRepository::get_user_data(size_t user_id) {
   User user;
   return user;
