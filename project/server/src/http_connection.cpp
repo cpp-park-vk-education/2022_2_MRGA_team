@@ -3,7 +3,6 @@
 #include <boost/url/parse.hpp>
 #include <boost/url/src.hpp>
 
-
 #include "router.hpp"
 
 
@@ -32,7 +31,7 @@ void http_connection::process_request() {
     boost::url url = parse_uri_reference(request_.target()).value();
 
     try {
-        HCKey hcKey = parseHCKey(url.query());
+        //HCKey hcKey = parseHCKey(url.query());
 
         switch (request_.method()) {
 
@@ -41,25 +40,32 @@ void http_connection::process_request() {
 //            response_.result(http::status::ok);
 //            response_.set(http::field::project, "MRGA");
 //            create_response();
-                std::make_shared<router>(hcKey, url.query())->get_handler.at(url.path());
+                std::string json_body;
+                std::shared_ptr<router> r = std::make_shared<router>(url.query(), json_body);
+                auto a = r->get_handler[url.path()];
+                a();
+                //std::make_shared<router>(url.query(), json_body)->get_handler.at(url.path());
+
+                beast::ostream(response_.body())
+                    << json_body;
                 break;
             }
                 /*
-                 * отдельную логику, вызываемую в случае ошибки */
-            case http::verb::post: {
-                std::make_shared<router>(hcKey, url.query())->post_handler.at(url.path());
-                break;
-            }
-
-            case http::verb::put: {
-                std::make_shared<router>(hcKey, url.query())->put_handler.at(url.path());
-                break;
-            }
-
-            case http::verb::delete_: {
-                std::make_shared<router>(hcKey, url.query())->delete_handler.at(url.path());
-                break;
-            }
+//                 * отдельную логику, вызываемую в случае ошибки */
+//            case http::verb::post: {
+//                std::make_shared<router>(hcKey, url.query())->post_handler.at(url.path());
+//                break;
+//            }
+//
+//            case http::verb::put: {
+//                std::make_shared<router>(hcKey, url.query())->put_handler.at(url.path());
+//                break;
+//            }
+//
+//            case http::verb::delete_: {
+//                std::make_shared<router>(hcKey, url.query())->delete_handler.at(url.path());
+//                break;
+//            }
 
             default: {
                 response_.result(http::status::bad_request);

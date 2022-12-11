@@ -15,11 +15,28 @@
 #include "db_manager.hpp"
 #include "constants.hpp"
 
+//using namespace structs;
+
+
 namespace beast = boost::beast;     // from <boost/beast.hpp>
 namespace http = beast::http;       // from <boost/beast/http.hpp>
 namespace net = boost::asio;        // from <boost/asio.hpp>
 using tcp = net::ip::tcp;           // from <boost/asio/ip/tcp.hpp>
 
+
+struct Base {
+    User user;
+    Profile profile;
+    Event event;
+    Address address;
+    Token token;
+
+    std::vector<User> users;
+    std::vector<Profile> profiles;
+    std::vector<Event> events;
+    std::vector<User> addresses;
+    std::vector<Token> tokens;
+};
 
 class service {
     class auth_service {
@@ -36,10 +53,10 @@ class service {
 public:
     service() = default;
 
-    int run_auth_service (HCKey hcKey, boost::string_view query_params);
-    int run_event_service(HCKey hcKey, boost::string_view query_params);
-    int run_user_service (HCKey hcKey, boost::string_view query_params);
-    int run_session_service (HCKey hcKey, boost::string_view query_params);
+//    int run_auth_service (HCKey hcKey, boost::string_view query_params);
+    int run_event_service(/*HCKey hcKey,*/ boost::string_view query_params, Base &base);
+//    int run_user_service (HCKey hcKey, boost::string_view query_params);
+//    int run_session_service (HCKey hcKey, boost::string_view query_params);
 
 private:
     std::shared_ptr<DbManager> db_manager_ = std::make_shared<DbManager>();
