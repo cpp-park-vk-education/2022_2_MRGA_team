@@ -12,8 +12,8 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     subscibeButton("Subscribe"),
     eventDecsription("Description"), deleteButton(new QPushButton())
 {
-    // TODO: сделать отдельный конструктор Input под поля ниже
-    this->setProperty("cssClass", "eventItem"); // TODO: сделать так чтобы background для каждого EventItem был униакальный, а все отслальное одинаковое
+
+    this->setProperty("cssClass", "eventItem");                                         // TODO: сделать так чтобы background для каждого EventItem был униакальный, а все отслальное одинаковое
     this->setStyleSheet("border-radius: 15px;");
 
     subscibeButton.setProperty("cssClass", "subscribeButton");
@@ -53,7 +53,7 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     QLabel* visitors = new QLabel("People: 20");
     visitors->setContentsMargins(0, 0, 100, 0);
     visitors->setMaximumWidth(300);
-    visitors->setStyleSheet("color: #ffffff; font-size: 18px; font-weight: 700;");
+    visitors->setStyleSheet("min-height: 50px; color: #ffffff; font-size: 18px; font-weight: 700;");
     visitorsInfoLayout->addWidget(visitors, 0, Qt::AlignLeft | Qt::AlignTop);
     QLabel* maxVisitors = new QLabel("Maximum people: 50");
     maxVisitors->setMaximumWidth(300);
@@ -134,7 +134,7 @@ EventItem::EventItem(const QString &itemType) : eventItemLayout(this),
 
     visitorsInfoLayout->setContentsMargins(0, 0, 0, 120);
     QLabel* visitors = new QLabel("People: ");
-//    visitors->setContentsMargins(0, 0, 100, 0);
+    visitors->setContentsMargins(0, 0, 100, 0);
     visitors->setMaximumWidth(300);
     visitors->setStyleSheet("color: #ffffff; font-size: 18px; font-weight: 700;");
     visitorsInfoLayout->addWidget(visitors, 0, Qt::AlignLeft | Qt::AlignTop);
@@ -270,11 +270,6 @@ EventItem::EventItem(const std::initializer_list<QString>& list) : eventItemLayo
 
     connect(&this->subscibeButton, &QPushButton::clicked, this, &EventItem::onSubcribeClicked);
 
-    // логика
-//    for (const auto& elem : initFieldList) {
-//        std::cout << elem.toStdString() << std::endl;
-//    }
-
     visitors->setText(visitors->text() + initFieldList[2]);
     maxVisitors->setText(maxVisitors->text() + initFieldList[3]);
     date->setText(date->text() + initFieldList[4]);
@@ -287,8 +282,9 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
     for (const auto& elem : list) {
         initFieldList.push_back(elem);
     }
-   /* eventTitle.setText(initFieldList[0]);
-    eventDecsription.setText(initFieldList[1])*/;
+
+    eventTitle.setText(initFieldList[0]);
+    eventDecsription.setText(initFieldList[1]);
     visitors->setText(visitors->text() + initFieldList[2]);
     maxVisitors->setText(maxVisitors->text() + initFieldList[3]);
     date->setText(date->text() + initFieldList[4]);

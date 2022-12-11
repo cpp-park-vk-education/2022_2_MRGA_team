@@ -196,7 +196,6 @@ EventItem#TaskCard {
     min-width: 1440px;
     min-height: 750px;
     border-radius: 15px;
-/*    background-color: rgba(77, 8, 70, 1);*/
     background-color: rgba(0, 80, 70, 1);
 }
 
@@ -219,7 +218,7 @@ EventItem#TaskCard {
     max-width: 200px;
     max-height: 50px;
     background-color: rgba(77, 8, 70, 1);;
-    color: #ffffff;
+    color: green;
     border-radius: 5px;
     margin-left: 330px;
 }

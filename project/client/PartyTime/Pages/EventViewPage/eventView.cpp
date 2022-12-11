@@ -29,7 +29,7 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
                     std::cout << "header " << h << " value " << v << std::endl;
                 }
             }
-    } catch(std::exception& error) {
+    } catch (std::exception& error) {
         std::cout << error.what() << std::endl;
     }
 
