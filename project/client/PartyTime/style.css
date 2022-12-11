@@ -112,6 +112,8 @@ QLabel#addressTitle {
 }
 
 QLabel#eventDescription {
+    min-width: 500px;
+    max-height: 300px;
     font-size: 16px;
     font-weight: 400;
     background-color: #ffffff;
@@ -123,7 +125,6 @@ QLabel#eventDescription {
 /*Components styles*/
 *[cssClass~="clientNavbar"] {
     min-width: 1440px;
-/*    background-color: rgba(97, 137, 105, 1);*/
     background-color: rgba(77, 8, 70, 1);
     border: 1px solid rgba(23, 7, 57, 1);
     padding-left: 0px;
