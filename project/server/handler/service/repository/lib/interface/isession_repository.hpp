@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "objects.hpp"
+#include "../../../json_struct_mapping_lib/structs.hpp"
 
 class ISessionRepository {
  public:

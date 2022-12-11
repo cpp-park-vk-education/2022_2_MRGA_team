@@ -3,7 +3,7 @@
 #include <cstddef>
 #include <string>
 
-#include "objects.hpp"
+#include "../../../json_struct_mapping_lib/structs.hpp"
 
 class IUserRepository {
  public:

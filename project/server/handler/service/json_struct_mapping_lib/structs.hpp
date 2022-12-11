@@ -25,16 +25,23 @@
     };
 
     struct User : public DBObject {
-        std::string _nickname;  // UNIQUE
+        std::string _nickname;    // UNIQUE
         std::string _password;
+        std::string _email;       // UNIQUE
+        std::string _birthDate;   // Format: "yyyy-mm-dd"
+        std::string _description; // ALLOW NULL
     public:
         User() = default;
-        User(ui id, std::string  &nickname, std::string &password) :
+        User(ui id, std::string &nickname, std::string &password, std::string &email,
+             std::string &birthDate, std::string &description) :
                 DBObject(id),
-                _nickname (std::move(nickname)),
-                _password (std::move(password)) {};
+                _nickname    (std::move(nickname)),
+                _password    (std::move(password)),
+                _email       (std::move(email)),
+                _birthDate   (std::move(birthDate)),
+                _description (std::move(description)) {};
 
-        User(const std::string &json);
+        explicit User(const std::string &json);
         std::string toJSON() override;
     };
 
@@ -52,7 +59,7 @@
                 _birthDate   (std::move(birthDate)),
                 _description (std::move(description)) {};
 
-        Profile(const std::string &json);
+        explicit Profile(const std::string &json);
         std::string toJSON() override;
     };
 
@@ -60,8 +67,9 @@
         //std::set<ui> _members;
         std::string    _title;
         std::string    _description;
-        std::string    _dateTime;
-        ui             _maxVisitors;
+        std::string    _dateTime;         // Format: "yyyy-mm-dd hh:mm:ss"
+        ui             _maxVisitors = 0;  // ALLOW NULL
+        ui             _currVisitors = 0; // Annotation
     public:
         Event() = default;
         Event(ui id,
@@ -69,14 +77,16 @@
               std::string    &tittle,
               std::string    &description,
               std::string    &dateTime,
-              ui            maxVisitors = 0) :
+              ui            maxVisitors = 0,
+              ui            currVisitors = 0) :
 
                 DBObject(id),
                 //_members     (std::move(members)),
-                _title       (std::move(tittle)),
-                _description (std::move(description)),
-                _dateTime    (std::move(dateTime)),
-                _maxVisitors (maxVisitors) {};
+                _title        (std::move(tittle)),
+                _description  (std::move(description)),
+                _dateTime     (std::move(dateTime)),
+                _maxVisitors  (maxVisitors),
+                _currVisitors (currVisitors) {};
 
         explicit Event(const std::string &json);
         std::string toJSON() override;
@@ -96,8 +106,8 @@
 
     struct Address : public DBObject {
         std::string _address;
-        double      _longitude;
-        double      _latitude;
+        double      _longitude = 0;
+        double      _latitude = 0;
     public:
         Address() = default;
         Address(ui id, std::string &address, double longitude, double latitude) :
@@ -122,7 +132,7 @@
                 _expireDateTime (std::move(expireDateTime)),
                 _user           (std::move(user)) {}
 
-        Token(const std::string &json);
+        explicit Token(const std::string &json);
         std::string toJSON() override;
     };
 

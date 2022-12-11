@@ -1,16 +1,30 @@
 version: '3.7'
 services:
   server:
-    image: yakwilik/boost_1_81_beta
+    image: yakwilik/mrga_backend
 
-    command: bash -c "cd build && ./server"
-    restart: always
+    command: make run
 
     working_dir: '/project'
+    volumes:
+      - "${PWD}/:/project/"
     networks:
       - service-network
     ports:
-      - '8081:8080'
+      - '8080:8080'
+
+  postgres:
+    image: postgres:12.0-alpine
+    environment:
+      POSTGRES_DB: "mashadb"
+      POSTGRES_USER: "mashapg"
+      POSTGRES_PASSWORD: "mashapg"
+    volumes:
+      - ./sql_scripts/:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - service-network
 
 networks:
   service-network:

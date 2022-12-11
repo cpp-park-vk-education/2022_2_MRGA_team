@@ -8,9 +8,12 @@
 //namespace structs {
 
     std::string User::toJSON() {
-        sm::reg(&User::_id,       "id");
-        sm::reg(&User::_nickname, "nickname");
-        sm::reg(&User::_password, "password");
+        sm::reg(&User::_id,          "id");
+        sm::reg(&User::_nickname,    "nickname");
+        sm::reg(&User::_password,    "password");
+        sm::reg(&User::_email,       "email");
+        sm::reg(&User::_description, "description");
+        sm::reg(&User::_birthDate,   "birthDate");
 
         std::ostringstream outJsonData;
         sm::map_struct_to_json(*(this), outJsonData);
@@ -18,9 +21,12 @@
     }
 
     User::User(const std::string &json) {
-        sm::reg(&User::_id,       "id");
-        sm::reg(&User::_nickname, "nickname");
-        sm::reg(&User::_password, "password");
+        sm::reg(&User::_id,          "id");
+        sm::reg(&User::_nickname,    "nickname");
+        sm::reg(&User::_password,    "password");
+        sm::reg(&User::_email,       "email");
+        sm::reg(&User::_description, "description");
+        sm::reg(&User::_birthDate,   "birthDate");
 
         std::stringstream ss(json);
         sm::map_json_to_struct(*this, ss);
