@@ -1,8 +1,6 @@
 #include "http_connection.hpp"
 
-#include <boost/url/parse.hpp>
 #include <boost/url/src.hpp>
-
 
 #include "router.hpp"
 
@@ -32,31 +30,33 @@ void http_connection::process_request() {
     boost::url url = parse_uri_reference(request_.target()).value();
 
     try {
+        //HCKey hcKey = parseHCKey(url.query());
 
         switch (request_.method()) {
 
             case http::verb::get: {
-//            // здесь какая-то логика дальнейшего отправления запроса (до базы), возвращающей код ошибки
-//            response_.result(http::status::ok);
-//            response_.set(http::field::project, "MRGA");
-//            create_response();
-                std::make_shared<router>(url.query())->get_handler.at(url.path());
+                response_.set(http::field::server, "MRGA");
+                std::string response_body;
+
+                std::make_shared<router>(response_, request_)->get_handler.at(url.path())();
                 break;
             }
-                /*
-                 * отдельную логику, вызываемую в случае ошибки */
+
             case http::verb::post: {
-                std::make_shared<router>(url.query())->post_handler.at(url.path());
+                std::string response_body;
+                std::make_shared<router>(response_, request_)->post_handler.at(url.path())();
                 break;
             }
 
             case http::verb::put: {
-                std::make_shared<router>(url.query())->put_handler.at(url.path());
+                std::string response_body;
+                std::make_shared<router>(response_, request_)->put_handler.at(url.path())();
                 break;
             }
 
             case http::verb::delete_: {
-                std::make_shared<router>(url.query())->delete_handler.at(url.path());
+                std::string response_body;
+                std::make_shared<router>(response_, request_)->delete_handler.at(url.path())();
                 break;
             }
 
@@ -134,7 +134,7 @@ void http_connection::write_response() {
     auto self = shared_from_this();
 
     response_.content_length(response_.body().size());
-    response_.body();
+    //response_.body();
 
     http::async_write(
             socket_,
