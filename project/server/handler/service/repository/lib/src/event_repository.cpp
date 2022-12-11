@@ -7,6 +7,10 @@ Event EventRepository::create_event(Event event) {
   return created_event;
 }
 
+std::vector<Event> EventRepository::get_events() {
+  return {};
+}
+
 int EventRepository::update_event_data(Event event) {
   return 1;
 }

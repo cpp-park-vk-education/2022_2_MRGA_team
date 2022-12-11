@@ -13,14 +13,11 @@ class DbManagerRepTest : public ::testing::Test {
 };
 
 
-TEST_F(DbManagerRepTest, GetFreeConnection) {
-    EXPECT_NO_THROW(db_manager.get_free_connection());
-}
+TEST_F(DbManagerRepTest, GetFreeAndReturnConnection) {
+    Connection *conn = db_manager.get_free_connection();
+    EXPECT_EQ(db_manager.count_connections(), 9);
 
-TEST_F(DbManagerRepTest, ReturnConnection) {
-    Connection c("dbname = mashadb user = mashapg password = mashapg \
-      hostaddr = 127.0.0.1 port = 5432");
-    
-    // EXPECT_NO_THROW(db_manager.return_connection(c));
-
+    int res = db_manager.return_connection(conn);
+    EXPECT_EQ(res, 1);
+    EXPECT_EQ(db_manager.count_connections(), 10);
 }

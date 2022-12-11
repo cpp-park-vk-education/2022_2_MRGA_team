@@ -31,6 +31,11 @@ TEST_F(EventRepTest, CreateEvent) {
     EXPECT_NO_THROW(Event event_data = event_rep.create_event(event));
 }
 
+TEST_F(EventRepTest, GetEvents) {
+    EventRepository event_rep(db_manager);
+    EXPECT_NO_THROW(event_rep.get_events());
+}
+
 TEST_F(EventRepTest, UpdateEventData) {
     EventRepository event_rep(db_manager);
     EXPECT_NO_THROW(event_rep.update_event_data(event));

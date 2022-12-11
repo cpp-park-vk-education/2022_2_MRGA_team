@@ -13,6 +13,8 @@ class EventRepository : public IEventRepository {
 
   Event create_event(Event event);
 
+  std::vector<Event> get_events();
+
   int update_event_data(Event event);
 
   int delete_event(size_t event_id);

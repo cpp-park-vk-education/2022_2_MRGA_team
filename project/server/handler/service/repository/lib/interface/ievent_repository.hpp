@@ -10,6 +10,8 @@ class IEventRepository {
  public:
   virtual Event create_event(Event event) = 0;
 
+  virtual std::vector<Event> get_events() = 0;
+
   virtual int update_event_data(Event event) = 0;
   virtual int delete_event(size_t event_id) = 0;
 
