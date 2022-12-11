@@ -34,7 +34,6 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     }
 
     this->createEventButton->setProperty("cssClass", "createEventButton");
-//    this->createEventButton->setStyleSheet("min-width: 200px; min-height: 50px; background-color: #ffffff; color: #000000; border-radius: 5px;");
     this->setContentsMargins(0, 20, 0, 0);
     Navbar* navbarFactory = new Navbar("", 3);
     this->navbar = *navbarFactory->create("visitor");
@@ -127,7 +126,6 @@ void EventViewPage::onAdd()
     addressLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
     address->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
 
-
     QHBoxLayout* input6 = new QHBoxLayout();
     inputLayout->addLayout(input6, Qt::AlignTop);
 
@@ -155,14 +153,16 @@ void EventViewPage::onAdd()
 
 void EventViewPage::onRemove()
 {
-    form->hide();
-    this->eventName->clear();
-    this->description->clear();
-    this->date->clear();
-    this->time->clear();
-    this->address->clear();
-    this->visitors->clear();
-    this->maxVisitors->clear();
+    if (form) {
+        form->hide();
+        this->eventName->clear();
+        this->description->clear();
+        this->date->clear();
+        this->time->clear();
+        this->address->clear();
+        this->visitors->clear();
+        this->maxVisitors->clear();
+    }
 }
 
 void EventViewPage::onCreate()
@@ -187,9 +187,7 @@ void EventViewPage::onCreate()
 EventViewPage::EventViewPage(const std::initializer_list<QString> typesList) : mainLayout(new QVBoxLayout())
 {
     for (const auto& elem : typesList) {
-        if (elem == "") {
-
-        }
+        if (elem == "") {}
     }
 }
 

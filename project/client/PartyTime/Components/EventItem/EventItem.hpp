@@ -21,6 +21,7 @@ public:
 private:
     QHBoxLayout eventItemLayout;
     QVBoxLayout* leftSide;
+    QHBoxLayout* topContainer;
     QVBoxLayout* informationLayout;
     QVBoxLayout* visitorsInfoLayout;
     QHBoxLayout* dateTimeLayout;
