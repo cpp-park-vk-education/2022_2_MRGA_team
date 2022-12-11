@@ -8,10 +8,7 @@ services:
     working_dir: '/project'
     volumes:
       - "${PWD}/:/project/"
-    networks:
-      - service-network
-    ports:
-      - '8080:8080'
+    network_mode: "host"
 
   postgres:
     image: postgres:12.0-alpine
@@ -23,9 +20,7 @@ services:
       - ./sql_scripts/:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
-    networks:
-      - service-network
 
-networks:
-  service-network:
-    driver: bridge
+#networks:
+#  service-network:
+#    driver: bridge

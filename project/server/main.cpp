@@ -6,4 +6,5 @@ enum { PORT = 8080 };
 int main() {
     tcp_server server(IPV::V4, PORT);
     server.run();
+    std::cout << "!!!!!!!!!!!СЕРВЕР УПАЛ!!!!!!!!";
 }

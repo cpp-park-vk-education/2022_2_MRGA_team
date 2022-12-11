@@ -25,7 +25,7 @@ void http_server(tcp::acceptor& acceptor, tcp::socket& socket) {
 tcp_server::tcp_server(IPV ipv, unsigned short port) :
     ip_version_(ipv),
     port_(port),
-    acceptor_(io_context_, tcp::endpoint(ip::address::from_string("0.0.0.0"), port_)) {}
+    acceptor_(io_context_, tcp::endpoint(ip::address::from_string("127.0.0.1"), port_)) {}
 
 int tcp_server::run() {
     try {

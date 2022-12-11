@@ -1,6 +1,7 @@
 #include "db_manager.hpp"
 
 DbManager::DbManager() : MAX_SIZE(10) {
+    std::cout << "ВЫЗОВ КОНСТРУКТОРА DB MANAGER" << std::endl;
   connections.resize(MAX_SIZE);
   std::string config_data(load_config(path_config));
   for (size_t i = 0; i < MAX_SIZE; ++i) {
