@@ -13,8 +13,17 @@ EventList::EventList(QWidget* parent) : painter(parent),
     scrollWidget->setLayout(&scrollLayout);
     scroll->setWidget(scrollWidget);
     scroll->setWidgetResizable(true);
-
     mainLayout->addWidget(scroll);
+
+//    scroll->setStyleSheet("border-radius: 15px;");
+//    QPalette Pal(palette());
+//    Pal.setColor(QPalette::Base, Qt::white);
+//    scroll->setAutoFillBackground(true);
+//    scroll->setPalette(Pal);
+
+
+
+
 
     for (int i = 0; i < 10; ++i) {
         EventItem* event = new EventItem();
