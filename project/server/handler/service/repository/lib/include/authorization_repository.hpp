@@ -10,7 +10,7 @@ class AuthorizationRepository : public IAuthorizationRepository {
  public:
   explicit AuthorizationRepository(DbManager &dbm);
 
-  User create_user(User user);
+  int create_user(User user);
 
   int existence_nickname(const std::string &nickname);
   int existence_email(const std::string &email);

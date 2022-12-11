@@ -11,7 +11,7 @@ class EventRepository : public IEventRepository {
  public:
   explicit EventRepository(DbManager &dbm);
 
-  Event create_event(Event event);
+  int create_event(Event event);
 
   std::vector<Event> get_events();
 

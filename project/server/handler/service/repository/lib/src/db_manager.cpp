@@ -38,3 +38,12 @@ int DbManager::return_connection(Connection *conn) {
   connections.push_back(conn);
   return 1;
 }
+
+DbManager::~DbManager() {
+  while(!connections.empty()) {
+    Connection *conn = connections.back();
+    conn->close();
+    delete conn;
+    connections.pop_back();
+  }
+}

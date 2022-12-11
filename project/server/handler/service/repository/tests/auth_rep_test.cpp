@@ -24,7 +24,7 @@ class AuthRepTest : public ::testing::Test {
 
 TEST_F(AuthRepTest, CreateUser) {
     AuthorizationRepository auth_rep(db_manager);
-    EXPECT_NO_THROW(User user_data = auth_rep.create_user(user));
+    EXPECT_NO_THROW(auth_rep.create_user(user));
 }
 
 TEST_F(AuthRepTest, ExistenceNickname) {

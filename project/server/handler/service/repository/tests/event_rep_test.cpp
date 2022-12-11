@@ -11,6 +11,7 @@ class EventRepTest : public ::testing::Test {
             .description = "For funny people!",
             .date_time = "2023-01-01 00:00:00",
             .max_visitors = 10,
+            .user_id = 0,
             .address = {
                 .address = "Кремль, Москва",
                 .longitude = 34.0294,
@@ -26,14 +27,14 @@ class EventRepTest : public ::testing::Test {
 };
 
 
-TEST_F(EventRepTest, CreateEvent) {
+TEST_F(EventRepTest, CreateEventAnd) {
     EventRepository event_rep(db_manager);
-    EXPECT_NO_THROW(Event event_data = event_rep.create_event(event));
+    EXPECT_TRUE(event_rep.create_event(event) > 0);
 }
 
 TEST_F(EventRepTest, GetEvents) {
     EventRepository event_rep(db_manager);
-    EXPECT_NO_THROW(event_rep.get_events());
+    EXPECT_NO_THROW(std::vector<Event> events(event_rep.get_events()));
 }
 
 TEST_F(EventRepTest, UpdateEventData) {

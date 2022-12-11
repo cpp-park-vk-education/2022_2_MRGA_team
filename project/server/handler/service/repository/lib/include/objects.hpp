@@ -27,20 +27,21 @@ class Address {
  public:
   size_t id;
 
-  std::string address;
-  double longitude;
-  double latitude;
+  std::string address;  // NOT NULL
+  double longitude;  // DEFAULT NULL
+  double latitude;  // DEFAULT NULL
 };
 
 class Event {
  public:
   size_t id;
 
-  std::string title;
+  std::string title;  // NOT NULL
   std::string description;
-  std::string date_time;    // Format: "yyyy-mm-dd hh:mm:ss"
+  std::string date_time;    // Format: "yyyy-mm-dd hh:mm:ss" NOT NULL
   size_t max_visitors = 0;  // ALLOW NULL
   size_t curr_visitors = 0; // Annotation
 
-  Address address;
+  size_t user_id;  // NOT NULL
+  Address address;  // NOT NULL
 };
