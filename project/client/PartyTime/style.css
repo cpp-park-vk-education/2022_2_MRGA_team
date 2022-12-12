@@ -45,6 +45,10 @@ QPushButton#enterButton:hover {
 /*    font-weight: 600px;*/
 }
 
+registration#registration {
+    max-height: 900px;
+}
+
 QPushButton#registrationButton {
     font-size: 20px;
 }
