@@ -28,6 +28,8 @@ router::router(http::response<http::dynamic_body> &response, const http::request
 
 void router::events_handle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
 
+    std::cerr << "=========ЗАПРОС ПРИШЕЛ В GET HANDLE==========" << std::endl;
+
     boost::url url = parse_uri_reference(request.target()).value();
 
     std::string response_body;

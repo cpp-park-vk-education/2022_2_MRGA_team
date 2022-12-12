@@ -27,6 +27,8 @@ void http_connection::process_request() {
     response_.version(request_.version());
     response_.keep_alive(false);
 
+    std::cerr << "=========ЗАПРОС ПРИШЕЛ В HTTP CONNECTION==========" << std::endl;
+
     boost::url url = parse_uri_reference(request_.target()).value();
 
     try {

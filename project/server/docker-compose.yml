@@ -8,7 +8,12 @@ services:
     working_dir: '/project'
     volumes:
       - "${PWD}/:/project/"
-    network_mode: "host"
+        #- "sock:/run/postgresql/.s.PGSQL.5432:ro"
+      - "sock:/run/postgresql:ro"
+
+        # network_mode: "host"
+    ports:
+      - "8080:8080"
 
   postgres:
     image: postgres:12.0-alpine
@@ -18,9 +23,19 @@ services:
       POSTGRES_PASSWORD: "mashapg"
     volumes:
       - ./sql_scripts/:/docker-entrypoint-initdb.d
+        #- "sock:/run/postgresql/.s.PGSQL.5432"
+      - "sock:/run/postgresql"
+
     ports:
       - "5432:5432"
 
-#networks:
-#  service-network:
-#    driver: bridge
+networks:
+  service-network:
+    driver: bridge
+
+volumes:
+  sock:
+    
+
+
+

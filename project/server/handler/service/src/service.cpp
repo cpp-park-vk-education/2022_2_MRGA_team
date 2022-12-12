@@ -75,6 +75,9 @@
 //    return 0;
 //}
 int service::run_event_service(bsv query_params, std::string &response_body) {
+
+     std::cerr << "=========ЗАПРОС ПРИШЕЛ В GET EVENT SERVICE==========" << std::endl;
+
     if (query_params.empty()) {
         Events events;
 
