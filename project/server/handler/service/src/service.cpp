@@ -76,21 +76,11 @@
 //}
 int service::run_event_service(bsv query_params, std::string &response_body) {
     if (query_params.empty()) {
-        Event eventExample;
+        Events events;
 
-        eventExample._id = 1;
-        eventExample._description = "_description";
-        eventExample._title = "_title";
-        eventExample._dateTime = "2000-10-12";
-        eventExample._maxVisitors = 13;
+        events._events = EventRepository(db_manager_).get_events();
 
-        Events eventsExample;
-
-        for (int i = 0; i < 3; ++i) {
-            eventsExample._events.push_back(eventExample);
-        }
-
-        response_body = eventsExample.toJSON();
+        response_body = events.toJSON();
     }
     return 0;
 }

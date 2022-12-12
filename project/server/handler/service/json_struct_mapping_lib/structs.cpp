@@ -154,7 +154,7 @@
         sm::reg(&Token::_id,             "id");
         sm::reg(&Token::_token,          "token");
         sm::reg(&Token::_expireDateTime, "expireDateTime");
-        sm::reg(&Token::_user,           "user");
+        sm::reg(&Token::_userId,           "userId");
 
         sm::reg(&User::_nickname,        "nickname");
         sm::reg(&User::_password,        "password");
@@ -168,7 +168,7 @@
         sm::reg(&Token::_id,             "id");
         sm::reg(&Token::_token,          "token");
         sm::reg(&Token::_expireDateTime, "expireDateTime");
-        sm::reg(&Token::_user,           "user");
+        sm::reg(&Token::_userId,           "userId");
 
         sm::reg(&User::_nickname,        "nickname");
         sm::reg(&User::_password,        "password");

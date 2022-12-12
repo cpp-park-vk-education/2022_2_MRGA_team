@@ -51,15 +51,14 @@ class service {
 
     };
 public:
-    service() = default;
 
 //    int run_auth_service (HCKey hcKey, boost::string_view query_params);
-    static int run_event_service(bsv, std::string &response_body);
+    int run_event_service(bsv, std::string &response_body);
 //    int run_user_service (HCKey hcKey, boost::string_view query_params);
 //    int run_session_service (HCKey hcKey, boost::string_view query_params);
 
 private:
-    std::shared_ptr<DbManager> db_manager_ = std::make_shared<DbManager>();
+    DbManager db_manager_;
 };
 
 

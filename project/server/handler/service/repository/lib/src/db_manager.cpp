@@ -43,7 +43,7 @@ int DbManager::return_connection(Connection *conn) {
 DbManager::~DbManager() {
   while(!connections.empty()) {
     Connection *conn = connections.back();
-    conn->close();
+    //conn->close();
     delete conn;
     connections.pop_back();
   }

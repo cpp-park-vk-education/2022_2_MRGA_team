@@ -3,6 +3,7 @@
 
 #include <string>
 #include <set>
+#include <utility>
 #include <vector>
 
 //namespace structs {
@@ -63,6 +64,22 @@
         std::string toJSON() override;
     };
 
+    struct Address : public DBObject {
+        std::string _address;
+        double      _longitude = 0;
+        double      _latitude = 0;
+    public:
+        Address() = default;
+        Address(ui id, const std::string &address, double longitude, double latitude) :
+                DBObject(id),
+                _address   (std::move(address)),
+                _longitude (longitude),
+                _latitude  (latitude) {}
+
+        Address(const std::string &json);
+        std::string toJSON() override;
+    };
+
     struct Event : public DBObject {
         //std::set<ui> _members;
         std::string    _title;
@@ -70,15 +87,20 @@
         std::string    _dateTime;         // Format: "yyyy-mm-dd hh:mm:ss"
         ui             _maxVisitors = 0;  // ALLOW NULL
         ui             _currVisitors = 0; // Annotation
+        ui             _userId;
+        Address        _address;
     public:
         Event() = default;
         Event(ui id,
                 //std::set<ui> &members,
-              std::string    &tittle,
-              std::string    &description,
-              std::string    &dateTime,
-              ui            maxVisitors = 0,
-              ui            currVisitors = 0) :
+              const std::string    &tittle,
+              const std::string    &description,
+              const std::string    &dateTime,
+              ui            maxVisitors,
+              ui            currVisitors,
+              ui            userId,
+              Address       address
+              ) :
 
                 DBObject(id),
                 //_members     (std::move(members)),
@@ -86,7 +108,11 @@
                 _description  (std::move(description)),
                 _dateTime     (std::move(dateTime)),
                 _maxVisitors  (maxVisitors),
-                _currVisitors (currVisitors) {};
+                _currVisitors (currVisitors),
+                _userId       (userId),
+                 _address     (std::move(address))
+
+                {};
 
         explicit Event(const std::string &json);
         std::string toJSON() override;
@@ -104,33 +130,17 @@
         std::string toJSON() override;
     };
 
-    struct Address : public DBObject {
-        std::string _address;
-        double      _longitude = 0;
-        double      _latitude = 0;
-    public:
-        Address() = default;
-        Address(ui id, std::string &address, double longitude, double latitude) :
-                DBObject(id),
-                _address   (std::move(address)),
-                _longitude (longitude),
-                _latitude  (latitude) {}
-
-        Address(const std::string &json);
-        std::string toJSON() override;
-    };
-
     struct Token : public DBObject {
         std::string _token;           // UNIQUE
         std::string _expireDateTime;  // Format: "yyyy-mm-dd hh:mm:ss"
-        User        _user;
+        ui       _userId;
     public:
         Token() = default;
-        Token(ui id, std::string &token, std::string &expireDateTime, User& user) :
+        Token(ui id, std::string &token, std::string &expireDateTime, ui userId) :
                 DBObject(id),
                 _token          (std::move(token)),
                 _expireDateTime (std::move(expireDateTime)),
-                _user           (std::move(user)) {}
+                _userId           (userId) {}
 
         explicit Token(const std::string &json);
         std::string toJSON() override;
