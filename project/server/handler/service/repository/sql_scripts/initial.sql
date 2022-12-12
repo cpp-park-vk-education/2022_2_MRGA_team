@@ -1,3 +1,6 @@
+CREATE USER root WITH PASSWORD 'mashapg';
+GRANT ALL PRIVILEGES ON DATABASE mashadb  TO root;
+
 CREATE TABLE users (
     id serial PRIMARY KEY,
     nickname text UNIQUE NOT NULL,
