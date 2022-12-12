@@ -1,1 +1,0 @@
-valgrind --tool=memcheck --leak-check=yes build/tests/test_postgres
