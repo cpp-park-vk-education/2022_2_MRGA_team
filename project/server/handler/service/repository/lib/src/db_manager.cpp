@@ -3,9 +3,12 @@
 DbManager::DbManager() : MAX_SIZE(10) {
     std::cout << "ВЫЗОВ КОНСТРУКТОРА DB MANAGER" << std::endl;
   connections.resize(MAX_SIZE);
-  std::string config_data(load_config(path_config));
+  // std::string config_data(load_config(path_config));
   for (size_t i = 0; i < MAX_SIZE; ++i) {
-    connections[i] = new Connection(config_data);
+    // std::cout << config_data << std::endl;
+    // connections[i] = new Connection(config_data);
+    connections[i] = new Connection("postgresql://mashapg:mashapg@10.0.0.10:5432/mashadb");
+    // "postgresql://accounting@localhost/company"
   }
 }
 
