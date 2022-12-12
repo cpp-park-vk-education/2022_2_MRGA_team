@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.18)
+project(struct_mapping_lib CXX)
+
+set(CMAKE_CXX_STANDARD 20)
+
+include_directories(options)
+
+add_library(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR} options)
+
+file(GLOB INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
+
+target_include_directories(${PROJECT_NAME} INTERFACE ${INCLUDE_DIRS})
+
+set(STRUCT_MAPPING_LIB_LIBRARIES ${PROJECT_NAME} PARENT_SCOPE)
+set(STRUCT_MAPPING_LIB_INCLUDE_DIRS ${INCLUDE_DIRS} PARENT_SCOPE)

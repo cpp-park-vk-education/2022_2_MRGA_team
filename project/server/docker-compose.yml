@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  server:
+    image: yakwilik/mrga_backend
+
+    command: make run
+
+    working_dir: '/project'
+    volumes:
+      - "${PWD}/:/project/"
+        #- "sock:/run/postgresql/.s.PGSQL.5432:ro"
+      - "sock:/run/postgresql:ro"
+
+        # network_mode: "host"
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: postgres:12.0-alpine
+    environment:
+      POSTGRES_DB: "mashadb"
+      POSTGRES_USER: "mashapg"
+      POSTGRES_PASSWORD: "mashapg"
+    volumes:
+      - ./sql_scripts/:/docker-entrypoint-initdb.d
+        #- "sock:/run/postgresql/.s.PGSQL.5432"
+      - "sock:/run/postgresql"
+
+    ports:
+      - "5432:5432"
+
+networks:
+  service-network:
+    driver: bridge
+
+volumes:
+  sock:
+    
+
+
+

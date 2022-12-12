@@ -3,25 +3,25 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: mashanab/gcc_linters_valgrind_cmake_gtest
+    container: yakwilik/gcc_qt6_boost_libpqxx_gtest_lcov
     steps:
       - uses: actions/checkout@v2
       - run: cd project/server/handler/service/repository && make build
   check:
     runs-on: ubuntu-latest
-    container: mashanab/gcc_linters_valgrind_cmake_gtest
+    container: yakwilik/gcc_qt6_boost_libpqxx_gtest_lcov
     steps:
     - uses: actions/checkout@v2
     - run: cd project/server/handler/service/repository && make check
   test:
     runs-on: ubuntu-latest
-    container: mashanab/gcc_linters_valgrind_cmake_gtest
+    container: yakwilik/gcc_qt6_boost_libpqxx_gtest_lcov
     steps:
     - uses: actions/checkout@v2
     - run: cd project/server/handler/service/repository && make test
   coverage:
     runs-on: ubuntu-latest
-    container: mashanab/gcc_linters_valgrind_cmake_gtest
+    container: yakwilik/gcc_qt6_boost_libpqxx_gtest_lcov
     steps:
     - uses: actions/checkout@v2
     - run: cd project/server/handler/service/repository && make cov

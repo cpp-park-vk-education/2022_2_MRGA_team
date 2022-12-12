@@ -1,3 +1,4 @@
+
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
@@ -77,10 +78,49 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 *.exe
 
 
+build/
+.vscode/
+.DS_Store
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+
 **/.DS_Store
 **/.idea/
 **/build
 **/cmake-build-debug
+
 **/valgrind*
 
 **/*.vscode
@@ -88,4 +128,10 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 build/
 .vscode/
 .DS_Store
->>>>>>> 9e0860bccc48c003cf340db43644cc3e0c80042e
+
+
+**/project/client
+
+**/project/server/handler/service/repository
+
+*.log
