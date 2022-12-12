@@ -27,7 +27,7 @@ class EventRepTest : public ::testing::Test {
 };
 
 
-TEST_F(EventRepTest, CreateEventAnd) {
+TEST_F(EventRepTest, CreateEvent) {
     EventRepository event_rep(db_manager);
     EXPECT_TRUE(event_rep.create_event(event) > 0);
 }
