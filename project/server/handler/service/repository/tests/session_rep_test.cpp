@@ -5,26 +5,21 @@
 
 class SessionRepTest : public ::testing::Test {
  protected:
-    void SetUp() override {
-        token = {
-            .token = "DFGTFVGG",
-            .expire_date_time = "2022-11-11 11:11:11",
-            .user_id = 3526
-        };
-    }
+    void SetUp() override {}
 
     void TearDown() override {}
 
     DbManager db_manager;
-    Token token;
 };
 
 TEST_F(SessionRepTest, CreateToken) {
+    Token token("DFGTFVGG", "2022-11-11 11:11:11", 0);
     SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(session_rep.create_token(token));
 }
 
 TEST_F(SessionRepTest, DeleteToken) {
+    Token token("DFGTFVGG", "2022-11-11 11:11:11", 0);
     SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(session_rep.delete_token(token));
 }
@@ -35,6 +30,7 @@ TEST_F(SessionRepTest, CheckToken) {
 }
 
 TEST_F(SessionRepTest, GetUserByToken) {
+    Token token("DFGTFVGG", "2022-11-11 11:11:11", 0);
     SessionRepository session_rep(db_manager);
     EXPECT_NO_THROW(User user = session_rep.get_user_by_token(token));
 }

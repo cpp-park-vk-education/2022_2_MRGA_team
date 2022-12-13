@@ -12,8 +12,9 @@ int EventRepository::create_event(Event event) {
 
     std::string query_get_inserted_address_id = "SELECT id FROM addresses WHERE address_title LIKE '" + 
       event.address.address + "';";
-    std::string query_insert_address = "INSERT INTO addresses (address_title) "
-      "VALUES ('" + event.address.address + "');";
+    std::string query_insert_address = "INSERT INTO addresses (address_title, longitude, latitude) "
+      "VALUES ('" + event.address.address + "', " + (((event.address.longitude - 0) >= 10e-7) ? std::to_string(event.address.longitude) : "null") + ", " + (((event.address.latitude - 0) >= 10e-7) ? std::to_string(event.address.latitude) : "null") + ");";
+    std::cout << query_insert_address << std::endl;
     std::string address_id = "";
     try {
       Worker worker(*conn);
@@ -44,8 +45,8 @@ int EventRepository::create_event(Event event) {
       return res;
     }
 
-    std::string query_insert_event = "INSERT INTO events (title, date_time, user_id, address_id) "
-      "VALUES ('" + event.title + "', '" + event.date_time + "', '" + std::to_string(event.user_id) + "', '" + address_id + "');";
+    std::string query_insert_event = "INSERT INTO events (title, overview, date_time, max_visitors, user_id, address_id) "
+      "VALUES ('" + event.title + "', " + ((event.description != "") ? event.description : "null") + ", '" + event.date_time + "', '" + std::to_string(event.max_visitors) + "', '" + std::to_string(event.user_id) + "', '" + address_id + "');";
     try {
       Worker worker(*conn);
       Result result(worker.exec(query_insert_event));
@@ -122,22 +123,13 @@ std::vector<Event> EventRepository::get_events() {
       Result result(worker.exec(query_select_events));
       if (!result.empty()) {
         for (auto row : result) {
-          Address address = {
-            .id = row["address_id"].as<size_t>(),
-            .address = row["address"].as<std::string>(),
-            .longitude = row["longitude"].as<double>(),
-            .latitude = row["latitude"].as<double>()
-          };
-          Event event = {
-            .id = row["events_id"].as<size_t>(),
-            .title = row["title"].as<std::string>(),
-            .description = row["description"].as<std::string>(),
-            .date_time = row["date_time"].as<std::string>(),
-            .max_visitors = row["max_visitors"].as<size_t>(),
-            .curr_visitors = 0, // get_curr_visitors
-            .user_id = row["user_id"].as<size_t>(),
-            .address = address
-          };
+          Address address(row["address"].as<std::string>(), row["longitude"].as<double>(),
+          row["latitude"].as<double>());
+          address.id = row["address_id"].as<size_t>();
+          Event event(row["title"].as<std::string>(), row["date_time"].as<std::string>(),
+            row["user_id"].as<size_t>(), address, row["description"].as<std::string>(),
+            row["max_visitors"].as<size_t>(), 0);
+          event.id = row["events_id"].as<size_t>();
           events.push_back(event);
         }
       }

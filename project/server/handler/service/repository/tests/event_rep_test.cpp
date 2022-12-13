@@ -5,29 +5,16 @@
 
 class EventRepTest : public ::testing::Test {
  protected:
-    void SetUp() override {
-        event = {
-            .title = "Hally hopter",
-            .description = "For funny people!",
-            .date_time = "2023-01-01 00:00:00",
-            .max_visitors = 10,
-            .user_id = 0,
-            .address = {
-                .address = "Кремль, Москва",
-                .longitude = 34.0294,
-                .latitude = 3.24543
-            }
-        };
-    }
+    void SetUp() override {}
 
     void TearDown() override {}
 
     DbManager db_manager;
-    Event event;
 };
 
 
 TEST_F(EventRepTest, CreateEvent) {
+    Event event("Hally hopter", "2022-01-01", 0, Address("Кремль, Москва"));
     EventRepository event_rep(db_manager);
     EXPECT_TRUE(event_rep.create_event(event) > 0);
 }
@@ -38,6 +25,7 @@ TEST_F(EventRepTest, GetEvents) {
 }
 
 TEST_F(EventRepTest, UpdateEventData) {
+    Event event("Hally hopter", "2022-01-01 23:59:59", 0, Address("Кремль, Москва"), "For funny people!", 10);
     EventRepository event_rep(db_manager);
     EXPECT_NO_THROW(event_rep.update_event_data(event));
 }
