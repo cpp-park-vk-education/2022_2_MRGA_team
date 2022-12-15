@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 project(service_lib)
 
-add_subdirectory(json_struct_mapping_lib)
+include_directories(SYSTEM ${MAIN_DIR}/deps/include)
+
 add_subdirectory(repository/lib)
 
 message("JSON_STRUCT_MAPPING_LIB_LIBRARIES = " ${JSON_STRUCT_MAPPING_LIB_LIBRARIES})

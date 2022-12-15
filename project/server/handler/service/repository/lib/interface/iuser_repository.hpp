@@ -2,8 +2,7 @@
 
 #include <cstddef>
 #include <string>
-
-#include "../../../json_struct_mapping_lib/structs.hpp"
+#include <structs.hpp>
 
 class IUserRepository {
  public:

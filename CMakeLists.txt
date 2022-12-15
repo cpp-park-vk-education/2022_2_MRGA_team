@@ -3,7 +3,8 @@ project(project LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
+SET(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR} CACHE INTERNAL "MAIN_DIR")
+
 include_directories(SYSTEM /usr/local/include)
 
-add_subdirectory(project/client)
-add_subdirectory(project/server)
+add_subdirectory(project)
