@@ -1,4 +1,5 @@
 #include "Label.hpp"
+#include <iostream>
 
 UiLabel::UiLabel(QWidget *parent) : painter(parent), label(new QLabel("Тыкни на меня")), labelLayout(new QHBoxLayout(this))
 {
@@ -7,15 +8,16 @@ UiLabel::UiLabel(QWidget *parent) : painter(parent), label(new QLabel("Тыкн�
 
 UiLabel::UiLabel(const UiLabel &other): painter(new QWidget)
 {
-    label = other.label;
+    label->setText(other.label->text());
+    label->setStyleSheet(other.label->styleSheet());
     labelLayout->addWidget(label);
-    labelLayout = other.labelLayout;
 }
 
 UiLabel &UiLabel::operator=(const UiLabel &other)
 {
-    this->label = other.label;
-    this->labelLayout = other.labelLayout;
+    label->setText(other.label->text());
+    label->setStyleSheet(other.label->styleSheet());
+    labelLayout->addWidget(label);
     return *this;
 }
 
@@ -23,6 +25,14 @@ UiLabel::~UiLabel()
 {
     delete label;
     delete labelLayout;
+}
+
+UiLabel::UiLabel(const QString &className, const QString& text) : label(new QLabel()), labelLayout(new QHBoxLayout(this))
+{
+    std::cout << "cssClass label constructor was called" << std::endl;
+    label->setProperty("cssClass", className);
+    label->setText(text);
+    labelLayout->addWidget(label);
 }
 
 UiLabel::UiLabel(const QString &styleSheet, const QString &pathToImage, const QString &imageType) : label(new QLabel()), labelLayout(new QHBoxLayout(this))
@@ -40,12 +50,6 @@ UiLabel::UiLabel(const QString &styleSheet, const QString &pathToImage, const QS
         label->setPixmap(scaled);
     }
     labelLayout->addWidget(label, 1, Qt::AlignLeft);
-}
-
-UiLabel::UiLabel(const QString &styleSheet, const QString &text) : label(new QLabel(text)), labelLayout(new QHBoxLayout(this))
-{
-    label->setStyleSheet(styleSheet);
-    labelLayout->addWidget(label);
 }
 
 UiLabel::UiLabel(const QString &styleSheet, const QPixmap &labelImage, int width, int height, int coordX, int coordY)
@@ -73,9 +77,9 @@ UiLabel::UiLabel(const QString &styleSheet, QMovie *movie)
 
 UiLabel *UiLabel::create(const QString &objectType)
 {
-    if (objectType == "regLabel") {
-        return new UiLabel("padding: 10px");
-    }
+//    if (objectType == "regLabel") {
+//        return new UiLabel("padding: 10px");
+//    }
     if (objectType == "text") {
         return new UiLabel("", QFont());
     }

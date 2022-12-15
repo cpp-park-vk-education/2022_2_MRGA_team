@@ -202,6 +202,7 @@ endif()
 # _directory_contents at /opt/homebrew/lib/cmake/Qt6LinguistTools/Qt6LinguistToolsMacros.cmake:83 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/*.qml")
 set(OLD_GLOB
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/my.qml"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

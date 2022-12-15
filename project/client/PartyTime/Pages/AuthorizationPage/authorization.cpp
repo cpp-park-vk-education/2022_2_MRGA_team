@@ -17,7 +17,7 @@ authorization::authorization(QWidget* parent) : painter(parent),
     appLogo->setObjectName("appLogo");
     appLogo->setGeometry(0, 0, 347, 347);
     appLogo->setStyleSheet("border-radius: 15px;");
-    appLogo->setPixmap(QPixmap(":/image/tyanochka.png"));
+    appLogo->setPixmap(QPixmap(":/image/PartyTimeLogo.png"));
 
     titleLayout->addWidget(appTitle);
     titleLayout->addWidget(appLogo);

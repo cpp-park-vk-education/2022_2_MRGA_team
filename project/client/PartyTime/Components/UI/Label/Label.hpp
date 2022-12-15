@@ -9,8 +9,11 @@ public:
     UiLabel(const UiLabel& other);
     UiLabel& operator=(const UiLabel&);
     ~UiLabel();
+
+    // нужные
+    UiLabel(const QString& cssClass, const QString& text = "");
+
     UiLabel(const QString& styleSheet, const QString& pathToImage, const QString& imageType);
-    UiLabel(const QString& styleSheet, const QString& text);
 
     UiLabel(const QString& styleSheet, const QPixmap& labelImage, int width = 0, int height = 0, int coordX = 0, int coordY = 0);                                   // декорирование картинка с позиционированием
     UiLabel(const QString& styleSheet, const QFont& font = QFont(), int width = 0, int height = 0, int coordX = 0, int coordY = 0);                                 // стилизованный текст с позициоированием

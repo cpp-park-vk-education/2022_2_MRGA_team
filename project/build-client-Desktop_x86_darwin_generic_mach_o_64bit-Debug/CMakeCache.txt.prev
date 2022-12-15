@@ -418,6 +418,27 @@ Qt6Multimedia_DIR:PATH=/opt/homebrew/lib/cmake/Qt6Multimedia
 //The directory containing a CMake configuration file for Qt6Network.
 Qt6Network_DIR:PATH=/opt/homebrew/lib/cmake/Qt6Network
 
+//The directory containing a CMake configuration file for Qt6OpenGL.
+Qt6OpenGL_DIR:PATH=/opt/homebrew/lib/cmake/Qt6OpenGL
+
+//The directory containing a CMake configuration file for Qt6QmlCompilerPlusPrivate.
+Qt6QmlCompilerPlusPrivate_DIR:PATH=Qt6QmlCompilerPlusPrivate_DIR-NOTFOUND
+
+//The directory containing a CMake configuration file for Qt6QmlIntegration.
+Qt6QmlIntegration_DIR:PATH=/opt/homebrew/lib/cmake/Qt6QmlIntegration
+
+//The directory containing a CMake configuration file for Qt6QmlModels.
+Qt6QmlModels_DIR:PATH=/opt/homebrew/lib/cmake/Qt6QmlModels
+
+//The directory containing a CMake configuration file for Qt6QmlTools.
+Qt6QmlTools_DIR:PATH=/opt/homebrew/lib/cmake/Qt6QmlTools
+
+//The directory containing a CMake configuration file for Qt6Qml.
+Qt6Qml_DIR:PATH=/opt/homebrew/lib/cmake/Qt6Qml
+
+//The directory containing a CMake configuration file for Qt6Quick.
+Qt6Quick_DIR:PATH=/opt/homebrew/lib/cmake/Qt6Quick
+
 //The directory containing a CMake configuration file for Qt6SvgWidgets.
 Qt6SvgWidgets_DIR:PATH=/opt/homebrew/lib/cmake/Qt6SvgWidgets
 
@@ -1221,12 +1242,82 @@ QT_FEATURE_publicsuffix_system:INTERNAL=OFF
 QT_FEATURE_pulseaudio:INTERNAL=OFF
 //Qt feature: pushbutton (from target Qt6::Widgets)
 QT_FEATURE_pushbutton:INTERNAL=ON
+//Qt feature: qml_animation (from target Qt6::Qml)
+QT_FEATURE_qml_animation:INTERNAL=ON
+//Qt feature: qml_debug (from target Qt6::Qml)
+QT_FEATURE_qml_debug:INTERNAL=ON
+//Qt feature: qml_delegate_model (from target Qt6::QmlModels)
+QT_FEATURE_qml_delegate_model:INTERNAL=ON
+//Qt feature: qml_devtools (from target Qt6::Qml)
+QT_FEATURE_qml_devtools:INTERNAL=ON
+//Qt feature: qml_itemmodel (from target Qt6::Qml)
+QT_FEATURE_qml_itemmodel:INTERNAL=ON
+//Qt feature: qml_jit (from target Qt6::Qml)
+QT_FEATURE_qml_jit:INTERNAL=OFF
+//Qt feature: qml_list_model (from target Qt6::QmlModels)
+QT_FEATURE_qml_list_model:INTERNAL=ON
+//Qt feature: qml_locale (from target Qt6::Qml)
+QT_FEATURE_qml_locale:INTERNAL=ON
+//Qt feature: qml_network (from target Qt6::Qml)
+QT_FEATURE_qml_network:INTERNAL=ON
+//Qt feature: qml_object_model (from target Qt6::QmlModels)
+QT_FEATURE_qml_object_model:INTERNAL=ON
+//Qt feature: qml_preview (from target Qt6::Qml)
+QT_FEATURE_qml_preview:INTERNAL=ON
+//Qt feature: qml_profiler (from target Qt6::Qml)
+QT_FEATURE_qml_profiler:INTERNAL=ON
+//Qt feature: qml_python (from target Qt6::Qml)
+QT_FEATURE_qml_python:INTERNAL=ON
+//Qt feature: qml_table_model (from target Qt6::QmlModels)
+QT_FEATURE_qml_table_model:INTERNAL=ON
+//Qt feature: qml_worker_script (from target Qt6::Qml)
+QT_FEATURE_qml_worker_script:INTERNAL=ON
+//Qt feature: qml_xml_http_request (from target Qt6::Qml)
+QT_FEATURE_qml_xml_http_request:INTERNAL=ON
+//Qt feature: qml_xmllistmodel (from target Qt6::Qml)
+QT_FEATURE_qml_xmllistmodel:INTERNAL=ON
 //Qt feature: qqnx_imf (from target Qt6::Gui)
 QT_FEATURE_qqnx_imf:INTERNAL=OFF
 //Qt feature: qqnx_pps (from target Qt6::Core)
 QT_FEATURE_qqnx_pps:INTERNAL=OFF
 //Qt feature: qt_framework (from target Qt6::Core)
 QT_FEATURE_qt_framework:INTERNAL=ON
+//Qt feature: quick_animatedimage (from target Qt6::Quick)
+QT_FEATURE_quick_animatedimage:INTERNAL=ON
+//Qt feature: quick_canvas (from target Qt6::Quick)
+QT_FEATURE_quick_canvas:INTERNAL=ON
+//Qt feature: quick_designer (from target Qt6::Quick)
+QT_FEATURE_quick_designer:INTERNAL=ON
+//Qt feature: quick_draganddrop (from target Qt6::Quick)
+QT_FEATURE_quick_draganddrop:INTERNAL=ON
+//Qt feature: quick_flipable (from target Qt6::Quick)
+QT_FEATURE_quick_flipable:INTERNAL=ON
+//Qt feature: quick_gridview (from target Qt6::Quick)
+QT_FEATURE_quick_gridview:INTERNAL=ON
+//Qt feature: quick_itemview (from target Qt6::Quick)
+QT_FEATURE_quick_itemview:INTERNAL=ON
+//Qt feature: quick_listview (from target Qt6::Quick)
+QT_FEATURE_quick_listview:INTERNAL=ON
+//Qt feature: quick_particles (from target Qt6::Quick)
+QT_FEATURE_quick_particles:INTERNAL=ON
+//Qt feature: quick_path (from target Qt6::Quick)
+QT_FEATURE_quick_path:INTERNAL=ON
+//Qt feature: quick_pathview (from target Qt6::Quick)
+QT_FEATURE_quick_pathview:INTERNAL=ON
+//Qt feature: quick_positioners (from target Qt6::Quick)
+QT_FEATURE_quick_positioners:INTERNAL=ON
+//Qt feature: quick_repeater (from target Qt6::Quick)
+QT_FEATURE_quick_repeater:INTERNAL=ON
+//Qt feature: quick_shadereffect (from target Qt6::Quick)
+QT_FEATURE_quick_shadereffect:INTERNAL=ON
+//Qt feature: quick_sprite (from target Qt6::Quick)
+QT_FEATURE_quick_sprite:INTERNAL=ON
+//Qt feature: quick_tableview (from target Qt6::Quick)
+QT_FEATURE_quick_tableview:INTERNAL=ON
+//Qt feature: quick_treeview (from target Qt6::Quick)
+QT_FEATURE_quick_treeview:INTERNAL=ON
+//Qt feature: quick_viewtransitions (from target Qt6::Quick)
+QT_FEATURE_quick_viewtransitions:INTERNAL=ON
 //Qt feature: radiobutton (from target Qt6::Widgets)
 QT_FEATURE_radiobutton:INTERNAL=ON
 //Qt feature: raster_64bit (from target Qt6::Gui)
@@ -1526,4 +1617,5 @@ SITE-ADVANCED:INTERNAL=1
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 _Qt6_LINGUIST_TOOLS_DIR:INTERNAL=/opt/homebrew/lib/cmake/Qt6LinguistTools
+__qt_qml_macros_module_base_dir:INTERNAL=/opt/homebrew/lib/cmake/Qt6Qml
 

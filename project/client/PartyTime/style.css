@@ -1,11 +1,16 @@
 
 /*General widgets styles*/
 QStackedWidget#generalBackground {
-    border-image: url(:/image/MainLayout.png) 0 0 0 0 stretch stretch;
+/*    border-image: url(:/image/MainLayout.png) 0 0 0 0 stretch stretch;*/
+    background-color: #ffffff;
     padding-top: 0px;
     padding-bottom: 20px;
     min-width: 1440px;
     max-height: 1024px;
+}
+
+registration#registration {
+    max-height: 900px;
 }
 
 /*Text fiels*/
@@ -43,10 +48,6 @@ QPushButton#enterButton {
 
 QPushButton#enterButton:hover {
 /*    font-weight: 600px;*/
-}
-
-registration#registration {
-    max-height: 900px;
 }
 
 QPushButton#registrationButton {
@@ -95,6 +96,7 @@ QPushButton#navbarSvg {
     border-image: url(:/image/back_black_arrow.png) 0 0 0 0;
 }
 
+/*General Button*/
 *[cssClass~="searchButton"] {
     padding: 10px;
     margin: 10px;
@@ -102,6 +104,30 @@ QPushButton#navbarSvg {
     max-height: 40px;
     background-color: rgba(152, 128, 203, 1);
     border-radius: 15px;
+}
+
+*[cssClass~="deleteEventBtn"] {
+    border-image: url(:/image/delete.svg);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+*[cssClass~="addButton"] {
+    border-image: url(:/image/addButton.png);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+*[cssClass~="formEvent"] {
+    background-color: #ffffff;
+    border-radius: 15;
+}
+
+*[cssClass~="profileEdit"] {
+    max-width: 500px;
+    min-height: 100px;
 }
 
 /*Labels*/
@@ -124,6 +150,16 @@ QLabel#eventDescription {
     color: #000000;
     padding: 10px;
     margin-right: 20px;
+}
+
+*[cssClass~="profileLabel"] {
+    min-width: 100px;
+    max-height: 100px;
+    border-radius: 15px;
+    background-color: red;
+    font-size: 40px;
+    font-weight: 800;
+    color: green;
 }
 
 /*Components styles*/
@@ -296,27 +332,11 @@ QComboBox:!on {
     background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #666, stop: 0.1 #555, stop: 0.5 #555, stop: 0.9 #444, stop: 1 #333);
 }
 
-*[cssClass~="deleteEventBtn"] {
-    border-image: url(:/image/delete.svg);
-    min-width: 50px;
-    min-height: 50px;
-    border-radius: 25px;
-}
 
-*[cssClass~="addButton"] {
-    border-image: url(:/image/addButton.png);
-    min-width: 50px;
-    min-height: 50px;
-    border-radius: 25px;
-}
-
-*[cssClass~="formEvent"] {
-    background-color: #ffffff;
-    border-radius: 15;
-}
-    /*QToolBar::item {
+/*QToolBar::item {
     border-radius: 15px;
 }*/
+
 /*QListView#pendingList {
     max-width: 500px; background-color: purple; border-radius: 10px; font-size: 20pt; font-weight: bold;
 }*/

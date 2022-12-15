@@ -17,8 +17,10 @@
         <file>back_black_arrow.png</file>
         <file>addButton.png</file>
         <file>delete.svg</file>
+        <file>PartyTimeLogo.png</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>
+        <file>my.qml</file>
     </qresource>
 </RCC>

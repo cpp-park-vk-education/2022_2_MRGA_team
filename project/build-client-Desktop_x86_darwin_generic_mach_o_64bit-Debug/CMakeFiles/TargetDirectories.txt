@@ -2,6 +2,7 @@
 /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/CMakeFiles/edit_cache.dir
 /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/CMakeFiles/rebuild_cache.dir
 /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/CMakeFiles/edit_cache.dir
+/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/CMakeFiles/PartyTime_qmlimportscan.dir
 /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/CMakeFiles/PartyTime.dir
 /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/CMakeFiles/PartyTime_autogen_timestamp_deps.dir
 /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/CMakeFiles/PartyTime_autogen.dir
