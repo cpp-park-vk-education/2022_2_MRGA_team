@@ -1,5 +1,6 @@
 #pragma once
 #include "utils.h"
+#include <structs.hpp>
 
 
 class IAuthConnector {

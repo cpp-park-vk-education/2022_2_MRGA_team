@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.18)
 project(connector)
 
 if (NOT DEFINED MAIN_DIR)
-    set(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../.. CACHE PATH MAIN_DIR FORCE)
+    set(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../.. CACHE PATH MAIN_DIR FORCE)
     message("MAIN_DIR in connector lib dir: ${MAIN_DIR}\n\n")
 endif ()
 

@@ -21,3 +21,8 @@ if(WITH_SANITIZE)
     set(CMAKE_CXX_FLAGS ${cxx_flags})
     message(STATUS"********nRun with sanitize\n\n")
 endif()
+
+if (NOT DEFINED MAIN_DIR)
+    set(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../ CACHE PATH MAIN_DIR FORCE)
+    include_directories(SYSTEM ${MAIN_DIR}/deps/include)
+endif ()

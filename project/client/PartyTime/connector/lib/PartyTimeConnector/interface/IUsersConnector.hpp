@@ -1,6 +1,6 @@
 #pragma once
 #include "utils.h"
-#include "objects.hpp"
+#include <structs.hpp>
 
 class IUsersConnector {
 

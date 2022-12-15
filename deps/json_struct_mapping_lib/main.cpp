@@ -8,5 +8,8 @@ int main() {
     user._email = "fasd@adf.ru";
     user._nickname = "sadfdf";
     user._password = "fajlkdf";
-    std::cout << user.toJSON();
+    // std::cout << user.toJSON();
+
+    User from_string(user.toJSON());
+    std::cout << from_string._nickname << std::endl;
 }

@@ -10,14 +10,11 @@
 
 namespace {
     using std::string;
-    using std::move;
     using std::optional;
     using std::vector;
-    using std::stringstream;
     using std::unordered_map;
     using key = string;
     using value = string;
-    using std::ostringstream;
 }
 
 //namespace structs {
@@ -36,7 +33,7 @@ namespace {
     public:
         DBObject() : _id(0) {};
         explicit DBObject(ui id) : _id(id) {};
-        virtual string toJSON() = 0;
+        virtual std::string toJSON() = 0;
     };
 
     struct User : public DBObject {
@@ -50,11 +47,11 @@ namespace {
         User(ui id, const string &nickname, const string &password, const string &email,
             const string &birthDate, const string &description) :
                 DBObject(id),
-                _nickname    (move(nickname)),
-                _password    (move(password)),
-                _email       (move(email)),
-                _birthDate   (move(birthDate)),
-                _description (move(description)) {};
+                _nickname    (std::move(nickname)),
+                _password    (std::move(password)),
+                _email       (std::move(email)),
+                _birthDate   (std::move(birthDate)),
+                _description (std::move(description)) {};
 
         explicit User(const string &json) {
             sm::reg(&User::_id,          "id");
@@ -64,10 +61,10 @@ namespace {
             sm::reg(&User::_description, "description");
             sm::reg(&User::_birthDate,   "birthDate");
 
-            stringstream ss(json);
+            std::stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
-        string toJSON() override {
+        std::string toJSON() override {
             sm::reg(&User::_id,          "id");
             sm::reg(&User::_nickname,    "nickname");
             sm::reg(&User::_password,    "password");
@@ -75,7 +72,7 @@ namespace {
             sm::reg(&User::_description, "description");
             sm::reg(&User::_birthDate,   "birthDate");
 
-            ostringstream outJsonData;
+            std::ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
         }

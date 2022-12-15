@@ -3,6 +3,11 @@ cmake_minimum_required(VERSION 3.14)
 set(PROJECT_NAME "PartyTime")
 project(${PROJECT_NAME} VERSION 0.1 LANGUAGES CXX)
 
+if (NOT DEFINED MAIN_DIR)
+    set(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../.. CACHE PATH MAIN_DIR FORCE)
+    include_directories(SYSTEM ${MAIN_DIR}/deps/include)
+endif ()
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)

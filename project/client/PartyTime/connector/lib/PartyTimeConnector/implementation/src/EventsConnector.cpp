@@ -4,7 +4,7 @@
 EventsConnector::EventsConnector
     (shared_ptr<ILocalStorage> &store, shared_ptr<IHttpConnector> &connector): store(store), connector(connector) {}
 
-Response<optional<vector<Event>>> EventsConnector::events(optional<QueryParams>) {
+Response<optional<vector<Event>>> EventsConnector::events() {
     PartyTimeApi api;
     Response<optional<vector<Event>>> resp;
     auto res = this->connector->GET(api.events, std::nullopt);
@@ -19,11 +19,13 @@ Response<optional<vector<Event>>> EventsConnector::events(optional<QueryParams>)
             res_body = res.response->response_body;
         }
     }
-
+    Events events(res_body);
+    resp.body = events._events;
     return resp;
 }
 
 Response<bool> EventsConnector::visit(const size_t &event_id, const size_t &user_id) {
+    std::cout << event_id << user_id << std::endl;
     return {};
 }
 

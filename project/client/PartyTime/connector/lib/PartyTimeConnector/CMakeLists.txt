@@ -13,6 +13,11 @@ include_directories(SYSTEM /usr/local/include)
 
 AUX_SOURCE_DIRECTORY(implementation/src SOURCES)
 
+if (NOT DEFINED MAIN_DIR)
+    set(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../../.. CACHE PATH MAIN_DIR FORCE)
+    include_directories(SYSTEM ${MAIN_DIR}/deps/include)
+endif ()
+
 add_library(${PROJECT_NAME} ${SOURCES})
 
 
