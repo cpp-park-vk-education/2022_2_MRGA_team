@@ -149,7 +149,6 @@ namespace {
             sm::reg(&Event::description, "description");
             sm::reg(&Event::date_time,    "dateTime");
             sm::reg(&Event::max_visitors, "maxVisitors");
-            //sm::reg(&Event::members,     "members");
             sm::reg(&Event::title,       "title");
 
             std::ostringstream outJsonData;
@@ -174,7 +173,6 @@ namespace {
             sm::reg(&Event::description, "description");
             sm::reg(&Event::date_time,    "dateTime");
             sm::reg(&Event::max_visitors, "maxVisitors");
-            //sm::reg(&Event::members,     "members");
             sm::reg(&Event::title,       "title");
 
             std::ostringstream out_json_data;
@@ -207,9 +205,7 @@ namespace {
         Token() = default;
         Token(const string &token,
             const string &expire_date_time,
-            const ui
-            
-             &user_id)
+            const ui &user_id)
         : token(token), expire_date_time(expire_date_time), user_id(user_id) {}
 
         explicit Token(const std::string &json) {
