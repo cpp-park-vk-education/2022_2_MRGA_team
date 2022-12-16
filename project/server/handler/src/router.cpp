@@ -57,6 +57,22 @@ void router::events_handle(http::response<http::dynamic_body> &response, const h
 }
 
 void router::create_event_handle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
+    // std::string token = equest.at("Authorization"); // check this
+    // int res = service_manager_ref.session_service_.session_repository_.check_token(token);
+    // if (!res) {
+    //     response.result(http::status::unauthorized);
+    //     beast::ostream(response.body()) << "вы не авторизованы";
+    //     return ;
+    // }
+    // Token tok;
+    // tok.token = token;
+    // User user =  service_manager_ref.session_service_.session_repository_.get_user_by_token(tok);
+    // Event event(beast::buffers_to_string(request.body()));
+    // event.user_id = user.id;
+
+    // //res = service_manager_ref.event_service_.create_event(event);
+
+
 
 }
 
