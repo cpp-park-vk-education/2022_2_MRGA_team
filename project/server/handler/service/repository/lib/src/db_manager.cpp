@@ -3,27 +3,40 @@
 DbManager::DbManager() : MAX_SIZE(10) {
     std::cout << "ВЫЗОВ КОНСТРУКТОРА DB MANAGER" << std::endl;
   connections.resize(MAX_SIZE);
-  // std::string config_data(load_config(path_config));
+  std::vector<std::string> params = load_config(path_config);
+  std::string config_data(serialize(params));
   for (size_t i = 0; i < MAX_SIZE; ++i) {
     // std::cout << config_data << std::endl;
-    // connections[i] = new Connection(config_data);
-    connections[i] = new Connection("postgresql://mashapg:mashapg@10.0.0.10:5432/mashadb");
+    connections[i] = new Connection(config_data);
+    // connections[i] = new Connection("postgresql://mashapg:mashapg@10.0.0.10:5432/mashadb");
     // "postgresql://accounting@localhost/company"
   }
+  load_config(path_config);
 }
 
 size_t DbManager::count_connections() const {
   return connections.size();
 }
-
-std::string DbManager::load_config(const std::string &path) const {
-  std::string config;
+// postgresql://mashapg:mashapg@10.0.0.10:5432/mashadb
+std::vector<std::string> DbManager::load_config(const std::string &path) const {
   std::ifstream in_conf(path_config);
+  std::vector<std::string> arr(5);
+  size_t i = 0;
   if (in_conf.is_open()) {
-    getline(in_conf, config);
+    for (std::string line; std::getline(in_conf, line); ) {
+      char delimiter = '=';
+      std::string token = line.substr(line.find(delimiter) + 1, line.length());
+      arr[i++] = token;
+    }
   }
   in_conf.close();
-  return config;
+  return arr;
+}
+
+std::string DbManager::serialize(const std::vector<std::string> &params) const {
+  std::string res = "postgresql://" + params[0] +
+    ":" + params[1] + "@" + params[2] + ":" + params[3] + "/" + params[4];
+  return res;
 }
 
 Connection *DbManager::get_free_connection() {

@@ -28,6 +28,7 @@ class DbManager {
   ~DbManager();
 
  private:
-  std::string load_config(const std::string &path) const;
+  std::vector<std::string> load_config(const std::string &path) const;
+  std::string serialize(const std::vector<std::string> &params) const;
   std::vector<Connection *> connections;
 };
