@@ -9,15 +9,15 @@
 #include "struct_mapping.hpp"
 
 namespace {
+    using std::optional;
+    using std::stringstream;
+    using std::ostringstream;
     using std::string;
-    using std::move;
     using std::optional;
     using std::vector;
-    using std::stringstream;
     using std::unordered_map;
     using key = string;
     using value = string;
-    using std::ostringstream;
 }
 
 //namespace structs {
@@ -32,48 +32,48 @@ namespace {
     using ui = unsigned int;
 
     struct DBObject {
-        ui _id;
+        ui id;
     public:
-        DBObject() : _id(0) {};
-        explicit DBObject(ui id) : _id(id) {};
+        DBObject() : id(0) {};
+        explicit DBObject(ui id) : id(id) {};
         virtual string toJSON() = 0;
     };
 
     struct User : public DBObject {
-        string _nickname;    // UNIQUE
-        string _password;
-        string _email;       // UNIQUE
-        string _birthDate;   // Format: "yyyy-mm-dd"
-        string _description; // ALLOW NULL
-    public:
+        string nickname;  // UNIQUE
+        string password;
+        string email;  // UNIQUE
+        string birth_date;  // Format: "yyyy-mm-dd"
+        string description;  // ALLOW NULL
+
         User() = default;
-        User(ui id, const string &nickname, const string &password, const string &email,
-            const string &birthDate, const string &description) :
-                DBObject(id),
-                _nickname    (move(nickname)),
-                _password    (move(password)),
-                _email       (move(email)),
-                _birthDate   (move(birthDate)),
-                _description (move(description)) {};
+        User(const string &nickname,
+            const string &password,
+            const string &email,
+            const string &birth_date,
+            const string &description = "")
+        : nickname(nickname), password(password), email(email),
+        birth_date(birth_date), description(description) {}
 
         explicit User(const string &json) {
-            sm::reg(&User::_id,          "id");
-            sm::reg(&User::_nickname,    "nickname");
-            sm::reg(&User::_password,    "password");
-            sm::reg(&User::_email,       "email");
-            sm::reg(&User::_description, "description");
-            sm::reg(&User::_birthDate,   "birthDate");
+            sm::reg(&User::id,          "id");
+            sm::reg(&User::nickname,    "nickname");
+            sm::reg(&User::password,    "password");
+            sm::reg(&User::email,       "email");
+            sm::reg(&User::description, "description");
+            sm::reg(&User::birth_date,   "birthDate");
 
             stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
+
         string toJSON() override {
-            sm::reg(&User::_id,          "id");
-            sm::reg(&User::_nickname,    "nickname");
-            sm::reg(&User::_password,    "password");
-            sm::reg(&User::_email,       "email");
-            sm::reg(&User::_description, "description");
-            sm::reg(&User::_birthDate,   "birthDate");
+            sm::reg(&User::id,          "id");
+            sm::reg(&User::nickname,    "nickname");
+            sm::reg(&User::password,    "password");
+            sm::reg(&User::email,       "email");
+            sm::reg(&User::description, "description");
+            sm::reg(&User::birth_date,   "birthDate");
 
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
@@ -81,216 +81,159 @@ namespace {
         }
     };
 
-    struct Profile : public DBObject {
-        User        _user;
-        std::string _email;        // UNIQUE
-        std::string _birthDate;    // Format: "yyyy-mm-dd"
-        std::string _description;  // ALLOW NULL
-    public:
-        Profile() = default;
-        Profile(ui id, std::string &email, const string &birthDate, User &user, const string &description = "") :
-                DBObject(id),
-                _user        (std::move(user)),
-                _email       (std::move(email)),
-                _birthDate   (std::move(birthDate)),
-                _description (std::move(description)) {};
-
-        explicit Profile(const std::string &json) {
-            sm::reg(&Profile::_id,          "id");
-            sm::reg(&Profile::_email,       "email");
-            sm::reg(&Profile::_description, "description");
-            sm::reg(&Profile::_birthDate,   "birthDate");
-            sm::reg(&Profile::_user,        "user");
-
-            sm::reg(&User::_nickname,       "nickname");
-            sm::reg(&User::_password,       "password");
-
-            std::stringstream ss(json);
-            sm::map_json_to_struct(*this, ss);
-        }
-        std::string toJSON() override {
-            sm::reg(&Profile::_id,          "id");
-            sm::reg(&Profile::_email,       "email");
-            sm::reg(&Profile::_description, "description");
-            sm::reg(&Profile::_birthDate,   "birthDate");
-            sm::reg(&Profile::_user,        "user");
-
-            sm::reg(&User::_nickname,       "nickname");
-            sm::reg(&User::_password,       "password");
-
-            std::ostringstream outJsonData;
-            sm::map_struct_to_json(*(this), outJsonData);
-            return outJsonData.str();
-        }
-    };
-
     struct Address : public DBObject {
-        std::string _address;
-        double      _longitude = 0;
-        double      _latitude = 0;
+        string address;  // NOT NULL
+        double longitude;  // DEFAULT NULL
+        double latitude;  // DEFAULT NULL
     public:
         Address() = default;
-        Address(ui id, const std::string &address, double longitude, double latitude) :
-                DBObject(id),
-                _address   (std::move(address)),
-                _longitude (longitude),
-                _latitude  (latitude) {}
+        Address(const string &address,
+            const double &longitude = 0,
+            const double &latitude = 0)
+        : address(address), longitude(longitude), latitude(latitude) {}
 
-        Address(const std::string &json) {
-            sm::reg(&Address::_id,        "id");
-            sm::reg(&Address::_address,   "address");
-            sm::reg(&Address::_longitude, "longitude");
-            sm::reg(&Address::_latitude,  "latitude");
+        Address(const string &json) {
+            sm::reg(&Address::id,        "id");
+            sm::reg(&Address::address,   "address");
+            sm::reg(&Address::longitude, "longitude");
+            sm::reg(&Address::latitude,  "latitude");
 
-            std::stringstream ss(json);
+            stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
-            std::string toJSON() override  {
-            sm::reg(&Address::_id,        "id");
-            sm::reg(&Address::_address,   "address");
-            sm::reg(&Address::_longitude, "longitude");
-            sm::reg(&Address::_latitude,  "latitude");
 
-            std::ostringstream outJsonData;
+        string toJSON() override  {
+            sm::reg(&Address::id,        "id");
+            sm::reg(&Address::address,   "address");
+            sm::reg(&Address::longitude, "longitude");
+            sm::reg(&Address::latitude,  "latitude");
+
+            ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
         }
     };
 
     struct Event : public DBObject {
-        //std::set<ui> _members;
-        std::string    _title;
-        std::string    _description;
-        std::string    _dateTime;         // Format: "yyyy-mm-dd hh:mm:ss"
-        ui             _maxVisitors = 0;  // ALLOW NULL
-        ui             _currVisitors = 0; // Annotation
-        ui             _userId;
-        Address        _address;
+        string title;  // NOT NULL
+        string date_time;    // Format: "yyyy-mm-dd hh:mm:ss" NOT NULL
+        ui user_id;  // NOT NULL
+        Address address;  // NOT NULL
+
+        string description;
+        ui max_visitors;  // ALLOW NULL DEFAULT 100
+        ui curr_visitors; // Annotation
     public:
         Event() = default;
-        Event(ui id,
-                //std::set<ui> &members,
-              const std::string    &tittle,
-              const std::string    &description,
-              const std::string    &dateTime,
-              ui            maxVisitors,
-              ui            currVisitors,
-              ui            userId,
-              Address       address
-              ) :
+        Event(const string &title,
+            const string &date_time,
+            const ui & user_id,
+            const Address & address,
+            const string &description = "",
+            const ui &max_visitors = 100,
+            const ui &curr_visitors = 0)
+        : title(title), date_time(date_time), user_id(user_id),
+        address(address), description(description),
+        max_visitors(max_visitors), curr_visitors(curr_visitors) {}
 
-                DBObject(id),
-                //_members     (std::move(members)),
-                _title        (std::move(tittle)),
-                _description  (std::move(description)),
-                _dateTime     (std::move(dateTime)),
-                _maxVisitors  (maxVisitors),
-                _currVisitors (currVisitors),
-                _userId       (userId),
-                 _address     (std::move(address))
+        explicit Event(const string &json) {
+            sm::reg(&Event::id,          "id");
+            sm::reg(&Event::description, "description");
+            sm::reg(&Event::date_time,    "dateTime");
+            sm::reg(&Event::max_visitors, "maxVisitors");
+            sm::reg(&Event::title,       "title");
 
-                {};
-
-        explicit Event(const std::string &json) {
-            sm::reg(&Event::_id,          "id");
-            sm::reg(&Event::_description, "description");
-            sm::reg(&Event::_dateTime,    "dateTime");
-            sm::reg(&Event::_maxVisitors, "maxVisitors");
-            //sm::reg(&Event::_members,     "members");
-            sm::reg(&Event::_title,       "title");
-
-            std::ostringstream out_json_data;
-            std::stringstream ss(json);
+            ostringstream out_json_data;
+            stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
-        std::string toJSON() override {
-            sm::reg(&Event::_id,          "id");
-            sm::reg(&Event::_description, "description");
-            sm::reg(&Event::_dateTime,    "dateTime");
-            sm::reg(&Event::_maxVisitors, "maxVisitors");
-            //sm::reg(&Event::_members,     "members");
-            sm::reg(&Event::_title,       "title");
+        string toJSON() override {
+            sm::reg(&Event::id,          "id");
+            sm::reg(&Event::description, "description");
+            sm::reg(&Event::date_time,    "dateTime");
+            sm::reg(&Event::max_visitors, "maxVisitors");
+            sm::reg(&Event::title,       "title");
 
-            std::ostringstream outJsonData;
+            ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
         }
     };
 
     struct Events : DBObject {
-        std::vector<Event> _events;
+
+    vector<Event> events;
 
     public:
         Events() = default;
-        Events(std::vector<Event> &events) :
-                _events(std::move(events)) {}
+        Events(vector<Event> &events) :
+                events(move(events)) {}
 
-        Events(const std::string &json) {
+        Events(const string &json) {
 
-            sm::reg(&Events::_events,     "events");
+            sm::reg(&Events::events,     "events");
 
-            sm::reg(&Event::_id,          "id");
-            sm::reg(&Event::_description, "description");
-            sm::reg(&Event::_dateTime,    "dateTime");
-            sm::reg(&Event::_maxVisitors, "maxVisitors");
-            //sm::reg(&Event::_members,     "members");
-            sm::reg(&Event::_title,       "title");
+            sm::reg(&Event::id,          "id");
+            sm::reg(&Event::description, "description");
+            sm::reg(&Event::date_time,    "dateTime");
+            sm::reg(&Event::max_visitors, "maxVisitors");
+            sm::reg(&Event::title,       "title");
 
-            std::ostringstream out_json_data;
-            std::stringstream ss(json);
+            ostringstream out_json_data;
+            stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
-        std::string toJSON() override {
 
-            sm::reg(&Events::_events,     "events");
+        string toJSON() override {
 
-            sm::reg(&Event::_id,          "id");
-            sm::reg(&Event::_description, "description");
-            sm::reg(&Event::_dateTime,    "dateTime");
-            sm::reg(&Event::_maxVisitors, "maxVisitors");
-            //sm::reg(&Event::_members,     "members");
-            sm::reg(&Event::_title,       "title");
+            sm::reg(&Events::events,     "events");
 
-            std::ostringstream outJsonData;
+            sm::reg(&Event::id,          "id");
+            sm::reg(&Event::description, "description");
+            sm::reg(&Event::date_time,    "dateTime");
+            sm::reg(&Event::max_visitors, "maxVisitors");
+            //sm::reg(&Event::members,     "members");
+            sm::reg(&Event::title,       "title");
+
+            ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
         }
     };
 
     struct Token : public DBObject {
-        std::string _token;           // UNIQUE
-        std::string _expireDateTime;  // Format: "yyyy-mm-dd hh:mm:ss"
-        ui       _userId;
-    public:
+        string token;             // UNIQUE
+        string expire_date_time;  // Format: "yyyy-mm-dd hh:mm:ss"
+        ui user_id;
+
         Token() = default;
-        Token(ui id, std::string &token, std::string &expireDateTime, ui userId) :
-                DBObject(id),
-                _token          (std::move(token)),
-                _expireDateTime (std::move(expireDateTime)),
-                _userId           (userId) {}
+        Token(const string &token,
+            const string &expire_date_time,
+            const ui &user_id)
+        : token(token), expire_date_time(expire_date_time), user_id(user_id) {}
 
-        explicit Token(const std::string &json) {
-            sm::reg(&Token::_id,             "id");
-            sm::reg(&Token::_token,          "token");
-            sm::reg(&Token::_expireDateTime, "expireDateTime");
-            sm::reg(&Token::_userId,           "userId");
+        explicit Token(const string &json) {
+            sm::reg(&Token::id,             "id");
+            sm::reg(&Token::token,          "token");
+            sm::reg(&Token::expire_date_time, "expireDateTime");
+            sm::reg(&Token::user_id,           "userId");
+            sm::reg(&User::nickname,        "nickname");
+            sm::reg(&User::password,        "password");
 
-            sm::reg(&User::_nickname,        "nickname");
-            sm::reg(&User::_password,        "password");
-
-            std::stringstream ss(json);
+            stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
-        std::string toJSON() override {
-            sm::reg(&Token::_id,             "id");
-            sm::reg(&Token::_token,          "token");
-            sm::reg(&Token::_expireDateTime, "expireDateTime");
-            sm::reg(&Token::_userId,           "userId");
 
-            sm::reg(&User::_nickname,        "nickname");
-            sm::reg(&User::_password,        "password");
+        string toJSON() override {
+            sm::reg(&Token::id,             "id");
+            sm::reg(&Token::token,          "token");
+            sm::reg(&Token::expire_date_time, "expireDateTime");
+            sm::reg(&Token::user_id,           "userId");
 
-            std::ostringstream outJsonData;
+            sm::reg(&User::nickname,        "nickname");
+            sm::reg(&User::password,        "password");
+
+            ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
         }
@@ -301,14 +244,13 @@ namespace {
         DESC
     };
     struct QueryParams {
-        std::optional<size_t> limit;
-        std::optional<size_t> offset;
+        optional<size_t> limit;
+        optional<size_t> offset;
         optional<vector<string>> order_fields;
         optional<Sort> sort;
         optional<unordered_map<key, value>> conditions;
     };
 
 //}
-
 
 #endif  // STRUCTS_HPP
