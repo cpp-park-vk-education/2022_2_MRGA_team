@@ -2,6 +2,7 @@
 
 #include <cstddef>
 #include <string>
+
 #include <structs.hpp>
 
 class IUserRepository {

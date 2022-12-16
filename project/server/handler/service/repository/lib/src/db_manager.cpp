@@ -1,15 +1,11 @@
 #include "db_manager.hpp"
 
 DbManager::DbManager() : MAX_SIZE(10) {
-    std::cout << "ВЫЗОВ КОНСТРУКТОРА DB MANAGER" << std::endl;
   connections.resize(MAX_SIZE);
   std::vector<std::string> params = load_config(path_config);
   std::string config_data(serialize(params));
   for (size_t i = 0; i < MAX_SIZE; ++i) {
-    // std::cout << config_data << std::endl;
     connections[i] = new Connection(config_data);
-    // connections[i] = new Connection("postgresql://mashapg:mashapg@10.0.0.10:5432/mashadb");
-    // "postgresql://accounting@localhost/company"
   }
   load_config(path_config);
 }
@@ -59,7 +55,7 @@ int DbManager::return_connection(Connection *conn) {
 DbManager::~DbManager() {
   while(!connections.empty()) {
     Connection *conn = connections.back();
-    //conn->close();
+    conn->close();
     delete conn;
     connections.pop_back();
   }
