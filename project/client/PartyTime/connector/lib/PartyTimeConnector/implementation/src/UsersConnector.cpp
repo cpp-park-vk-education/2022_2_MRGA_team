@@ -9,6 +9,6 @@ Response<User> UsersConnector::profile(const size_t &id) {
 }
 
 Response<bool> UsersConnector::setting(const User &user) {
-    std::cout << user._nickname << std::endl;
+    std::cout << user.nickname << std::endl;
     return {};
 }

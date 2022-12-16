@@ -20,7 +20,7 @@ Response<optional<vector<Event>>> EventsConnector::events() {
         }
     }
     Events events(res_body);
-    resp.body = events._events;
+    resp.body = events.events;
     return resp;
 }
 
@@ -33,7 +33,7 @@ Response<optional<Event>> EventsConnector::create_event(const Event &event) {
     PartyTimeApi api;
     unordered_map<string, string> headers;
     headers[api.auth_header] = "admin02022";
-    std::cout << event._title << std::endl;
+    std::cout << event.title << std::endl;
 
 //    this->connector->POST(api.create_event, headers);
     return {};
