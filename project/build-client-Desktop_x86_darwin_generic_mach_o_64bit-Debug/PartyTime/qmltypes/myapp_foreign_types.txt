@@ -1,1 +1,0 @@
---foreign-types=/opt/homebrew/lib/metatypes/qt6qml_release_metatypes.json,/opt/homebrew/lib/metatypes/qt6core_release_metatypes.json,/opt/homebrew/lib/metatypes/qt6network_release_metatypes.json
