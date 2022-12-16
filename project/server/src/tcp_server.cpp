@@ -4,21 +4,20 @@
 #include <boost/asio/ip/tcp.hpp>
 
 #include "http_connection.hpp"
-
 #include <iostream>
 
 namespace net = boost::asio;        // from <boost/asio.hpp>
 using tcp = net::ip::tcp;           // from <boost/asio/ip/tcp.hpp>
 using namespace boost::asio;
 
-void http_server(tcp::acceptor& acceptor, tcp::socket& socket) {
+void http_server(tcp::acceptor& acceptor, tcp::socket& socket, ServiceManager &service_manager) {
     acceptor.async_accept(socket,
           [&](beast::error_code ec)
           {
               if (!ec) {
-                  std::make_shared<http_connection>(std::move(socket))->start();
+                  std::make_shared<http_connection>(std::move(socket), service_manager)->start();
               }
-              http_server(acceptor, socket);
+              http_server(acceptor, socket, service_manager);
           });
 }
 
@@ -30,7 +29,7 @@ tcp_server::tcp_server(IPV ipv, unsigned short port) :
 int tcp_server::run() {
     try {
         tcp::socket socket {io_context_};
-        http_server(acceptor_, socket);
+        http_server(acceptor_, socket, service_manager_);
         io_context_.run();
     }
     catch (std::exception const &e)

@@ -9,7 +9,7 @@ services:
               &&
             cmake --build .
               &&
-            ./server"
+            ./project/server/server"
     working_dir: '/project'
     volumes:
       - "${PWD}/:/project/"

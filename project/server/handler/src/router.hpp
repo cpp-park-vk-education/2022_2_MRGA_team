@@ -38,7 +38,7 @@ public:
     router(router&&) = delete;
 
 private:
-    std::shared_ptr<service> service_ = std::make_shared<service>();
+    ServiceManager& service_manager_ref;
 
     void events_handle               (res &response, const req &request);
 
@@ -55,7 +55,7 @@ private:
     void setting_handle              (res &response, const req &request);
 
 public:
-    explicit router                  (res &response, const req &request);
+    explicit router                  (res &response, const req &request, ServiceManager &service_manager);
 
 };
 

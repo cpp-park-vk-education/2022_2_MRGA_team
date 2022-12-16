@@ -13,8 +13,59 @@
 #include "db_manager.hpp"
 #include "constants.hpp"
 
+#include "authorization_repository.hpp"
+#include "event_repository.hpp"
+#include "session_repository.hpp"
+#include "user_repository.hpp"
+
 using bsv = boost::string_view;
 
+class ServiceManager {
+public:
+    ServiceManager();
+private:
+    class AuthorizationService {
+    public:
+        AuthorizationService(DbManager &db_manager);
+
+    private:
+        AuthorizationRepository authorization_repository_;
+    };
+
+    class EventService {
+    public:
+        EventService(DbManager &db_manager);
+
+        void event(bsv query_params, std::string &response_body);
+
+    private:
+        EventRepository event_repository_;
+    };
+
+    class SessionService {
+    public:
+        SessionService(DbManager &db_manager);
+
+    private:
+        SessionRepository session_repository_;
+    };
+
+    class UserService {
+    public:
+        UserService(DbManager &db_manager);
+
+    private:
+        UserRepository user_repository_;
+    };
+public:
+    AuthorizationService auth_service_;
+    EventService         event_service_;
+    SessionService       session_service_;
+    UserService          user_service_;
+
+private:
+    DbManager db_manager_;
+};
 
 namespace beast = boost::beast;     // from <boost/beast.hpp>
 namespace http = beast::http;       // from <boost/beast/http.hpp>
