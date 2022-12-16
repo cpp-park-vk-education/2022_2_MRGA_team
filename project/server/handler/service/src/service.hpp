@@ -47,8 +47,7 @@ private:
     class SessionService {
     public:
         SessionService(DbManager &db_manager);
-
-        void
+        
 
     private:
         SessionRepository session_repository_;
