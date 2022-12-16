@@ -65,7 +65,11 @@ void router::visit_events_handle(res &response, const req &request) {
 }
 
 void router::login_handle(res &response, const req &request) {
-
+    auto itHeader = request.find("Autorization");
+    if (itHeader == request.end()) {
+        response.result(http::status::unauthorized);
+    }
+    service_manager_ref.auth_service_
 }
 
 void router::signup_handle(res &response, const req &request) {

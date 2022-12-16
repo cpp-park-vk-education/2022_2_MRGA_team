@@ -10,6 +10,10 @@
 
 ServiceManager::AuthorizationService::AuthorizationService(DbManager &db_manager) : authorization_repository_(db_manager) {}
 
+void ServiceManager::AuthorizationService::login(bsv query_params, string &response_body) {
+
+}
+
 ServiceManager::EventService::EventService(DbManager &db_manager) :                 event_repository_(db_manager) {}
 
 void ServiceManager::EventService::event(bsv query_params, string &response_body) {
@@ -17,12 +21,14 @@ void ServiceManager::EventService::event(bsv query_params, string &response_body
 
     if (query_params.empty()) {
         Events events;
-        events._events = event_repository_.get_events();
+        events.events = event_repository_.get_events();
         response_body = events.toJSON();
     }
 };
 
-ServiceManager::SessionService::SessionService(DbManager &db_manager) :             session_repository_(db_manager) {};
+ServiceManager::SessionService::SessionService(DbManager &db_manager) :             session_repository_(db_manager) {
+
+};
 
 ServiceManager::UserService::UserService(DbManager &db_manager) :                   user_repository_(db_manager) {};
 
@@ -104,7 +110,7 @@ int service::run_event_service(bsv query_params, std::string &response_body) {
     if (query_params.empty()) {
         Events events;
 
-        events._events = EventRepository(db_manager_).get_events();
+        events.events = EventRepository(db_manager_).get_events();
 
         response_body = events.toJSON();
     }

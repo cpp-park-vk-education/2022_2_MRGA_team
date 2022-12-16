@@ -28,6 +28,8 @@ private:
     public:
         AuthorizationService(DbManager &db_manager);
 
+        void login(bsv query_params, std::string &response_body);
+
     private:
         AuthorizationRepository authorization_repository_;
     };
@@ -45,6 +47,8 @@ private:
     class SessionService {
     public:
         SessionService(DbManager &db_manager);
+
+        void
 
     private:
         SessionRepository session_repository_;
