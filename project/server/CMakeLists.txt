@@ -13,7 +13,8 @@ find_package(Boost 1.81.0 REQUIRED REQUIRED COMPONENTS container)
 
 include_directories(${PROJECT_NAME} src/)
 
-set(MY_CXX_FLAGS "-lpqxx -lpq")
+# set(MY_CXX_FLAGS "-lpqxx -lpq")
+link_libraries(pqxx)
 set(CMAKE_CXX_FLAGS ${MY_CXX_FLAGS})
 
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp main.cpp)

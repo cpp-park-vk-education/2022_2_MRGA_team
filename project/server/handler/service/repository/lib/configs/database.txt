@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-dbname = mashadb user = mashapg password = mashapg hostaddr = 10.0.0.10 port = 5432
-=======
 user=mashapg
 password=mashapg
-hostaddr=10.0.0.10
+hostaddr=localhost
 port=5432
 dbname=mashadb
->>>>>>> NaberezhnayaDev

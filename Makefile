@@ -24,3 +24,9 @@ compose-log:
 
 compose-down:
 	docker compose down -v
+
+local:
+	mkdir -p local_build && cd local_build && cmake .. && cmake --build .
+
+local-run:
+	./local_build/project/server/server

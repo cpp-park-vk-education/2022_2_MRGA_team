@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 build/
 .vscode/
 .DS_Store
-
+local_build/
 # Prerequisites
 *.d
 
@@ -46,9 +45,7 @@ build/
 **/project/server/handler/service/repository
 
 *.log
-=======
 **/build/
 **/.vscode/
 **/.DS_Store
 **/.idea/
->>>>>>> NaberezhnayaDev
