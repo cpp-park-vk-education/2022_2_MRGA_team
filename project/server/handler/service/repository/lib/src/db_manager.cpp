@@ -1,15 +1,13 @@
 #include "db_manager.hpp"
+#include <cstdlib>
 
 DbManager::DbManager() : MAX_SIZE(10) {
     std::cout << "ВЫЗОВ КОНСТРУКТОРА DB MANAGER" << std::endl;
   connections.resize(MAX_SIZE);
-  // std::vector<std::string> params = load_config(path_config);
-  // std::string config_data(serialize(params));
+  std::vector<std::string> params = load_config(path_config);
+  std::string config_data(serialize(params));
   for (size_t i = 0; i < MAX_SIZE; ++i) {
-    // std::cout << config_data << std::endl;
-    // connections[i] = new Connection(config_data);
-    connections[i] = new Connection("postgresql://mashapg:mashapg@10.0.0.10:5432/mashadb");
-    // "postgresql://accounting@localhost/company"
+    connections[i] = new Connection(config_data);
   }
   load_config(path_config);
 }
@@ -21,9 +19,22 @@ size_t DbManager::count_connections() const {
 std::vector<std::string> DbManager::load_config(const std::string &path) const {
   std::ifstream in_conf(path_config);
   std::vector<std::string> arr(5);
+  // arr[0] = "mashapg";
+  // arr[1] = "mashapg";
+  // arr[2] = "10.0.0.10";
+  // arr[3] = "5432";
+  // arr[4] = "mashadb";
+  system("pwd");
   size_t i = 0;
+  std::cout << "Файл открыт? ";
+  if (!in_conf.is_open()) {
+    std::cout << "нет, не открыт" << std::endl;
+  } else {
+    std::cout << "да, открыт" << std::endl;
+  }
   if (in_conf.is_open()) {
     for (std::string line; std::getline(in_conf, line); ) {
+      std::cout << "ЧАСТЬ КОНФИГА" << line << std::endl;
       char delimiter = '=';
       std::string token = line.substr(line.find(delimiter) + 1, line.length());
       arr[i++] = token;

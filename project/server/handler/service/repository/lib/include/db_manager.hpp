@@ -11,7 +11,7 @@ using Connection = pqxx::connection;
 using Worker = pqxx::work;
 using Result = pqxx::result;
 
-const char path_config[] = {"../../configs/database.txt"};
+const char path_config[] = {"../configs/database.txt"};
 
 class DbManager {
  public:
