@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>kingKong.png</file>
+        <file>circleLoader.gif</file>
+        <file>squaresLoader.gif</file>
+        <file>tyanochka.png</file>
+        <file>MainLayout.png</file>
+        <file>Эстетика жизни.jpeg</file>
+        <file>event1.png</file>
+        <file>Ava.jpeg</file>
+        <file>MainLayout2.png</file>
+        <file>setting_45px.gif</file>
+        <file>check.svg</file>
+        <file>maks-korzg-17-let_115827.mp4</file>
+        <file>NIGHTMORSS_-_NIGHT_LIFE_(musmore.com).mp3</file>
+        <file>arrow_back.svg</file>
+        <file>back_black_arrow.png</file>
+        <file>addButton.png</file>
+        <file>delete.svg</file>
+        <file>PartyTimeLogo.png</file>
+        <file>back-arrow.png</file>
+        <file>gearBlack.svg</file>
+        <file>gearWhite.svg</file>
+    </qresource>
+    <qresource prefix="/css">
+        <file>style.css</file>
+        <file>my.qml</file>
+    </qresource>
+</RCC>

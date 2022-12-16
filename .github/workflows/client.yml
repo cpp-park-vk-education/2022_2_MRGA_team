@@ -1,0 +1,38 @@
+name: client
+on: push
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx_project:26102022_2
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd project/client/interface && export QT_QPA_PLATFORM=offscreen && make check
+  build:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx_project:26102022_2
+    needs: [check]
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd project/client/interface && make build
+  test:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx_project:26102022_2
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v2
+      - run: | 
+            cd project/client/interface && export QT_QPA_PLATFORM=offscreen && make test
+            sudo pacman -S --noconfirm tree
+            tree build
+  covtest:
+    runs-on: ubuntu-latest
+    container: yakwilik/cxx_project:26102022_2
+    needs: [test]
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd project/client/interface && export QT_QPA_PLATFORM=offscreen && make test && make covtest
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test coverage
+          path: build/report/
