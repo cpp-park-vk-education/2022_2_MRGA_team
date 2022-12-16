@@ -47,6 +47,17 @@ Base::Base(QWidget *parent)
 //    screens->insertWidget(0, visitorEventListPage);
 //    screens->insertWidget(1, &profilePage);
 //    screens->insertWidget(2, myEvents);
+
+//    screens->insertWidget(e_authorization, authorizationPage);
+//    screens->insertWidget(e_registration, registrationPage);
+//    screens->insertWidget(e_main, visitorEventListPage);
+//    screens->insertWidget(e_profile, &profilePage);
+//    screens->insertWidget(e_events, myEvents);
+    screens->insertWidget(0, visitorEventListPage);
+    screens->insertWidget(1, &profilePage);
+    screens->insertWidget(2, myEvents);
+
+
 }
 
 void Base::onAuthPageClicked() {
@@ -76,20 +87,31 @@ void Base::onRegister()
 
 void Base::onProfilePageClicked()
 {
+
 //    screens->setCurrentIndex(e_profile);
 //    screens->setCurrentIndex(1);
     screens->setCurrentIndex(e_profile);
+
+    screens->setCurrentIndex(e_profile);
+    screens->setCurrentIndex(1);
+//    screens->setCurrentIndex(e_profile);
+
 }
 
 void Base::getPrev()
 {
     screens->setCurrentIndex(screens->currentIndex() - 1);
+//    screens->setCurrentIndex(e_main);
 }
 
 void Base::onEventViewPageClicked()
 {
+
 //    screens->setCurrentIndex(2);
     screens->setCurrentIndex(e_events);
+    screens->setCurrentIndex(2);
+//    screens->setCurrentIndex(e_events);
+
 }
 
 void Base::onVisitorEventListPageClicked()

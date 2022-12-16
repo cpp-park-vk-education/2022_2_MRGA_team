@@ -1,11 +1,16 @@
 
 /*General widgets styles*/
 QStackedWidget#generalBackground {
-    border-image: url(:/image/MainLayout.png) 0 0 0 0 stretch stretch;
+/*    border-image: url(:/image/MainLayout.png) 0 0 0 0 stretch stretch;*/
+    background-color: rgba(241, 241, 241, 1);
     padding-top: 0px;
     padding-bottom: 20px;
     min-width: 1440px;
     max-height: 1024px;
+}
+
+registration#registration {
+    max-height: 900px;
 }
 
 /*Text fiels*/
@@ -95,12 +100,40 @@ QPushButton#navbarSvg {
     border-image: url(:/image/back_black_arrow.png) 0 0 0 0;
 }
 
+/*General Button*/
 *[cssClass~="searchButton"] {
     padding: 10px;
     margin: 10px;
     min-width: 200px;
     max-height: 40px;
     background-color: rgba(152, 128, 203, 1);
+    border-radius: 15px;
+}
+
+*[cssClass~="deleteEventBtn"] {
+    border-image: url(:/image/delete.svg);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+*[cssClass~="addButton"] {
+    border-image: url(:/image/addButton.png);
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+*[cssClass~="formEvent"] {
+    background-color: #ffffff;
+    border-radius: 15;
+}
+
+*[cssClass~="profileEdit"] {
+    min-width: 800px;
+    min-height: 50px;
+    background-color: grey;
+    border: 1px solid black;
     border-radius: 15px;
 }
 
@@ -126,6 +159,16 @@ QLabel#eventDescription {
     margin-right: 20px;
 }
 
+*[cssClass~="profileLabel"] {
+    padding-top: 20px;
+    min-width: 100px;
+    max-height: 50px;
+    background: none;
+    font-size: 24px;
+    font-weight: 800;
+    color: #000000;
+}
+
 /*Components styles*/
 *[cssClass~="clientNavbar"] {
     min-width: 1440px;
@@ -137,6 +180,7 @@ QLabel#eventDescription {
 }
 
 *[cssClass~="organizerNavbar"] {
+    min-width: 1440px;
     min-height: 100%;
     background-color: rgba(25, 113, 125, 0.599);
     border: 1px solid rgba(23, 7, 57, 1);
@@ -296,27 +340,18 @@ QComboBox:!on {
     background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #666, stop: 0.1 #555, stop: 0.5 #555, stop: 0.9 #444, stop: 1 #333);
 }
 
-*[cssClass~="deleteEventBtn"] {
-    border-image: url(:/image/delete.svg);
-    min-width: 50px;
+
+*[cssClass~="settingsInput"] {
+    min-width: 200px;
     min-height: 50px;
-    border-radius: 25px;
+    border-radius: 15px;
+    background-color: red;
 }
 
-*[cssClass~="addButton"] {
-    border-image: url(:/image/addButton.png);
-    min-width: 50px;
-    min-height: 50px;
-    border-radius: 25px;
-}
-
-*[cssClass~="formEvent"] {
-    background-color: #ffffff;
-    border-radius: 15;
-}
-    /*QToolBar::item {
+/*QToolBar::item {
     border-radius: 15px;
 }*/
+
 /*QListView#pendingList {
     max-width: 500px; background-color: purple; border-radius: 10px; font-size: 20pt; font-weight: bold;
 }*/

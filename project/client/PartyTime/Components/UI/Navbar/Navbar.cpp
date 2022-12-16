@@ -31,8 +31,8 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
         this->setProperty("cssClass", "clientNavbar");    // установили class navbar-у, который сейчас используется
         std::cout << "afascascsa" << std::endl;
         layout->addWidget(&mainButton);
-        layout->addWidget(&profileButton);
         layout->addWidget(&eventsButton);
+        layout->addWidget(&profileButton);
 //        layout->addWidget(svgButton);
     } else {
         this->setObjectName("idOrganizerNavbar");        // установили id-ик navbar-у, которым в теории сможем потом воспользоваться
@@ -70,8 +70,8 @@ Navbar::Navbar(const Navbar &other): painter(new QWidget)
     this->layout = other.layout;
 
     layout->addWidget(&mainButton);
-    layout->addWidget(&profileButton);
     layout->addWidget(&eventsButton);
+    layout->addWidget(&profileButton);
 }
 
 Navbar &Navbar::operator=(const Navbar &other)
@@ -89,8 +89,8 @@ Navbar &Navbar::operator=(const Navbar &other)
     this->eventsButton = other.eventsButton;
 
     this->layout->addWidget(&mainButton);
-    this->layout->addWidget(&profileButton);
     this->layout->addWidget(&eventsButton);
+    this->layout->addWidget(&profileButton);
 
     return *this;
 }

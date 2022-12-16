@@ -37,10 +37,12 @@ private:
     QAudioOutput* m_audioOuput;
     QFile* m_musicPath;
 
+    QPushButton* backButton;
+
     void set_interface_style();
 
 private slots:
-//    void onBackPressed();
+    void onBackPressed();
 
 signals:
     void back(); // int numberOfPrevPage

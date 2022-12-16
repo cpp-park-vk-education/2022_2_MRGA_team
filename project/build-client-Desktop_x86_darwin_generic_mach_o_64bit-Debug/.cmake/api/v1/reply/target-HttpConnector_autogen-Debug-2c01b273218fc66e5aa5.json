@@ -1,0 +1,71 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"PartyTime/connector/lib/HttpConnector/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "HttpConnector_autogen_timestamp_deps::@768f39361f658952fae9"
+		}
+	],
+	"id" : "HttpConnector_autogen::@768f39361f658952fae9",
+	"isGeneratorProvided" : true,
+	"name" : "HttpConnector_autogen",
+	"paths" : 
+	{
+		"build" : "PartyTime/connector/lib/HttpConnector",
+		"source" : "PartyTime/connector/lib/HttpConnector"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/HttpConnector/CMakeFiles/HttpConnector_autogen",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/HttpConnector/CMakeFiles/HttpConnector_autogen.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/connector/lib/HttpConnector/HttpConnector_autogen/timestamp.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

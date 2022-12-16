@@ -1,0 +1,7 @@
+module PartyTime
+linktarget myappplugin
+optional plugin myappplugin
+classname PartyTimePlugin
+typeinfo myapp.qmltypes
+prefer :/PartyTime/
+
