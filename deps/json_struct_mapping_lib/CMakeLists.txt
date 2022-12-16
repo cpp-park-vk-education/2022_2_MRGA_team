@@ -11,6 +11,3 @@ file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/
 add_library(${PROJECT_NAME} INTERFACE ${SOURCES})
 
 install(FILES structs.hpp DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/../include")
-
-add_executable(try main.cpp)
-target_include_directories(try PUBLIC ../include)
