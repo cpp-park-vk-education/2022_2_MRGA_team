@@ -124,12 +124,11 @@ std::vector<Event> EventRepository::get_events() {
       if (!result.empty()) {
         for (auto row : result) {
           Address address(row["address"].as<std::string>(), row["longitude"].as<double>(),
-          row["latitude"].as<double>());
-          address.id = row["address_id"].as<size_t>();
+          row["latitude"].as<double>(), row["address_id"].as<size_t>());
+
           Event event(row["title"].as<std::string>(), row["date_time"].as<std::string>(),
             row["user_id"].as<size_t>(), address, row["description"].as<std::string>(),
-            row["max_visitors"].as<size_t>(), 0);
-          event.id = row["events_id"].as<size_t>();
+            row["max_visitors"].as<size_t>(), 0, row["events_id"].as<size_t>());
           events.push_back(event);
         }
       }
