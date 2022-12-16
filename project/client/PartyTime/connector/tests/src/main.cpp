@@ -59,16 +59,29 @@ protected:
 
 TEST_F(HttpConnectorErrorCategoryTest, constructor) {
     ASSERT_EQ(1, 1);
-    HttpConnector connector("0.0.0.0", "8080");
+    // HttpConnector connector("0.0.0.0", "8080");
 
-    auto res = connector.GET("/api/v1/events");
-    // std::cout << "catetogy = " << res.result.category().name() << std::endl;
-    // std::cout << "message = " << res.result.message() << std::endl;
+    // auto res = connector.GET("/api/v1/events");
+    // // std::cout << "catetogy = " << res.result.category().name() << std::endl;
+    // // std::cout << "message = " << res.result.message() << std::endl;
+    // // std::cout << res.response->response_body << std::endl;
+    // Address new_addr("Ufa", 155, 233);
+    // Event new_event("просто туса", "12:12:2022", 0, new_addr, "туса в Уфе", 100, 0);
+    // res = connector.POST("/api/v1/events/create", new_event.toJSON());
     // std::cout << res.response->response_body << std::endl;
-    Address new_addr("Ufa", 155, 233);
-    Event new_event("просто туса", "12:12:2022", 0, new_addr, "туса в Уфе", 100, 0);
-    res = connector.POST("/api/v1/events/create", new_event.toJSON());
-    std::cout << res.response->response_body << std::endl;
+
+
+
+    auto ptc = PartyTimeConnector::default_implementation();
+    auto resultat = ptc->events->events();
+    auto events = *resultat.body;
+    for (auto & ev: events) {
+        std::cout << "название: " << ev.title << "\t";
+        std::cout << "описание: " << ev.description << "\t";
+        std::cout << "дата: " << ev.date_time << "\t";
+        std::cout << "количество посетителей: " << ev.max_visitors << "\t";
+    }
+    std::cout << std::endl;
 
     // if (res.response) {
     //     std::cout << "has value" << res.response.has_value() << std::endl;

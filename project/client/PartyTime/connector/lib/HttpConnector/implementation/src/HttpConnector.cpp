@@ -67,7 +67,7 @@ HttpConnector::GET(const string &target,
     if (ec) {
         return {std::nullopt, ec};
     }
-    Response response;
+    Resp response;
     http::read(stream, buffer, response);
     const unordered_map<name, value> response_headers = [&response]{
         unordered_map<name, value> h;
@@ -114,7 +114,7 @@ HttpConnector::POST(const string &target, const string &body,
     if (ec) {
         return {std::nullopt, ec};
     }
-    Response response;
+    Resp response;
     http::read(stream, buffer, response);
     const unordered_map<name, value> response_headers = [&response]{
         unordered_map<name, value> h;
