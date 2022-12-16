@@ -15,11 +15,11 @@ namespace {
 
 
 
-class HttpConnectorErrorCategory : public boost::system::error_category{
+class HttpConnectorErrorCategoryImpl : public boost::system::error_category{
 public:
     static constexpr std::string_view error_name = "http connector";
-    const char * name() const BOOST_NOEXCEPT override {
-            return error_name.data();
+    const char * name() const noexcept override {
+            return "http connector";
     }
     std::string message( int ev ) const override {
         HttpConnectorErrorCodes errc = static_cast<ErrC>(ev);
@@ -36,8 +36,6 @@ public:
             }
         }
     }
-
 };
-
 
 #endif //CONNECTOR_HTTP_CONNECTOR_ERROR_CATEGORY_HPP

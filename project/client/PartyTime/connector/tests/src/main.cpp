@@ -55,24 +55,25 @@ protected:
     void SetUp() override{
     }
     void TearDown() override{}
-    HttpConnectorErrorCategory* connector;
 };
 
 TEST_F(HttpConnectorErrorCategoryTest, constructor) {
     ASSERT_EQ(1, 1);
     HttpConnector connector("contest.yandex.ru");
     auto res = connector.GET("/");
-    // std::cout << "result = " << res.result.category().name() << std::endl;
-    if (res.response) {
-        std::cout << "has value" << res.response.has_value() << std::endl;
-        std::cout << res.response->response_body << std::endl;
-        std::cout << res.response->status.str << std::endl;
-        for (auto&[h, v] : res.response->headers) {
-            std::cout << "header " << h << " value " << v << std::endl;
-        }
-    }
-    User us(0, "Name", "pwrd", "ema@mail.ru", "12:12:2022", "no desc");
+    std::cout << "catetogy = " << res.result.category().name() << std::endl;
+    std::cout << "message = " << res.result.message() << std::endl;
 
-    std::cout << us.toJSON() << std::endl;
+    // if (res.response) {
+    //     std::cout << "has value" << res.response.has_value() << std::endl;
+    //     std::cout << res.response->response_body << std::endl;
+    //     std::cout << res.response->status.str << std::endl;
+    //     for (auto&[h, v] : res.response->headers) {
+    //         std::cout << "header " << h << " value " << v << std::endl;
+    //     }
+    // }
+    // User us(0, "Name", "pwrd", "ema@mail.ru", "12:12:2022", "no desc");
+
+    // std::cout << us.toJSON() << std::endl;
 
 }

@@ -1,6 +1,11 @@
 #include "HttpConnector.hpp"
 #include "HttpConnectorErrorCategory.hpp"
 
+boost::system::error_category const& HttpConnectorErrorCategory() {
+    static const HttpConnectorErrorCategoryImpl instance;
+    return instance;
+}
+
 HttpConnector::HttpConnector(const string &host, const string &port)
     :
     host(host),

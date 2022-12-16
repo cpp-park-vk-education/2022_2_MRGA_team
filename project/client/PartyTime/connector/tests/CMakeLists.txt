@@ -7,13 +7,13 @@ set(Include_dir ${PartyTimeConnectorIncludeDirs} ${HTTPConnectorIncludeDirs} ${L
 message("include dirs: ${PartyTimeConnectorIncludeDirs}\n\n")
 
 if (NOT DEFINED MAIN_DIR)
-    set(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../.. CACHE PATH MAIN_DIR FORCE)
+    set(MAIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../../../.. CACHE PATH MAIN_DIR FORCE)
+    include_directories(SYSTEM ${MAIN_DIR}/deps/include)
     message("MAIN_DIR in connector lib dir: ${MAIN_DIR}\n\n")
 endif ()
 
-set(deps_include_dir ${MAIN_DIR}/deps/include)
 
-include_directories(${deps_include_dir} ${Include_dir})
+include_directories(${Include_dir})
 
 AUX_SOURCE_DIRECTORY(src SOURCES)
 
