@@ -12,7 +12,11 @@ public:
     UiInput(const UiInput& other);
     UiInput& operator=(const UiInput& other);
     ~UiInput();
-    UiInput(const QString& inputType, const QString& editType, const QString& inputStyle = "horizontal"); // горизонатльный input
+
+    // нужные
+    UiInput(const QString& className, const QString& inputName); // className пробрасывается дальше в UiEdit и UiLabel
+
+    UiInput(const QString& inputType, const QString& editType, const QString& inputStyle); // горизонатльный input
     UiInput(const UiLabel& _label, const UiEdit& _edit, const QString& inputStyle = "horizontal"); // вертикальный input
     UiInput(const QString& styleSheet, const UiEdit& _edit); // QString cssStyle либо id, там уже все что хотим задаем. Надо для изображения записать еще.
     // и для loader, для стилизованного input-a, реализовать UiLabel, UiEdit.

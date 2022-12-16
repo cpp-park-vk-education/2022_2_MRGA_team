@@ -1,5 +1,4 @@
 #include "Label.hpp"
-#include <iostream>
 
 UiLabel::UiLabel(QWidget *parent) : painter(parent), label(new QLabel("Тыкни на меня")), labelLayout(new QHBoxLayout(this))
 {
@@ -29,7 +28,6 @@ UiLabel::~UiLabel()
 
 UiLabel::UiLabel(const QString &className, const QString& text) : label(new QLabel()), labelLayout(new QHBoxLayout(this))
 {
-    std::cout << "cssClass label constructor was called" << std::endl;
     label->setProperty("cssClass", className);
     label->setText(text);
     labelLayout->addWidget(label);

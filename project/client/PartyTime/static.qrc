@@ -18,6 +18,9 @@
         <file>addButton.png</file>
         <file>delete.svg</file>
         <file>PartyTimeLogo.png</file>
+        <file>back-arrow.png</file>
+        <file>gearBlack.svg</file>
+        <file>gearWhite.svg</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>

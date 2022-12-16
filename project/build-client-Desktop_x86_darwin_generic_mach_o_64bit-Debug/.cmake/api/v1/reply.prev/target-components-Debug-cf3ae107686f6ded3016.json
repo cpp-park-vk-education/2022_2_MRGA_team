@@ -290,11 +290,11 @@
 			"id" : "ui::@b22de9d2873d77b3b304"
 		},
 		{
-			"backtrace" : 0,
-			"id" : "components_autogen::@b8e016b4be1ecf48b8ea"
+			"id" : "components_autogen_timestamp_deps::@b8e016b4be1ecf48b8ea"
 		},
 		{
-			"id" : "components_autogen_timestamp_deps::@b8e016b4be1ecf48b8ea"
+			"backtrace" : 0,
+			"id" : "components_autogen::@b8e016b4be1ecf48b8ea"
 		}
 	],
 	"id" : "components::@b8e016b4be1ecf48b8ea",

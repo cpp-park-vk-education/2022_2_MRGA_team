@@ -257,11 +257,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "ui_autogen::@b22de9d2873d77b3b304"
+			"id" : "ui_autogen_timestamp_deps::@b22de9d2873d77b3b304"
 		},
 		{
-			"id" : "ui_autogen_timestamp_deps::@b22de9d2873d77b3b304"
+			"backtrace" : 0,
+			"id" : "ui_autogen::@b22de9d2873d77b3b304"
 		}
 	],
 	"id" : "ui::@b22de9d2873d77b3b304",

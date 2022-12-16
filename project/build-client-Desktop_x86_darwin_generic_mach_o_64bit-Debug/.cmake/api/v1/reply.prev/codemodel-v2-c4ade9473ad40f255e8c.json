@@ -567,7 +567,7 @@
 				{
 					"directoryIndex" : 7,
 					"id" : "LocalStorage::@f3cd337261df3efa2699",
-					"jsonFile" : "target-LocalStorage-Debug-41c0cac09f0a0a22afb5.json",
+					"jsonFile" : "target-LocalStorage-Debug-2cd24301ca19e9535b78.json",
 					"name" : "LocalStorage",
 					"projectIndex" : 6
 				},
@@ -658,7 +658,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "PartyTime::@872bc83d6c5124d27b2e",
-					"jsonFile" : "target-PartyTime-Debug-937f5f226921c3af3820.json",
+					"jsonFile" : "target-PartyTime-Debug-7376a3d21a288eb3fa99.json",
 					"name" : "PartyTime",
 					"projectIndex" : 1
 				},

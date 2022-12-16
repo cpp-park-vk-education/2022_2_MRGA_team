@@ -108,11 +108,11 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "LocalStorage_autogen::@f3cd337261df3efa2699"
+			"id" : "LocalStorage_autogen_timestamp_deps::@f3cd337261df3efa2699"
 		},
 		{
-			"id" : "LocalStorage_autogen_timestamp_deps::@f3cd337261df3efa2699"
+			"backtrace" : 0,
+			"id" : "LocalStorage_autogen::@f3cd337261df3efa2699"
 		}
 	],
 	"id" : "LocalStorage::@f3cd337261df3efa2699",

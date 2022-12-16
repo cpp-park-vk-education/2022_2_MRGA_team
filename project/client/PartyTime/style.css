@@ -2,7 +2,7 @@
 /*General widgets styles*/
 QStackedWidget#generalBackground {
 /*    border-image: url(:/image/MainLayout.png) 0 0 0 0 stretch stretch;*/
-    background-color: #ffffff;
+    background-color: rgba(241, 241, 241, 1);
     padding-top: 0px;
     padding-bottom: 20px;
     min-width: 1440px;
@@ -126,8 +126,11 @@ QPushButton#navbarSvg {
 }
 
 *[cssClass~="profileEdit"] {
-    max-width: 500px;
-    min-height: 100px;
+    min-width: 800px;
+    min-height: 50px;
+    background-color: grey;
+    border: 1px solid black;
+    border-radius: 15px;
 }
 
 /*Labels*/
@@ -153,13 +156,13 @@ QLabel#eventDescription {
 }
 
 *[cssClass~="profileLabel"] {
+    padding-top: 20px;
     min-width: 100px;
-    max-height: 100px;
-    border-radius: 15px;
-    background-color: red;
-    font-size: 40px;
+    max-height: 50px;
+    background: none;
+    font-size: 24px;
     font-weight: 800;
-    color: green;
+    color: #000000;
 }
 
 /*Components styles*/
@@ -173,6 +176,7 @@ QLabel#eventDescription {
 }
 
 *[cssClass~="organizerNavbar"] {
+    min-width: 1440px;
     min-height: 100%;
     background-color: rgba(25, 113, 125, 0.599);
     border: 1px solid rgba(23, 7, 57, 1);
@@ -332,6 +336,13 @@ QComboBox:!on {
     background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #666, stop: 0.1 #555, stop: 0.5 #555, stop: 0.9 #444, stop: 1 #333);
 }
 
+
+*[cssClass~="settingsInput"] {
+    min-width: 200px;
+    min-height: 50px;
+    border-radius: 15px;
+    background-color: red;
+}
 
 /*QToolBar::item {
     border-radius: 15px;

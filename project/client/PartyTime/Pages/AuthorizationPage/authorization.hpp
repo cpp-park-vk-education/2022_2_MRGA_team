@@ -3,7 +3,6 @@
 
 #include "Header.hpp"
 #include <../styleHelper.hpp>
-#include <iostream>
 #include <string>
 
 #define MIN_CHAR_SIZE_IN_INPUT 6
