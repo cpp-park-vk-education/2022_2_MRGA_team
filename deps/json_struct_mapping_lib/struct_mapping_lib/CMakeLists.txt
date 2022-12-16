@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.18)
+project(struct_mapping_lib CXX)
+set(CMAKE_CXX_STANDARD 20)
+include_directories(options)
+install(DIRECTORY ./ DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/../../include" FILES_MATCHING PATTERN "*.hpp")
