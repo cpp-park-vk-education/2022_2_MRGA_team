@@ -10,3 +10,24 @@ services:
       - ./sql_scripts/:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
+    networks:
+      service-network:
+        ipv4_address: 10.0.0.10
+
+  container:
+    image: yakwilik/mrga_backend
+    network_mode: "host"
+    volumes:
+      - "${PWD}:/project"
+    working_dir: /project
+    stdin_open: true # docker run -i
+    tty: true
+
+networks:
+  service-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.0.0.0/24
+        gateway: 10.0.0.1

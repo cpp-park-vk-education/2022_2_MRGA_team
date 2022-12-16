@@ -15,7 +15,7 @@ CREATE TABLE tokens (
     token_content text NOT NULL UNIQUE,
     expire_date_time timestamp NOT NULL,
 
-    user_id integer REFERENCES users ON DELETE CASCADE
+    user_id integer REFERENCES users ON DELETE CASCADE NOT NULL
 );
 
 CREATE TABLE addresses (

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.14)
 project(handler_lib)
 
+include_directories(SYSTEM ${MAIN_DIR}/deps/include)
+
 add_subdirectory(service)
 
 message("SERVICE_LIB_LIBRARIES = " ${SERVICE_LIB_LIBRARIES})

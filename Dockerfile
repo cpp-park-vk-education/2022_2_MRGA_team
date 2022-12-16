@@ -15,5 +15,3 @@ RUN sudo pacman -S make --noconfirm
 RUN sudo pacman -S cmake --noconfirm
 RUN sudo pacman -S clang-tools-extra --noconfirm
 RUN sudo pacman -S qt6 --noconfirm
-
-

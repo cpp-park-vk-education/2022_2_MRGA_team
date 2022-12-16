@@ -5,24 +5,16 @@
 
 class AuthRepTest : public ::testing::Test {
  protected:
-    void SetUp() override {
-        user = {
-            .nickname = "jumpy",
-            .password = "1234",
-            .email = "jump@mail.ru",
-            .birth_date = "2003-12-01",
-            .description = "Im a boy"
-        };
-    }
+    void SetUp() override {}
 
     void TearDown() override {}
 
     DbManager db_manager;
-    User user;
 };
 
 
 TEST_F(AuthRepTest, CreateUser) {
+    User user("jumpy", "1234", "jump@mail.ru", "2003-12-01", "Im a boy");
     AuthorizationRepository auth_rep(db_manager);
     EXPECT_NO_THROW(auth_rep.create_user(user));
 }

@@ -5,20 +5,11 @@
 
 class UserRepTest : public ::testing::Test {
  protected:
-    void SetUp() override {
-        user = {
-            .nickname = "jumpy",
-            .password = "1234",
-            .email = "jump@mail.ru",
-            .birth_date = "2003-12-01",
-            .description = "Im a boy"
-        };
-    }
+    void SetUp() override {}
 
     void TearDown() override {}
 
     DbManager db_manager;
-    User user;
 };
 
 TEST_F(UserRepTest, ExistenceUser) {
@@ -33,6 +24,7 @@ TEST_F(UserRepTest, GetUserData) {
 
 
 TEST_F(UserRepTest, UpdateUserData) {
+    User user("jumpy", "1234", "jump@mail.ru", "2003-12-01", "Im a boy");
     UserRepository user_rep(db_manager);
     EXPECT_NO_THROW(user_rep.update_user_data(user));
 }

@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.18)
 
 project(server LANGUAGES CXX)
 
+include_directories(SYSTEM ${MAIN_DIR}/deps/include)
+
 add_subdirectory(handler)
 
 message("HANDLER_LIB_LIBRARIES = " ${HANDLER_LIB_LIBRARIES})
@@ -19,6 +21,11 @@ file(GLOB INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-
 target_include_directories(${PROJECT_NAME} PUBLIC ${HANDLER_LIB_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${HANDLER_LIB_LIBRARIES})
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${POSTGRES_LIB_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${POSTGRES_LIB_LIBRARIES})
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${SERVICE_LIB_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${SERVICE_LIB_LIBRARIES})

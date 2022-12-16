@@ -77,7 +77,6 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 *.dll
 *.exe
 
-
 build/
 .vscode/
 .DS_Store
@@ -135,3 +134,7 @@ build/
 **/project/server/handler/service/repository
 
 *.log
+**/build/
+**/.vscode/
+**/.DS_Store
+**/.idea/

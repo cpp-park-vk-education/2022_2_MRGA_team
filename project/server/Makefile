@@ -2,7 +2,7 @@
 
 all: build
 
-docker_run: 
+docker_run:
 	docker run -it -v "${PWD}:/project" --net=host -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" yakwilik/mrga_backend
 
 rebuild: clean build
