@@ -10,6 +10,8 @@
 #include <iostream>
 #include <string>
 
+#include "service.hpp"
+
 
 namespace beast = boost::beast;     // from <boost/beast.hpp>
 namespace http = beast::http;       // from <boost/beast/http.hpp>
@@ -19,8 +21,8 @@ using tcp = net::ip::tcp;           // from <boost/asio/ip/tcp.hpp>
 
 class http_connection : public std::enable_shared_from_this<http_connection> {
 public:
-    explicit http_connection(tcp::socket socket)
-            : socket_(std::move(socket)) {}
+    explicit http_connection(tcp::socket socket, ServiceManager &service_manager)
+            : socket_(std::move(socket)), service_manager_ref_(service_manager) {}
 
     void start() {
         read_request();
@@ -39,6 +41,8 @@ private:
     net::steady_timer deadline_ {
         socket_.get_executor(), std::chrono::seconds(60)
     };
+
+    ServiceManager &service_manager_ref_;
 
     void read_request();
 

@@ -40,25 +40,25 @@ void http_connection::process_request() {
                 response_.set(http::field::server, "MRGA");
                 std::string response_body;
 
-                std::make_shared<router>(response_, request_)->get_handler.at(url.path())();
+                std::make_shared<router>(response_, request_, service_manager_ref_)->get_handler.at(url.path())();
                 break;
             }
 
             case http::verb::post: {
                 std::string response_body;
-                std::make_shared<router>(response_, request_)->post_handler.at(url.path())();
+                std::make_shared<router>(response_, request_, service_manager_ref_)->post_handler.at(url.path())();
                 break;
             }
 
             case http::verb::put: {
                 std::string response_body;
-                std::make_shared<router>(response_, request_)->put_handler.at(url.path())();
+                std::make_shared<router>(response_, request_, service_manager_ref_)->put_handler.at(url.path())();
                 break;
             }
 
             case http::verb::delete_: {
                 std::string response_body;
-                std::make_shared<router>(response_, request_)->delete_handler.at(url.path())();
+                std::make_shared<router>(response_, request_, service_manager_ref_)->delete_handler.at(url.path())();
                 break;
             }
 

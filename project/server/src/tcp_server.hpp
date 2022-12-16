@@ -3,6 +3,11 @@
 
 #include <boost/asio.hpp>
 
+#include "db_manager.hpp"
+#include "service.hpp"
+
+
+
 enum class IPV {
     V4,
     V6
@@ -19,6 +24,8 @@ private:
 
     boost::asio::io_context io_context_;
     boost::asio::ip::tcp::acceptor acceptor_;
+
+    ServiceManager service_manager_;
 };
 
 

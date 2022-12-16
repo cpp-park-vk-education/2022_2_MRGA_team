@@ -8,7 +8,7 @@ docker_run:
 rebuild: clean build
 
 build:
-	scripts/build.sh
+	mkdir build && cd build && cmake .. && cmake --build .
 
 clean:
 	rm -rf build

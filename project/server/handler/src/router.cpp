@@ -5,7 +5,13 @@
 
 using namespace boost::urls;
 
-router::router(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
+router::router(http::response<http::dynamic_body> &response,
+               const http::request<http::dynamic_body> &request,
+               ServiceManager &service_manager)
+
+               : service_manager_ref(service_manager)
+
+{
 
     //get_handler    ["/api/v1/profile"]         = [&](bsv) {   service_->run_user_service(hcKey, query_params);    };
 
@@ -35,7 +41,7 @@ void router::events_handle(http::response<http::dynamic_body> &response, const h
     std::string response_body;
 
     if (url.query().empty()) {
-        int ec = service_->run_event_service(url.query(), response_body);
+        service_manager_ref.event_service_.event(url.query(), response_body);
     } else {
         /// сервис авторизации, сервис ивентов
     }
