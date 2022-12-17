@@ -24,7 +24,8 @@ UiInput::UiInput(const UiInput &other) : painter(new QWidget)
 UiInput &UiInput::operator=(const UiInput &other)
 {
     QLayoutItem *child;
-    while ((child = layout->takeAt(0)) != nullptr) { // пока layout не пустой удаляем все виджеты.
+
+    while ((child = this->layout->takeAt(0)) != nullptr) { // пока layout не пустой удаляем все виджеты.
         delete child->widget();                      // delete the widget
         delete child;                                // delete the layout item
     }
@@ -45,14 +46,16 @@ UiInput::UiInput(const QString &className, const QString& inputName) : layout(ne
     if (className == "settingsInput") {
         std::cout << "calling settingsInput constructor" << std::endl;
         label = new UiLabel(className, inputName);
-        edit = new UiEdit(className, "", "settingsInput");
+        edit = new UiEdit(className, "Placeholder", "settingsInput");
+
+        std::cout << "edit styles: " << this->edit->styleSheet().toStdString() << std::endl;
 
         this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
-        this->layout->addWidget(label, 1, 2, Qt::AlignLeft |  Qt::AlignTop);
+        this->layout->addWidget(edit, 1, 2, Qt::AlignLeft |  Qt::AlignTop);
     }
 }
 
-UiInput::UiInput(const QString& inputType, const QString& editType, const QString& inputStyle) : layout(new QGridLayout()) // горизонтальный layout
+UiInput::UiInput(const QString& inputType, const QString& editType, const QString& inputStyle) : layout(new QGridLayout(this)) // горизонтальный layout
 {
     UiLabel* factoryLabel = new UiLabel();
     UiEdit* factoryEdit = new UiEdit();

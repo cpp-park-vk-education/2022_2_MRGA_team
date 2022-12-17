@@ -73,6 +73,30 @@ set(OLD_GLOB
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/src/UsersConnector.cpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/tests/src/main.cpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/main.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/API/GetService/GetService.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/API/PostService/PostService.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/EventFilter/EventFilter.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/EventForm/EventForm.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/EventItem/EventItem.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/EventList/EventList.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Button/Button.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Input/Input.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Loader/Loader.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Select/Select.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/EventViewPage/eventView.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/LoadingPage/loading.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/OrganizerPage/organizer.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/ProfilePage/profile.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/RegistrationPage/registration.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/VisitorEventListPage/visitorEventList.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/VisitorPage/visitor.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/base.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/main.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/painter.cpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/tests/interfaceTest.cpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/tests/interfaceTest.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
@@ -96,6 +120,8 @@ set(OLD_GLOB
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/HttpConnector/implementation/include/deferer.h"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/include/api.h"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/utils.h"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/connector/lib/implementation/connector.h"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/base.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -156,6 +182,27 @@ set(OLD_GLOB
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IAuthConnector.hpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IEventsConnector.hpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IUsersConnector.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/API/GetService/GetService.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/API/PostService/PostService.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/EventFilter/EventFilter.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/EventForm/EventForm.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/EventItem/EventItem.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/EventList/EventList.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Button/Button.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Input/Input.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Loader/Loader.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/MyModal/MyModal.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Navbar/Navbar.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Components/UI/Select/Select.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/AuthorizationPage/authorization.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/EventViewPage/eventView.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/LoadingPage/loading.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/OrganizerPage/organizer.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/ProfilePage/profile.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/RegistrationPage/registration.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/VisitorEventListPage/visitorEventList.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/Pages/VisitorPage/visitor.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/painter.hpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -212,6 +259,7 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/*.qrc")
 set(OLD_GLOB
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/static.qrc"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/static.qrc"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -231,6 +279,7 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/*.ui")
 set(OLD_GLOB
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/base.ui"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/interface/PartyTime/base.ui"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

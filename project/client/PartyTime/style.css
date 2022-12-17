@@ -348,6 +348,13 @@ QComboBox:!on {
     background-color: red;
 }
 
+*[cssClassEdit~="settingsInput"] {
+    min-width: 800px;
+    min-height: 200px;
+    background-color: #000000;
+    border-radius: 15px;
+}
+
 /*QToolBar::item {
     border-radius: 15px;
 }*/

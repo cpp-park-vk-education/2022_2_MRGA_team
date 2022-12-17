@@ -1,0 +1,71 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"PartyTime/Components/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "components_autogen_timestamp_deps::@b8e016b4be1ecf48b8ea"
+		}
+	],
+	"id" : "components_autogen::@b8e016b4be1ecf48b8ea",
+	"isGeneratorProvided" : true,
+	"name" : "components_autogen",
+	"paths" : 
+	{
+		"build" : "PartyTime/Components",
+		"source" : "PartyTime/Components"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/Components/CMakeFiles/components_autogen",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/Components/CMakeFiles/components_autogen.rule",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/PartyTime/Components/components_autogen/timestamp.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

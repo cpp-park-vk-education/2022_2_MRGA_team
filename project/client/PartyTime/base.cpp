@@ -80,13 +80,7 @@ void Base::onProfilePageClicked()
 {
 
 //    screens->setCurrentIndex(e_profile);
-//    screens->setCurrentIndex(1);
-    screens->setCurrentIndex(e_profile);
-
-    screens->setCurrentIndex(e_profile);
     screens->setCurrentIndex(1);
-//    screens->setCurrentIndex(e_profile);
-
 }
 
 void Base::getPrev()
@@ -97,18 +91,15 @@ void Base::getPrev()
 
 void Base::onEventViewPageClicked()
 {
-
-//    screens->setCurrentIndex(2);
-    screens->setCurrentIndex(e_events);
-    screens->setCurrentIndex(2);
 //    screens->setCurrentIndex(e_events);
+    screens->setCurrentIndex(2);
 
 }
 
 void Base::onVisitorEventListPageClicked()
 {
-    screens->setCurrentIndex(e_main);
-//    screens->setCurrentIndex(0);
+//    screens->setCurrentIndex(e_main);
+    screens->setCurrentIndex(0);
 }
 
 void Base::onRegistrationPageClicked() {

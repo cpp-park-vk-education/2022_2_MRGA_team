@@ -58,7 +58,12 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
 
     mainLayout->addWidget(&this->navbar, 0, Qt::AlignCenter | Qt::AlignTop);
     mainLayout->addLayout(comboBoxLayout, Qt::AlignTop | Qt::AlignCenter);
-    this->eventList = new EventList("visitor", 10);
+    this->eventList = new EventList("visitor", 0);
+
+    // get Event
+//    auto ptc = PartyTimeConnector::
+
+
     mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);
 }
 
