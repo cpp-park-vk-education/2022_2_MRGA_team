@@ -6,6 +6,7 @@
 #include <sstream>
 #include <utility>
 #include <vector>
+#include <optional>
 #include "struct_mapping.hpp"
 
 namespace {
@@ -51,8 +52,9 @@ namespace {
             const string &password,
             const string &email,
             const string &birth_date,
-            const string &description = "")
-        : nickname(nickname), password(password), email(email),
+            const string &description = "",
+            const ui &id = 0)
+        : DBObject(id), nickname(nickname), password(password), email(email),
         birth_date(birth_date), description(description) {}
 
         explicit User(const string &json) {
@@ -89,8 +91,9 @@ namespace {
         Address() = default;
         Address(const string &address,
             const double &longitude = 0,
-            const double &latitude = 0)
-        : address(address), longitude(longitude), latitude(latitude) {}
+            const double &latitude = 0,
+            const ui &id = 0)
+        : DBObject(id), address(address), longitude(longitude), latitude(latitude) {}
 
         Address(const string &json) {
             sm::reg(&Address::id,        "id");
@@ -121,7 +124,7 @@ namespace {
         Address address;  // NOT NULL
 
         string description;
-        ui max_visitors;  // ALLOW NULL DEFAULT 100
+        optional<ui> max_visitors;  // ALLOW NULL DEFAULT 100
         ui curr_visitors; // Annotation
     public:
         Event() = default;
@@ -131,8 +134,9 @@ namespace {
             const Address & address,
             const string &description = "",
             const ui &max_visitors = 100,
-            const ui &curr_visitors = 0)
-        : title(title), date_time(date_time), user_id(user_id),
+            const ui &curr_visitors = 0,
+            const ui &id = 0)
+        : DBObject(id), title(title), date_time(date_time), user_id(user_id),
         address(address), description(description),
         max_visitors(max_visitors), curr_visitors(curr_visitors) {}
 
@@ -209,8 +213,9 @@ namespace {
         Token() = default;
         Token(const string &token,
             const string &expire_date_time,
-            const ui &user_id)
-        : token(token), expire_date_time(expire_date_time), user_id(user_id) {}
+            const ui &user_id,
+            const ui &id = 0)
+        : DBObject(id), token(token), expire_date_time(expire_date_time), user_id(user_id) {}
 
         explicit Token(const string &json) {
             sm::reg(&Token::id,             "id");
