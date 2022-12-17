@@ -35,10 +35,10 @@ static Connection* PGConnectionByConfig(const PGConnectionConfig& config, result
 class DbManager {
  public:
   const size_t MAX_SIZE;
-  DbManager(int);
+  DbManager(size_t n);
   DbManager();
-  DbManager(const PGConnectionConfig& config);
-  static DbManager from_config(const PGConnectionConfig& config, result& res);
+  DbManager(const PGConnectionConfig &config);
+  static DbManager from_config(const PGConnectionConfig &config, result &res);
 
   Connection *get_free_connection();
 

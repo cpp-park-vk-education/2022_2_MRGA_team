@@ -1,5 +1,6 @@
-#include "db_manager.hpp"
 #include <cstdlib>
+
+#include "db_manager.hpp"
 
 PGConnectionConfig PGConnectionConfig::from_file(const std::string &path, result &res) {
 
@@ -9,6 +10,7 @@ PGConnectionConfig PGConnectionConfig::from_file(const std::string &path, result
     res = ERROR;
     return config;
   }
+
   std::string line;
   char delimiter = '=';
 
@@ -30,24 +32,25 @@ PGConnectionConfig PGConnectionConfig::from_file(const std::string &path, result
 
   res = OK;
   return config;
-
 }
 
+Connection *PGConnectionByConfig(const PGConnectionConfig& config, result &res) {
+    std::string url = "postgresql://" + config.user +
+    ":" + config.password + "@" + config.host + ":" +
+    std::to_string(config.port) + "/" + config.database;
 
-Connection* PGConnectionByConfig(const PGConnectionConfig& config, result &res) {
-    std::string uri = "postgresql://" + config.user +
-    ":" + config.password + "@" + config.host + ":" + std::to_string(config.port) + "/" + config.database;
-    Connection* conn;
+    Connection *conn;
     try {
-      conn = new Connection(uri);
+      conn = new Connection(url);
     } catch(...) {
       res = ERROR;
       return nullptr;
     }
+
     return conn;
 }
 
-DbManager::DbManager(int n):MAX_SIZE(n) {}
+DbManager::DbManager(size_t n) : MAX_SIZE(n) {}
 
 DbManager::DbManager() : MAX_SIZE(10) {
     connections.resize(MAX_SIZE);
@@ -55,34 +58,34 @@ DbManager::DbManager() : MAX_SIZE(10) {
     std::vector<std::string> params = load_config(path_config);
     std::string config_data(serialize(params));
     for (size_t i = 0; i < MAX_SIZE; ++i) {
-        connections[ i ] = new Connection(config_data);
+        connections[i] = new Connection(config_data);
     }
-    std::cout << "соединения успешно созданы default" << std::endl;
+    std::cout << "Cоединения успешно созданы default" << std::endl;
 }
 
-DbManager::DbManager(const PGConnectionConfig &config): MAX_SIZE(10){
+DbManager::DbManager(const PGConnectionConfig &config) : MAX_SIZE(10){
   connections.resize(MAX_SIZE);
   result res = OK;
-  for (auto& conn: connections) {
+  for (auto conn: connections) {
     conn = PGConnectionByConfig(config, res);
     if (res != OK) {
+      std::cout << "Come error" << std::endl;
       throw "Не удалось подключиться к базе данных";
-      std::cout << "come error" << std::endl;
     }
   }
-  std::cout << "соединения успешно созданы" << std::endl;
+  std::cout << "Соединения успешно созданы" << std::endl;
 }
 
-DbManager DbManager::from_config(const PGConnectionConfig &config, result& res) try {
+DbManager DbManager::from_config(const PGConnectionConfig &config, result &res) try {
   DbManager manager(config);
   res = OK;
   return manager;
-} catch (std::exception &e){
+} catch (std::exception &e) {
   std::cout << e.what() << std::endl;
   res = ERROR;
   return DbManager(0);
 } catch(...) {
-  std::cout << "ошибка при создании" << std::endl;
+  std::cout << "Ошибка при создании" << std::endl;
   res = ERROR;
   return DbManager(0);
 }
@@ -90,6 +93,7 @@ DbManager DbManager::from_config(const PGConnectionConfig &config, result& res) 
 size_t DbManager::count_connections() const {
   return connections.size();
 }
+
 std::vector<std::string> DbManager::load_config(const std::string &path) const {
   std::ifstream in_conf(path);
   system("pwd");
@@ -138,5 +142,3 @@ DbManager::~DbManager() {
     connections.pop_back();
   }
 }
-
-
