@@ -6,6 +6,7 @@
 #include <sstream>
 #include <utility>
 #include <vector>
+#include <optional>
 #include "struct_mapping.hpp"
 
 namespace {
@@ -53,7 +54,7 @@ namespace {
             const string &birth_date,
             const string &description = "",
             const ui &id = 0)
-        : id(id), nickname(nickname), password(password), email(email),
+        : DBObject(id), nickname(nickname), password(password), email(email),
         birth_date(birth_date), description(description) {}
 
         explicit User(const string &json) {
@@ -92,7 +93,7 @@ namespace {
             const double &longitude = 0,
             const double &latitude = 0,
             const ui &id = 0)
-        : id(id), address(address), longitude(longitude), latitude(latitude) {}
+        : DBObject(id), address(address), longitude(longitude), latitude(latitude) {}
 
         Address(const string &json) {
             sm::reg(&Address::id,        "id");
@@ -123,7 +124,7 @@ namespace {
         Address address;  // NOT NULL
 
         string description;
-        ui max_visitors;  // ALLOW NULL DEFAULT 100
+        optional<ui> max_visitors;  // ALLOW NULL DEFAULT 100
         ui curr_visitors; // Annotation
     public:
         Event() = default;
@@ -135,7 +136,7 @@ namespace {
             const ui &max_visitors = 100,
             const ui &curr_visitors = 0,
             const ui &id = 0)
-        : id(id), title(title), date_time(date_time), user_id(user_id),
+        : DBObject(id), title(title), date_time(date_time), user_id(user_id),
         address(address), description(description),
         max_visitors(max_visitors), curr_visitors(curr_visitors) {}
 
@@ -214,7 +215,7 @@ namespace {
             const string &expire_date_time,
             const ui &user_id,
             const ui &id = 0)
-        : id(id), token(token), expire_date_time(expire_date_time), user_id(user_id) {}
+        : DBObject(id), token(token), expire_date_time(expire_date_time), user_id(user_id) {}
 
         explicit Token(const string &json) {
             sm::reg(&Token::id,             "id");
