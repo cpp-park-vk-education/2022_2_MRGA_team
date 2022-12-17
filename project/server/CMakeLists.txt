@@ -25,8 +25,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${HANDLER_LIB_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${HANDLER_LIB_LIBRARIES})
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${POSTGRES_LIB_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${POSTGRES_LIB_LIBRARIES})
+
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${SERVICE_LIB_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${SERVICE_LIB_LIBRARIES})

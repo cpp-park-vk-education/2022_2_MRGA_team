@@ -57,6 +57,31 @@ void router::events_handle(http::response<http::dynamic_body> &response, const h
 }
 
 void router::create_event_handle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
+    try {
+        bsv token = request.at("Authorization");
+        try {
+            auto userId = service_manager_ref.session_service_.checkSession(token.to_string());
+            service_manager_ref.event_service_.createEvent(userId, beast::buffers_to_string(request.body().data()));
+            response.result(http::status::ok);
+            return;
+        } catch (std::invalid_argument &ex) {
+            response.result(http::status::unauthorized);
+            beast::ostream(response.body()) << ex.what();
+            return;
+        }
+    } catch (std::out_of_range &ex) {
+        response.result(http::status::forbidden);
+        beast::ostream(response.body()) << "нет хедера с токеном";
+        return;
+    }
+}
+
+
+
+
+    
+
+
     // std::string token = equest.at("Authorization"); // check this
     // int res = service_manager_ref.session_service_.session_repository_.check_token(token);
     // if (!res) {
@@ -72,9 +97,6 @@ void router::create_event_handle(http::response<http::dynamic_body> &response, c
 
     // //res = service_manager_ref.event_service_.create_event(event);
 
-
-
-}
 
 void router::visit_events_handle(res &response, const req &request) {
 

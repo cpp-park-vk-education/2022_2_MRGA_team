@@ -13,17 +13,38 @@ ServiceManager::AuthorizationService::AuthorizationService(DbManager &db_manager
 ServiceManager::EventService::EventService(DbManager &db_manager) :                 event_repository_(db_manager) {}
 
 void ServiceManager::EventService::event(bsv query_params, string &response_body) {
-    std::cerr << "=========ЗАПРОС ПРИШЕЛ В GET EVENT SERVICE==========" << std::endl;
-
     if (query_params.empty()) {
         Events events;
         events.events = event_repository_.get_events();
         response_body = events.toJSON();
     }
-};
+}
+
+void ServiceManager::EventService::createEvent(uint userId, std::string request_body) {
+    Event event(request_body);
+    event.user_id = userId;
+    int result = event_repository_.create_event(event);
+    if (result == -1) {
+        throw std::invalid_argument("Ошибка от бд");
+    }
+}
 
 ServiceManager::SessionService::SessionService(DbManager &db_manager) :             session_repository_(db_manager) {};
 
+uint ServiceManager::SessionService::checkSession(const std::string &token) {
+    int result = session_repository_.check_token(token);
+    if (result == -1) {
+        throw std::invalid_argument("токен не валидный");
+    }
+    Token tok;
+    tok.token = token;
+    try {
+        User user = session_repository_.get_user_by_token(tok);
+        return user.id;
+    } catch (...) {
+        throw std::invalid_argument("такого id пользователя не существует");
+    }
+}    
 ServiceManager::UserService::UserService(DbManager &db_manager) :                   user_repository_(db_manager) {};
 
 
@@ -97,20 +118,6 @@ ServiceManager::UserService::UserService(DbManager &db_manager) :               
 //    }
 //    return 0;
 //}
-int service::run_event_service(bsv query_params, std::string &response_body) {
-
-    std::cerr << "=========ЗАПРОС ПРИШЕЛ В GET EVENT SERVICE==========" << std::endl;
-
-    if (query_params.empty()) {
-        Events events;
-
-        // events.events = EventRepository(db_manager_).get_events();
-
-        response_body = events.toJSON();
-    }
-    return 0;
-}
-
 
 ServiceManager::ServiceManager()
     : db_manager_{DbManager()},
