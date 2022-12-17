@@ -7,14 +7,14 @@ services:
               &&
             cd build && cmake ..
               &&
-            cmake --build .
+            cmake --build . && cd ..
               &&
-            ./project/server/server"
-    working_dir: '/project'
+            ./build/project/server/server 0.0.0.0 8081 10.0.0.10 5432"
+    working_dir: '/backend'
     volumes:
-      - "${PWD}/:/project/"
+      - "${PWD}/:/backend/"
     ports:
-      - "8080:8080"
+      - "8080:8081"
     networks:
       service-network:
 

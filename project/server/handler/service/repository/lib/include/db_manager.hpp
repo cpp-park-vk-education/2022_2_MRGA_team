@@ -11,13 +11,34 @@ using Connection = pqxx::connection;
 using Worker = pqxx::work;
 using Result = pqxx::result;
 
-const char path_config[] = {"../configs/database.txt"};
+enum result {
+  OK,
+  ERROR
+};
+
+const char path_config[] = {"configs/database.txt"};
+
+struct PGConnectionConfig {
+
+  std::string user;
+  std::string password;
+  std::string host;
+  unsigned int port;
+  std::string database;
+
+  static PGConnectionConfig from_file(const std::string &path, result &res);
+
+};
+
+static Connection* PGConnectionByConfig(const PGConnectionConfig& config, result &res);
 
 class DbManager {
  public:
   const size_t MAX_SIZE;
-
+  DbManager(int);
   DbManager();
+  DbManager(const PGConnectionConfig& config);
+  static DbManager from_config(const PGConnectionConfig& config, result& res);
 
   Connection *get_free_connection();
 

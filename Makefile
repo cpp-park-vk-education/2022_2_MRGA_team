@@ -29,4 +29,4 @@ local:
 	mkdir -p local_build && cd local_build && cmake .. && cmake --build .
 
 local-run:
-	./local_build/project/server/server
+	./local_build/project/server/server 0.0.0.0 8081 0.0.0.0 5432

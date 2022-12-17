@@ -21,15 +21,15 @@ void http_server(tcp::acceptor& acceptor, tcp::socket& socket, ServiceManager &s
           });
 }
 
-tcp_server::tcp_server(IPV ipv, unsigned short port) :
-    ip_version_(ipv),
+tcp_server::tcp_server(const std::string& host, unsigned short port) :
+    ip_version_(IPV::V4),
     port_(port),
-    acceptor_(io_context_, tcp::endpoint(ip::address::from_string("0.0.0.0"), port_)) {}
+    acceptor_(io_context_, tcp::endpoint(ip::address::from_string(host), port_)) {}
 
-int tcp_server::run() {
+int tcp_server::run(ServiceManager &service_manager) {
     try {
         tcp::socket socket {io_context_};
-        http_server(acceptor_, socket, service_manager_);
+        http_server(acceptor_, socket, service_manager);
         io_context_.run();
     }
     catch (std::exception const &e)

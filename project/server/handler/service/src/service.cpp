@@ -104,7 +104,7 @@ int service::run_event_service(bsv query_params, std::string &response_body) {
     if (query_params.empty()) {
         Events events;
 
-        events.events = EventRepository(db_manager_).get_events();
+        // events.events = EventRepository(db_manager_).get_events();
 
         response_body = events.toJSON();
     }
@@ -114,6 +114,13 @@ int service::run_event_service(bsv query_params, std::string &response_body) {
 
 ServiceManager::ServiceManager()
     : db_manager_{DbManager()},
+      auth_service_(db_manager_),
+      event_service_(db_manager_),
+      user_service_(db_manager_),
+      session_service_(db_manager_) {}
+
+ServiceManager::ServiceManager(DbManager &db_manager)
+    : db_manager_{db_manager},
       auth_service_(db_manager_),
       event_service_(db_manager_),
       user_service_(db_manager_),

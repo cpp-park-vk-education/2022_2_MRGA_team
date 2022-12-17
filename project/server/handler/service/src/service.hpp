@@ -23,6 +23,7 @@ using bsv = boost::string_view;
 class ServiceManager {
 public:
     ServiceManager();
+    ServiceManager(DbManager &db_manager);
 private:
     class AuthorizationService {
     public:

@@ -1,44 +1,104 @@
 #include "db_manager.hpp"
 #include <cstdlib>
-static int counter = 0;
+
+PGConnectionConfig PGConnectionConfig::from_file(const std::string &path, result &res) {
+
+  std::ifstream in_conf(path);
+  PGConnectionConfig config;
+  if (!in_conf.is_open()) {
+    res = ERROR;
+    return config;
+  }
+  std::string line;
+  char delimiter = '=';
+
+
+  std::getline(in_conf, line);
+  config.user = line.substr(line.find(delimiter) + 1, line.length());
+
+  std::getline(in_conf, line);
+  config.password = line.substr(line.find(delimiter) + 1, line.length());
+
+  std::getline(in_conf, line);
+  config.host = line.substr(line.find(delimiter) + 1, line.length());
+
+  std::getline(in_conf, line);
+  config.port = std::stoi(line.substr(line.find(delimiter) + 1, line.length()));
+
+  std::getline(in_conf, line);
+  config.database = line.substr(line.find(delimiter) + 1, line.length());
+
+  res = OK;
+  return config;
+
+}
+
+
+Connection* PGConnectionByConfig(const PGConnectionConfig& config, result &res) {
+    std::string uri = "postgresql://" + config.user +
+    ":" + config.password + "@" + config.host + ":" + std::to_string(config.port) + "/" + config.database;
+    Connection* conn;
+    try {
+      conn = new Connection(uri);
+    } catch(...) {
+      res = ERROR;
+      return nullptr;
+    }
+    return conn;
+}
+
+DbManager::DbManager(int n):MAX_SIZE(n) {}
 
 DbManager::DbManager() : MAX_SIZE(10) {
+    connections.resize(MAX_SIZE);
+
+    std::vector<std::string> params = load_config(path_config);
+    std::string config_data(serialize(params));
+    for (size_t i = 0; i < MAX_SIZE; ++i) {
+        connections[ i ] = new Connection(config_data);
+    }
+    std::cout << "соединения успешно созданы default" << std::endl;
+}
+
+DbManager::DbManager(const PGConnectionConfig &config): MAX_SIZE(10){
   connections.resize(MAX_SIZE);
-  auto p = "configs/database.txt";
-  // const char path_config[] = {"../configs/database.txt"};
-  std::vector<std::string> params = load_config(p);
-  std::cout << "our p" <<std::string(p) << std::endl;
-  std::string config_data(serialize(params));
-  for (size_t i = 0; i < MAX_SIZE; ++i) {
-    std::cout << config_data << std::endl;
-    connections[i] = new Connection(config_data);
-    // connections[i] = new Connection("postgresql://mashapg:mashapg@0.0.0.0:5432/mashadb");
-    // "postgresql://accounting@localhost/company"
+  result res = OK;
+  for (auto& conn: connections) {
+    conn = PGConnectionByConfig(config, res);
+    if (res != OK) {
+      throw "Не удалось подключиться к базе данных";
+      std::cout << "come error" << std::endl;
+    }
   }
+  std::cout << "соединения успешно созданы" << std::endl;
+}
+
+DbManager DbManager::from_config(const PGConnectionConfig &config, result& res) try {
+  DbManager manager(config);
+  res = OK;
+  return manager;
+} catch (std::exception &e){
+  std::cout << e.what() << std::endl;
+  res = ERROR;
+  return DbManager(0);
+} catch(...) {
+  std::cout << "ошибка при создании" << std::endl;
+  res = ERROR;
+  return DbManager(0);
 }
 
 size_t DbManager::count_connections() const {
   return connections.size();
 }
-// postgresql://mashapg:mashapg@10.0.0.10:5432/mashadb
 std::vector<std::string> DbManager::load_config(const std::string &path) const {
-  ++counter;
   std::ifstream in_conf(path);
-  std::cout << path << std::endl;
   system("pwd");
-  system("cd configs && ls");
   std::vector<std::string> arr(5);
-  // arr[0] = "mashapg";
-  // arr[1] = "mashapg";
-  // arr[2] = "0.0.0.0";
-  // arr[3] = "5432";
-  // arr[4] = "mashadb";
+
   size_t i = 0;
-  std::cerr << "ФАЙЛ ОТКРЫТ? " <<  in_conf.is_open() << std::endl;
   if (in_conf.is_open()) {
     for (std::string line; std::getline(in_conf, line); ) {
       char delimiter = '=';
-      std::cout <<"line"<< line << std::endl;
       std::string token = line.substr(line.find(delimiter) + 1, line.length());
       arr[i++] = token;
     }
@@ -78,3 +138,5 @@ DbManager::~DbManager() {
     connections.pop_back();
   }
 }
+
+
