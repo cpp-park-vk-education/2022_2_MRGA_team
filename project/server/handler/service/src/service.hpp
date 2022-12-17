@@ -39,7 +39,7 @@ private:
 
         void event(bsv query_params, std::string &response_body);
 
-	void createEvent(uint userId, std::string request_body);
+	Event createEvent(uint userId, const std::string& request_body);
 
     private:
         EventRepository event_repository_;

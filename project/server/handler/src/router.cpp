@@ -61,12 +61,13 @@ void router::create_event_handle(http::response<http::dynamic_body> &response, c
         bsv token = request.at("Authorization");
         try {
             auto userId = service_manager_ref.session_service_.checkSession(token.to_string());
-            service_manager_ref.event_service_.createEvent(userId, beast::buffers_to_string(request.body().data()));
+            Event event = service_manager_ref.event_service_.createEvent(userId, beast::buffers_to_string(request.body().data()));
             response.result(http::status::ok);
+            beast::ostream(response.body()) << event.toJSON();
             return;
-        } catch (std::invalid_argument &ex) {
+        } catch (...) {
             response.result(http::status::unauthorized);
-            beast::ostream(response.body()) << ex.what();
+            beast::ostream(response.body()) << "Ошибка авторизации";
             return;
         }
     } catch (std::out_of_range &ex) {
