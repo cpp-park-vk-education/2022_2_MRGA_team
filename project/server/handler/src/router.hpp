@@ -1,16 +1,14 @@
 #ifndef PROJECT_ROUTER_HPP
 #define PROJECT_ROUTER_HPP
 
-#include <map>
-#include <string>
+
 #include <functional>
 
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
-#include <boost/beast/version.hpp>
-#include <boost/asio/connect.hpp>
-#include <boost/asio/ip/tcp.hpp>
 #include <cstdlib>
+
+#include <map>
 #include <iostream>
 #include <string>
 
@@ -18,8 +16,6 @@
 
 namespace beast = boost::beast;     // from <boost/beast.hpp>
 namespace http = beast::http;       // from <boost/beast/http.hpp>
-namespace net = boost::asio;        // from <boost/asio.hpp>
-using tcp = net::ip::tcp;           // from <boost/asio/ip/tcp.hpp>
 
 using res = http::response<http::dynamic_body>;
 using req = http::request<http::dynamic_body>;

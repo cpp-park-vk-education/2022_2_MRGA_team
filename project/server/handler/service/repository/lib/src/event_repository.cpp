@@ -46,7 +46,7 @@ int EventRepository::create_event(Event event) {
     }
 
     std::string query_insert_event = "INSERT INTO events (title, overview, date_time, max_visitors, user_id, address_id) "
-      "VALUES ('" + event.title + "', " + ((event.description != "") ? event.description : "null") + ", '" + event.date_time + "', '" + std::to_string(event.max_visitors) + "', '" + std::to_string(event.user_id) + "', '" + address_id + "');";
+      "VALUES ('" + event.title + "', '" + ((event.description != "") ? event.description : "null") + "', '" + event.date_time + "', " + ((event.max_visitors ? std::to_string(*event.max_visitors) : "100")) + ", " + std::to_string(event.user_id) + ", " + address_id + ");";
     try {
       Worker worker(*conn);
       Result result(worker.exec(query_insert_event));

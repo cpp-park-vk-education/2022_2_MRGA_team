@@ -6,6 +6,7 @@
 #include <sstream>
 #include <utility>
 #include <vector>
+#include <optional>
 #include "struct_mapping.hpp"
 
 namespace {
@@ -123,7 +124,7 @@ namespace {
         Address address;  // NOT NULL
 
         string description;
-        ui max_visitors;  // ALLOW NULL DEFAULT 100
+        optional<ui> max_visitors;  // ALLOW NULL DEFAULT 100
         ui curr_visitors; // Annotation
     public:
         Event() = default;

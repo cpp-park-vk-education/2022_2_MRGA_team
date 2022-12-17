@@ -3,7 +3,13 @@ project(service_lib)
 
 include_directories(SYSTEM ${MAIN_DIR}/deps/include)
 
+link_directories(/usr/local/lib)
+link_libraries(pq pqxx)
+include_directories(SYSTEM /usr/local/include)
+
 add_subdirectory(repository/lib)
+
+
 
 message("JSON_STRUCT_MAPPING_LIB_LIBRARIES = " ${JSON_STRUCT_MAPPING_LIB_LIBRARIES})
 message("JSON_STRUCT_MAPPING_LIB_INCLUDE_DIRS = " ${JSON_STRUCT_MAPPING_LIB_INCLUDE_DIRS})

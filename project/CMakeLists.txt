@@ -11,4 +11,8 @@ if (NOT DEFINED MAIN_DIR)
     include_directories(SYSTEM ${MAIN_DIR}/deps/include)
 endif ()
 
+link_directories(/usr/local/lib)
+link_libraries(pq pqxx)
+include_directories(SYSTEM /usr/local/include)
+
 add_subdirectory(server)

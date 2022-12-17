@@ -3,7 +3,14 @@ project(handler_lib)
 
 include_directories(SYSTEM ${MAIN_DIR}/deps/include)
 
+
+link_directories(/usr/local/lib)
+link_libraries(pq pqxx)
+include_directories(SYSTEM /usr/local/include)
+
 add_subdirectory(service)
+
+
 
 message("SERVICE_LIB_LIBRARIES = " ${SERVICE_LIB_LIBRARIES})
 message("SERVICE_LIB_INCLUDE_DIRS = " ${SERVICE_LIB_INCLUDE_DIRS})
