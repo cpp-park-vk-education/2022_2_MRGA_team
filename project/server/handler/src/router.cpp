@@ -102,6 +102,7 @@ void router::create_event_handle(http::response<http::dynamic_body> &response, c
 
 
 void router::visit_events_handle(res &response, const req &request) {
+    std::cerr << "=========ЗАПРОС ПРИШЕЛ В VISIT EVENTS HANDLE==========" << std::endl;
     try {
         bsv token = request.at("Authorization");
         try {
@@ -109,7 +110,6 @@ void router::visit_events_handle(res &response, const req &request) {
             try {
                 service_manager_ref.addVisitor(beast::buffers_to_string(request.body().data()));
                 response.result(http::status::ok);
-                // beast::ostream(response.body()) << event.toJSON();
                 return;
             } catch (std::exception &ex) {
                 response.result(http::status::unauthorized);
@@ -129,6 +129,7 @@ void router::visit_events_handle(res &response, const req &request) {
 }
 
 void router::unvisit_events_handle(res &response, const req &request) {
+    std::cerr << "=========ЗАПРОС ПРИШЕЛ В UNVISIT EVENTS HANDLE==========" << std::endl;
     try {
         bsv token = request.at("Authorization");
         try {

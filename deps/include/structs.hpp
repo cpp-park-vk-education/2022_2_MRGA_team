@@ -33,14 +33,12 @@ namespace {
     using ui = unsigned int;
 
     struct DBObject {
-        ui id;
     public:
-        DBObject() : id(0) {};
-        explicit DBObject(ui id) : id(id) {};
         virtual string toJSON() = 0;
     };
 
     struct User : public DBObject {
+        ui id;
         string nickname;  // UNIQUE
         string password;
         string email;  // UNIQUE
@@ -54,7 +52,7 @@ namespace {
             const string &birth_date,
             const string &description = "",
             const ui &id = 0)
-        : DBObject(id), nickname(nickname), password(password), email(email),
+        : id(id), nickname(nickname), password(password), email(email),
         birth_date(birth_date), description(description) {}
 
         explicit User(const string &json) {
@@ -63,6 +61,7 @@ namespace {
             sm::reg(&User::email,       "email");
             sm::reg(&User::description, "description");
             sm::reg(&User::birth_date,   "birthDate");
+
             sm::reg(&User::id,          "id");
 
             stringstream ss(json);
@@ -75,6 +74,7 @@ namespace {
             sm::reg(&User::email,       "email");
             sm::reg(&User::description, "description");
             sm::reg(&User::birth_date,   "birthDate");
+
             sm::reg(&User::id,          "id");
 
             ostringstream outJsonData;
@@ -84,6 +84,7 @@ namespace {
     };
 
     struct Address : public DBObject {
+        ui id;
         string address;  // NOT NULL
         double longitude;  // DEFAULT NULL
         double latitude;  // DEFAULT NULL
@@ -93,12 +94,13 @@ namespace {
             const double &longitude = 0,
             const double &latitude = 0,
             const ui &id = 0)
-        : DBObject(id), address(address), longitude(longitude), latitude(latitude) {}
+        : id(id), address(address), longitude(longitude), latitude(latitude) {}
 
         Address(const string &json) {
             sm::reg(&Address::address,   "address");
             sm::reg(&Address::longitude, "longitude");
             sm::reg(&Address::latitude,  "latitude");
+
             sm::reg(&Address::id,        "id");
 
             stringstream ss(json);
@@ -109,6 +111,7 @@ namespace {
             sm::reg(&Address::address,   "address");
             sm::reg(&Address::longitude, "longitude");
             sm::reg(&Address::latitude,  "latitude");
+
             sm::reg(&Address::id,        "id");
 
             ostringstream outJsonData;
@@ -126,6 +129,7 @@ namespace {
         string description;
         optional<ui> max_visitors;  // ALLOW NULL DEFAULT 100
         ui curr_visitors; // Annotation
+        ui id;
     public:
         Event() = default;
         Event(const string &title,
@@ -136,7 +140,7 @@ namespace {
             const ui &max_visitors = 100,
             const ui &curr_visitors = 0,
             const ui &id = 0)
-        : DBObject(id), title(title), date_time(date_time), user_id(user_id),
+        : id(id), title(title), date_time(date_time), user_id(user_id),
         address(address), description(description),
         max_visitors(max_visitors), curr_visitors(curr_visitors) {}
 
@@ -148,6 +152,7 @@ namespace {
             sm::reg(&Event::max_visitors, "maxVisitors");
             sm::reg(&Event::curr_visitors, "currVisitors");
             sm::reg(&Event::address, "address");
+            sm::reg(&Event::id, "id");
 
             sm::reg(&Address::address,   "address");
             sm::reg(&Address::longitude, "longitude");
@@ -165,6 +170,7 @@ namespace {
             sm::reg(&Event::max_visitors, "maxVisitors");
             sm::reg(&Event::curr_visitors, "currVisitors");
             sm::reg(&Event::address, "address");
+            sm::reg(&Event::id, "id");
 
             sm::reg(&Address::address,   "address");
             sm::reg(&Address::longitude, "longitude");
@@ -187,16 +193,22 @@ namespace {
                 events(move(events)) {}
 
         Events(const string &json) {
-
             sm::reg(&Events::events,     "events");
 
-            sm::reg(&Event::id,          "id");
-            sm::reg(&Event::description, "description");
-            sm::reg(&Event::date_time,    "dateTime");
-            sm::reg(&Event::max_visitors, "maxVisitors");
             sm::reg(&Event::title,       "title");
+            sm::reg(&Event::date_time,    "dateTime");
+            sm::reg(&Event::user_id,    "userId");
+            sm::reg(&Event::description, "description");
+            sm::reg(&Event::max_visitors, "maxVisitors");
+            sm::reg(&Event::curr_visitors, "currVisitors");
+            sm::reg(&Event::address, "address");
+            sm::reg(&Event::id, "id");
 
-            ostringstream out_json_data;
+            sm::reg(&Address::address,   "address");
+            sm::reg(&Address::longitude, "longitude");
+            sm::reg(&Address::latitude,  "latitude");
+            sm::reg(&Address::id,        "id");
+
             stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
@@ -205,12 +217,19 @@ namespace {
 
             sm::reg(&Events::events,     "events");
 
-            sm::reg(&Event::id,          "id");
-            sm::reg(&Event::description, "description");
-            sm::reg(&Event::date_time,    "dateTime");
-            sm::reg(&Event::max_visitors, "maxVisitors");
-            //sm::reg(&Event::members,     "members");
             sm::reg(&Event::title,       "title");
+            sm::reg(&Event::date_time,    "dateTime");
+            sm::reg(&Event::user_id,    "userId");
+            sm::reg(&Event::description, "description");
+            sm::reg(&Event::max_visitors, "maxVisitors");
+            sm::reg(&Event::curr_visitors, "currVisitors");
+            sm::reg(&Event::address, "address");
+            sm::reg(&Event::id, "id");
+
+            sm::reg(&Address::address,   "address");
+            sm::reg(&Address::longitude, "longitude");
+            sm::reg(&Address::latitude,  "latitude");
+            sm::reg(&Address::id,        "id");
 
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
@@ -219,6 +238,7 @@ namespace {
     };
 
     struct Token : public DBObject {
+        ui id;
         string token;             // UNIQUE
         string expire_date_time;  // Format: "yyyy-mm-dd hh:mm:ss"
         ui user_id;
@@ -228,7 +248,7 @@ namespace {
             const string &expire_date_time,
             const ui &user_id,
             const ui &id = 0)
-        : DBObject(id), token(token), expire_date_time(expire_date_time), user_id(user_id) {}
+        : id(id), token(token), expire_date_time(expire_date_time), user_id(user_id) {}
 
         explicit Token(const string &json) {
             sm::reg(&Token::id,             "id");

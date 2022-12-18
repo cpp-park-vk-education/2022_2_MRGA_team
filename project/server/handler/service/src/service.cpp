@@ -25,6 +25,8 @@ void ServiceManager::EventService::event(bsv query_params, string &response_body
 
 Event ServiceManager::EventService::createEvent(uint userId, const std::string& request_body) {
     Event event(request_body);
+    std::cout << "event_id" << event.id << std::endl;
+    std::cout << event.toJSON() << std::endl;
     event.user_id = userId;
     try {
         int eventId = event_repository_.create_event(event);
@@ -40,8 +42,10 @@ Event ServiceManager::EventService::createEvent(uint userId, const std::string& 
 
 uint ServiceManager::EventService::checkEventExistence(uint eventId) {
     try {
+        std::cerr << "Начало вызова event_repository_.existence_event()" << std::endl;
         int userExistence = event_repository_.existence_event(eventId);
         if (userExistence < 0) {
+            std::cerr << "event_repository_.existence_event() вернул значение < 0" << std::endl;
             throw std::invalid_argument("такого event не существует");
         }
         return eventId;
@@ -73,17 +77,23 @@ uint ServiceManager::SessionService::checkSession(const std::string &token) {
 ServiceManager::UserService::UserService(DbManager &db_manager) :                   user_repository_(db_manager) {}
 
 void ServiceManager::UserService::addVisitor(uint eventId, uint userId) {
+    std::cerr << "вызов user_repository_.add_visitor()" << std::endl;
     user_repository_.add_visitor(eventId, userId);
+    std::cerr << "отработал user_repository_.add_visitor()" << std::endl;
 }
 
 void ServiceManager::UserService::deleteVisitor(uint eventId, uint userId) {
+    std::cerr << "вызов user_repository_.delete_visitor()" << std::endl;
     user_repository_.delete_visitor(eventId, userId);
+    std::cerr << "отработал user_repository_.delete_visitor()" << std::endl;
 }
 
 uint ServiceManager::UserService::checkUserExistence(uint userId) {
     try {
+        std::cerr << "Начало вызова user_repository_.existence_user()" << std::endl;
         int userExistence = user_repository_.existence_user(userId);
         if (userExistence < 0) {
+            std::cerr << "user_repository_.existence_user() вернул значение < 0" << std::endl;
             throw std::invalid_argument("такого юзера не существует");
         }
         return userId;
@@ -109,7 +119,9 @@ ServiceManager::ServiceManager(DbManager &db_manager)
 
 void ServiceManager::addVisitor(const std::string &requestBody) {
     try {
+        std::cerr << "addVisitor: Создается структура event" << std::endl;
         Event event(requestBody);
+        std::cerr << "addVisitor: event создан" << std::endl;
         try {
             uint userId = user_service_.checkUserExistence(event.user_id);
             uint eventId = event_service_.checkEventExistence(event.id);
@@ -117,7 +129,7 @@ void ServiceManager::addVisitor(const std::string &requestBody) {
         } catch (std::invalid_argument &ex) {
             throw (std::invalid_argument(ex.what()));
         }
-    } catch (...) {
+    } catch (std::exception &ex) {
         throw std::invalid_argument("добавить нормальные исключения работы парсера");
     }
 }
