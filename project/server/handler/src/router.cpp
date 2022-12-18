@@ -22,6 +22,8 @@ router::router(http::response<http::dynamic_body> &response,
     post_handler   ["/api/v1/auth/signup"]     = [&] () { signup_handle(response, request); };
 //
     post_handler   ["/api/v1/events/visit"]    = [&] () {   visit_events_handle(response, request); };
+
+    post_handler   ["/api/v1/events/unvisit"]    = [&] () {   unvisit_events_handle(response, request); };
 //
     post_handler   ["/api/v1/events/create"]   = [&]() {  create_event_handle(response, request);   };
 //
@@ -100,7 +102,57 @@ void router::create_event_handle(http::response<http::dynamic_body> &response, c
 
 
 void router::visit_events_handle(res &response, const req &request) {
+    try {
+        bsv token = request.at("Authorization");
+        try {
+            service_manager_ref.session_service_.checkSession(token.to_string());
+            try {
+                service_manager_ref.addVisitor(beast::buffers_to_string(request.body().data()));
+                response.result(http::status::ok);
+                // beast::ostream(response.body()) << event.toJSON();
+                return;
+            } catch (std::exception &ex) {
+                response.result(http::status::unauthorized);
+                beast::ostream(response.body()) << ex.what();
+                return;
+            }
+        } catch (...) {
+            response.result(http::status::unauthorized);
+            beast::ostream(response.body()) << "Ошибка авторизации";
+            return;
+        }
+    } catch (std::out_of_range &ex) {
+        response.result(http::status::forbidden);
+        beast::ostream(response.body()) << "нет хедера с токеном";
+        return;
+    }
+}
 
+void router::unvisit_events_handle(res &response, const req &request) {
+    try {
+        bsv token = request.at("Authorization");
+        try {
+            service_manager_ref.session_service_.checkSession(token.to_string());
+            try {
+                service_manager_ref.deleteVisitor(beast::buffers_to_string(request.body().data()));
+                response.result(http::status::ok);
+                // beast::ostream(response.body()) << event.toJSON();
+                return;
+            } catch (std::exception &ex) {
+                response.result(http::status::unauthorized);
+                beast::ostream(response.body()) << ex.what();
+                return;
+            }
+        } catch (...) {
+            response.result(http::status::unauthorized);
+            beast::ostream(response.body()) << "Ошибка авторизации";
+            return;
+        }
+    } catch (std::out_of_range &ex) {
+        response.result(http::status::forbidden);
+        beast::ostream(response.body()) << "нет хедера с токеном";
+        return;
+    }
 }
 
 void router::login_handle(res &response, const req &request) {
@@ -118,4 +170,6 @@ void router::logout_handle(res &response, const req &request) {
 void router::setting_handle(res &response, const req &request) {
 
 }
+
+
 

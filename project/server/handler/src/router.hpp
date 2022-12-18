@@ -42,6 +42,8 @@ private:
 
     void visit_events_handle         (res &response, const req &request);
 
+    void unvisit_events_handle         (res &response, const req &request);
+
     void login_handle                (res &response, const req &request);
 
     void signup_handle               (res &response, const req &request);
