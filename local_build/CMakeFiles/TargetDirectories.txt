@@ -1,0 +1,16 @@
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/CMakeFiles/edit_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/CMakeFiles/rebuild_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/CMakeFiles/edit_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/CMakeFiles/rebuild_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/CMakeFiles/server.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/CMakeFiles/edit_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/CMakeFiles/rebuild_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/CMakeFiles/handler_lib.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/CMakeFiles/edit_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/CMakeFiles/rebuild_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/service/CMakeFiles/service_lib.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/service/CMakeFiles/edit_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/service/CMakeFiles/rebuild_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/service/repository/lib/CMakeFiles/postgres_lib.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/service/repository/lib/CMakeFiles/edit_cache.dir
+/home/bodja_n/dev/c++/2022_2_MRGA_team/local_build/project/server/handler/service/repository/lib/CMakeFiles/rebuild_cache.dir
