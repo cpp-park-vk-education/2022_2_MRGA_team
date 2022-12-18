@@ -7,7 +7,6 @@
 #include "session_repository.hpp"
 
 
-
 ServiceManager::AuthorizationService::AuthorizationService(DbManager &db_manager) : authorization_repository_(db_manager) {}
 
 ServiceManager::EventService::EventService(DbManager &db_manager) :                 event_repository_(db_manager) {}
@@ -39,6 +38,18 @@ Event ServiceManager::EventService::createEvent(uint userId, const std::string& 
     }
 }
 
+uint ServiceManager::EventService::checkEventExistence(uint eventId) {
+    try {
+        int userExistence = event_repository_.existence_event(eventId);
+        if (userExistence < 0) {
+            throw std::invalid_argument("такого event не существует");
+        }
+        return eventId;
+    } catch (...) {
+        throw std::invalid_argument("ошибка бд");
+    }
+}
+
 ServiceManager::SessionService::SessionService(DbManager &db_manager) :             session_repository_(db_manager) {};
 
 uint ServiceManager::SessionService::checkSession(const std::string &token) {
@@ -59,7 +70,27 @@ uint ServiceManager::SessionService::checkSession(const std::string &token) {
         throw std::invalid_argument("такого id пользователя не существует");
     }
 }    
-ServiceManager::UserService::UserService(DbManager &db_manager) :                   user_repository_(db_manager) {};
+ServiceManager::UserService::UserService(DbManager &db_manager) :                   user_repository_(db_manager) {}
+
+void ServiceManager::UserService::addVisitor(uint eventId, uint userId) {
+    user_repository_.add_visitor(eventId, userId);
+}
+
+void ServiceManager::UserService::deleteVisitor(uint eventId, uint userId) {
+    user_repository_.delete_visitor(eventId, userId);
+}
+
+uint ServiceManager::UserService::checkUserExistence(uint userId) {
+    try {
+        int userExistence = user_repository_.existence_user(userId);
+        if (userExistence < 0) {
+            throw std::invalid_argument("такого юзера не существует");
+        }
+        return userId;
+    } catch (...) {
+        throw std::invalid_argument("ошибка бд");
+    }
+}
 
 
 ServiceManager::ServiceManager()
@@ -75,3 +106,33 @@ ServiceManager::ServiceManager(DbManager &db_manager)
       event_service_(db_manager_),
       user_service_(db_manager_),
       session_service_(db_manager_) {}
+
+void ServiceManager::addVisitor(const std::string &requestBody) {
+    try {
+        Event event(requestBody);
+        try {
+            uint userId = user_service_.checkUserExistence(event.user_id);
+            uint eventId = event_service_.checkEventExistence(event.id);
+            user_service_.addVisitor(eventId, userId);
+        } catch (std::invalid_argument &ex) {
+            throw (std::invalid_argument(ex.what()));
+        }
+    } catch (...) {
+        throw std::invalid_argument("добавить нормальные исключения работы парсера");
+    }
+}
+
+void ServiceManager::deleteVisitor(const std::string &requestBody) {
+    try {
+        Event event(requestBody);
+        try {
+            uint userId = user_service_.checkUserExistence(event.user_id);
+            uint eventId = event_service_.checkEventExistence(event.id);
+            user_service_.deleteVisitor(eventId, userId);
+        } catch (std::invalid_argument &ex) {
+            throw (std::invalid_argument(ex.what()));
+        }
+    } catch (...) {
+        throw std::invalid_argument("добавить нормальные исключения работы парсера");
+    }
+}
