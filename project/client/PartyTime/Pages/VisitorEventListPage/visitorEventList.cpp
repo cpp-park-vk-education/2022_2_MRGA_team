@@ -61,7 +61,17 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
     this->eventList = new EventList("visitor", 0);
 
     // get Event
-//    auto ptc = PartyTimeConnector::
+    auto ptc = PartyTimeConnector::default_implementation();
+    auto resultat = ptc->events->events();
+    auto events = *resultat.body;
+    for (auto & ev: events) {
+        eventList->addEvent(ev);
+//        std::cout << "название: " << ev.title << "\t";
+//        std::cout << "описание: " << ev.description << "\t";
+//        std::cout << "дата: " << ev.date_time << "\t";
+//        std::cout << "количество посетителей: " << *ev.max_visitors << "\t";
+    }
+
 
 
     mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);

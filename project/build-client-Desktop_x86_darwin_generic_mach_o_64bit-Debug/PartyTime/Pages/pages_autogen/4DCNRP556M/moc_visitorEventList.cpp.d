@@ -260,6 +260,11 @@
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/HttpConnector/implementation/include/HttpConnector.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/HttpConnector/implementation/include/deferer.h \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/HttpConnector/interface/IHttpConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/include/PartyTimeConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IAuthConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IEventsConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IUsersConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/utils.h \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/align/aligned_alloc.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/align/detail/aligned_alloc_posix.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/align/detail/is_alignment.hpp \

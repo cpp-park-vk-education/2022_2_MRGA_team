@@ -280,6 +280,11 @@ PartyTime/Pages/pages_autogen/timestamp: \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/HttpConnector/implementation/include/HttpConnector.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/HttpConnector/implementation/include/deferer.h \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/HttpConnector/interface/IHttpConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/include/PartyTimeConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IAuthConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IEventsConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IUsersConnector.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/utils.h \
   /Users/sugarbearzelagmail.com/Qt/Qt\ Creator.app/Contents/Resources/package-manager/auto-setup.cmake \
   /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.21/Modules/CMakeFindDependencyMacro.cmake \
   /Users/sugarbearzelagmail.com/Qt/Tools/CMake/CMake.app/Contents/share/cmake-3.21/Modules/CheckCSourceCompiles.cmake \

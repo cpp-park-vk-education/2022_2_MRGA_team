@@ -79,7 +79,7 @@ TEST_F(HttpConnectorErrorCategoryTest, constructor) {
         std::cout << "название: " << ev.title << "\t";
         std::cout << "описание: " << ev.description << "\t";
         std::cout << "дата: " << ev.date_time << "\t";
-        std::cout << "количество посетителей: " << ev.max_visitors << "\t";
+        std::cout << "количество посетителей: " << *ev.max_visitors << "\t";
     }
     std::cout << std::endl;
 

@@ -153,13 +153,6 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "connector_test_autogen_timestamp_deps::@054e04d63264c5e57ba3"
-		},
-		{
-			"backtrace" : 0,
-			"id" : "connector_test_autogen::@054e04d63264c5e57ba3"
-		},
-		{
 			"backtrace" : 2,
 			"id" : "HttpConnector::@768f39361f658952fae9"
 		},
@@ -170,6 +163,13 @@
 		{
 			"backtrace" : 2,
 			"id" : "PartyTimeConnector::@6191d4cf3dd5273815e9"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "connector_test_autogen::@054e04d63264c5e57ba3"
+		},
+		{
+			"id" : "connector_test_autogen_timestamp_deps::@054e04d63264c5e57ba3"
 		}
 	],
 	"id" : "connector_test::@054e04d63264c5e57ba3",

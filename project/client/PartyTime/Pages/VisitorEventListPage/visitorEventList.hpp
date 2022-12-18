@@ -5,7 +5,7 @@
 #include "EventList.hpp"
 #include "footer.hpp"
 #include "HttpConnector.hpp"
-//#include "PartyTimeConnector.hpp"
+#include "PartyTimeConnector.hpp"
 #include <../styleHelper.hpp>
 
 class VisitorEventListPage : public painter {

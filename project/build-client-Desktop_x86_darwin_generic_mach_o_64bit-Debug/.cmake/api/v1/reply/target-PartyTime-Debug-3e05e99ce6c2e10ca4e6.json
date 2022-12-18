@@ -495,11 +495,11 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "PartyTime_autogen_timestamp_deps::@872bc83d6c5124d27b2e"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "PartyTime_autogen::@872bc83d6c5124d27b2e"
+		},
+		{
+			"id" : "PartyTime_autogen_timestamp_deps::@872bc83d6c5124d27b2e"
 		},
 		{
 			"backtrace" : 14,
