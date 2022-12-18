@@ -146,6 +146,12 @@ namespace {
             sm::reg(&Event::date_time,    "dateTime");
             sm::reg(&Event::max_visitors, "maxVisitors");
             sm::reg(&Event::title,       "title");
+            sm::reg(&Address::id,        "id");
+            sm::reg(&Address::address,   "address");
+            sm::reg(&Address::longitude, "longitude");
+            sm::reg(&Address::latitude,  "latitude");
+            sm::reg(&Event::address, "address");
+
 
             ostringstream out_json_data;
             stringstream ss(json);
@@ -157,6 +163,11 @@ namespace {
             sm::reg(&Event::date_time,    "dateTime");
             sm::reg(&Event::max_visitors, "maxVisitors");
             sm::reg(&Event::title,       "title");
+            sm::reg(&Address::id,        "id");
+            sm::reg(&Address::address,   "address");
+            sm::reg(&Address::longitude, "longitude");
+            sm::reg(&Address::latitude,  "latitude");
+            sm::reg(&Event::address, "address");
 
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
