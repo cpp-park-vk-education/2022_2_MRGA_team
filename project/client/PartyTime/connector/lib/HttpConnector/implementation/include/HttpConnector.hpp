@@ -16,12 +16,12 @@ namespace {
     namespace http        = beast::http;
     namespace net         = boost::asio;
     using tcp             = net::ip::tcp;
-    using Response        = http::response<http::dynamic_body>;
+    using Resp        = http::response<http::dynamic_body>;
     using str_request     = http::request<http::string_body>;
     using resolved_result = net::ip::basic_resolver_results<net::ip::tcp>;
 };
 
-class HttpConnector: IHttpConnector {
+class HttpConnector: public IHttpConnector {
 
 private:
     // base data

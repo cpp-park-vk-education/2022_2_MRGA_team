@@ -4,17 +4,18 @@
 #include "IEventsConnector.hpp"
 #include "IUsersConnector.hpp"
 
-
+namespace {
+    using std::shared_ptr;
+}
 
 
 class PartyTimeConnector {
-    PartyTimeConnector(
-            std::shared_ptr<IAuthConnector>& auth,
-            std::shared_ptr<IEventsConnector>& events,
-            std::shared_ptr<IUsersConnector>& users);
-    public:
-    std::shared_ptr<IAuthConnector> auth;
-    std::shared_ptr<IEventsConnector> events;
-    std::shared_ptr<IUsersConnector> users;
+public:
+    PartyTimeConnector(shared_ptr<IAuthConnector>& auth, shared_ptr<IEventsConnector>& events, shared_ptr<IUsersConnector>& users);
+    shared_ptr<IAuthConnector> auth;
+    shared_ptr<IEventsConnector> events;
+    shared_ptr<IUsersConnector> users;
+
+    static shared_ptr<PartyTimeConnector> default_implementation();
     ~PartyTimeConnector() = default;
 };
