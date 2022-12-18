@@ -16,6 +16,6 @@ public:
     shared_ptr<IEventsConnector> events;
     shared_ptr<IUsersConnector> users;
 
-    static shared_ptr<PartyTimeConnector> default_implementation();
+    static shared_ptr<PartyTimeConnector> default_implementation(const string& host, const string& port);
     ~PartyTimeConnector() = default;
 };

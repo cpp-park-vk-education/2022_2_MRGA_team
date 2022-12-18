@@ -13,8 +13,8 @@ PartyTimeConnector::PartyTimeConnector(std::shared_ptr<IAuthConnector>& auth,
                                        std::shared_ptr<IUsersConnector>& users)
 : auth(auth), events(events), users(users) {}
 
-shared_ptr<PartyTimeConnector> PartyTimeConnector::default_implementation() {
-    shared_ptr<IHttpConnector> connect = std::make_shared<HttpConnector>("0.0.0.0", "8080");
+shared_ptr<PartyTimeConnector> PartyTimeConnector::default_implementation(const string& host = "0.0.0.0", const string& port = "8080") {
+    shared_ptr<IHttpConnector> connect = std::make_shared<HttpConnector>(host, port);
 
     shared_ptr<ILocalStorage> store = std::make_shared<LocalStorageInMemory>();
 

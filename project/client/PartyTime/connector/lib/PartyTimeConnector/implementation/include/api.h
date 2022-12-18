@@ -53,6 +53,7 @@ struct PartyTimeApi {
     /*принимает ?event_id={int}&user_id={int}
     http-method - POST*/
     const string visit_event = "/api/v1/events/visit";
+    const string visit_event = "/api/v1/events/unvisit";
 
     /*принимает запрос через тело запроса.
     http-method - POST*/
