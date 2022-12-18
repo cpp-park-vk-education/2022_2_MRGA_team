@@ -58,24 +58,24 @@ namespace {
         birth_date(birth_date), description(description) {}
 
         explicit User(const string &json) {
-            sm::reg(&User::id,          "id");
             sm::reg(&User::nickname,    "nickname");
             sm::reg(&User::password,    "password");
             sm::reg(&User::email,       "email");
             sm::reg(&User::description, "description");
             sm::reg(&User::birth_date,   "birthDate");
+            sm::reg(&User::id,          "id");
 
             stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
 
         string toJSON() override {
-            sm::reg(&User::id,          "id");
             sm::reg(&User::nickname,    "nickname");
             sm::reg(&User::password,    "password");
             sm::reg(&User::email,       "email");
             sm::reg(&User::description, "description");
             sm::reg(&User::birth_date,   "birthDate");
+            sm::reg(&User::id,          "id");
 
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
@@ -96,20 +96,20 @@ namespace {
         : DBObject(id), address(address), longitude(longitude), latitude(latitude) {}
 
         Address(const string &json) {
-            sm::reg(&Address::id,        "id");
             sm::reg(&Address::address,   "address");
             sm::reg(&Address::longitude, "longitude");
             sm::reg(&Address::latitude,  "latitude");
+            sm::reg(&Address::id,        "id");
 
             stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
 
         string toJSON() override  {
-            sm::reg(&Address::id,        "id");
             sm::reg(&Address::address,   "address");
             sm::reg(&Address::longitude, "longitude");
             sm::reg(&Address::latitude,  "latitude");
+            sm::reg(&Address::id,        "id");
 
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
@@ -141,33 +141,35 @@ namespace {
         max_visitors(max_visitors), curr_visitors(curr_visitors) {}
 
         explicit Event(const string &json) {
-            sm::reg(&Event::id,          "id");
-            sm::reg(&Event::description, "description");
-            sm::reg(&Event::date_time,    "dateTime");
-            sm::reg(&Event::max_visitors, "maxVisitors");
             sm::reg(&Event::title,       "title");
-            sm::reg(&Address::id,        "id");
+            sm::reg(&Event::date_time,    "dateTime");
+            sm::reg(&Event::user_id,    "userId");
+            sm::reg(&Event::description, "description");
+            sm::reg(&Event::max_visitors, "maxVisitors");
+            sm::reg(&Event::curr_visitors, "currVisitors";)
+            sm::reg(&Event::address, "address");
+
             sm::reg(&Address::address,   "address");
             sm::reg(&Address::longitude, "longitude");
             sm::reg(&Address::latitude,  "latitude");
-            sm::reg(&Event::address, "address");
+            sm::reg(&Address::id,        "id");
 
-
-            ostringstream out_json_data;
             stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
         string toJSON() override {
-            sm::reg(&Event::id,          "id");
-            sm::reg(&Event::description, "description");
-            sm::reg(&Event::date_time,    "dateTime");
-            sm::reg(&Event::max_visitors, "maxVisitors");
             sm::reg(&Event::title,       "title");
-            sm::reg(&Address::id,        "id");
+            sm::reg(&Event::date_time,    "dateTime");
+            sm::reg(&Event::user_id,    "userId");
+            sm::reg(&Event::description, "description");
+            sm::reg(&Event::max_visitors, "maxVisitors");
+            sm::reg(&Event::curr_visitors, "currVisitors";)
+            sm::reg(&Event::address, "address");
+
             sm::reg(&Address::address,   "address");
             sm::reg(&Address::longitude, "longitude");
             sm::reg(&Address::latitude,  "latitude");
-            sm::reg(&Event::address, "address");
+            sm::reg(&Address::id,        "id");
 
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
