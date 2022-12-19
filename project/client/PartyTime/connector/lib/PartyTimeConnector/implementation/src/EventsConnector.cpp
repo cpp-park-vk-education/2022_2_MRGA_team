@@ -35,6 +35,8 @@ Response<optional<Event>> EventsConnector::create_event(const Event &event) {
     headers[api.auth_header] = "admin02022";
     std::cout << event.title << std::endl;
 
+    auto json_event = event.toJSON();
+
 //    this->connector->POST(api.create_event, headers);
     return {};
 }

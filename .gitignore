@@ -1,3 +1,4 @@
+.vscode/settings.json
 **/.DS_Store
 **/.idea/
 **/build
@@ -22,6 +23,10 @@
 .#*
 *.*#
 core
+<<<<<<< HEAD
+=======
+*settings*
+>>>>>>> origin/deps
 !core/
 tags
 .DS_Store

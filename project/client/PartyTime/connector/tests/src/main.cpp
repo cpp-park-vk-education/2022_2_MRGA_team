@@ -83,6 +83,12 @@ TEST_F(PartyTimeConnectorTest, gettingEvents) {
     std::cout << std::endl;
 }
 
+TEST_F(PartyTimeConnectorTest, creatingEvent) {
+
+    Event event;
+    auto resultat = party->events->create_event(event);
+}
+
 
 class HttpConnectorErrorCategoryTest: public  ::testing::Test {
 protected:
