@@ -89,4 +89,5 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 build/
 .vscode/
 .DS_Store
+**.DS_*
 build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/
