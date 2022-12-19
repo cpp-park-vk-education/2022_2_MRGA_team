@@ -8,6 +8,7 @@
 #include <vector>
 #include <optional>
 #include <system_error>
+#include <unordered_map>
 #include "struct_mapping.hpp"
 
 namespace {
@@ -78,6 +79,12 @@ std::error_category const& structs_error_category() {
     struct DBObject {
     public:
         virtual string toJSON() = 0;
+        virtual string toJSON(std::error_code& ec) {
+            return "";
+        }
+        virtual string toJSON(std::error_code& ec) const {
+            return "";
+        }
     };
 
 
@@ -241,7 +248,7 @@ std::error_category const& structs_error_category() {
             stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
-        string toJSON(std::error_code& ec) {
+        string toJSON(std::error_code& ec) override {
             if (this->title.empty()) {
                 ec.assign(int(structs_error_codes::empty_title), structs_error_category());
                 return "";
@@ -255,6 +262,10 @@ std::error_category const& structs_error_category() {
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
 
+        }
+        string toJSON(std::error_code& ec) const override {
+            auto event = *this;
+            return event.toJSON(ec);
         }
         string toJSON() override {
             ostringstream outJsonData;
