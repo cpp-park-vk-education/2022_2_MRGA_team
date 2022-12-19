@@ -85,6 +85,7 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 **/valgrind*
 =======
 build/
+build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/
 .vscode/
 .DS_Store
 build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/

@@ -80,6 +80,12 @@ void EventList::addEvent(const std::initializer_list<QString>& list)
     scrollLayout.addWidget(newEvent);
 }
 
+void EventList::addEvent(EventItem* newEvent)
+{
+    this->eventList.push_back(newEvent);
+    scrollLayout.addWidget(newEvent);
+}
+
 void EventList::removeEvent()
 {
 

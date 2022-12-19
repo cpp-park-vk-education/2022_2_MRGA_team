@@ -4,7 +4,7 @@
 
 Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : painter(parent), layout(new QHBoxLayout(this))
 {
-
+//    layout->setAlignment(Qt::AlignTop);
     // создаём UI компоненты для Navbar-a
     UiButton* buttonFactory = new UiButton("", styleSheet);
     // по дефолту все кнопки одинаковые

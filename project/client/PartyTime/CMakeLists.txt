@@ -34,6 +34,7 @@ set(COMPONENTS)
 enable_testing()
 
 include_directories(SYSTEM /opt/homebrew/include)
+include_directories(SYSTEM ../../../deps/include)
 
 add_subdirectory(Components)
 add_subdirectory(connector)

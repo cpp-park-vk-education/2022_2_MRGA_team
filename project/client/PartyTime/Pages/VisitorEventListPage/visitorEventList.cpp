@@ -61,18 +61,27 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
     this->eventList = new EventList("visitor", 0);
 
     // get Event
-    auto ptc = PartyTimeConnector::default_implementation();
-    auto resultat = ptc->events->events();
-    auto events = *resultat.body;
-    for (auto & ev: events) {
-        eventList->addEvent(ev);
-//        std::cout << "название: " << ev.title << "\t";
-//        std::cout << "описание: " << ev.description << "\t";
-//        std::cout << "дата: " << ev.date_time << "\t";
-//        std::cout << "количество посетителей: " << *ev.max_visitors << "\t";
-    }
+//    auto ptc = PartyTimeConnector::default_implementation();
+//    auto resultat = ptc->events->events();
+//    auto events = *resultat.body;
+//    std::cout << "events size: " << events.size() << std::endl;
 
-
+//    for (auto & ev: events) {
+//        eventList->addEvent(new EventItem(ev.description,
+//                                          ev.title,
+//                                          *ev.max_visitors,
+//                                          *ev.max_visitors,
+//                                          ev.date_time,
+//                                          ev.date_time));
+//        eventList->addEvent({
+//                                QString::fromStdString(ev.description),
+//                                QString::fromStdString(ev.title),
+//                                QString::fromStdString(ev.date_time),
+//                                QString::fromStdString(std::to_string(*ev.max_visitors)),
+//                                QString::fromStdString(std::to_string(*ev.max_visitors)),
+//                                QString::fromStdString(std::to_string(*ev.max_visitors))
+//                            });
+//    }
 
     mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);
 }

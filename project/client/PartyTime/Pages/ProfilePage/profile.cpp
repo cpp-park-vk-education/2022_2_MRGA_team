@@ -4,36 +4,34 @@
 ProfilePage::ProfilePage(QWidget *parent) : painter(parent),
     mainLayout(new QVBoxLayout(this))
 {
-    this->setObjectName("profilePage");
-    this->set_interface_style();
 
     QHBoxLayout *titleContainer = new QHBoxLayout;
+    mainLayout->addLayout(titleContainer);
     backButton = new QPushButton();
-    backButton->setStyleSheet("min-width: 30px; min-height: 20px; border-image: url(:/image/back-arrow.png); background-repeat: no-repeat; background-position: center; border-style:none;");
+    backButton->setStyleSheet("min-width: 30px; max-height: 20px; border-image: url(:/image/back-arrow.png); background-repeat: no-repeat; background-position: center; border-style:none;");
     QLabel *titleLabel = new QLabel("Settings");
-    titleLabel->setStyleSheet("font-size: 30px; color: #000000;");
+    titleLabel->setStyleSheet("font-size: 30px; color: #000000; padding-top: 15px;");
     titleLabel->setContentsMargins(16, 0, 16, 0);
 
     titleContainer->addWidget(backButton);
-    titleContainer->setContentsMargins(0, 10, 5, 25);
-    titleContainer->setAlignment(Qt::AlignCenter);
-    titleContainer->addWidget(titleLabel);
+    titleContainer->addWidget(titleLabel); // , Qt::AlignTop | Qt::AlignCenter
+
+    titleContainer->setContentsMargins(0, 10, 5, 0);
+    titleContainer->setAlignment(Qt::AlignCenter | Qt::AlignTop);
 
     QLabel* gifka = new QLabel();
     QMovie* movie = new QMovie(":/image/setting_45px.gif");
+    gifka->setStyleSheet("padding-top: 15px;");
     gifka->setMovie(movie);
     movie->start();
     titleContainer->addWidget(gifka);
-    mainLayout->addLayout(titleContainer, 0);
 
-    UiInput* input = new UiInput("settingsInput", "Simple Label");
-    mainLayout->addWidget(input);
+    QVBoxLayout* inputContainer = new QVBoxLayout();
+//    inputContainer->setContentsMargins(0, 0, 0, 0);
+    mainLayout->addLayout(inputContainer);
 
-//    UiLabel* newLabel1 = new UiLabel("profileLabel", "MyLabel");
-//    inputLayout1->addWidget(newLabel1, 1, Qt::AlignTop | Qt::AlignLeft);
-
-//    UiEdit* newEdit1 = new UiEdit("profileEdit", "Введите текст", "settingsInput"); // третий параметр для placeholder-a
-//    inputLayout1->addWidget(newEdit1, 5, Qt::AlignTop | Qt::AlignLeft);
+    this->form = new EventForm("settingsInput", 5, "settingsButton", 1);
+    mainLayout->addWidget(this->form, Qt::AlignTop);
 
     connect(backButton, &QPushButton::clicked, this, &ProfilePage::onBackPressed);
 }
@@ -60,8 +58,4 @@ void ProfilePage::onBackPressed()
 {
     emit back();
 }
-
-//void ProfilePage::back() {
-
-//}
 

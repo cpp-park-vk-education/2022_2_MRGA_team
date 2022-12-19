@@ -20,6 +20,8 @@ public:
     UiLabel(const QString& styleSheet, QMovie* movie);                                                                                                              // конструтор для анимации, напрмиер для Loader-a
 
     UiLabel* create(const QString& objectType); // паттерн псевдофабрика
+    UiLabel *create(const QString &objectType, const QString& text);
+
     void updateState(){}; // const std::initializer_list<QString>&
 private:
     QLabel* label;

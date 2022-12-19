@@ -181,7 +181,7 @@ QLabel#eventDescription {
 
 *[cssClass~="organizerNavbar"] {
     min-width: 1440px;
-    min-height: 100%;
+/*    min-height: 100%;*/
     background-color: rgba(25, 113, 125, 0.599);
     border: 1px solid rgba(23, 7, 57, 1);
     border-radius: 15px;
@@ -340,39 +340,67 @@ QComboBox:!on {
     background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #666, stop: 0.1 #555, stop: 0.5 #555, stop: 0.9 #444, stop: 1 #333);
 }
 
-
+/*Input-ы*/
 *[cssClass~="settingsInput"] {
     min-width: 200px;
     min-height: 50px;
-    border-radius: 15px;
-    background-color: red;
+    color: #000000;
+    font-size: 28px;
+    font-weight: 800;
+    padding-top: 10px;
+    background-color: transparent;
 }
 
 *[cssClassEdit~="settingsInput"] {
-    min-width: 800px;
-    min-height: 200px;
+    min-width: 1000px;
+    min-height: 50px;
     background-color: #000000;
     border-radius: 15px;
+    border: 1px solid black;
+    border-image: url() 50 50;
 }
 
-/*QToolBar::item {
+QDateEdit
+{
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgb(100,100,100);
+    spacing: 5px;
+}
+
+
+QDateEdit::drop-down {
+    image: url(:/new/myapp/cbarrowdn.png);
+    width:50px;
+    height:15px;
+    subcontrol-position: right top;
+    subcontrol-origin:margin;
+    background-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-color: rgb(100,100,100);
+   spacing: 5px;
+}
+
+QToolBar::item {
     border-radius: 15px;
 }*/
 
-/*QListView#pendingList {
+QListView#pendingList {
     max-width: 500px; background-color: purple; border-radius: 10px; font-size: 20pt; font-weight: bold;
-}*/
+}
 
-/*QListView::item {
+QListView::item {
     background-color: #E74C3C; padding: 10%;
     border: 1px solid #C0392B;
 }
 
 QListView::item::hover {
     background-color: #C0392B;
-}*/
+}
 
-/*QListView#completedList {
+QListView#completedList {
     font-size: 20pt; font-weight: bold;
 }
 
@@ -383,4 +411,4 @@ QListView::item {
 
 QListView::item::hover {
     background-color: #27AE60;
-}*/
+}

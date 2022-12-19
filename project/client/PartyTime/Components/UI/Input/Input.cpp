@@ -9,8 +9,8 @@ UiInput::UiInput(QWidget *parent) : painter(parent), layout(new QGridLayout())
     this->edit = factoryEdit->create("defaultEdit");
     delete factoryLabel;
     delete factoryEdit;
-    layout->addWidget(label);
-    layout->addWidget(edit);
+    layout->addWidget(label, 1, 1, Qt::AlignTop | Qt::AlignLeft);
+    layout->addWidget(edit, 1, 2, Qt::AlignTop | Qt::AlignLeft);
 }
 
 UiInput::UiInput(const UiInput &other) : painter(new QWidget)
@@ -44,11 +44,8 @@ UiInput::~UiInput(){
 UiInput::UiInput(const QString &className, const QString& inputName) : layout(new QGridLayout(this))
 {
     if (className == "settingsInput") {
-        std::cout << "calling settingsInput constructor" << std::endl;
         label = new UiLabel(className, inputName);
         edit = new UiEdit(className, "Placeholder", "settingsInput");
-
-        std::cout << "edit styles: " << this->edit->styleSheet().toStdString() << std::endl;
 
         this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
         this->layout->addWidget(edit, 1, 2, Qt::AlignLeft |  Qt::AlignTop);

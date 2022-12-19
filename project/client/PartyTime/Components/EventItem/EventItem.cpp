@@ -10,7 +10,8 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     visitorsInfoLayout(new QVBoxLayout),
     dateTimeLayout(new QHBoxLayout),
     subscibeButton("Subscribe"),
-    eventDecsription("Description"), deleteButton(new QPushButton())
+    eventDecsription("Description"), deleteButton(new QPushButton()),
+    dateTime(new QDateTimeEdit())
 {
     this->setProperty("cssClass", "eventItem");                                         // TODO: сделать так чтобы background для каждого EventItem был униакальный, а все отслальное одинаковое
     this->setStyleSheet("border-radius: 15px;");
@@ -84,6 +85,10 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     eventItemLayout.setAlignment(Qt::AlignLeft);
     eventItemLayout.setSizeConstraint(QLayout::SetDefaultConstraint);
 
+    dateTime->setDate(QDate(2000, 12, 12));
+    dateTime->setTime(QTime(12, 14)); // часы, минуты
+    eventItemLayout.addWidget(dateTime);
+
     connect(&this->subscibeButton, &QPushButton::clicked, this, &EventItem::onSubcribeClicked);
 }
 
@@ -127,6 +132,21 @@ EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("or
     address->setText(initFieldList[6]);
 }
 
+EventItem::EventItem(const std::string& _descr,
+                     const std::string& _title,
+                     const unsigned int& _visitors,
+                     const unsigned int& _maxVisitors,
+                     const std::string& _date,
+                     const std::string& _address) : EventItem("organizer") {
+        eventDecsription.setText(QString::fromStdString(_descr));
+        eventTitle.setText(QString::fromStdString(_title));
+        visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));
+        maxVisitors->setText(maxVisitors->text() + QString::fromStdString(std::to_string(_maxVisitors)));
+        date->setText(QString::fromStdString(_date));
+        time->setText(QString::fromStdString(_date));
+        address->setText(QString::fromStdString(_address));
+}
+
 void EventItem::updateState(const std::initializer_list<QString> &list)
 {
     std::vector<QString> initFieldList(list.size());
@@ -141,6 +161,10 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
     date->setText(date->text() + initFieldList[4]);
     time->setText(time->text() + initFieldList[5]);
     address->setText(initFieldList[6]);
+}
+
+void EventItem::parseDateTime()
+{
 }
 
 void EventItem::onSubcribeClicked()

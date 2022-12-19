@@ -75,14 +75,18 @@ UiLabel::UiLabel(const QString &styleSheet, QMovie *movie)
 
 UiLabel *UiLabel::create(const QString &objectType)
 {
-//    if (objectType == "regLabel") {
-//        return new UiLabel("padding: 10px");
-//    }
-    if (objectType == "text") {
-        return new UiLabel("", QFont());
+    if (objectType == "text") { // тип input-a
+        return new UiLabel(objectType, "text");
     }
     if (objectType == "image") {
-        return new UiLabel("", QPixmap());
+        return new UiLabel(objectType, "image");
     }
-    return new UiLabel();
+    return new UiLabel(objectType, "Name");
+}
+
+UiLabel *UiLabel::create(const QString &objectType, const QString& text) {
+    if (objectType == "") {
+        return new UiLabel(objectType, text);
+    }
+    return new UiLabel(objectType, text);
 }

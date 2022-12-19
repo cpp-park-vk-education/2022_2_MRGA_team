@@ -25,28 +25,42 @@ EventForm::EventForm(QWidget *parent) : painter(parent),
 }
 
 EventForm::EventForm(const QString& inputType, int inputSize, const QString& buttonType, int buttonsSize) :
-    mainLayout(new QVBoxLayout()), inputLayout(new QGridLayout()), buttonsLayout(new QGridLayout())
+    mainLayout(new QVBoxLayout(this)), inputLayout(new QGridLayout()), buttonsLayout(new QGridLayout())
 {
-    UiInput* factory = new UiInput();
-    for (int i = 0; i < inputSize; ++i) {
-        inputList.push_back(factory->create(inputType));
-    }
-    delete factory;
-    factory = nullptr;
+    this->setStyleSheet("max-height: 600px; background-color: rgba(111, 81, 174, 1); border-radius: 15px;");
 
-    UiButton* buttonFactory = new UiButton();
+    std::vector<QString> initInputTitleList1(inputSize);
+    std::vector<QString> initInputTitleList;
+
+    if (inputType == "settingsInput") {
+        initInputTitleList.push_back("UserName");
+        initInputTitleList.push_back("Birth Date");
+        initInputTitleList.push_back("Lol");
+        initInputTitleList.push_back("Kek");
+        initInputTitleList.push_back("Amfkaflkamfklamsfkaf");
+    }
+
+    for (const auto& title : initInputTitleList) {
+        if (inputType == "") {
+            inputList.push_back(new UiInput(inputType, ""));
+        }
+        inputList.push_back(new UiInput(inputType, title));
+    }
+
     for (int i = 0; i < buttonsSize; ++i) {
-        formButtons.push_back(buttonFactory->create(buttonType));
+        if (buttonType == "") {
+            formButtons.push_back(new UiButton("", "min-width: 200px; min-height: 50; border-radius: 10px;"));
+        }
+        formButtons.push_back(new UiButton("Save", "min-width: 200px; min-height: 50; border-radius: 10px; background-color: green;"));
     }
-    delete buttonFactory;
-    buttonFactory = nullptr;
 
+    size_t rowNumber = 0;
     for (const auto& input: inputList) {
-        inputLayout->addWidget(input);
+        inputLayout->addWidget(input, rowNumber++, 0);
     }
 
     for (const auto& button: formButtons) {
-        inputLayout->addWidget(button);
+        buttonsLayout->addWidget(button);
     }
 
     mainLayout->addLayout(inputLayout);

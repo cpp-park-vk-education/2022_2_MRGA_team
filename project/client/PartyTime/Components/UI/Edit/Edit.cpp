@@ -29,19 +29,16 @@ UiEdit::~UiEdit()
 
 UiEdit::UiEdit(const QString &className, const QString &placeholder, const QString& editType) : value(new QLineEdit()), editLayout(new QHBoxLayout(this))
 {
-    value->setProperty("cssClass", className);
+    value->setProperty("cssClassEdit", className);
     if (editType == "settingsInput") {
-//        value->setStyleSheet("min-width: 800px; min-height: 50px; border-radius: 15px; background-color: #000000; color: green;");
         QPalette pal = value->palette();
         pal.setColor(QPalette::PlaceholderText, QColor(0, 0, 0, 100));
         value->setPalette(pal);
         value->setFont(QFont("Times", -1, QFont::Bold));
     }
 
-    std::cout << "UiEdit styleSheet" << value->styleSheet().toStdString() << std::endl;
-
     value->setPlaceholderText(placeholder);
-    editLayout->addWidget(value);
+    editLayout->addWidget(value, Qt::AlignLeft | Qt::AlignTop);
 }
 
 UiEdit::UiEdit(const QString &styleSheet, const QString &placeHolder, const QFont &font)

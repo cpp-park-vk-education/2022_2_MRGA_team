@@ -16,23 +16,6 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     address(new QLineEdit()), visitors(new QLineEdit()),
     maxVisitors(new QLineEdit())
 {
-
-    try {
-        HttpConnector connector("contest.yandex.ru");
-        auto res = connector.GET("/");
-        std::cout << "result = " << res.result << std::endl;
-            if (res.response) {
-                std::cout << "has value" << res.response.has_value() << std::endl;
-                std::cout << res.response->response_body << std::endl;
-                std::cout << res.response->status.str << std::endl;
-                for (auto&[h, v] : res.response->headers) {
-                    std::cout << "header " << h << " value " << v << std::endl;
-                }
-            }
-    } catch (std::exception& error) {
-        std::cout << error.what() << std::endl;
-    }
-
     this->createEventButton->setProperty("cssClass", "createEventButton");
     this->setContentsMargins(0, 20, 0, 0);
     Navbar* navbarFactory = new Navbar("", 3);
@@ -139,6 +122,11 @@ void EventViewPage::onAdd()
 
     QHBoxLayout* input7 = new QHBoxLayout();
     inputLayout->addLayout(input7, Qt::AlignTop);
+
+    QDateEdit* dateEdit = new QDateEdit();
+    inputLayout->addWidget(dateEdit);
+    QTimeEdit* timeEdit = new QTimeEdit();
+    inputLayout->addWidget(timeEdit);
 
     QLabel* maxVisitorsLabel = new QLabel("Maximum visitors");
     input7->addWidget(maxVisitorsLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
