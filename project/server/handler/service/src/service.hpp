@@ -21,6 +21,7 @@ public:
     ServiceManager();
 
     void addVisitor(const std::string &requestBody);
+    boost::system::error_code addVisitor(ui userID, ui eventID);
 
     void deleteVisitor(const std::string &requestBody);
 

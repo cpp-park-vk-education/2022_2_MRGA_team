@@ -117,30 +117,61 @@ void router::create_event_handle(http::response<http::dynamic_body> &response, c
 
 
 void router::visit_events_handle(res &response, const req &request) {
-    std::cerr << "=========ЗАПРОС ПРИШЕЛ В VISIT EVENTS HANDLE==========" << std::endl;
+    bsv token;
     try {
-        bsv token = request.at("Authorization");
-        try {
-            service_manager_ref.session_service_.checkSession(token.to_string());
-            try {
-                service_manager_ref.addVisitor(beast::buffers_to_string(request.body().data()));
-                response.result(http::status::ok);
-                return;
-            } catch (std::exception &ex) {
-                response.result(http::status::unauthorized);
-                beast::ostream(response.body()) << ex.what();
-                return;
-            }
-        } catch (...) {
-            response.result(http::status::unauthorized);
-            beast::ostream(response.body()) << "Ошибка авторизации";
-            return;
-        }
+        token = request.at("Authorization");
     } catch (std::out_of_range &ex) {
-        response.result(http::status::forbidden);
+        response.result(http::status::unauthorized);
         beast::ostream(response.body()) << "нет хедера с токеном";
         return;
     }
+    uint userID;
+    try {
+        userID = service_manager_ref.session_service_.checkSession(token.to_string());
+    } catch (...) {
+        response.result(http::status::forbidden);
+        beast::ostream(response.body()) << "Ошибка авторизации";
+        return;
+    }
+    char* end = nullptr;
+    errno = 0;
+    long long eventID= std::strtoll(beast::buffers_to_string(request.body().data()).c_str(), &end, 0);
+    if (*end != '\0' || errno != 0 || eventID < 0) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "ожидается id ивента";
+        return ;
+    }
+    auto ec = service_manager_ref.addVisitor(userID, eventID);
+    if (ec.failed()) {
+        response.result(http::status::unavailable_for_legal_reasons);
+        beast::ostream(response.body()) << ec.message();
+    }
+    response.result(http::status::ok);
+    return ;
+    // std::cerr << "=========ЗАПРОС ПРИШЕЛ В VISIT EVENTS HANDLE==========" << std::endl;
+    // try {
+    //     bsv token = request.at("Authorization");
+    //     try {
+    //         service_manager_ref.session_service_.checkSession(token.to_string());
+    //         try {
+    //             service_manager_ref.addVisitor(beast::buffers_to_string(request.body().data()));
+    //             response.result(http::status::ok);
+    //             return;
+    //         } catch (std::exception &ex) {
+    //             response.result(http::status::unauthorized);
+    //             beast::ostream(response.body()) << ex.what();
+    //             return;
+    //         }
+    //     } catch (...) {
+    //         response.result(http::status::unauthorized);
+    //         beast::ostream(response.body()) << "Ошибка авторизации";
+    //         return;
+    //     }
+    // } catch (std::out_of_range &ex) {
+    //     response.result(http::status::forbidden);
+    //     beast::ostream(response.body()) << "нет хедера с токеном";
+    //     return;
+    // }
 }
 
 void router::unvisit_events_handle(res &response, const req &request) {

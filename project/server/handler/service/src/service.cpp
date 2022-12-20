@@ -151,6 +151,24 @@ void ServiceManager::addVisitor(const std::string &requestBody) {
     }
 }
 
+boost::system::error_code ServiceManager::addVisitor(ui userID, ui eventID) {
+    try {
+        // существование юзера и ивента нужно проверять отдельно, чтобы можно было разные коды ошибок возвращать
+        //  также нужно уметь различать, когда бд вернула результат, а когда там произошла ошибка.
+        // когда она вернула результат, но не нашла ивент или юзера, мы должны здесь вернуть соответствующую ошибку.
+        // а в хендлере уже по этой ошибке вернуть bad_request
+        // если же бд не вернула ответ, значит нужно здесь вернуть bd_side_error, а в хендлере уже 500 код, но это не точно.
+        uint userId = user_service_.checkUserExistence(userID);
+        uint eventId = event_service_.checkEventExistence(eventID);
+        user_service_.addVisitor(eventId, userId);
+    } catch (std::invalid_argument &ex) {
+        boost::system::error_code ec;
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ec;
+    }
+    return boost::system::error_code();
+}
+
 void ServiceManager::deleteVisitor(const std::string &requestBody) {
     try {
         Event event(requestBody);

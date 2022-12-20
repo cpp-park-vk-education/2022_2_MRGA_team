@@ -8,7 +8,7 @@ namespace {
 
 enum class service_error_codes {
     success = 0,
-    db_side_error = -1
+    db_side_error = -1,
 };
 
 using serv_errc = service_error_codes;
