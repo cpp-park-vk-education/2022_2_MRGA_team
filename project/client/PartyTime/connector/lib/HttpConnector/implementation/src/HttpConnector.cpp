@@ -1,10 +1,7 @@
 #include "HttpConnector.hpp"
 #include "HttpConnectorErrorCategory.hpp"
+#include <iostream>
 
-boost::system::error_category const& HttpConnectorErrorCategory() {
-    static const HttpConnectorErrorCategoryImpl instance;
-    return instance;
-}
 
 HttpConnector::HttpConnector(const string &host, const string &port)
     :
@@ -63,7 +60,6 @@ HttpConnector::GET(const string &target,
         }
     }
     http::write(stream, req, ec);
-
     if (ec) {
         return {std::nullopt, ec};
     }
@@ -101,6 +97,7 @@ HttpConnector::POST(const string &target, const string &body,
         return {std::nullopt, ec};
     }
     auto req = string_request(target, "POST");
+    req.set("Authorization", "admin02022");
     req.set(http::field::host, host);
     req.set(http::field::user_agent, user_agent);
     if (headers) {
@@ -109,6 +106,7 @@ HttpConnector::POST(const string &target, const string &body,
         }
     }
     req.body() = body;
+    req.prepare_payload();
     http::write(stream, req, ec);
 
     if (ec) {
