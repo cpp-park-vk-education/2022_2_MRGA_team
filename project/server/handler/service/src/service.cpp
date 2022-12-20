@@ -5,6 +5,7 @@
 #include "event_repository.hpp"
 #include "user_repository.hpp"
 #include "session_repository.hpp"
+// #include "service_error_codes.hpp"
 
 
 ServiceManager::AuthorizationService::AuthorizationService(DbManager &db_manager) : authorization_repository_(db_manager) {}
@@ -37,6 +38,22 @@ Event ServiceManager::EventService::createEvent(uint userId, const std::string& 
         return event;
     } catch (...) {
         throw std::invalid_argument("Ошибка от бд");
+    }
+}
+
+Event ServiceManager::EventService::createEvent(const Event &event, boost::system::error_code &ec) {
+    Event ev = event;
+    try {
+        int eventId = event_repository_.create_event(event);
+        if (eventId < 0) {
+            ec.assign(int(service_error_codes::db_side_error), service_error_category());
+            return ev;
+        }
+        ev.id = eventId;
+        return ev;
+    } catch (...) {
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ev;
     }
 }
 

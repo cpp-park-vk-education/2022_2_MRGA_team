@@ -12,6 +12,7 @@
 #include "event_repository.hpp"
 #include "session_repository.hpp"
 #include "user_repository.hpp"
+#include "service_error_codes.hpp"
 
 using bsv = boost::string_view;
 
@@ -40,6 +41,7 @@ private:
         void event(bsv query_params, std::string &response_body);
 
 	    Event createEvent(uint userId, const std::string& requestBody);
+        Event createEvent(const Event& event, boost::system::error_code& ec);
 
         uint checkEventExistence(uint eventId);
 

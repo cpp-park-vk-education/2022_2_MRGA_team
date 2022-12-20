@@ -59,30 +59,45 @@ void router::events_handle(http::response<http::dynamic_body> &response, const h
 }
 
 void router::create_event_handle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
+    bsv token;
     try {
-        bsv token = request.at("Authorization");
-        try {
-            auto userId = service_manager_ref.session_service_.checkSession(token.to_string());
-            Event event = service_manager_ref.event_service_.createEvent(userId, beast::buffers_to_string(request.body().data()));
-            response.result(http::status::ok);
-            beast::ostream(response.body()) << event.toJSON();
-            return;
-        } catch (...) {
-            response.result(http::status::unauthorized);
-            beast::ostream(response.body()) << "Ошибка авторизации";
-            return;
-        }
+        token = request.at("Authorization");
     } catch (std::out_of_range &ex) {
-        response.result(http::status::forbidden);
+        response.result(http::status::unauthorized);
         beast::ostream(response.body()) << "нет хедера с токеном";
         return;
     }
+    uint userID;
+    try {
+        userID = service_manager_ref.session_service_.checkSession(token.to_string());
+    } catch (...) {
+        response.result(http::status::forbidden);
+        beast::ostream(response.body()) << "Ошибка авторизации";
+        return;
+    }
+    error_code ec;
+    Event event = Event::fromJSON(beast::buffers_to_string(request.body().data()), ec);
+    if (ec.failed()) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << ec.message();
+        return ;
+    }
+    event.user_id = userID;
+    event = service_manager_ref.event_service_.createEvent(event, ec);
+    if (ec.failed()) {
+        response.result(http::status::insufficient_storage);
+        beast::ostream(response.body()) << ec.message();
+        return ;
+    }
+    response.result(http::status::ok);
+    beast::ostream(response.body()) << event.toJSON();
+    return ;
 }
 
 
 
 
-    
+
 
 
     // std::string token = equest.at("Authorization"); // check this
