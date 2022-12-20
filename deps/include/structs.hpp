@@ -2,14 +2,13 @@
 #define STRUCTS_HPP
 
 #include <string>
-#include <set>
 #include <sstream>
 #include <utility>
 #include <vector>
 #include <optional>
-#include <system_error>
 #include <unordered_map>
 #include "struct_mapping.hpp"
+#include "structs_error_codes.hpp"
 
 namespace {
     using std::optional;
@@ -21,48 +20,6 @@ namespace {
     using std::unordered_map;
     using key = string;
     using value = string;
-    using namespace std::string_literals;
-}
-
-enum class structs_error_codes {
-    success = 0,
-    parsing_error = 1,
-    empty_title = 2,
-    empty_date = 3
-};
-
-using errc = structs_error_codes;
-
-class structs_error_category_impl: public std::error_category {
-    static constexpr std::string_view category_name = "structs_error_category";
-    const char * name() const noexcept override {
-        return category_name.data();
-    }
-    std::string message( int ev ) const override {
-        errc ec = static_cast<errc>(ev);
-
-        switch (ec) {
-        case errc::success: {
-            return "все хорошо"s;
-        }
-        case errc::parsing_error: {
-            return "Ошибка при парсинге json"s;
-        }
-        case errc::empty_title: {
-            return "Event doesn`t have title"s;
-        }
-        case errc::empty_date: {
-            return "Event doesn`t have date"s;
-        }
-        default:
-            return "не знаю"s;
-        }
-    }
-};
-
-std::error_category const& structs_error_category() {
-    static const structs_error_category_impl instance;
-    return instance;
 }
 
 //namespace structs {
