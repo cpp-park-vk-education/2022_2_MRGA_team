@@ -273,7 +273,6 @@ std::error_category const& structs_error_category() {
             return outJsonData.str();
         }
     };
-
     struct Events : DBObject {
 
     vector<Event> events = []()->vector<Event>{
@@ -299,10 +298,22 @@ std::error_category const& structs_error_category() {
     };
 
     struct Token : public DBObject {
-        ui id;
-        string token;             // UNIQUE
-        string expire_date_time;  // Format: "yyyy-mm-dd hh:mm:ss"
-        ui user_id;
+        ui id = []{
+            sm::reg(&Token::id, "id");
+            return 0;
+        }();
+        string token = [] {
+            sm::reg(&Token::token,          "token");
+            return "";
+        }();             // UNIQUE
+        string expire_date_time = []{
+            sm::reg(&Token::expire_date_time, "expireDateTime");
+            return "";
+        }();  // Format: "yyyy-mm-dd hh:mm:ss"
+        ui user_id = []{
+            sm::reg(&Token::user_id, "userId");
+            return 0;
+        }();
 
         Token() = default;
         Token(const string &token,
@@ -312,26 +323,11 @@ std::error_category const& structs_error_category() {
         : id(id), token(token), expire_date_time(expire_date_time), user_id(user_id) {}
 
         explicit Token(const string &json) {
-            sm::reg(&Token::id,             "id");
-            sm::reg(&Token::token,          "token");
-            sm::reg(&Token::expire_date_time, "expireDateTime");
-            sm::reg(&Token::user_id,           "userId");
-            sm::reg(&User::nickname,        "nickname");
-            sm::reg(&User::password,        "password");
-
             stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
 
         string toJSON() override {
-            sm::reg(&Token::id,             "id");
-            sm::reg(&Token::token,          "token");
-            sm::reg(&Token::expire_date_time, "expireDateTime");
-            sm::reg(&Token::user_id,           "userId");
-
-            sm::reg(&User::nickname,        "nickname");
-            sm::reg(&User::password,        "password");
-
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
@@ -349,6 +345,13 @@ std::error_category const& structs_error_category() {
         optional<Sort> sort;
         optional<unordered_map<key, value>> conditions;
     };
+
+namespace __structs__{
+    static Event __event__;
+    static Events __events__;
+    static Token __token__;
+    static User __user__;
+};
 
 //}
 
