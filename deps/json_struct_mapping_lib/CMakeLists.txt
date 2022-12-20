@@ -10,4 +10,7 @@ file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/
 
 add_library(${PROJECT_NAME} INTERFACE ${SOURCES})
 
+add_executable(test main.cpp)
+target_include_directories(test PRIVATE struct_mapping_lib)
+
 install(FILES structs.hpp DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/../include")
