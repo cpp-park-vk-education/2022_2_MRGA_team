@@ -18,13 +18,15 @@
 #include "organizer.hpp"
 #include "visitor.hpp"
 #include "visitorEventList.hpp"
+#include "settings.hpp"
 
 enum pagesNumbers {
     e_authorization = 0,
     e_registration = 1,
     e_profile = 2,
     e_main = 3,
-    e_events = 4
+    e_events = 4,
+    e_settings = 5
 };
 
 class Base : public QMainWindow
@@ -45,6 +47,7 @@ private:
     OrganizerPage* organizerPage;
     VisitorPage* visitorPage;
     VisitorEventListPage* visitorEventListPage;
+    settings* settingsPage;
 //    std::shared_ptr<PostService> postRequestHandler;
 private slots:
     void onAuthPageClicked();
@@ -64,5 +67,6 @@ private slots:
     // void onOrganizerPageClicked();
     // void onOrganizer();
      void onVisitorEventListPageClicked();
+     void onSettingsPageClicked();
 };
 #endif // BASE_H

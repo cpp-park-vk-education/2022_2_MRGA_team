@@ -25,10 +25,12 @@ public:
     UiButton* getMainButton() {return &mainButton;}
     UiButton* getProfileButton() {return &profileButton;}
     UiButton* getEventsButton() {return &eventsButton;}
+    UiButton* getSettingsButton() {return &settingsButton;}
 
 private:
     QHBoxLayout* layout;
     UiButton mainButton;
     UiButton profileButton;
     UiButton eventsButton;
+    UiButton settingsButton;
 };

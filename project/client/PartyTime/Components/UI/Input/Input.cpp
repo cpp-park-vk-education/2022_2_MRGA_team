@@ -25,9 +25,9 @@ UiInput &UiInput::operator=(const UiInput &other)
 {
     QLayoutItem *child;
 
-    while ((child = this->layout->takeAt(0)) != nullptr) { // пока layout не пустой удаляем все виджеты.
-        delete child->widget();                      // delete the widget
-        delete child;                                // delete the layout item
+    while ((child = this->layout->takeAt(0)) != nullptr) {  // пока layout не пустой удаляем все виджеты.
+        delete child->widget();                             // delete the widget
+        delete child;                                       // delete the layout item
     }
 
     this->label = other.label;
@@ -41,24 +41,33 @@ UiInput::~UiInput(){
     delete layout;
 }
 
-UiInput::UiInput(const QString &className, const QString& inputName) : layout(new QGridLayout(this))
+UiInput::UiInput(const QString &className, const QString& inputName, const QString& placeholder) : layout(new QGridLayout(this))
 {
     if (className == "settingsInput") {
         label = new UiLabel(className, inputName);
-        edit = new UiEdit(className, "Placeholder", "settingsInput");
+        edit = new UiEdit(className, placeholder, "settingsInput");
+//        edit = new UiEdit(className, placeholder, "dateInput");
+
+        this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
+        this->layout->addWidget(edit, 1, 2, Qt::AlignLeft |  Qt::AlignTop);
+    }
+    if (className == "settingsInputRight") {
+        label = new UiLabel(className, inputName);
+        edit = new UiEdit(className, placeholder, "settingsInput");
+//        edit = new UiEdit(className, placeholder, "dateInput");
 
         this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
         this->layout->addWidget(edit, 1, 2, Qt::AlignLeft |  Qt::AlignTop);
     }
 }
 
-UiInput::UiInput(const QString& inputType, const QString& editType, const QString& inputStyle) : layout(new QGridLayout(this)) // горизонтальный layout
+UiInput::UiInput(const QString& inputType, const QString& editType, const QString& inputStyle, bool disposition) : layout(new QGridLayout(this)) // горизонтальный layout
 {
     UiLabel* factoryLabel = new UiLabel();
     UiEdit* factoryEdit = new UiEdit();
     this->label = factoryLabel->create(inputType);
     this->edit = factoryEdit->create(editType);
-    if (inputStyle == "vertix") {
+    if (inputStyle == "vertix" && disposition) {
         layout->addWidget(label, 1, 1, 1, 1);
         layout->addWidget(edit, 2, 1, 1, 1);
     } else {

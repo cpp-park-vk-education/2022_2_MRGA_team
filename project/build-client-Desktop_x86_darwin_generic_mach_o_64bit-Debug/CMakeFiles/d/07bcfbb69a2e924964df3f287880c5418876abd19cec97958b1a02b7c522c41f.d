@@ -200,6 +200,7 @@ PartyTime/Components/UI/ui_autogen/timestamp: \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input/Input.cpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input/Input.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input2/input2.cpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input2/input2.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Label/Label.cpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Label/Label.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Loader/Loader.cpp \

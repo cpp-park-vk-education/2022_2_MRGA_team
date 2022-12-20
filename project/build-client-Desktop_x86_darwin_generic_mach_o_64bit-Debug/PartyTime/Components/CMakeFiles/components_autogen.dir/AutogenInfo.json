@@ -63,6 +63,12 @@
 			null
 		],
 		[
+			"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input2/input2.hpp",
+			"MU",
+			"Z66MRQZ5A2/moc_input2.cpp",
+			null
+		],
+		[
 			"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Label/Label.hpp",
 			"MU",
 			"CCMHZWLIZN/moc_Label.cpp",
@@ -126,11 +132,11 @@
 		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/ui",
 		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Button",
 		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input",
+		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input2",
 		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Label",
 		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Edit",
 		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Loader",
 		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Navbar",
-		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include",
 		"/opt/homebrew/include",
 		"/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include",
 		"/opt/homebrew/lib/QtWidgets.framework/Headers",

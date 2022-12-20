@@ -16,7 +16,7 @@ ProfilePage::ProfilePage(QWidget *parent) : painter(parent),
     titleContainer->addWidget(backButton);
     titleContainer->addWidget(titleLabel); // , Qt::AlignTop | Qt::AlignCenter
 
-    titleContainer->setContentsMargins(0, 10, 5, 0);
+    titleContainer->setContentsMargins(0, 10, 5, 10);
     titleContainer->setAlignment(Qt::AlignCenter | Qt::AlignTop);
 
     QLabel* gifka = new QLabel();
@@ -26,12 +26,14 @@ ProfilePage::ProfilePage(QWidget *parent) : painter(parent),
     movie->start();
     titleContainer->addWidget(gifka);
 
-    QVBoxLayout* inputContainer = new QVBoxLayout();
-//    inputContainer->setContentsMargins(0, 0, 0, 0);
-    mainLayout->addLayout(inputContainer);
+    QHBoxLayout* formLayout = new QHBoxLayout();
+    formLayout->setAlignment(Qt::AlignTop);
+    mainLayout->addLayout(formLayout);
 
-    this->form = new EventForm("settingsInput", 5, "settingsButton", 1);
-    mainLayout->addWidget(this->form, Qt::AlignTop);
+    this->leftForm = new EventForm("settingsInput", 5, "settingsButton", 1);
+    formLayout->addWidget(this->leftForm);
+    this->rightForm = new EventForm("settingsInputRight", 5, "settingsButton", 1);
+    formLayout->addWidget(this->rightForm);
 
     connect(backButton, &QPushButton::clicked, this, &ProfilePage::onBackPressed);
 }
@@ -57,5 +59,8 @@ void ProfilePage::set_interface_style()
 void ProfilePage::onBackPressed()
 {
     emit back();
+//    for (auto& input : form->inputList) {
+//        input->edit;
+//    }
 }
 

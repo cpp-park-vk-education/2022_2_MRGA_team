@@ -11,6 +11,7 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
     mainButton = *buttonFactory;
     profileButton = *buttonFactory;
     eventsButton = *buttonFactory;
+    // settingsButton = *buttonFactory;
 
 //    cтили для кнопок
     mainButton.updateState("mainBtn", "");
@@ -22,7 +23,8 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
     eventsButton.updateState("eventsBtn", "");
     eventsButton.button->setText("Events");
 
-//    UiButton* svgButton = new UiButton("navbarSvg", QSize(24, 24));
+    // settingsButton.updateState("eventsBtn", "");
+    // settingsButton.button->setText("Settings");
 
     // Выбираем navbar
     if (navbarSize == 3) {
@@ -32,12 +34,14 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
         std::cout << "afascascsa" << std::endl;
         layout->addWidget(&mainButton);
         layout->addWidget(&eventsButton);
+        // layout->addWidget(&settingsButton);
         layout->addWidget(&profileButton);
 //        layout->addWidget(svgButton);
     } else {
         this->setObjectName("idOrganizerNavbar");        // установили id-ик navbar-у, которым в теории сможем потом воспользоваться
         this->setProperty("cssClass", "organizerNavbar");    // установили class navbar-у, который сейчас используется
         layout->addWidget(&mainButton);
+        // layout->addWidget(&settingsButton);
         layout->addWidget(&profileButton);
 //        layout->addWidget(svgButton);
     }
@@ -85,11 +89,13 @@ Navbar &Navbar::operator=(const Navbar &other)
     }
 
     this->mainButton = other.mainButton;
-    this->profileButton = other.profileButton;
     this->eventsButton = other.eventsButton;
+    this->profileButton = other.profileButton;
+    // // this->settingsButton = other.settingsButton;
 
     this->layout->addWidget(&mainButton);
     this->layout->addWidget(&eventsButton);
+    // this->layout->addWidget(&settingsButton);
     this->layout->addWidget(&profileButton);
 
     return *this;

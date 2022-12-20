@@ -5,5 +5,6 @@
 #include "UYVEVQAACK/moc_organizer.cpp"
 #include "RWH2AGZVWM/moc_profile.cpp"
 #include "XK3FLKEYN3/moc_registration.cpp"
+#include "O2BZNLJYKV/moc_settings.cpp"
 #include "4DCNRP556M/moc_visitorEventList.cpp"
 #include "GVG4KVLCB3/moc_visitor.cpp"

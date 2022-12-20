@@ -5,6 +5,8 @@
 
 class EventForm : public painter {
     Q_OBJECT
+
+    friend class ProfilePage;
 public:
     explicit EventForm(QWidget* parent = nullptr);
 

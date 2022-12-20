@@ -27,9 +27,9 @@ private:
 
     Header header;
     Navbar navbar;
-//    EventForm leftForm;
-//    EventForm rightForm;
-    EventForm* form;
+    EventForm* leftForm;
+    EventForm* rightForm;
+//    EventForm* form;
 
     UiLabel userAvatar;
     UiButton* saveButton;

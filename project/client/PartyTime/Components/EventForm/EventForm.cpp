@@ -27,44 +27,40 @@ EventForm::EventForm(QWidget *parent) : painter(parent),
 EventForm::EventForm(const QString& inputType, int inputSize, const QString& buttonType, int buttonsSize) :
     mainLayout(new QVBoxLayout(this)), inputLayout(new QGridLayout()), buttonsLayout(new QGridLayout())
 {
-    this->setStyleSheet("max-height: 600px; background-color: rgba(111, 81, 174, 1); border-radius: 15px;");
+    this->setStyleSheet("max-width: 800px; max-height: 800px; background-color: rgba(111, 81, 174, 1); border-radius: 15px;");
 
-    std::vector<QString> initInputTitleList1(inputSize);
-    std::vector<QString> initInputTitleList;
+    if (inputSize == 0 && buttonType == "" && buttonsSize == 0) {} // заглушка
 
     if (inputType == "settingsInput") {
-        initInputTitleList.push_back("UserName");
-        initInputTitleList.push_back("Birth Date");
-        initInputTitleList.push_back("Lol");
-        initInputTitleList.push_back("Kek");
-        initInputTitleList.push_back("Amfkaflkamfklamsfkaf");
+        inputList.push_back(new UiInput(inputType, "UserName", "username"));
+        inputList.push_back(new UiInput(inputType, "Password", "password"));
+        inputList.push_back(new UiInput(inputType, "Email", "email"));
+        inputList.push_back(new UiInput(inputType, "Birth Date", "birth date"));
+        inputList.push_back(new UiInput(inputType, "Description", "description"));
+        formButtons.push_back(new UiButton("", "text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;", "Save"));
     }
 
-    for (const auto& title : initInputTitleList) {
-        if (inputType == "") {
-            inputList.push_back(new UiInput(inputType, ""));
-        }
-        inputList.push_back(new UiInput(inputType, title));
-    }
-
-    for (int i = 0; i < buttonsSize; ++i) {
-        if (buttonType == "") {
-            formButtons.push_back(new UiButton("", "min-width: 200px; min-height: 50; border-radius: 10px;"));
-        }
-        formButtons.push_back(new UiButton("Save", "min-width: 200px; min-height: 50; border-radius: 10px; background-color: green;"));
+    if (inputType == "settingsInputRight") {
+        inputList.push_back(new UiInput(inputType, "Country", "country"));
+        inputList.push_back(new UiInput(inputType, "City", "city"));
+        inputList.push_back(new UiInput(inputType, "Street", "Street"));
+        inputList.push_back(new UiInput(inputType, "House", "house"));
+        inputList.push_back(new UiInput(inputType, "Apartment", "apartment"));
+        formButtons.push_back(new UiButton("", "text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;", "Save address"));
     }
 
     size_t rowNumber = 0;
     for (const auto& input: inputList) {
-        inputLayout->addWidget(input, rowNumber++, 0);
+        inputLayout->addWidget(input, rowNumber++, 0, Qt::AlignTop);
     }
 
+    rowNumber = 0;
     for (const auto& button: formButtons) {
-        buttonsLayout->addWidget(button);
+        buttonsLayout->addWidget(button, rowNumber++, 0, Qt::AlignTop);
     }
 
-    mainLayout->addLayout(inputLayout);
-    mainLayout->addLayout(buttonsLayout);
+    mainLayout->addLayout(inputLayout, Qt::AlignTop);
+    mainLayout->addLayout(buttonsLayout, Qt::AlignTop);
 }
 
 EventForm::EventForm(const EventForm &other) : painter(new QWidget)

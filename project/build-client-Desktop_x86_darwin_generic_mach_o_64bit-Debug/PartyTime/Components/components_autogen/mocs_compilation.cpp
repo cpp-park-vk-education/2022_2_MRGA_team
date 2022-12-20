@@ -7,6 +7,7 @@
 #include "PTLRDWDLAD/moc_Button.cpp"
 #include "VE3MV757SV/moc_Edit.cpp"
 #include "W4DA3QTGRU/moc_Input.cpp"
+#include "Z66MRQZ5A2/moc_input2.cpp"
 #include "CCMHZWLIZN/moc_Label.cpp"
 #include "ISQN7CJTQ2/moc_Loader.cpp"
 #include "NOBDTMB4R2/moc_Navbar.cpp"

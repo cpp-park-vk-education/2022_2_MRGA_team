@@ -21,6 +21,7 @@
         <file>back-arrow.png</file>
         <file>gearBlack.svg</file>
         <file>gearWhite.svg</file>
+        <file>arrow-down.png</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>

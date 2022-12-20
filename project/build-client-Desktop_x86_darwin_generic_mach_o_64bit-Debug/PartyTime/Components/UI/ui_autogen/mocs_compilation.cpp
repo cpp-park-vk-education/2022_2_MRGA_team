@@ -2,6 +2,7 @@
 #include "5HGRVRULZM/moc_Button.cpp"
 #include "ESHCVDYF4T/moc_Edit.cpp"
 #include "3YYLGY3GVZ/moc_Input.cpp"
+#include "RAR4WZFIX6/moc_input2.cpp"
 #include "5QSYPNQUZB/moc_Label.cpp"
 #include "UE672ANTHJ/moc_Loader.cpp"
 #include "2X7OBK6CZ2/moc_Navbar.cpp"

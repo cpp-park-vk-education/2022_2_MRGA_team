@@ -6,7 +6,7 @@
 
 
 class UiInput : public painter {
-    Q_OBJECT
+    Q_OBJECT   
 public:
     explicit UiInput(QWidget* parent = nullptr);
     UiInput(const UiInput& other);
@@ -14,9 +14,9 @@ public:
     ~UiInput();
 
     // нужные
-    UiInput(const QString& className, const QString& inputName); // className пробрасывается дальше в UiEdit и UiLabel
+    UiInput(const QString& className, const QString& inputName, const QString& placeholder); // className пробрасывается дальше в UiEdit и UiLabel
 
-    UiInput(const QString& inputType, const QString& editType, const QString& inputStyle); // горизонатльный input
+    UiInput(const QString& inputType, const QString& editType, const QString& inputStyle, bool disposition); // горизонатльный input
     UiInput(const UiLabel& _label, const UiEdit& _edit, const QString& inputStyle = "horizontal"); // вертикальный input
     UiInput(const QString& styleSheet, const UiEdit& _edit); // QString cssStyle либо id, там уже все что хотим задаем. Надо для изображения записать еще.
     // и для loader, для стилизованного input-a, реализовать UiLabel, UiEdit.

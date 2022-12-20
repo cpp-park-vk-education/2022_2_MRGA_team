@@ -277,6 +277,7 @@ PartyTime/Pages/pages_autogen/timestamp: \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Button/Button.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Edit/Edit.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input/Input.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input2/input2.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Label/Label.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Navbar/Navbar.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/painter.hpp \
@@ -294,6 +295,8 @@ PartyTime/Pages/pages_autogen/timestamp: \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Pages/ProfilePage/profile.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Pages/RegistrationPage/registration.cpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Pages/RegistrationPage/registration.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Pages/Settings/settings.cpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Pages/Settings/settings.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Pages/VisitorEventListPage/visitorEventList.cpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Pages/VisitorEventListPage/visitorEventList.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Pages/VisitorPage/visitor.cpp \

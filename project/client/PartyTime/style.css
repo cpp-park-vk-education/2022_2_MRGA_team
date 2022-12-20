@@ -6,11 +6,20 @@ QStackedWidget#generalBackground {
     padding-top: 0px;
     padding-bottom: 20px;
     min-width: 1440px;
-    max-height: 1024px;
+    max-height: 1000px;
 }
 
 registration#registration {
     max-height: 900px;
+}
+
+/*Button*/
+UiButton#settingsFormButton {
+    min-width: 200px;
+    min-height: 40px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #98cfeb;
 }
 
 /*Text fiels*/
@@ -37,7 +46,7 @@ QPushButton {
 }
 
 QPushButton:hover {
-    color: rgba(87, 174, 180, 1);
+    color: #fffb00;
 }
 
 /*Pages Buttons*/
@@ -157,6 +166,21 @@ QLabel#eventDescription {
     color: #000000;
     padding: 10px;
     margin-right: 20px;
+}
+
+QLabel#header {
+    background-color: none;
+    color: rgba(6, 6, 6, 1);
+    margin-left: 20px;
+    font-size: 18px;
+}
+
+QLineEdit#value {
+    width: 400px;
+    color: rgba(6, 6, 6, 1);
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 18px;
 }
 
 *[cssClass~="profileLabel"] {
@@ -351,13 +375,31 @@ QComboBox:!on {
     background-color: transparent;
 }
 
+*[cssClass~="settingsInputRight"] {
+    min-width: 200px;
+    min-height: 50px;
+    color: #000000;
+    font-size: 28px;
+    font-weight: 800;
+    padding-top: 10px;
+    background-color: transparent;
+}
+
 *[cssClassEdit~="settingsInput"] {
-    min-width: 1000px;
+    min-width: 350px;
     min-height: 50px;
     background-color: #000000;
     border-radius: 15px;
     border: 1px solid black;
     border-image: url() 50 50;
+}
+
+*[cssClassEdit~="settingsInputRight"] {
+    min-width: 350px;
+    min-height: 50px;
+    background-color: #000000;
+    border-radius: 15px;
+    border: 1px solid black;
 }
 
 QDateEdit
@@ -371,7 +413,7 @@ QDateEdit
 
 
 QDateEdit::drop-down {
-    image: url(:/new/myapp/cbarrowdn.png);
+    border-image: url(:/image/arrow-down.png);
     width:50px;
     height:15px;
     subcontrol-position: right top;

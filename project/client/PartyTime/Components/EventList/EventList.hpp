@@ -2,6 +2,7 @@
 
 #include "EventItem.hpp"
 #include <vector>
+#include <map>
 
 class EventList : public painter {
     Q_OBJECT
@@ -31,5 +32,6 @@ private:
     painter* scrollWidget;
     QVBoxLayout scrollLayout;
     std::vector<EventItem*> eventList;
+    std::map<int, EventItem*> eventList1;
     UiButton sortButton;
 };
