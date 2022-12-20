@@ -1,0 +1,2 @@
+/Users/marianab/Documents/zhopa/cxx/CommandHw/2022_2_MRGA_team/deps/build/CMakeFiles/edit_cache.dir
+/Users/marianab/Documents/zhopa/cxx/CommandHw/2022_2_MRGA_team/deps/build/CMakeFiles/rebuild_cache.dir
