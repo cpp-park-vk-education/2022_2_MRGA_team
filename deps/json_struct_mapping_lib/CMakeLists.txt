@@ -12,5 +12,7 @@ add_library(${PROJECT_NAME} INTERFACE ${SOURCES})
 
 add_executable(test main.cpp)
 target_include_directories(test PRIVATE struct_mapping_lib)
+target_include_directories(test PRIVATE SYSTEM /usr/local/include)
 
 install(FILES structs.hpp DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/../include")
+install(FILES structs_error_codes.hpp DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/../include")

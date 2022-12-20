@@ -2,14 +2,13 @@
 #define STRUCTS_HPP
 
 #include <string>
-#include <set>
 #include <sstream>
 #include <utility>
 #include <vector>
 #include <optional>
-#include <system_error>
 #include <unordered_map>
 #include "struct_mapping.hpp"
+#include "structs_error_codes.hpp"
 
 namespace {
     using std::optional;
@@ -21,48 +20,6 @@ namespace {
     using std::unordered_map;
     using key = string;
     using value = string;
-    using namespace std::string_literals;
-}
-
-enum class structs_error_codes {
-    success = 0,
-    parsing_error = 1,
-    empty_title = 2,
-    empty_date = 3
-};
-
-using errc = structs_error_codes;
-
-class structs_error_category_impl: public std::error_category {
-    static constexpr std::string_view category_name = "structs_error_category";
-    const char * name() const noexcept override {
-        return category_name.data();
-    }
-    std::string message( int ev ) const override {
-        errc ec = static_cast<errc>(ev);
-
-        switch (ec) {
-        case errc::success: {
-            return "все хорошо"s;
-        }
-        case errc::parsing_error: {
-            return "Ошибка при парсинге json"s;
-        }
-        case errc::empty_title: {
-            return "Event doesn`t have title"s;
-        }
-        case errc::empty_date: {
-            return "Event doesn`t have date"s;
-        }
-        default:
-            return "не знаю"s;
-        }
-    }
-};
-
-std::error_category const& structs_error_category() {
-    static const structs_error_category_impl instance;
-    return instance;
 }
 
 //namespace structs {
@@ -273,7 +230,6 @@ std::error_category const& structs_error_category() {
             return outJsonData.str();
         }
     };
-
     struct Events : DBObject {
 
     vector<Event> events = []()->vector<Event>{
@@ -299,10 +255,22 @@ std::error_category const& structs_error_category() {
     };
 
     struct Token : public DBObject {
-        ui id;
-        string token;             // UNIQUE
-        string expire_date_time;  // Format: "yyyy-mm-dd hh:mm:ss"
-        ui user_id;
+        ui id = []{
+            sm::reg(&Token::id, "id");
+            return 0;
+        }();
+        string token = [] {
+            sm::reg(&Token::token,          "token");
+            return "";
+        }();             // UNIQUE
+        string expire_date_time = []{
+            sm::reg(&Token::expire_date_time, "expireDateTime");
+            return "";
+        }();  // Format: "yyyy-mm-dd hh:mm:ss"
+        ui user_id = []{
+            sm::reg(&Token::user_id, "userId");
+            return 0;
+        }();
 
         Token() = default;
         Token(const string &token,
@@ -312,26 +280,11 @@ std::error_category const& structs_error_category() {
         : id(id), token(token), expire_date_time(expire_date_time), user_id(user_id) {}
 
         explicit Token(const string &json) {
-            sm::reg(&Token::id,             "id");
-            sm::reg(&Token::token,          "token");
-            sm::reg(&Token::expire_date_time, "expireDateTime");
-            sm::reg(&Token::user_id,           "userId");
-            sm::reg(&User::nickname,        "nickname");
-            sm::reg(&User::password,        "password");
-
             stringstream ss(json);
             sm::map_json_to_struct(*this, ss);
         }
 
         string toJSON() override {
-            sm::reg(&Token::id,             "id");
-            sm::reg(&Token::token,          "token");
-            sm::reg(&Token::expire_date_time, "expireDateTime");
-            sm::reg(&Token::user_id,           "userId");
-
-            sm::reg(&User::nickname,        "nickname");
-            sm::reg(&User::password,        "password");
-
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
@@ -349,6 +302,13 @@ std::error_category const& structs_error_category() {
         optional<Sort> sort;
         optional<unordered_map<key, value>> conditions;
     };
+
+namespace __structs__{
+    static Event __event__;
+    static Events __events__;
+    static Token __token__;
+    static User __user__;
+};
 
 //}
 
