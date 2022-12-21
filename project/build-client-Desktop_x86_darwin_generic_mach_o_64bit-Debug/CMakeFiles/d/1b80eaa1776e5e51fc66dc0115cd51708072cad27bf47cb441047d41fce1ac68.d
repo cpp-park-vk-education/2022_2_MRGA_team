@@ -609,6 +609,7 @@ PartyTime/Components/components_autogen/timestamp: \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QCalendarWidget \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QComboBox \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QCommonStyle \
+  /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QDateEdit \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QGraphicsPixmapItem \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QGridLayout \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QLabel \

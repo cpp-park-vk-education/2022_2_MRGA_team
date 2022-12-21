@@ -85,10 +85,6 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     eventItemLayout.setAlignment(Qt::AlignLeft);
     eventItemLayout.setSizeConstraint(QLayout::SetDefaultConstraint);
 
-    dateTime->setDate(QDate(2000, 12, 12));
-    dateTime->setTime(QTime(12, 14)); // часы, минуты
-    eventItemLayout.addWidget(dateTime);
-
     connect(&this->subscibeButton, &QPushButton::clicked, this, &EventItem::onSubcribeClicked);
 }
 
@@ -137,13 +133,14 @@ EventItem::EventItem(const std::string& _descr,
                      const unsigned int& _visitors,
                      const unsigned int& _maxVisitors,
                      const std::string& _date,
+                     const std::string& _time,
                      const std::string& _address) : EventItem("organizer") {
         eventDecsription.setText(QString::fromStdString(_descr));
         eventTitle.setText(QString::fromStdString(_title));
         visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));
         maxVisitors->setText(maxVisitors->text() + QString::fromStdString(std::to_string(_maxVisitors)));
         date->setText(QString::fromStdString(_date));
-        time->setText(QString::fromStdString(_date));
+        time->setText(QString::fromStdString(_time));
         address->setText(QString::fromStdString(_address));
 }
 

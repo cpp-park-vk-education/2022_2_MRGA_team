@@ -19,6 +19,8 @@ public:
 
     UiEdit* create(const QString& objectType); // паттерн псевдофабрика
     void updateState(){}; // const std::initializer_list<QString>&
+
+    QLineEdit* getValue() {return value;}
 private:
     QLineEdit* value;
     QHBoxLayout* editLayout;

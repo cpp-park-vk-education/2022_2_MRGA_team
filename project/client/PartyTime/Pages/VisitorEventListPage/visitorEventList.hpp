@@ -19,6 +19,12 @@ public:
                   const QString& eventListType, const QString& footerType);
     ~VisitorEventListPage();
     void redraw() {}; // параметр const std::initisializer_list<QSting>
+
+    // дата, время
+    std::string getDate(const std::string& dateTime);
+    std::string getTime(const std::string& dateTime);
+
+
 private:
     QVBoxLayout* mainLayout;
     Header header;
@@ -31,6 +37,12 @@ private:
     QLineEdit *lineEdit;  // LineEdit, in which we will set the element to hide
     QListView *listView; // pointer to the list of elements
 
+    std::shared_ptr<PartyTimeConnector> party;
+
 private slots:
     void hideRow();
+    void updateEvents();
+
+signals:
+    void updateEventsSignal();
 };

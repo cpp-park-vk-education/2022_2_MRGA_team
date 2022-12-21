@@ -9,6 +9,7 @@
 #include <QStringListModel>
 #include <../painter.hpp>
 #include "HttpConnector.hpp"
+#include "PartyTimeConnector.hpp"
 
 
 class EventViewPage : public painter {
@@ -39,13 +40,14 @@ private:
 
     QLineEdit* eventName;
     QLineEdit* description;
-    QLineEdit* date;
-    QLineEdit* time;
+    QDateEdit* date;
+    QTimeEdit* time;
+//    QLineEdit* date;
+//    QLineEdit* time;
     QLineEdit* address;
     QLineEdit* visitors;
     QLineEdit* maxVisitors;
-
-
+    std::shared_ptr<PartyTimeConnector> party;
 
 protected slots:
     void onAdd();

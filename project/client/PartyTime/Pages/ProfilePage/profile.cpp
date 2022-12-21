@@ -4,7 +4,6 @@
 ProfilePage::ProfilePage(QWidget *parent) : painter(parent),
     mainLayout(new QVBoxLayout(this))
 {
-
     QHBoxLayout *titleContainer = new QHBoxLayout;
     mainLayout->addLayout(titleContainer);
     backButton = new QPushButton();

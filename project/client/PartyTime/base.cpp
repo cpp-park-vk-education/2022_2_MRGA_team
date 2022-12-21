@@ -103,6 +103,8 @@ void Base::onVisitorEventListPageClicked()
 {
 //    screens->setCurrentIndex(e_main);
     screens->setCurrentIndex(0);
+    visitorEventListPage->eventList->clearEventList();
+    visitorEventListPage->updateEvents();
 }
 
 void Base::onSettingsPageClicked()

@@ -181,6 +181,7 @@ set(OLD_GLOB
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/include/AuthConnector.hpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/include/EventsConnector.hpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/include/PartyTimeConnector.hpp"
+  "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/include/PartyTimeConnectorErrorCodes.hpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/implementation/include/UsersConnector.hpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IAuthConnector.hpp"
   "/Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/connector/lib/PartyTimeConnector/interface/IEventsConnector.hpp"

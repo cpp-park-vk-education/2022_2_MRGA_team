@@ -95,7 +95,6 @@
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/random \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/ratio \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/set \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/sstream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stack \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/stdbool.h \
@@ -268,6 +267,7 @@
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include/reset.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include/struct_mapping.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include/structs.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include/structs_error_codes.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include/utility.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/EventItem/EventItem.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/EventList/EventList.hpp \
@@ -887,7 +887,9 @@
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/move/traits.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/move/utility.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/move/utility_core.hpp \
+  /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/algorithm.hpp \
+  /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/bind.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/detail/config.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/detail/mp_append.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/detail/mp_copy_if.hpp \
@@ -907,7 +909,9 @@
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/integer_sequence.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/integral.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/list.hpp \
+  /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/map.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/set.hpp \
+  /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/tuple.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/utility.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mp11/version.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/mpl/and.hpp \
@@ -1280,6 +1284,7 @@
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/smart_ptr/weak_ptr.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/static_assert.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/swap.hpp \
+  /opt/homebrew/Cellar/boost/1.80.0/include/boost/system.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/api_config.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/detail/append_int.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/detail/cerrno.hpp \
@@ -1308,6 +1313,7 @@
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/generic_category.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/is_error_code_enum.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/is_error_condition_enum.hpp \
+  /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/result.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/system_category.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/system/system_error.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/throw_exception.hpp \
@@ -1474,6 +1480,7 @@
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/utility/result_of.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/utility/string_view.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/utility/string_view_fwd.hpp \
+  /opt/homebrew/Cellar/boost/1.80.0/include/boost/variant2/variant.hpp \
   /opt/homebrew/Cellar/boost/1.80.0/include/boost/version.hpp \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtCore.framework/Versions/A/Headers/QDeadlineTimer \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtCore.framework/Versions/A/Headers/QEvent \
@@ -1862,6 +1869,7 @@
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QCalendarWidget \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QComboBox \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QCommonStyle \
+  /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QDateEdit \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QGraphicsPixmapItem \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QGridLayout \
   /opt/homebrew/Cellar/qt/6.4.0_1/lib/QtWidgets.framework/Versions/A/Headers/QLabel \

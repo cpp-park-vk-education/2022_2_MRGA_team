@@ -23,6 +23,9 @@ public:
 
     UiInput* create(const QString& objectType); // паттерн псевдофабрика
     void updateState(){}; // const std::initializer_list<QString>&
+
+    UiLabel* getLabel() {return label;}
+    UiEdit* getEdit() {return edit;}
 private:
     UiLabel* label;
     UiEdit* edit;

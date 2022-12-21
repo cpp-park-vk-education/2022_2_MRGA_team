@@ -14,12 +14,6 @@ EventList::EventList(QWidget* parent) : painter(parent),
     scroll->setWidget(scrollWidget);
     scroll->setWidgetResizable(true);
     mainLayout->addWidget(scroll);
-
-    for (int i = 0; i < 10; ++i) {
-        EventItem* event = new EventItem();
-        eventList.push_back(event);
-        scrollLayout.addWidget(event);
-    }
 }
 
 
@@ -89,6 +83,15 @@ void EventList::addEvent(EventItem* newEvent)
 void EventList::removeEvent()
 {
 
+}
+
+void EventList::clearEventList()
+{
+    eventList.clear();
+    while (QLayoutItem* item = scrollLayout.takeAt(0)) {
+        delete item->widget();
+        delete item;
+    }
 }
 
 EventList *EventList::create(const QString &objType)

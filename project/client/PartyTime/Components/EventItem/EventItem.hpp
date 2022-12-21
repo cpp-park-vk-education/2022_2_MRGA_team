@@ -17,6 +17,7 @@ public:
                          const unsigned int& _visitors,
                          const unsigned int& _maxVisitors,
                          const std::string& _date,
+                         const std::string& _time,
                          const std::string& _address);
 
 //    EventItem* create(const QString& typeEvent);

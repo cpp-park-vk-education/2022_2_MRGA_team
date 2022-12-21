@@ -12,9 +12,10 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     addButton(new QPushButton()),
     closeFormButton(new QPushButton()), createEventButton(new QPushButton("Create")),
     eventName(new QLineEdit), description(new QLineEdit()),
-    date(new QLineEdit()), time(new QLineEdit()),
+    date(new QDateEdit()), time(new QTimeEdit()),
     address(new QLineEdit()), visitors(new QLineEdit()),
-    maxVisitors(new QLineEdit())
+    maxVisitors(new QLineEdit()),
+    party(PartyTimeConnector::default_implementation("0.0.0.0", "8081"))
 {
     this->createEventButton->setProperty("cssClass", "createEventButton");
     this->setContentsMargins(0, 20, 0, 0);
@@ -41,6 +42,7 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     connect(createEventButton, &QPushButton::clicked, this, &EventViewPage::onCreate);
 }
 
+// всплытие формы
 void EventViewPage::onAdd()
 {
     form = new painter(this);
@@ -123,11 +125,6 @@ void EventViewPage::onAdd()
     QHBoxLayout* input7 = new QHBoxLayout();
     inputLayout->addLayout(input7, Qt::AlignTop);
 
-    QDateEdit* dateEdit = new QDateEdit();
-    inputLayout->addWidget(dateEdit);
-    QTimeEdit* timeEdit = new QTimeEdit();
-    inputLayout->addWidget(timeEdit);
-
     QLabel* maxVisitorsLabel = new QLabel("Maximum visitors");
     input7->addWidget(maxVisitorsLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
     input7->addWidget(maxVisitors, 4, Qt::AlignLeft | Qt::AlignTop);
@@ -155,13 +152,40 @@ void EventViewPage::onRemove()
 
 void EventViewPage::onCreate()
 {
+
+    QDateEdit* testDate = this->date;
+    std::cout << testDate << std::endl;
+
+
+    Event event{eventName->text().toStdString(),
+                    this->date->date().toString().toStdString() + " " + this->time->time().toString().toStdString(),
+                    0, Address{this->address->text().toStdString(), 0},
+                    this->description->text().toStdString(),
+                    this->maxVisitors->text().toInt(),
+                    this->visitors->text().toInt(), 0};
+
+    // debug
+    std::cout << event.toJSON() << std::endl;
+
+
     this->eventList->addEvent({this->description->text(),
                                    this->eventName->text(),
                                    this->visitors->text(),
                                    this->maxVisitors->text(),
-                                   this->date->text(),
-                                   this->time->text(),
+                                   this->date->date().toString(),
+                                   this->time->time().toString(),
                                    this->address->text()});
+
+    // createEvent
+
+    auto resultat = party->events->create_event(event);
+
+    if (resultat.body.has_value()) {
+        auto events = *resultat.body;
+    } else {
+        std::cout << resultat.result.message() << std::endl;
+    }
+
     form->hide();
     this->eventName->clear();
     this->description->clear();
