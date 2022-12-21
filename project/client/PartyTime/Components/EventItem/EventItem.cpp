@@ -159,11 +159,6 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
     address->setText(initFieldList[6]);
 }
 
-void EventItem::parseDateTime()
-{
-
-}
-
 void EventItem::onSubcribeClicked()
 {
     if (subscibeButton.text() == "Subscribe") {

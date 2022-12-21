@@ -10,7 +10,7 @@ class EventForm : public painter {
 public:
     explicit EventForm(QWidget* parent = nullptr);
 
-    EventForm(const QString& inputType, int inputSize, const QString& buttonType, const int buttonsSize = 0);
+    EventForm(const QString& inputType, int inputSize, const QString& buttonType, const int buttonsSize = 0, QWidget* parent = nullptr);
     EventForm* create(const QString& objType);
 
     EventForm(const EventForm& other);

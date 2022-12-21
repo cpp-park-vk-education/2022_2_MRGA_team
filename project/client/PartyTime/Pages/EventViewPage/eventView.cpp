@@ -18,7 +18,7 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     maxVisitors(new QLineEdit()),
     party(PartyTimeConnector::default_implementation("0.0.0.0", "8081"))
 {
-    this->createEventButton->setProperty("cssClass", "createEventButton");
+//    this->createEventButton->setProperty("cssClass", "createEventButton");
     this->setContentsMargins(0, 20, 0, 0);
     Navbar* navbarFactory = new Navbar("", 3);
     this->navbar = *navbarFactory->create("visitor");
@@ -38,96 +38,90 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     this->eventList = new EventList("organizer", 0);
     mainLayout->addWidget(eventList, 2, Qt::AlignTop | Qt::AlignCenter);
 
-
     // Form
-    form = new painter(this);
-    form->setProperty("cssClass", "formEvent");
-    form->setGeometry(300, 300, 1000, 600);
-    QVBoxLayout* formLayout = new QVBoxLayout(form);
+    form1 = new EventForm("createFormInput", 6, "createFormButton", 1, this);
+    QVBoxLayout* formLayout = new QVBoxLayout(form1);
+    formLayout->setAlignment(Qt::AlignCenter);
+    form1->hide();
 
-    QLabel* formTitle = new QLabel("New event");
-    formTitle->setContentsMargins(0, 0, 0, 20);
-    form->setStyleSheet("color: #000000; font-size: 28px; font-weight: 900");
-    formLayout->addWidget(formTitle, 1, Qt::AlignTop | Qt::AlignCenter);
+//    form = new painter(this);
+//    form->setProperty("cssClass", "formEvent");
+//    form->setGeometry(300, 300, 1000, 600);
+//    QVBoxLayout* formLayout = new QVBoxLayout(form);
 
-    QVBoxLayout* inputLayout = new QVBoxLayout();
-    inputLayout->setContentsMargins(70, 0, 0, 0);
-    formLayout->addLayout(inputLayout, Qt::AlignTop);
-    formLayout->setSpacing(0);
+//    QLabel* formTitle = new QLabel("New event");
+//    formTitle->setContentsMargins(0, 0, 0, 20);
+//    formTitle->setStyleSheet("color: #000000; font-size: 28px; font-weight: 900");
+//    formLayout->addWidget(formTitle, 1, Qt::AlignTop | Qt::AlignCenter);
 
-    QHBoxLayout* inputTitle = new QHBoxLayout();
-    inputLayout->addLayout(inputTitle, Qt::AlignTop);
-    QLabel* eventNameLabel = new QLabel("Event name");
-    inputTitle->addWidget(eventNameLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
-    inputTitle->addWidget(eventName, 4, Qt::AlignLeft | Qt::AlignTop);
+//    QVBoxLayout* inputLayout = new QVBoxLayout();
+//    inputLayout->setContentsMargins(70, 0, 0, 0);
+//    formLayout->addLayout(inputLayout, Qt::AlignTop);
+//    formLayout->setSpacing(0);
 
-    eventNameLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
-    eventName->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+//    QHBoxLayout* inputTitle = new QHBoxLayout();
+//    inputLayout->addLayout(inputTitle, Qt::AlignTop);
+//    QLabel* eventNameLabel = new QLabel("Event name");
+//    inputTitle->addWidget(eventNameLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
+//    inputTitle->addWidget(eventName, 4, Qt::AlignLeft | Qt::AlignTop);
 
-    QHBoxLayout* inputDescription = new QHBoxLayout();
-    inputLayout->addLayout(inputDescription, Qt::AlignTop);
+//    eventNameLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
+//    eventName->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
 
-    QLabel* descriptionLabel = new QLabel("Description");
-    inputDescription->addWidget(descriptionLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
-    inputDescription->addWidget(description, 4, Qt::AlignLeft | Qt::AlignTop);
+//    QHBoxLayout* inputDescription = new QHBoxLayout();
+//    inputLayout->addLayout(inputDescription, Qt::AlignTop);
 
-    descriptionLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
-    description->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+//    QLabel* descriptionLabel = new QLabel("Description");
+//    inputDescription->addWidget(descriptionLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
+//    inputDescription->addWidget(description, 4, Qt::AlignLeft | Qt::AlignTop);
 
-    QHBoxLayout* inputDate = new QHBoxLayout();
-    inputLayout->addLayout(inputDate, Qt::AlignTop);
+//    descriptionLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
+//    description->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
 
-    QLabel* dateLabel = new QLabel("Date");
-    inputDate->addWidget(dateLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
-    inputDate->addWidget(date, 4, Qt::AlignLeft | Qt::AlignTop);
+//    QHBoxLayout* inputDate = new QHBoxLayout();
+//    inputLayout->addLayout(inputDate, Qt::AlignTop);
 
-    dateLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
-    date->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+//    QLabel* dateLabel = new QLabel("Date");
+//    inputDate->addWidget(dateLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
+//    inputDate->addWidget(date, 4, Qt::AlignLeft | Qt::AlignTop);
 
-
-    QHBoxLayout* inputTime = new QHBoxLayout();
-    inputLayout->addLayout(inputTime, Qt::AlignTop);
-
-    QLabel* timeLabel = new QLabel("Time");
-    inputTime->addWidget(timeLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
-    inputTime->addWidget(time, 4, Qt::AlignLeft | Qt::AlignTop);
-
-    timeLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
-    time->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+//    dateLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
+//    date->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
 
 
-    QHBoxLayout* inputAddress = new QHBoxLayout();
-    inputLayout->addLayout(inputAddress, Qt::AlignTop);
+//    QHBoxLayout* inputTime = new QHBoxLayout();
+//    inputLayout->addLayout(inputTime, Qt::AlignTop);
 
-    QLabel* addressLabel = new QLabel("Address");
-    inputAddress->addWidget(addressLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
-    inputAddress->addWidget(address, 4, Qt::AlignLeft | Qt::AlignTop);
+//    QLabel* timeLabel = new QLabel("Time");
+//    inputTime->addWidget(timeLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
+//    inputTime->addWidget(time, 4, Qt::AlignLeft | Qt::AlignTop);
 
-    addressLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
-    address->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+//    timeLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
+//    time->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
 
-//    QHBoxLayout* inputVisitors = new QHBoxLayout();
-//    inputLayout->addLayout(inputVisitors, Qt::AlignTop);
 
-//    QLabel* visitorsLabel = new QLabel("People");
-//    inputVisitors->addWidget(visitorsLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
-//    inputVisitors->addWidget(visitors, 4, Qt::AlignLeft | Qt::AlignTop);
+//    QHBoxLayout* inputAddress = new QHBoxLayout();
+//    inputLayout->addLayout(inputAddress, Qt::AlignTop);
 
-//    visitorsLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
-//    visitors->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+//    QLabel* addressLabel = new QLabel("Address");
+//    inputAddress->addWidget(addressLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
+//    inputAddress->addWidget(address, 4, Qt::AlignLeft | Qt::AlignTop);
 
-    QHBoxLayout* inputMaxVisitors = new QHBoxLayout();
-    inputLayout->addLayout(inputMaxVisitors, Qt::AlignTop);
+//    addressLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
+//    address->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
 
-    QLabel* maxVisitorsLabel = new QLabel("Maximum visitors");
-    inputMaxVisitors->addWidget(maxVisitorsLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
-    inputMaxVisitors->addWidget(maxVisitors, 4, Qt::AlignLeft | Qt::AlignTop);
+//    QHBoxLayout* inputMaxVisitors = new QHBoxLayout();
+//    inputLayout->addLayout(inputMaxVisitors, Qt::AlignTop);
 
-    maxVisitorsLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
-    maxVisitors->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+//    QLabel* maxVisitorsLabel = new QLabel("Maximum visitors");
+//    inputMaxVisitors->addWidget(maxVisitorsLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
+//    inputMaxVisitors->addWidget(maxVisitors, 4, Qt::AlignLeft | Qt::AlignTop);
 
-    inputLayout->addWidget(this->createEventButton, Qt::AlignTop | Qt::AlignCenter);
-    form->hide();
+//    maxVisitorsLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
+//    maxVisitors->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+
+//    inputLayout->addWidget(this->createEventButton, Qt::AlignTop | Qt::AlignCenter);
+//    form->hide();
 
     connect(addButton, &QPushButton::clicked, this, &EventViewPage::onAdd);
     connect(closeFormButton, &QPushButton::clicked, this, &EventViewPage::onRemove);
@@ -137,13 +131,14 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
 // всплытие формы
 void EventViewPage::onAdd()
 {
-    form->show();
+//    form->show();
+    form1->show();
 }
 
 void EventViewPage::onRemove()
 {
-    if (form) {
-        form->hide();
+    if (form1) { // form
+        form1->hide();
         this->eventName->clear();
         this->description->clear();
         this->date->clear();
@@ -183,7 +178,8 @@ void EventViewPage::onCreate()
         QMessageBox errorForm;
         errorForm.setText(QString::fromStdString(resultat.result.message()));
         errorForm.exec();
-        form->hide();
+        form1->hide();
+//        form->hide();
         this->eventName->clear();
         this->description->clear();
         this->date->clear();
@@ -203,7 +199,8 @@ void EventViewPage::onCreate()
                                    this->time->time().toString(),
                                    this->address->text()});
 
-    form->hide();
+//    form->hide();
+    form1->hide();
     this->eventName->clear();
     this->description->clear();
     this->date->clear();

@@ -45,8 +45,6 @@ private:
     QPushButton* deleteButton;
     QDateTimeEdit* dateTime;
 
-    void parseDateTime();
-
 private slots:
     void onSubcribeClicked();
 };
