@@ -33,6 +33,6 @@ private:
     painter* scrollWidget;
     QVBoxLayout scrollLayout;
     std::vector<EventItem*> eventList;
-    std::map<int, EventItem*> eventList1;
+    std::map<unsigned int, EventItem*> eventList1;
     UiButton sortButton;
 };

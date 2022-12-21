@@ -13,7 +13,8 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     closeFormButton(new QPushButton()), createEventButton(new QPushButton("Create")),
     eventName(new QLineEdit), description(new QLineEdit()),
     date(new QDateEdit()), time(new QTimeEdit()),
-    address(new QLineEdit()), visitors(new QLineEdit()),
+    address(new QLineEdit()),
+//    visitors(new QLineEdit()),
     maxVisitors(new QLineEdit()),
     party(PartyTimeConnector::default_implementation("0.0.0.0", "8081"))
 {
@@ -105,15 +106,15 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     addressLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
     address->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
 
-    QHBoxLayout* inputVisitors = new QHBoxLayout();
-    inputLayout->addLayout(inputVisitors, Qt::AlignTop);
+//    QHBoxLayout* inputVisitors = new QHBoxLayout();
+//    inputLayout->addLayout(inputVisitors, Qt::AlignTop);
 
-    QLabel* visitorsLabel = new QLabel("People");
-    inputVisitors->addWidget(visitorsLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
-    inputVisitors->addWidget(visitors, 4, Qt::AlignLeft | Qt::AlignTop);
+//    QLabel* visitorsLabel = new QLabel("People");
+//    inputVisitors->addWidget(visitorsLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
+//    inputVisitors->addWidget(visitors, 4, Qt::AlignLeft | Qt::AlignTop);
 
-    visitorsLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
-    visitors->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
+//    visitorsLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weigth: 400;");
+//    visitors->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
 
     QHBoxLayout* inputMaxVisitors = new QHBoxLayout();
     inputLayout->addLayout(inputMaxVisitors, Qt::AlignTop);
@@ -148,7 +149,7 @@ void EventViewPage::onRemove()
         this->date->clear();
         this->time->clear();
         this->address->clear();
-        this->visitors->clear();
+//        this->visitors->clear();
         this->maxVisitors->clear();
     }
 }
@@ -160,11 +161,13 @@ void EventViewPage::onCreate()
                     0, Address{this->address->text().toStdString(), 0},
                     this->description->text().toStdString(),
                     this->maxVisitors->text().toInt(),
-                    this->visitors->text().toInt(), 0};
+//                    this->visitors->text().toInt(), 0
+                    0, 0
+               };
 
     if (event.description == "" || event.title == "" ||
             event.date_time == "" || event.address.address == "" ||
-            this->maxVisitors->text().toStdString() == "" || this->visitors->text().toStdString() == "") {
+            this->maxVisitors->text().toStdString() == "") { // || this->visitors->text().toStdString() == "
         QMessageBox errorForm;
         errorForm.setText("All fields must be filled");
         errorForm.exec();
@@ -181,12 +184,20 @@ void EventViewPage::onCreate()
         errorForm.setText(QString::fromStdString(resultat.result.message()));
         errorForm.exec();
         form->hide();
+        this->eventName->clear();
+        this->description->clear();
+        this->date->clear();
+        this->time->clear();
+        this->address->clear();
+//        this->visitors->clear();
+        this->maxVisitors->clear();
         return;
     }
 
     this->eventList->addEvent({this->description->text(),
                                    this->eventName->text(),
-                                   this->visitors->text(),
+//                                   this->visitors->text(),
+                                    "0",
                                    this->maxVisitors->text(),
                                    this->date->date().toString(),
                                    this->time->time().toString(),
@@ -198,7 +209,7 @@ void EventViewPage::onCreate()
     this->date->clear();
     this->time->clear();
     this->address->clear();
-    this->visitors->clear();
+//    this->visitors->clear();
     this->maxVisitors->clear();
 }
 

@@ -50,7 +50,12 @@ EventForm::EventForm(const QString& inputType, int inputSize, const QString& but
     }
 
     if (inputType == "createFormInput") {
-        inputList.push_back(new UiInput(inputType, "Event name", ""));
+        inputList.push_back(new UiInput(inputType, "Event name", "title"));
+        inputList.push_back(new UiInput(inputType, "Description", "description"));
+        inputList.push_back(new UiInput(inputType, "Date", ""));
+        inputList.push_back(new UiInput(inputType, "Time", ""));
+        inputList.push_back(new UiInput(inputType, "Address", "address"));
+        inputList.push_back(new UiInput(inputType, "Maximum visitors", "maximum visitors"));
     }
 
     size_t rowNumber = 0;

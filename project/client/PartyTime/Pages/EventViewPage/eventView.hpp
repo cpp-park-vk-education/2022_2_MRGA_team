@@ -45,7 +45,7 @@ private:
     QDateEdit* date;
     QTimeEdit* time;
     QLineEdit* address;
-    QLineEdit* visitors;
+//    QLineEdit* visitors;
     QLineEdit* maxVisitors;
     std::shared_ptr<PartyTimeConnector> party;
 
