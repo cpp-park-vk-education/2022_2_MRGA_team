@@ -71,7 +71,7 @@ EventList::~EventList()
 
 void EventList::addEvent(const std::initializer_list<QString>& list)
 {
-    EventItem* newEvent = new EventItem(list); // ("organizer", list
+    EventItem* newEvent = new EventItem(list);
     this->eventList.push_back(newEvent);
     scrollLayout.addWidget(newEvent);
 }

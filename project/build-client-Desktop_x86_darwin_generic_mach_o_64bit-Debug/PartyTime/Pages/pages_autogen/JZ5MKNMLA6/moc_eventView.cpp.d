@@ -269,11 +269,14 @@
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include/structs.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include/structs_error_codes.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/deps/include/utility.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/EventForm/EventForm.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/EventItem/EventItem.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/EventList/EventList.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/Footer/footer.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/Header/Header.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Button/Button.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Edit/Edit.hpp \
+  /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Input/Input.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Label/Label.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/Navbar/Navbar.hpp \
   /Users/sugarbearzelagmail.com/Documents/IT/TechPark/2022_2_MRGA_team/project/client/PartyTime/Components/UI/painter.hpp \

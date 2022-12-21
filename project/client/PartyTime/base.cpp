@@ -28,6 +28,7 @@ Base::Base(QWidget *parent)
     connect(visitorEventListPage->navbar.getMainButton()->getButton(),  &QPushButton::clicked, this, &Base::onVisitorEventListPageClicked);
     connect(visitorEventListPage->navbar.getProfileButton()->getButton(),  &QPushButton::clicked, this, &Base::onProfilePageClicked);
     connect(visitorEventListPage->navbar.getEventsButton()->getButton(),  &QPushButton::clicked, this, &Base::onEventViewPageClicked);
+    connect(visitorEventListPage->comboBox, &QComboBox::currentTextChanged, this, &Base::onVisitorEventListPageClicked);
 //    connect(visitorEventListPage->navbar.getSettingsButton()->getButton(),  &QPushButton::clicked, this, &Base::onSettingsPageClicked);
 
     // профиль
@@ -105,6 +106,7 @@ void Base::onVisitorEventListPageClicked()
     screens->setCurrentIndex(0);
     visitorEventListPage->eventList->clearEventList();
     visitorEventListPage->updateEvents();
+    std::cout << visitorEventListPage->comboBox->currentText().toStdString() << std::endl;
 }
 
 void Base::onSettingsPageClicked()

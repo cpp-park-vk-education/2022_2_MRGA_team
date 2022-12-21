@@ -2,6 +2,7 @@
 
 #include "Header.hpp"
 #include "Navbar.hpp"
+#include "EventForm.hpp"
 #include "EventList.hpp"
 #include "footer.hpp"
 #include <../styleHelper.hpp>
@@ -33,17 +34,16 @@ private:
     EventList* eventList;
     Footer footer;
 
+    EventForm* form1;
     painter* form;
-    QPushButton* addButton;
-    QPushButton* closeFormButton;
-    QPushButton* createEventButton;
+    QPushButton* addButton;         // кнопка, которая открывает форму
+    QPushButton* closeFormButton;   // кнопка, которая закрывает форму
+    QPushButton* createEventButton; // кнопка, которая находится в форме
 
     QLineEdit* eventName;
     QLineEdit* description;
     QDateEdit* date;
     QTimeEdit* time;
-//    QLineEdit* date;
-//    QLineEdit* time;
     QLineEdit* address;
     QLineEdit* visitors;
     QLineEdit* maxVisitors;

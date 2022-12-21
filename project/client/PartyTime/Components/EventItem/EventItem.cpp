@@ -31,7 +31,6 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     userAvatar.setPixmap(scaled);
     userAvatar.setMaximumWidth(200);
     leftSide->addWidget(&userAvatar, Qt::AlignCenter | Qt::AlignTop);
-//    leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
     eventItemLayout.addLayout(leftSide, Qt::AlignLeft | Qt::AlignTop);
     subscibeButton.setMaximumWidth(100);
 
@@ -53,7 +52,6 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
 
     visitorsInfoLayout->setContentsMargins(0, 0, 0, 100);
     visitors = new QLabel("People: ");
-//    visitors->setContentsMargins(0, 0, 50, 0);
     visitors->setMaximumWidth(300);
     visitors->setStyleSheet("min-height: 30px; color: #ffffff; font-size: 18px; font-weight: 700;");
     visitorsInfoLayout->addWidget(visitors, 0, Qt::AlignLeft | Qt::AlignTop);
@@ -70,6 +68,7 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     dateTimeLayout->addWidget(date, 0, Qt::AlignLeft | Qt::AlignTop);
     time = new QLabel("22:00");
     time->setStyleSheet("color: #ffffff; font-size: 18px; font-weight: 700;");
+    time->setMinimumWidth(200);
     dateTimeLayout->addWidget(time, 1, Qt::AlignLeft | Qt::AlignTop);
 
     informationLayout->addLayout(dateTimeLayout);
@@ -90,10 +89,6 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
 
 EventItem::EventItem(const QString &itemType) : EventItem()
 {
-
-//    leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
-//    if (itemType != "organizer") {
-
     std::cout << itemType.toStdString() << std::endl;
     if (itemType != "organizer") {
         leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
@@ -166,6 +161,7 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
 
 void EventItem::parseDateTime()
 {
+
 }
 
 void EventItem::onSubcribeClicked()

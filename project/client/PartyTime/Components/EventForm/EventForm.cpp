@@ -49,6 +49,10 @@ EventForm::EventForm(const QString& inputType, int inputSize, const QString& but
         formButtons.push_back(new UiButton("", "text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;", "Save address"));
     }
 
+    if (inputType == "createFormInput") {
+        inputList.push_back(new UiInput(inputType, "Event name", ""));
+    }
+
     size_t rowNumber = 0;
     for (const auto& input: inputList) {
         inputLayout->addWidget(input, rowNumber++, 0, Qt::AlignTop);

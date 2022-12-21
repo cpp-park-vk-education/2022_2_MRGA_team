@@ -47,12 +47,13 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
                              );
 
     comboBox->setProperty("cssClaas", "comboBoxList");
-    comboBox->setFixedWidth(200);
+    comboBox->setFixedWidth(250);
     comboBox->setView(listView);
     comboBox->addItem("All events");
     comboBox->addItem("Subscribe events");
-    comboBox->addItem("My events");
-    comboBox->addItem("Сoncerts");
+    comboBox->addItem("Closest events");
+
+    std::cout << "ComboBox text: " << comboBox->currentText().toStdString() << std::endl;
 
     connect(hideButton, &QPushButton::clicked, this, &VisitorEventListPage::hideRow);
 
