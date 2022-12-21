@@ -2,11 +2,6 @@
 #define PROJECT_SERVICE_HPP
 
 #include <boost/beast/core.hpp>
-//#include <boost/beast/http.hpp>
-//#include <boost/beast/version.hpp>
-//#include <boost/asio/connect.hpp>
-//#include <boost/asio/ip/tcp.hpp>
-//#include <cstdlib>
 #include <iostream>
 #include <string>
 
@@ -17,12 +12,19 @@
 #include "event_repository.hpp"
 #include "session_repository.hpp"
 #include "user_repository.hpp"
+#include "service_error_codes.hpp"
 
 using bsv = boost::string_view;
 
 class ServiceManager {
 public:
     ServiceManager();
+
+    void addVisitor(const std::string &requestBody);
+    boost::system::error_code addVisitor(ui userID, ui eventID);
+
+    void deleteVisitor(const std::string &requestBody);
+
     explicit ServiceManager(DbManager &db_manager);
 private:
     class AuthorizationService {
@@ -39,7 +41,10 @@ private:
 
         void event(bsv query_params, std::string &response_body);
 
-	Event createEvent(uint userId, const std::string& request_body);
+	    Event createEvent(uint userId, const std::string& requestBody);
+        Event createEvent(const Event& event, boost::system::error_code& ec);
+
+        uint checkEventExistence(uint eventId);
 
     private:
         EventRepository event_repository_;
@@ -50,15 +55,23 @@ private:
     public:
         explicit SessionService(DbManager &db_manager);
 
-	uint checkSession(const std::string &token);
+	    uint checkSession(const std::string &token);
+
 
     private:
         SessionRepository session_repository_;
     };
 
     class UserService {
+
     public:
         explicit UserService(DbManager &db_manager);
+
+        void addVisitor(uint eventId, uint userId);
+
+        void deleteVisitor(uint eventId, uint userId);
+
+        uint checkUserExistence(uint userId);
 
     private:
         UserRepository user_repository_;

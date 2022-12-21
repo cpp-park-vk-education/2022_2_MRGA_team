@@ -11,7 +11,7 @@ int SessionRepository::delete_token(Token token) {
 }
 
 int SessionRepository::check_token(const std::string &token) {
-  return 1;
+  return -1;
 }
 
 User SessionRepository::get_user_by_token(Token token) {
