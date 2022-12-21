@@ -91,6 +91,10 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
 EventItem::EventItem(const QString &itemType) : EventItem()
 {
 
+//    leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
+//    if (itemType != "organizer") {
+
+    std::cout << itemType.toStdString() << std::endl;
     if (itemType != "organizer") {
         leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
     }
@@ -128,13 +132,13 @@ EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("or
     address->setText(initFieldList[6]);
 }
 
-EventItem::EventItem(const std::string& _descr,
+EventItem::EventItem(const QString& eventType, const std::string& _descr,
                      const std::string& _title,
                      const unsigned int& _visitors,
                      const unsigned int& _maxVisitors,
                      const std::string& _date,
                      const std::string& _time,
-                     const std::string& _address) : EventItem("organizer") {
+                     const std::string& _address) : EventItem(eventType) {
         eventDecsription.setText(QString::fromStdString(_descr));
         eventTitle.setText(QString::fromStdString(_title));
         visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));

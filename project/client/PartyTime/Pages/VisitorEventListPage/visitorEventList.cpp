@@ -62,7 +62,6 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
 
     // GetEvent
     updateEvents();
-
     mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);
 }
 
@@ -105,13 +104,11 @@ VisitorEventListPage::~VisitorEventListPage()
 
 std::string VisitorEventListPage::getDate(const std::string &dateTime)
 {
-//    return dateTime.substr(0, dateTime.find(' '));
     return {dateTime.begin(), dateTime.begin() + dateTime.find(' ')};
 }
 
 std::string VisitorEventListPage::getTime(const std::string &dateTime)
 {
-//    return dateTime.substr(dateTime.find(' ') + 1, dateTime.length() - 1);
     return {dateTime.begin() + dateTime.find(' ') + 1,  dateTime.end()};
 }
 
@@ -134,7 +131,7 @@ void VisitorEventListPage::updateEvents()
 
     auto events = *resultat.body;
     for (auto & ev: events) {
-        eventList->addEvent(new EventItem(ev.description,
+        eventList->addEvent(new EventItem("visitor", ev.description,
                                           ev.title,
                                           ev.curr_visitors,
                                           *ev.max_visitors,

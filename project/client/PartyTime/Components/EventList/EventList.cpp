@@ -1,5 +1,5 @@
 #include "EventList.hpp"
-
+#include <iostream>
 
 EventList::EventList(QWidget* parent) : painter(parent), 
     mainLayout(new QVBoxLayout(this)),
@@ -23,6 +23,8 @@ EventList::EventList(const QString &evnentListType, size_t size, const QString &
     scrollLayout(),
     eventList(std::vector<EventItem*>())
 {
+
+    std::cout << "EventListType: "  <<  evnentListType.toStdString() << std::endl;
     this->setProperty("cssClass", "eventList");
     scrollWidget->setStyleSheet("border-radius: 15px;");
     scrollWidget->setLayout(&scrollLayout);

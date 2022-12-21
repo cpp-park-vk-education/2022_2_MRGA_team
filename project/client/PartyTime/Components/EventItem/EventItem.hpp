@@ -12,7 +12,7 @@ public:
     ~EventItem();
 
     EventItem(const std::initializer_list<QString>& list);
-    EventItem(const std::string& _descr,
+    EventItem(const QString& eventType, const std::string& _descr,
                          const std::string& _title,
                          const unsigned int& _visitors,
                          const unsigned int& _maxVisitors,
@@ -20,7 +20,6 @@ public:
                          const std::string& _time,
                          const std::string& _address);
 
-//    EventItem* create(const QString& typeEvent);
     void updateState(const std::initializer_list<QString>& list); // либо человек подписан на событие либо не подписан
 
     friend class EventList;

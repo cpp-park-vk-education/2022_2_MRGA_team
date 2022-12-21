@@ -177,7 +177,6 @@ void EventViewPage::onCreate()
                                    this->address->text()});
 
     // createEvent
-
     auto resultat = party->events->create_event(event);
 
     if (resultat.body.has_value()) {
