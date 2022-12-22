@@ -96,6 +96,7 @@ size_t DbManager::count_connections() const {
 
 std::vector<std::string> DbManager::load_config(const std::string &path) const {
   std::ifstream in_conf(path);
+  std::cout << "pwd is here" << std::endl;
   system("pwd");
   std::vector<std::string> arr(5);
 

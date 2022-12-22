@@ -12,7 +12,7 @@ message("HANDLER_LIB_INCLUDE_DIRS = " ${HANDLER_LIB_INCLUDE_DIRS})
 find_package(Boost 1.81.0 REQUIRED REQUIRED COMPONENTS container)
 
 link_directories(/usr/local/lib)
-link_libraries(pq pqxx)
+# link_libraries(pq pqxx)
 include_directories(SYSTEM /usr/local/include)
 
 include_directories(${PROJECT_NAME} src/)

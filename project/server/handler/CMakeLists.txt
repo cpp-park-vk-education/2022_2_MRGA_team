@@ -5,7 +5,7 @@ include_directories(SYSTEM ${MAIN_DIR}/deps/include)
 
 
 link_directories(/usr/local/lib)
-link_libraries(pq pqxx)
+# link_libraries(pq pqxx)
 include_directories(SYSTEM /usr/local/include)
 
 add_subdirectory(service)
