@@ -28,10 +28,10 @@ if(WITH_TESTING)
 endif()
 
 link_directories(/usr/local/lib)
-link_libraries(pq pqxx)
 include_directories(SYSTEM /usr/local/include)
+include_directories(SYSTEM ../../../../../deps/include)
 add_subdirectory(lib)
-
+link_libraries(pqxx)
 if(WITH_TESTING)
     if(WITH_SANITIZE)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${MY_SANITIZERS_FLAGS}")
