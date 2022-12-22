@@ -1,5 +1,6 @@
 #include "Edit.hpp"
 #include <iostream>
+#include <QIcon>
 
 UiEdit::UiEdit(QWidget *parent) : painter(parent), value(new QLineEdit()), editLayout(new QHBoxLayout(this))
 {
@@ -47,6 +48,9 @@ UiEdit::UiEdit(const QString &className, const QString &placeholder, const QStri
         dateEdit->setFont(QFont("Times", -1, QFont::Bold));
         editLayout->addWidget(dateEdit, Qt::AlignLeft | Qt::AlignTop);
     } else if (editType == "createFormInput") {
+        QIcon icoLogin(":/image/gearBlack.svg");
+        value->addAction(icoLogin, QLineEdit::LeadingPosition);
+
         QPalette pal = value->palette();
         pal.setColor(QPalette::PlaceholderText, QColor(0, 0, 0, 100));
         value->setPalette(pal);

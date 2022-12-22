@@ -23,7 +23,7 @@ public:
     // дата, время
     std::string getDate(const std::string& dateTime);
     std::string getTime(const std::string& dateTime);
-
+    EventList* getEventList() {return eventList;}
 
 private:
     QVBoxLayout* mainLayout;

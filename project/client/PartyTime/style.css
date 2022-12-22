@@ -2,7 +2,8 @@
 /*General widgets styles*/
 QStackedWidget#generalBackground {
 /*    border-image: url(:/image/MainLayout.png) 0 0 0 0 stretch stretch;*/
-    background-color: rgba(241, 241, 241, 1);
+/*    background-color: rgba(241, 241, 241, 1);*/
+    background-color: #000000;
     padding-top: 0px;
     padding-bottom: 20px;
     min-width: 1440px;
@@ -87,22 +88,52 @@ QPushButton#backButton:hover {
 }
 
 /*Navbar Button*/
-QPushButton#mainBtn {
-    background-color: rgba(47, 5, 72, 1);
+/**[cssClass~="mainBtn"] {
+    background-color: none;
     max-width: 150px;
     max-height: 50px;
+    color: #ffffff;
+    border: none;
+}
+
+*[cssClass~="profileBtn"] {
+    background-color: none;
+    max-width: 150px;
+    max-height: 50px;
+    color: #ffffff;
+    border: none;
+}
+
+*[cssClass~="eventsBtn"] {
+    background-color: none;
+    max-width: 150px;
+    max-height: 50px;
+    color: #ffffff;
+    border: none;
+}*/
+
+QPushButton#mainBtn {
+    background-color: none;
+    max-width: 150px;
+    max-height: 50px;
+    color: #ffffff;
+    border: none;
 }
 
 QPushButton#profileBtn {
-    background-color: rgba(47, 5, 72, 1);
+    background-color: none;
     max-width: 150px;
     max-height: 50px;
+    color: #ffffff;
+    border: none;
 }
 
 QPushButton#eventsBtn {
-    background-color: rgba(47, 5, 72, 1);
+    background-color: none;
     max-width: 150px;
     max-height: 50px;
+    color: #ffffff;
+    border: none;
 }
 
 QPushButton#navbarSvg {
@@ -160,10 +191,13 @@ QLabel#addressTitle {
 QLabel#eventDescription {
     min-width: 500px;
     max-height: 300px;
-    font-size: 16px;
-    font-weight: 400;
-    background-color: #ffffff;
-    color: #000000;
+/*    font-size: 16px;*/
+    font-size: 18px;
+    font-weight: 600;
+/*    background-color: #ffffff;*/
+    background-color: transparent;
+    /*color: #000000;*/
+    color: #ffffff;
     padding: 10px;
     margin-right: 20px;
 }
@@ -196,7 +230,7 @@ QLineEdit#value {
 /*Components styles*/
 *[cssClass~="clientNavbar"] {
     min-width: 1440px;
-    background-color: rgba(77, 8, 70, 1);
+    background: qlineargradient( x1:0 y1:0, x2:1 y2:0, stop:0 #24B2BB, stop:1 #BF07C2);
     border: 1px solid rgba(23, 7, 57, 1);
     padding-left: 0px;
     margin-left: 0px;
@@ -205,16 +239,20 @@ QLineEdit#value {
 
 *[cssClass~="organizerNavbar"] {
     min-width: 1440px;
-/*    min-height: 100%;*/
-    background-color: rgba(25, 113, 125, 0.599);
     border: 1px solid rgba(23, 7, 57, 1);
     border-radius: 15px;
+    background: qlineargradient( x1:0 y1:0, x2:1 y2:0, stop:0 #24B2BB, stop:1 #BF07C2);
 }
 
 *[cssClass~="eventItem"] {
-    border-image: url(:/image/event1.png);
+/*    border-image: url(:/image/event1.png);*/
+    border-image: url(:/image/event2.jpg);
     min-width: 1000px;
     max-height: 350px;
+}
+
+*[cssClass~="activeButton"] {
+    background-color: yellow;
 }
 
 *[cssClass~="header"] {
@@ -269,7 +307,8 @@ EventItem#TaskCard {
     min-width: 1440px;
     min-height: 750px;
     border-radius: 15px;
-    background-color: rgba(0, 80, 70, 1);
+/*    background-color: rgba(0, 80, 70, 1);*/
+    background-color: #000000;
 }
 
 
@@ -290,26 +329,19 @@ EventItem#TaskCard {
 *[cssClass~="createEventButton"] {
     max-width: 200px;
     max-height: 50px;
-    background-color: rgba(77, 8, 70, 1);;
-    color: green;
+    background-color: #67b357;
+    color: #ffffff;
     border-radius: 5px;
     margin-left: 330px;
 }
 
 *[cssClass~="createEventButton"]:hover {
-    max-width: 200px;
-    max-height: 50px;
-    background-color: rgba(240, 191, 95, 1);
+    background-color: #318021;
     color: #ffffff;
-    border-radius: 5px;
 }
 
 *[cssClass~="createEventButton"]:pressed {
-    max-width: 200px;
-    max-height: 50px;
-    background-color: rgba(77, 8, 70, 1);;
-    color: rgba(164, 115, 18, 1);
-    border-radius: 5px;
+    background-color: #16570a;
 }
 
 QComboBox {
@@ -387,12 +419,10 @@ QComboBox:!on {
 
 *[cssClass~="createFormInput"] {
     min-width: 200px;
-    min-height: 50px;
+    margin-top: 10px;
     color: #000000;
-    font-size: 28px;
-    font-weight: 800;
-    padding-top: 10px;
-    background-color: transparent;
+    font-size: 20px;
+    font-weight: 400;
 }
 
 *[cssClassEdit~="settingsInput"] {
@@ -412,37 +442,65 @@ QComboBox:!on {
     border: 1px solid black;
 }
 
-
 *[cssClassEdit~="createFormInput"] {
-    min-width: 350px;
-    min-height: 50px;
-    background-color: #000000;
-    border-radius: 15px;
-    border: 1px solid black;
-    border-image: url() 50 50;
+    color: #000000;
+    min-height: 30px;
+    min-width: 600px;
+    font-size: 20px;
+    font-weight: 300;
 }
 
-QDateEdit
-{
-    background-color: white;
+QTimeEdit {
+    background-color: rgba(152, 128, 203, 1);
     border-style: solid;
     border-width: 4px;
+    border-radius: 12px;
     border-color: rgb(100,100,100);
     spacing: 5px;
 }
 
-
-QDateEdit::drop-down {
-    border-image: url(:/image/arrow-down.png);
+QTimeEdit::drop-down {
     width:50px;
     height:15px;
     subcontrol-position: right top;
-    subcontrol-origin:margin;
-    background-color: white;
+    subcontrol-origin: margin;
+    background-color: rgba(152, 128, 203, 1);
     border-style: solid;
     border-width: 4px;
+    border-radius: 12px;
     border-color: rgb(100,100,100);
-   spacing: 5px;
+    spacing: 5px;
+}
+
+QTimeEdit::down-button, QDateEdit::up-button {
+    border-style: none;
+}
+
+QDateEdit
+{
+    background-color: rgba(152, 128, 203, 1);
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 12px;
+    border-color: rgb(100,100,100);
+    spacing: 5px;
+}
+
+QDateEdit::drop-down {
+    width:50px;
+    height:15px;
+    subcontrol-position: right top;
+    subcontrol-origin: margin;
+    background-color: rgba(152, 128, 203, 1);
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 12px;
+    border-color: rgb(100,100,100);
+    spacing: 5px;
+}
+
+QDateEdit::down-button, QDateEdit::up-button {
+    border-style: none;
 }
 
 QToolBar::item {

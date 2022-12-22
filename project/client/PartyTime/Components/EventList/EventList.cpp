@@ -9,10 +9,11 @@ EventList::EventList(QWidget* parent) : painter(parent),
     eventList(std::vector<EventItem*>())
 {
     this->setProperty("cssClass", "eventList");
-    scrollWidget->setStyleSheet("border-radius: 15px;");
+    scrollWidget->setStyleSheet("border-radius: 15px; background-color: #ffffff");
     scrollWidget->setLayout(&scrollLayout);
     scroll->setWidget(scrollWidget);
     scroll->setWidgetResizable(true);
+    scroll->setStyleSheet("border-radius: 15px; background-color: #ffffff");
     mainLayout->addWidget(scroll);
 }
 

@@ -24,9 +24,12 @@ public:
 
     friend class EventList;
     friend class VisitorEventListPage;
+    QPushButton* getSubscribeButton() {return &subscibeButton;}
+
 private:
     QHBoxLayout eventItemLayout;
     QVBoxLayout* leftSide;
+    QVBoxLayout* descrptionLayout;
     QHBoxLayout* topContainer;
     QVBoxLayout* informationLayout;
     QVBoxLayout* visitorsInfoLayout;

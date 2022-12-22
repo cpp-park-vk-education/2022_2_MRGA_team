@@ -26,6 +26,7 @@ public:
     void updateState(){}; // const std::initializer_list<QString>&
 
     EventList* create(const QString& objType);
+    std::vector<EventItem*>* getEventList() {return &eventList;}
 
 private:
     QVBoxLayout* mainLayout;

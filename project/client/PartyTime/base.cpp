@@ -103,6 +103,8 @@ void Base::onEventViewPageClicked()
 void Base::onVisitorEventListPageClicked()
 {
 //    screens->setCurrentIndex(e_main);
+//    visitorEventListPage->navbar.getMainButton()->getButton()->setStyleSheet("");
+//    visitorEventListPage->navbar.getMainButton()->getButton()->setProperty("cssClass", "activeButton");
     screens->setCurrentIndex(0);
     visitorEventListPage->eventList->clearEventList();
     visitorEventListPage->updateEvents();

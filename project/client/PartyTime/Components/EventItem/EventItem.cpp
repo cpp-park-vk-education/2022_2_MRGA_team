@@ -6,7 +6,7 @@
 
 
 EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
-    leftSide(new QVBoxLayout), informationLayout(new QVBoxLayout),
+    leftSide(new QVBoxLayout), descrptionLayout(new QVBoxLayout), informationLayout(new QVBoxLayout),
     visitorsInfoLayout(new QVBoxLayout),
     dateTimeLayout(new QHBoxLayout),
     subscibeButton("Subscribe"),
@@ -34,15 +34,31 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     eventItemLayout.addLayout(leftSide, Qt::AlignLeft | Qt::AlignTop);
     subscibeButton.setMaximumWidth(100);
 
+//    eventItemLayout.addWidget(&eventDecsription, Qt::AlignLeft);
+    // begin block
+    descrptionLayout->SetMaximumSize(700, 500);
+    QLabel* eventDescr = new QLabel("Description");
+    eventDescr->setStyleSheet("padding-left: 200px; margin: 0px; text-align: top; color: #ffffff; font-size: 24px; font-weight: 900;");
+    eventDescr->setMaximumHeight(40);
     QString textDescription = "Мероприятие клубного формата. Начало мероприятия: 23:00. Артист выходит на сцену не ранее 2:00 и является не единственным элементом ночной программы.";
     QString templateString = "<p style=\"line-height:%1%\">%2<p>";
     int myPercentage = 200;
     QString targetText = templateString.arg(myPercentage).arg(textDescription);
+
+    QHBoxLayout* descriptionTextContainer = new QHBoxLayout();
     eventDecsription.setText(targetText);
     eventDecsription.setObjectName("eventDescription");
-    eventItemLayout.addWidget(&eventDecsription, Qt::AlignLeft);
     eventDecsription.setMaximumWidth(450);
     eventDecsription.setWordWrap(true);
+    descriptionTextContainer->addWidget(&eventDecsription);
+
+    descrptionLayout->setContentsMargins(50, 0, 0, 0);
+
+    descrptionLayout->addWidget(eventDescr, Qt::AlignTop | Qt::AlignCenter);
+    descrptionLayout->addLayout(descriptionTextContainer);
+
+    eventItemLayout.addLayout(descrptionLayout);
+    // end block
 
     topContainer = new QHBoxLayout();
     this->eventTitle.setText("Max Korzh сoncert");

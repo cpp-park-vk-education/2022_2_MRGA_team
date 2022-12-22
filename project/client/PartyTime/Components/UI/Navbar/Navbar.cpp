@@ -14,12 +14,15 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
     // settingsButton = *buttonFactory;
 
 //    cтили для кнопок
+//    mainButton.updateState("mainBtn", "");
     mainButton.updateState("mainBtn", "");
     mainButton.button->setText("Main");
 
+//    profileButton.updateState("profileBtn", "");
     profileButton.updateState("profileBtn", "");
     profileButton.button->setText("Profile");
 
+//    eventsButton.updateState("eventsBtn", "");
     eventsButton.updateState("eventsBtn", "");
     eventsButton.button->setText("Events");
 
@@ -29,7 +32,6 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
     // Выбираем navbar
     if (navbarSize == 3) {
         // Navbar клиента. Закидываем в layout, созданные UI компоненты.
-        this->setObjectName("idClientNavbar");        // установили id-ик navbar-у, которым в теории сможем потом воспользоваться
         this->setProperty("cssClass", "clientNavbar");    // установили class navbar-у, который сейчас используется
         std::cout << "afascascsa" << std::endl;
         layout->addWidget(&mainButton);
@@ -38,7 +40,6 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
         layout->addWidget(&profileButton);
 //        layout->addWidget(svgButton);
     } else {
-        this->setObjectName("idOrganizerNavbar");        // установили id-ик navbar-у, которым в теории сможем потом воспользоваться
         this->setProperty("cssClass", "organizerNavbar");    // установили class navbar-у, который сейчас используется
         layout->addWidget(&mainButton);
         // layout->addWidget(&settingsButton);

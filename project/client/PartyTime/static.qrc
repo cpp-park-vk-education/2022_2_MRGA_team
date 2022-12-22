@@ -22,6 +22,7 @@
         <file>gearBlack.svg</file>
         <file>gearWhite.svg</file>
         <file>arrow-down.png</file>
+        <file>event2.jpg</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>

@@ -26,6 +26,7 @@ public:
                   const QString& eventListType, const QString& footerType);
     ~EventViewPage();
     void redraw() {}; // параметр const std::initisializer_list<QSting>
+    EventList* getEventList() {return eventList;}
 
 private:
     QVBoxLayout* mainLayout;

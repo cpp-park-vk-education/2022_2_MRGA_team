@@ -38,13 +38,14 @@ EventForm::EventForm(const QString& inputType, int inputSize, const QString& but
         inputList.push_back(new UiInput(inputType, "Description", "description"));
 //        formButtons.push_back(new UiButton("", "text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;", "Save"));
 
-        QPushButton* settingsInputButton = new QPushButton("Save address");
+        QPushButton* settingsInputButton = new QPushButton("Save");
         settingsInputButton->setStyleSheet("text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;");
         buttonsLayout->addWidget(settingsInputButton);
     }
 
     if (inputType == "settingsInputRight") {
         this->setStyleSheet("max-width: 800px; max-height: 800px; background-color: rgba(111, 81, 174, 1); border-radius: 15px;");
+
         inputList.push_back(new UiInput(inputType, "Country", "country"));
         inputList.push_back(new UiInput(inputType, "City", "city"));
         inputList.push_back(new UiInput(inputType, "Street", "Street"));
@@ -75,7 +76,7 @@ EventForm::EventForm(const QString& inputType, int inputSize, const QString& but
         formTitle->setStyleSheet("color: #000000; font-size: 28px; font-weight: 900");
         mainLayout->addWidget(formTitle, 1, Qt::AlignTop | Qt::AlignCenter);
 
-        QPushButton* createFormButton = new QPushButton("create");
+        QPushButton* createFormButton = new QPushButton("Create");
         createFormButton->setProperty("cssClass", "createEventButton");
         buttonsLayout->addWidget(createFormButton);
     }
