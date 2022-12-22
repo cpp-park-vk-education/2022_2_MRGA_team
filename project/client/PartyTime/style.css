@@ -246,7 +246,7 @@ QLineEdit#value {
 
 *[cssClass~="eventItem"] {
 /*    border-image: url(:/image/event1.png);*/
-    border-image: url(:/image/event2.jpg);
+    border-image: url(:/image/event3.jpg);
     min-width: 1000px;
     max-height: 350px;
 }

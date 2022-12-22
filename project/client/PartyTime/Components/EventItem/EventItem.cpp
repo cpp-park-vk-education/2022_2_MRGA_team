@@ -36,7 +36,6 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
 
 //    eventItemLayout.addWidget(&eventDecsription, Qt::AlignLeft);
     // begin block
-    descrptionLayout->SetMaximumSize(700, 500);
     QLabel* eventDescr = new QLabel("Description");
     eventDescr->setStyleSheet("padding-left: 200px; margin: 0px; text-align: top; color: #ffffff; font-size: 24px; font-weight: 900;");
     eventDescr->setMaximumHeight(40);

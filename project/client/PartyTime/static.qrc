@@ -23,6 +23,8 @@
         <file>gearWhite.svg</file>
         <file>arrow-down.png</file>
         <file>event2.jpg</file>
+        <file>event3.jpg</file>
+        <file>Event4.jpg</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>
