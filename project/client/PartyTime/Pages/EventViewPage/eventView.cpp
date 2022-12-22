@@ -83,6 +83,7 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     QLabel* dateLabel = new QLabel("Date");
     inputDate->addWidget(dateLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
     inputDate->addWidget(date, 4, Qt::AlignLeft | Qt::AlignTop);
+    date->setDate(QDate(2022, 12, 22));
 
     dateLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weight: 900;");
     date->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
@@ -93,6 +94,7 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     QLabel* timeLabel = new QLabel("Time");
     inputTime->addWidget(timeLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
     inputTime->addWidget(time, 4, Qt::AlignLeft | Qt::AlignTop);
+    time->setTime(QTime(22, 0, 0));
 
     timeLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weight: 900;");
     time->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");

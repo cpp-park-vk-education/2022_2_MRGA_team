@@ -25,6 +25,7 @@
         <file>event2.jpg</file>
         <file>event3.jpg</file>
         <file>Event4.jpg</file>
+        <file>newAddButton.png</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>

@@ -167,7 +167,8 @@ QPushButton#navbarSvg {
 }
 
 *[cssClass~="addButton"] {
-    border-image: url(:/image/addButton.png);
+/*    border-image: url(:/image/addButton.png);*/
+    border-image: url(:/image/newAddButton.png);
     min-width: 50px;
     min-height: 50px;
     border-radius: 25px;
