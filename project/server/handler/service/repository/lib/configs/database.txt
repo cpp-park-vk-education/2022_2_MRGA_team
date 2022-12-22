@@ -1,5 +1,0 @@
-user=mashapg
-password=mashapg
-hostaddr=localhost
-port=5432
-dbname=mashadb
