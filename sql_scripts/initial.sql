@@ -1,3 +1,6 @@
+CREATE USER root WITH PASSWORD 'mashapg';
+GRANT ALL PRIVILEGES ON DATABASE mashadb  TO root;
+
 CREATE TABLE users (
     id serial PRIMARY KEY,
     nickname text UNIQUE NOT NULL,
@@ -12,12 +15,12 @@ CREATE TABLE tokens (
     token_content text NOT NULL UNIQUE,
     expire_date_time timestamp NOT NULL,
 
-    user_id integer REFERENCES users ON DELETE CASCADE
+    user_id integer REFERENCES users ON DELETE CASCADE NOT NULL
 );
 
 CREATE TABLE addresses (
     id serial PRIMARY KEY,
-    address_title text UNIQUE NOT NULL,
+    address_title text NOT NULL UNIQUE,
     longitude numeric DEFAULT NULL,
     latitude numeric DEFAULT NULL
 );
@@ -35,11 +38,5 @@ CREATE TABLE events (
 
 INSERT INTO users (id, nickname, passcode, email, birth_date, overview) VALUES (0, 'admin', 'qwerty', 'admin@admin.ru', '1970-01-01', 'this user is admin');
 INSERT INTO tokens (id, token_content, expire_date_time, user_id) VALUES (0, 'admin02022', '2050-01-02 12:00:00', 0);
-
-insert into addresses (address_title) VALUES ('Moscow');
-insert into addresses (address_title) VALUES ('BMSTU');
-
-insert into events (title, overview, date_time, max_visitors, user_id, address_id)
-    VALUES ('Новогодняя елка',
-            'Новогодняя елка 2022 для тех, кто хорошо себя вел в этом году',
-            '2022-12-31', 100, 0, 1);
+ALTER TABLE users ADD COLUMN events integer[];
+UPDATE users SET events = events || ARRAY[4, 3, 2];

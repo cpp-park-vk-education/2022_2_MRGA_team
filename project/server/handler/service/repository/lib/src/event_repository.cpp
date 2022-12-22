@@ -24,7 +24,6 @@ int EventRepository::create_event(Event event) {
       } else {
         res = -1;
       }
-      std::cout << "ADDRESS_ID " << address_id << std::endl;
       worker.commit();
     } catch (const std::exception &e) {
       std::cout << e.what() << std::endl;
@@ -39,7 +38,6 @@ int EventRepository::create_event(Event event) {
       "VALUES ('" + event.title + "', '" + ((event.description != "") ? event.description : "null") + "', '" +
       event.date_time + "', " + ((event.max_visitors ? std::to_string(*event.max_visitors) : "100")) + ", " +
       std::to_string(event.user_id) + ", " + address_id + ") RETURNING id;";
-    std::cout << "EVENT_ID " << query_insert_event << std::endl;
     size_t event_id = 0;
     try {
       Worker worker(*conn);
@@ -50,7 +48,6 @@ int EventRepository::create_event(Event event) {
       } else {
         event_id = result.begin()["id"].as<size_t>();
       }
-      std::cout << "EVENT_ID " << event_id << std::endl;
       worker.commit();
     } catch (const std::exception &e) {
       std::cout << e.what() << std::endl;
@@ -97,8 +94,9 @@ std::vector<Event> EventRepository::get_events() {
           Address address(row["address"].as<std::string>(), row["longitude"].as<double>(),
           row["latitude"].as<double>(), row["address_id"].as<size_t>());
 
+          std::string some_overview = row["description"].as<std::string>();
           Event event(row["title"].as<std::string>(), row["date_time"].as<std::string>(),
-            row["user_id"].as<size_t>(), address, row["description"].as<std::string>(),
+            row["user_id"].as<size_t>(), address, ((some_overview == "null") ? "" : some_overview),
             row["max_visitors"].as<size_t>(), 0, row["events_id"].as<size_t>());
           events.push_back(event);
         }
