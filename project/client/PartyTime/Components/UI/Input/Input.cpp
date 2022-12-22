@@ -46,7 +46,6 @@ UiInput::UiInput(const QString &className, const QString& inputName, const QStri
     if (className == "settingsInput") {
         label = new UiLabel(className, inputName);
         edit = new UiEdit(className, placeholder, "defaultInput");
-//        edit = new UiEdit(className, placeholder, "dateInput");
 
         this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
         this->layout->addWidget(edit, 1, 2, Qt::AlignLeft |  Qt::AlignTop);
@@ -54,7 +53,6 @@ UiInput::UiInput(const QString &className, const QString& inputName, const QStri
     if (className == "settingsInputRight") {
         label = new UiLabel(className, inputName);
         edit = new UiEdit(className, placeholder, "defaultInput");
-//        edit = new UiEdit(className, placeholder, "dateInput");
 
         this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
         this->layout->addWidget(edit, 1, 2, Qt::AlignLeft |  Qt::AlignTop);

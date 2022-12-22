@@ -75,22 +75,29 @@ VisitorEventListPage::VisitorEventListPage(const std::initializer_list<QString> 
     }
 }
 
-VisitorEventListPage::VisitorEventListPage(const QString &headerType, const QString &navbarType, const QString &eventListType, const QString &footerType) : mainLayout(new QVBoxLayout())
+VisitorEventListPage::VisitorEventListPage(const QString &headerType, const QString &navbarType,
+                                           const QString &eventListType, const QString &footerType) : mainLayout(new QVBoxLayout())
 {
+    this->setObjectName("visitorPage");
+
     Header* headerFactory = new Header();
     this->header = *(headerFactory->create(headerType));
     delete headerFactory;
     headerFactory = nullptr;
 
-    Navbar* navbarFactory = new Navbar();
+    Navbar* navbarFactory = new Navbar("", 3);
+    this->navbar.setGeometry(this->x(), this->y(), 1440, 100);
     this->navbar = *(navbarFactory->create(navbarType));
+    mainLayout->addWidget(&this->navbar, 0, Qt::AlignCenter | Qt::AlignTop);
     delete navbarFactory;
     navbarFactory = nullptr;
 
-    EventList* eventListFactory = new EventList();
+    EventList* eventListFactory = new EventList("visitor", 0);
     this->eventList = (eventListFactory->create(eventListType));
     delete eventListFactory;
     eventListFactory = nullptr;
+    updateEvents();
+    mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);
 
     Footer* footerFactory = new Footer();
     this->footer = *(footerFactory->create(footerType));

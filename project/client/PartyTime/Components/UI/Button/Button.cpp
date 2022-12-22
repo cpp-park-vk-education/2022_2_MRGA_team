@@ -8,7 +8,8 @@ UiButton::UiButton(QWidget *parent): painter(parent), button(new QPushButton("Т
     btnLayout->addWidget(button);
 }
 
-UiButton::UiButton(const QString& id, const QString &styleSheet, const QString &btnText, const QFont &font) : button(new QPushButton("Клацни на меня")), btnLayout(new QHBoxLayout(this))
+UiButton::UiButton(const QString& id, const QString &styleSheet,
+                   const QString &btnText, const QFont &font) : button(new QPushButton("Клацни на меня")), btnLayout(new QHBoxLayout(this))
 {
     if (!id.isEmpty()) {
         this->setObjectName(id);

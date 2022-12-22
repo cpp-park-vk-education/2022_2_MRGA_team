@@ -120,6 +120,15 @@ QPushButton#mainBtn {
     border: none;
 }
 
+QPushButton#mainBtn:hover{
+    font-size: 25px;
+}
+
+QPushButton#mainBtn:pressed {
+    font-size: 35px;
+    color: green;
+}
+
 QPushButton#profileBtn {
     background-color: none;
     max-width: 150px;
@@ -231,6 +240,7 @@ QLineEdit#value {
 *[cssClass~="clientNavbar"] {
     min-width: 1440px;
     background: qlineargradient( x1:0 y1:0, x2:1 y2:0, stop:0 #24B2BB, stop:1 #BF07C2);
+/*    background: qlineargradient( x1:0 y1:0, x2:1 y2:0, stop:0 yellow, stop:1 black);*/
     border: 1px solid rgba(23, 7, 57, 1);
     padding-left: 0px;
     margin-left: 0px;
@@ -242,6 +252,7 @@ QLineEdit#value {
     border: 1px solid rgba(23, 7, 57, 1);
     border-radius: 15px;
     background: qlineargradient( x1:0 y1:0, x2:1 y2:0, stop:0 #24B2BB, stop:1 #BF07C2);
+/*    background: qlineargradient( x1:0 y1:0, x2:1 y2:0, stop:0 yellow, stop:1 black);*/
 }
 
 *[cssClass~="eventItem"] {

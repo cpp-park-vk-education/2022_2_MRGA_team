@@ -17,19 +17,16 @@ public:
                 const QString& _leftForm = "default", const QString& _rightForm = "default",
                 const QString& _userAvatar = "default", const QString& _saveBtn = "default", const QString& _footer = "default"); // параметр const std::initisializer_list<QSting>
     ~ProfilePage();
-
-    void redraw() {}; // параметр const std::initisializer_list<QSting>
 private:
     QVBoxLayout* mainLayout;
     QHBoxLayout* contentLayout;
     QVBoxLayout* leftSide;
     QVBoxLayout* rightSide;
-
     Header header;
     Navbar navbar;
     EventForm* leftForm;
     EventForm* rightForm;
-//    EventForm* form;
+
 
     UiLabel userAvatar;
     UiButton* saveButton;
@@ -37,7 +34,6 @@ private:
     Footer footer;
     QAudioOutput* m_audioOuput;
     QFile* m_musicPath;
-
     QPushButton* backButton;
 
     void set_interface_style();

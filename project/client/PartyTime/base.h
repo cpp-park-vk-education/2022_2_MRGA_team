@@ -48,25 +48,17 @@ private:
     VisitorPage* visitorPage;
     VisitorEventListPage* visitorEventListPage;
     settings* settingsPage;
-//    std::shared_ptr<PostService> postRequestHandler;
+
 private slots:
     void onAuthPageClicked();
-    void onEnter(); // check validation function
+    void onEnter();
     void onRegistrationPageClicked();
-    void onRegister(); // check validation function
+    void onRegister();
     void onProfilePageClicked();
     void getPrev();
-    // void paintEvent(QPaintEvent* );
-    // void onSettingsPageClicked();
-    // void onSettings();
-     void onEventViewPageClicked();
-    // void onLoadingPageClicked();
-    // void onLoading();
-    // void onVisitorPageClicked();
-    // void onVisitor();
-    // void onOrganizerPageClicked();
-    // void onOrganizer();
-     void onVisitorEventListPageClicked();
-     void onSettingsPageClicked();
+    void onEventViewPageClicked();
+    void onVisitorEventListPageClicked();
+    void onSettingsPageClicked();
 };
+
 #endif // BASE_H

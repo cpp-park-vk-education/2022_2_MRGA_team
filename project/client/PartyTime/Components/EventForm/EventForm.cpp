@@ -27,8 +27,6 @@ EventForm::EventForm(QWidget *parent) : painter(parent),
 EventForm::EventForm(const QString& inputType, int inputSize, const QString& buttonType, int buttonsSize, QWidget *parent) : painter(parent),
     mainLayout(new QVBoxLayout(this)), inputLayout(new QGridLayout()), buttonsLayout(new QGridLayout())
 {
-    if (inputSize == 0 && buttonType == "" && buttonsSize == 0) {} // заглушка
-
     if (inputType == "settingsInput") {
         this->setStyleSheet("max-width: 800px; max-height: 800px; background-color: rgba(111, 81, 174, 1); border-radius: 15px;");
         inputList.push_back(new UiInput(inputType, "UserName", "username"));
@@ -36,7 +34,6 @@ EventForm::EventForm(const QString& inputType, int inputSize, const QString& but
         inputList.push_back(new UiInput(inputType, "Email", "email"));
         inputList.push_back(new UiInput(inputType, "Birth Date", "birth date"));
         inputList.push_back(new UiInput(inputType, "Description", "description"));
-//        formButtons.push_back(new UiButton("", "text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;", "Save"));
 
         QPushButton* settingsInputButton = new QPushButton("Save");
         settingsInputButton->setStyleSheet("text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;");
@@ -51,7 +48,6 @@ EventForm::EventForm(const QString& inputType, int inputSize, const QString& but
         inputList.push_back(new UiInput(inputType, "Street", "Street"));
         inputList.push_back(new UiInput(inputType, "House", "house"));
         inputList.push_back(new UiInput(inputType, "Apartment", "apartment"));
-//        formButtons.push_back(new UiButton("", "text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;", "Save address"));
 
         QPushButton* settingsInputRightButton = new QPushButton("Save address");
         settingsInputRightButton->setStyleSheet("text-align: center; padding: 0px; margin: 0px; max-width: 250px; max-height: 50px; background-color: #42c0c2;");
@@ -102,6 +98,8 @@ EventForm::EventForm(const QString& inputType, int inputSize, const QString& but
 
     mainLayout->addLayout(inputLayout, Qt::AlignTop);
     mainLayout->addLayout(buttonsLayout, Qt::AlignTop);
+
+    if (inputSize == 0 && buttonType == "" && buttonsSize == 0) {} // заглушка
 }
 
 EventForm::EventForm(const EventForm &other) : painter(new QWidget)

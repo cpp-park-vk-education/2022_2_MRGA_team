@@ -28,7 +28,8 @@ UiEdit::~UiEdit()
     delete editLayout;
 }
 
-UiEdit::UiEdit(const QString &className, const QString &placeholder, const QString& editType) : value(new QLineEdit()), editLayout(new QHBoxLayout(this))
+UiEdit::UiEdit(const QString &className,const QString &placeholder,
+               const QString& editType) : value(new QLineEdit()), editLayout(new QHBoxLayout(this))
 {
     value->setProperty("cssClassEdit", className);
 

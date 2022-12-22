@@ -6,6 +6,7 @@
 #include "footer.hpp"
 #include "HttpConnector.hpp"
 #include "PartyTimeConnector.hpp"
+// конструктор, который принимает список строк, которые укзаывают какого типа navbar создавать
 #include <../styleHelper.hpp>
 
 class VisitorEventListPage : public painter {
@@ -13,12 +14,10 @@ class VisitorEventListPage : public painter {
     friend class Base;
 public:
     explicit VisitorEventListPage(QWidget* parent = nullptr);
-    // конструктор, который принимает список строк, которые укзаывают какого типа navbar создавать
     VisitorEventListPage(const std::initializer_list<QString> typesList);
     VisitorEventListPage(const QString& headerType, const QString& navbarType,
                   const QString& eventListType, const QString& footerType);
     ~VisitorEventListPage();
-    void redraw() {}; // параметр const std::initisializer_list<QSting>
 
     // дата, время
     std::string getDate(const std::string& dateTime);
@@ -34,8 +33,8 @@ private:
 
     QComboBox *comboBox;
     QPushButton *hideButton; // Click on which we will hide the specified element
-    QLineEdit *lineEdit;  // LineEdit, in which we will set the element to hide
-    QListView *listView; // pointer to the list of elements
+    QLineEdit *lineEdit;     // LineEdit, in which we will set the element to hide
+    QListView *listView;     // pointer to the list of elements
 
     std::shared_ptr<PartyTimeConnector> party;
 
