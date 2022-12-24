@@ -80,7 +80,19 @@ namespace {
                 sm::reg(&User::description, "description");
                 return "";
             }();  // ALLOW NULL
-
+        static User fromJSON(const string &json, std::error_code& ec) {
+            stringstream ss(json);
+            User ev;
+            try {
+                sm::map_json_to_struct(ev, ss);
+            } catch (sm::StructMappingException& ex) {
+                std::cerr << ex.what() << std::endl;
+                ec.assign(int(structs_error_codes::parsing_error), structs_error_category());
+                return ev;
+            }
+            ec.assign(int(structs_error_codes::success), structs_error_category());
+            return ev;
+        }
         User() = default;
         User(const string &nickname,
             const string &password,
@@ -100,6 +112,20 @@ namespace {
             ostringstream outJsonData;
             sm::map_struct_to_json(*(this), outJsonData);
             return outJsonData.str();
+        }
+        string toJSON(std::error_code& ec) override {
+            if (this->nickname.empty()) {
+                ec.assign(int(structs_error_codes::empty_nickname), structs_error_category());
+                return "";
+            }
+            ec.assign(int(structs_error_codes::success), structs_error_category());
+            ostringstream outJsonData;
+            sm::map_struct_to_json(*(this), outJsonData);
+            return outJsonData.str();
+        }
+        string toJSON(std::error_code& ec) const override {
+            auto user = *this;
+            return user.toJSON(ec);
         }
     };
 
