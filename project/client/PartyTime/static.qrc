@@ -26,6 +26,13 @@
         <file>event3.jpg</file>
         <file>Event4.jpg</file>
         <file>newAddButton.png</file>
+        <file>user.png</file>
+        <file>lock.png</file>
+        <file>email.png</file>
+        <file>confirmPassword.png</file>
+        <file>white-back-arrow.png</file>
+        <file>purple-back-arrow.png</file>
+        <file>close-window.png</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>

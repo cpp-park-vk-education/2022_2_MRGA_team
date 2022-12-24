@@ -2,29 +2,26 @@
 
 authorization::authorization(QWidget* parent) : painter(parent),
     authMainLayout(new QGridLayout(this)), titleLayout(new QVBoxLayout()), formLayout(new QVBoxLayout()), buttonsLayout(new QVBoxLayout()),
-    appTitle(new QLabel(this)), appLogo(new QLabel(this)), login(new QLineEdit()), password(new QLineEdit()), enterButton(new QPushButton("Войти")),
+    appTitle(new QLabel()), appLogo(new QLabel(this)), login(new QLineEdit()), password(new QLineEdit()), enterButton(new QPushButton("Войти")),
     registrationButton(new QPushButton("Создать аккаунт"))
 {
     this->setObjectName("authorizationPage");
     authMainLayout->setSpacing(10);
 
-    appTitle->setObjectName("appTitle");
     appTitle->setText("PartyTime");
     appTitle->setFont(QFont("Times", 26));
     appTitle->setAlignment(Qt::AlignCenter);
     appTitle->setStyleSheet("color: #000000; font-weight: 1000; font-size: 48px; line-height: 59px;");
 
-    appLogo->setObjectName("appLogo");
     appLogo->setGeometry(0, 0, 347, 347);
     appLogo->setStyleSheet("border-radius: 15px;");
     appLogo->setPixmap(QPixmap(":/image/PartyTimeLogo.png"));
 
+    titleLayout->setContentsMargins(0, 100, 0, 0);
+
     titleLayout->addWidget(appTitle);
     titleLayout->addWidget(appLogo);
-
     authMainLayout->addLayout(titleLayout, 0, 0, 1, 1, Qt::AlignCenter);
-
-    formLayout->setSpacing(8);
 
     login->setMaximumWidth(400);
     login->setObjectName("login");
@@ -35,6 +32,8 @@ authorization::authorization(QWidget* parent) : painter(parent),
     login->setPlaceholderText("Login");
     login->setFont(QFont("Times", -1, QFont::Bold));
     login->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
+    QIcon icoLogin(":/image/user.png");
+    login->addAction(icoLogin, QLineEdit::LeadingPosition);
 
     password->setMaximumWidth(400);
     password->setObjectName("password");
@@ -43,25 +42,24 @@ authorization::authorization(QWidget* parent) : painter(parent),
     password->setEchoMode(QLineEdit::Password);
     password->setFont(QFont("Times", -1, QFont::Bold));
     password->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
+    QIcon icoPassword(":/image/lock.png");
+    password->addAction(icoPassword, QLineEdit::LeadingPosition);
 
-    formLayout->addWidget(login);
-    formLayout->addWidget(password);
+    formLayout->addWidget(login, Qt::AlignTop);
+    formLayout->addWidget(password, Qt::AlignTop);
 
-    authMainLayout->addLayout(formLayout, 1, 0, 1, 1, Qt::AlignCenter);
+    authMainLayout->addLayout(formLayout, 1, 0, 1, 1, Qt::AlignCenter | Qt::AlignTop);
 
-    buttonsLayout->setSpacing(0);
-
-//    enterButton->text();
     enterButton->setObjectName("enterButton");
     enterButton->setMaximumWidth(200);
 
     registrationButton->setObjectName("registrationButton");
     registrationButton->setMaximumWidth(200);
 
-    buttonsLayout->addWidget(enterButton);
-    buttonsLayout->addWidget(registrationButton);
+    buttonsLayout->addWidget(enterButton, Qt::AlignTop);
+    buttonsLayout->addWidget(registrationButton, Qt::AlignTop);
 
-    authMainLayout->addLayout(buttonsLayout, 2, 0, 1, 1, Qt::AlignCenter | Qt::AlignTop);
+    authMainLayout->addLayout(buttonsLayout, 2, 0, Qt::AlignCenter | Qt::AlignTop);
 }
 
 authorization::~authorization() {

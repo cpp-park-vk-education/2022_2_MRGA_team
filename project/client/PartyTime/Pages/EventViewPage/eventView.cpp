@@ -94,7 +94,6 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     QLabel* timeLabel = new QLabel("Time");
     inputTime->addWidget(timeLabel, 1,  Qt::AlignLeft | Qt::AlignTop);
     inputTime->addWidget(time, 4, Qt::AlignLeft | Qt::AlignTop);
-    time->setTime(QTime(22, 0, 0));
 
     timeLabel->setStyleSheet("min-width: 200px; margin-top: 10px; color: #000000; font-size: 20px; font-weight: 900;");
     time->setStyleSheet("color: #000000; min-height: 30px; min-width: 600px; font-size: 20px; font-weight: 300;");
@@ -161,7 +160,7 @@ void EventViewPage::onCreate()
 
     if (event.description == "" || event.title == "" ||
             event.date_time == "" || event.address.address == "" ||
-            this->maxVisitors->text().toStdString() == "") { // || this->visitors->text().toStdString() == "
+            this->maxVisitors->text().toStdString() == "") {
         QMessageBox errorForm;
         errorForm.setText("All fields must be filled");
         errorForm.exec();

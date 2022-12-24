@@ -23,9 +23,9 @@
 enum pagesNumbers {
     e_authorization = 0,
     e_registration = 1,
-    e_profile = 2,
-    e_main = 3,
-    e_events = 4,
+    e_main = 2,
+    e_events = 3,
+    e_profile = 4,
     e_settings = 5
 };
 

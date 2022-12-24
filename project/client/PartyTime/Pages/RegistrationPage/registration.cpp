@@ -5,14 +5,14 @@ registration::registration(QWidget *parent)
     : painter(parent),
       registrationMainLayout(new QGridLayout(this)), headerLayout(new QHBoxLayout()), titleLayout(new QVBoxLayout()),
       formLayout(new QVBoxLayout()), buttonsLayout(new QVBoxLayout()),
-      backButton(new QPushButton("назад")), appTitle(new QLabel(this)), appLogo(new QLabel(this)),
+      backButton(new QPushButton()), appTitle(new QLabel(this)), appLogo(new QLabel(this)),
       email(new QLineEdit()), login(new QLineEdit()), password(new QLineEdit()), repeatPassword(new QLineEdit()), enterButton(new QPushButton("Зарегистрироваться"))
 {    
     this->setObjectName("registration");
     registrationMainLayout->setSpacing(10);
 
     backButton->setObjectName("backButton");
-    headerLayout->addWidget(backButton, 0);
+    headerLayout->addWidget(backButton);
     registrationMainLayout->addLayout(headerLayout, 0, 0, 1, 1, Qt::AlignTop | Qt::AlignLeft);
 
     appTitle->setObjectName("regAppTitle");
@@ -38,6 +38,8 @@ registration::registration(QWidget *parent)
     email->setPlaceholderText("Email");
     email->setFont(QFont("Times", -1, QFont::Bold));
     email->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
+    QIcon icoEmail(":/image/email.png");
+    email->addAction(icoEmail, QLineEdit::LeadingPosition);
 
     login->setMaximumWidth(400);
     login->setObjectName("regLogin");
@@ -45,6 +47,8 @@ registration::registration(QWidget *parent)
     login->setPlaceholderText("Login");
     login->setFont(QFont("Times", -1, QFont::Bold));
     login->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
+    QIcon icoLogin(":/image/user.png");
+    login->addAction(icoLogin, QLineEdit::LeadingPosition);
 
     password->setMaximumWidth(400);
     password->setObjectName("regPassword");
@@ -53,6 +57,8 @@ registration::registration(QWidget *parent)
     password->setEchoMode(QLineEdit::Password);
     password->setFont(QFont("Times", -1, QFont::Bold));
     password->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
+    QIcon icoPassword(":/image/lock.png");
+    password->addAction(icoPassword, QLineEdit::LeadingPosition);
 
     repeatPassword->setMaximumWidth(400);
     repeatPassword->setObjectName("regRepeatPassword");
@@ -61,6 +67,8 @@ registration::registration(QWidget *parent)
     repeatPassword->setEchoMode(QLineEdit::Password);
     repeatPassword->setFont(QFont("Times", -1, QFont::Bold));
     repeatPassword->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
+    QIcon icoConfirmPassword(":/image/confirmPassword.png");
+    repeatPassword->addAction(icoConfirmPassword, QLineEdit::LeadingPosition);
 
     formLayout->addWidget(email);
     formLayout->addWidget(login);

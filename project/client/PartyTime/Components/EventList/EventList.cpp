@@ -22,7 +22,8 @@ EventList::EventList(const QString &evnentListType, size_t size, const QString &
     scroll(new QScrollArea()),
     scrollWidget(new painter()),
     scrollLayout(),
-    eventList(std::vector<EventItem*>())
+    eventList(std::vector<EventItem*>()),
+    eventList1(std::map<unsigned int, EventItem*>())
 {
     this->setProperty("cssClass", "eventList");
     scrollWidget->setStyleSheet("border-radius: 15px;");

@@ -27,7 +27,7 @@ UiButton#settingsFormButton {
 QLineEdit {
     min-width: 200px;
     min-height: 40px;
-    padding: 5px 0px 5px 10px;
+    padding: 5px 0px 5px 0px;
     font-size: 16px;
     border: 2px solid purple;
     border-radius: 15px;
@@ -47,13 +47,18 @@ QPushButton {
 }
 
 QPushButton:hover {
-    color: #fffb00;
+    color: #9311E2;
+}
+
+QPushButton:pressed {
+    color: #4C0379;
 }
 
 /*Pages Buttons*/
 QPushButton#enterButton {
     font-size: 20px;
-    margin-bottom: 10px;
+    max-height: 30px;
+/*    margin-bottom: 10px;*/
 }
 
 QPushButton#enterButton:hover {
@@ -62,6 +67,7 @@ QPushButton#enterButton:hover {
 
 registration#registration {
     max-height: 900px;
+    max-height: 30px;
 }
 
 QPushButton#registrationButton {
@@ -73,76 +79,70 @@ QPushButton#registrationButton:hover {
 }
 
 QPushButton#backButton {
-    max-width: 200px;
-    max-height: 40px;
-    border-radius: 15px;
-    font-size: 20px;
-    padding: 0px;
-    color: #000000;
-    border: 1px solid black;
-    text-align: center;
-}
-
-QPushButton#backButton:hover {
-    color: #fff;
+    border-image: url(:/image/purple-back-arrow.png);
+    min-height: 50px;
+    min-width: 50px;
+    margin-left: 50px;
 }
 
 /*Navbar Button*/
-/**[cssClass~="mainBtn"] {
-    background-color: none;
-    max-width: 150px;
-    max-height: 50px;
-    color: #ffffff;
-    border: none;
-}
-
-*[cssClass~="profileBtn"] {
-    background-color: none;
-    max-width: 150px;
-    max-height: 50px;
-    color: #ffffff;
-    border: none;
-}
-
-*[cssClass~="eventsBtn"] {
-    background-color: none;
-    max-width: 150px;
-    max-height: 50px;
-    color: #ffffff;
-    border: none;
-}*/
-
 QPushButton#mainBtn {
     background-color: none;
     max-width: 150px;
     max-height: 50px;
-    color: #ffffff;
+    color: #D6D6D6;
+    font-weight: 300;
     border: none;
 }
 
 QPushButton#mainBtn:hover{
-    font-size: 25px;
+    color: #F0F0F0;
+    font-weight: 500;
 }
 
 QPushButton#mainBtn:pressed {
-    font-size: 35px;
-    color: green;
+    font-weight: 900;
+    color: #ffffff;
 }
 
 QPushButton#profileBtn {
     background-color: none;
     max-width: 150px;
     max-height: 50px;
-    color: #ffffff;
+    color: #D6D6D6;
+    font-weight: 300;
     border: none;
+}
+
+QPushButton#profileBtn:hover {
+    color: #F0F0F0;
+    font-weight: 500;
+}
+
+QPushButton#profileBtn:pressed {
+    font-weight: 900;
+    color: #4D5457;
+    color: #ffffff;
 }
 
 QPushButton#eventsBtn {
     background-color: none;
     max-width: 150px;
     max-height: 50px;
-    color: #ffffff;
+    color: #D6D6D6;
+    font-weight: 300;
     border: none;
+}
+
+QPushButton#eventsBtn:hover {
+    font-weight: 500;
+    color: #F0F0F0;
+}
+
+QPushButton#eventsBtn:pressed {
+    font-weight: 900;
+    color: #4D5457;
+    color: #ffffff;
 }
 
 QPushButton#navbarSvg {
@@ -160,7 +160,7 @@ QPushButton#navbarSvg {
 }
 
 *[cssClass~="deleteEventBtn"] {
-    border-image: url(:/image/delete.svg);
+    border-image: url(:/image/close-window.png);
     min-width: 50px;
     min-height: 50px;
     border-radius: 25px;

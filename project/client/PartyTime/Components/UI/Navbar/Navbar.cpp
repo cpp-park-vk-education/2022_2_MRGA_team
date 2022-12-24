@@ -22,28 +22,27 @@ Navbar::Navbar(const QString& styleSheet, size_t navbarSize, QWidget *parent) : 
     profileButton.updateState("profileBtn", "");
     profileButton.button->setText("Profile");
 
-//    eventsButton.updateState("eventsBtn", "");
     eventsButton.updateState("eventsBtn", "");
     eventsButton.button->setText("Events");
 
-    // settingsButton.updateState("eventsBtn", "");
-    // settingsButton.button->setText("Settings");
+     logoutButton.updateState("profileBtn", "");
+     logoutButton.getButton()->setStyleSheet("background-color: none;");
+     logoutButton.button->setText("Logout");
 
     // Выбираем navbar
     if (navbarSize == 3) {
         // Navbar клиента. Закидываем в layout, созданные UI компоненты.
         this->setProperty("cssClass", "clientNavbar");    // установили class navbar-у, который сейчас используется
-        std::cout << "afascascsa" << std::endl;
         layout->addWidget(&mainButton);
         layout->addWidget(&eventsButton);
-        // layout->addWidget(&settingsButton);
-        layout->addWidget(&profileButton);
+        layout->addWidget(&logoutButton);
+//        layout->addWidget(&profileButton);
 //        layout->addWidget(svgButton);
     } else {
         this->setProperty("cssClass", "organizerNavbar");    // установили class navbar-у, который сейчас используется
         layout->addWidget(&mainButton);
-        // layout->addWidget(&settingsButton);
-        layout->addWidget(&profileButton);
+        layout->addWidget(&logoutButton);
+//        layout->addWidget(&profileButton);
 //        layout->addWidget(svgButton);
     }
     delete buttonFactory;
@@ -70,13 +69,15 @@ Navbar::Navbar(const UiButton &_mainBtn, const UiButton &_profileBtn) : layout(n
 Navbar::Navbar(const Navbar &other): painter(new QWidget)
 {
     this->mainButton = other.mainButton;
-    this->profileButton = other.profileButton;
     this->eventsButton = other.eventsButton;
-    this->layout = other.layout;
+//    this->profileButton = other.profileButton;
+    this->logoutButton = other.logoutButton;
+//    this->layout = other.layout;
 
     layout->addWidget(&mainButton);
     layout->addWidget(&eventsButton);
-    layout->addWidget(&profileButton);
+//    layout->addWidget(&profileButton);
+    layout->addWidget(&logoutButton);
 }
 
 Navbar &Navbar::operator=(const Navbar &other)
@@ -91,14 +92,14 @@ Navbar &Navbar::operator=(const Navbar &other)
 
     this->mainButton = other.mainButton;
     this->eventsButton = other.eventsButton;
-    this->profileButton = other.profileButton;
-    // // this->settingsButton = other.settingsButton;
+//    this->profileButton = other.profileButton;
+     this->logoutButton = other.logoutButton;
 
     this->layout->addWidget(&mainButton);
     this->layout->addWidget(&eventsButton);
     // this->layout->addWidget(&settingsButton);
-    this->layout->addWidget(&profileButton);
-
+    // this->layout->addWidget(&profileButton);
+    this->layout->addWidget(&logoutButton);
     return *this;
 }
 
