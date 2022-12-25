@@ -115,7 +115,7 @@ TEST_F(PartyTimeConnectorTest, DISABLED_gettingEvents) {
     // }
 }
 
-TEST_F(PartyTimeConnectorTest, asyncGettingEvents) {
+TEST_F(PartyTimeConnectorTest, DISABLED_asyncGettingEvents) {
     auto future = party->events->events_async();
     Timer t;
     std::future_status status;
@@ -127,12 +127,12 @@ TEST_F(PartyTimeConnectorTest, asyncGettingEvents) {
         }
     } while (status != std::future_status::ready);
     std::cout << "waited " << t.elapsed() << " seconds" << std::endl;
-    // auto events = future.get();
-    // if (events.body.has_value()) {
-    //     for (auto& event: *events.body) {
-    //         // std::cout << event.toJSON() << std::endl;
-    //     }
-    // }
+    auto events = future.get();
+    if (events.body.has_value()) {
+        for (auto& event: *events.body) {
+            std::cout << "id = " << event.id << std::endl;
+        }
+    }
     // auto resultat = party->events->events();
     // if (resultat.body.has_value()) {
     //     auto events = *resultat.body;
@@ -149,7 +149,7 @@ TEST_F(PartyTimeConnectorTest, asyncGettingEvents) {
     // }
 }
 
-TEST_F(PartyTimeConnectorTest, DISABLED_creatingEvent) {
+TEST_F(PartyTimeConnectorTest, creatingEvent) {
 
     Event event("New monday", "2022-12-12", 0, Address("Moscos", 0), "no description", 200, 1);
     // Event event;
@@ -157,10 +157,10 @@ TEST_F(PartyTimeConnectorTest, DISABLED_creatingEvent) {
     // event.date_time =  "2022-12-12";
     // event.description = "no desc";
     // event.address = Address("Moscow", 0);
-    std::cout << event.toJSON(ec) << std::endl;
+    // std::cout << event.toJSON(ec) << std::endl;
     auto resultat = party->events->create_event(event);
     if (resultat.body) {
-        std::cout << "json response" << resultat.body->toJSON() << std::endl;
+        std::cout << "id " << resultat.body->id << std::endl;
     } else {
         std::cout << resultat.result.message() << std::endl;
         std::cout << "failed ? " << resultat.result.failed() << std::endl;
