@@ -176,7 +176,7 @@ void router::loginHandle(res &response, const req &request) {
         return;
     }
     bool successLoginOperation;
-    ec = service_manager_ref.auth_service_.checkPassword(user.id, user.password, successLoginOperation);
+    ec = service_manager_ref.auth_service_.checkPassword(user, successLoginOperation);
     if (ec.failed()) {
         response.result(http::status::gateway_timeout);
         beast::ostream(response.body()) << ec.message();

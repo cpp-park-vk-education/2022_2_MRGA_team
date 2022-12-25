@@ -39,7 +39,7 @@ private:
 
         boost::system::error_code loginExist(const std::string &login, bool &positiveAnswer);
 
-        boost::system::error_code checkPassword(uint userId, const std::string &password, bool &positiveAnswer);
+        boost::system::error_code checkPassword(const User &user, bool &positiveAnswer);
 
     private:
         friend class ServiceManager;

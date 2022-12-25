@@ -25,7 +25,10 @@ boost::system::error_code ServiceManager::AuthorizationService::signupUser(const
 
 boost::system::error_code ServiceManager::AuthorizationService::loginExist(const std::string &login, bool &positiveAnswer) {
     try {
-        positiveAnswer = authorization_repository_.existence_nickname(login);
+        User user;
+        user.nickname = login;
+        auto result = authorization_repository_.existence_user(user);
+        positiveAnswer = (result == -2);
     } catch (std::invalid_argument &ex) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
@@ -34,9 +37,10 @@ boost::system::error_code ServiceManager::AuthorizationService::loginExist(const
     return {};
 }
 
-boost::system::error_code ServiceManager::AuthorizationService::checkPassword(uint userId, const std::string &password, bool &positiveAnswer) {
+boost::system::error_code ServiceManager::AuthorizationService::checkPassword(const User &user, bool &positiveAnswer) {
     try {
-        positiveAnswer = authorization_repository_.check_password(userId, password);
+        int result = authorization_repository_.existence_user(user);
+        positiveAnswer = result > 0;
     } catch (std::invalid_argument &ex) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
@@ -169,7 +173,7 @@ void ServiceManager::UserService::deleteVisitor(uint eventId, uint userId) {
 
 uint ServiceManager::UserService::checkUserExistence(uint userId) {
     try {
-        int userExistence = user_repository_.existence_user(userId);
+        int userExistence = user_repository_.existence_user_by_id(userId);
         if (userExistence < 0) {
             throw std::invalid_argument("такого юзера не существует");
         }
