@@ -12,7 +12,7 @@ int AuthorizationRepository::create_user(User user) {
       Worker worker(*conn);
       size_t user_id = 0;
       Result result_insert_user = worker.exec_prepared("insert_user",
-        user.nickname, user.password, user.email, user.birth_date,
+        user.nickname, user.password, user.email, ((user.birth_date == "") ? "1300-11-13" : user.birth_date),
         user.description);
       if (!result_insert_user.empty()) {
         user_id = result_insert_user.begin()["id"].as<size_t>();
@@ -52,7 +52,6 @@ int AuthorizationRepository::existence_user(User user) {
         size_t got_id = result_select_user.begin()["id"].as<size_t>();
         std::string got_nickname = result_select_user.begin()["nickname"].as<std::string>();
         std::string got_password = result_select_user.begin()["passcode"].as<std::string>();
-        std::cout << std::endl << "HELL" << got_id << std::endl << got_nickname << std::endl << got_password << std::endl;
         if (got_password == user.password) {
           res = got_id;
         } else if (got_password != user.password) {
@@ -63,7 +62,6 @@ int AuthorizationRepository::existence_user(User user) {
       } else {
         res = -3;
       }
-      worker.commit();
     } catch (const std::exception &e) {
       std::cout << e.what() << std::endl;
       res = -1;
