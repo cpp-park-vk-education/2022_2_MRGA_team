@@ -12,7 +12,8 @@ enum class structs_error_codes {
     success = 0,
     parsing_error = 1,
     empty_title = 2,
-    empty_date = 3
+    empty_date = 3,
+    empty_nickname = 4
 };
 using structs_ec = structs_error_codes;
 
@@ -36,6 +37,9 @@ class structs_error_category_impl: public error_category {
         }
         case structs_ec::empty_date: {
             return "Event doesn`t have date"s;
+        }
+        case structs_ec::empty_nickname: {
+            return "User doesn`t have nickname"s;
         }
         default:
             return "не знаю"s;
