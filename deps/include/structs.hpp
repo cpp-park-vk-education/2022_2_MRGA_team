@@ -85,7 +85,7 @@ namespace {
         User(const string &nickname,
             const string &password,
             const string &email,
-            const string &birth_date,
+            const string &birth_date = "",
             const string &description = "",
             const ui &id = 0)
         : id(id), nickname(nickname), password(password), email(email),

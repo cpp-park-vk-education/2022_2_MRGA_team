@@ -6,7 +6,7 @@ CREATE TABLE users (
     nickname text UNIQUE NOT NULL,
     passcode text NOT NULL,
     email text UNIQUE NOT NULL,
-    birth_date date NOT NULL,
+    birth_date date,
     overview text
 );
 
@@ -39,4 +39,6 @@ CREATE TABLE events (
 INSERT INTO users (id, nickname, passcode, email, birth_date, overview) VALUES (0, 'admin', 'qwerty', 'admin@admin.ru', '1970-01-01', 'this user is admin');
 INSERT INTO tokens (id, token_content, expire_date_time, user_id) VALUES (0, 'admin02022', '2050-01-02 12:00:00', 0);
 ALTER TABLE users ADD COLUMN events integer[];
-UPDATE users SET events = events || ARRAY[4, 3, 2];
+UPDATE users SET events = ARRAY[4, 3, 2];
+ALTER TABLE events ADD COLUMN users integer[];
+UPDATE events SET users = ARRAY[0];
