@@ -9,7 +9,14 @@
 class UserRepository : public IUserRepository {
  public:
   explicit UserRepository(DbManager &dbm);
-  int existence_user(size_t user_id);
+
+  /*
+  Возврат:
+   1 - если существует,
+   0 - если не существует,
+   отрицательное число - если ошибка в БД
+  */
+  int existence_user_by_id(size_t user_id);
   User get_user_data(size_t user_id);
 
   int update_user_data(User user);

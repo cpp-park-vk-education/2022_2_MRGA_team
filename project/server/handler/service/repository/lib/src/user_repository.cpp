@@ -2,7 +2,7 @@
 
 UserRepository::UserRepository(DbManager &dbm):db_manager(dbm) {}
 
-int UserRepository::existence_user(size_t user_id) {
+int UserRepository::existence_user_by_id(size_t user_id) {
   return 1;
 }
 

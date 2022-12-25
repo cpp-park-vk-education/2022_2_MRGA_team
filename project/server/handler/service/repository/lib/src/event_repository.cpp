@@ -2,20 +2,10 @@
 
 EventRepository::EventRepository(DbManager &dbm): db_manager(dbm) {}
 
-/* title, date_time и address ВО ВХОДНОЙ СТРУКТУРЕ Event
-Возврат отрицательного числа - если что-то случилось,
-иначе положительный id события в бд */
 int EventRepository::create_event(Event event) {
   int res = 0;
   try {
     Connection *conn = db_manager.get_free_connection();
-    conn->prepare("insert_address_if_need", "INSERT INTO addresses "
-        "(address_title, longitude, latitude) VALUES "
-        "($1, CASE WHEN $2=0 THEN null ELSE $2 END, "
-        "CASE WHEN $3=0 THEN NULL ELSE $3 END) "
-        "ON CONFLICT(address_title) DO UPDATE SET "
-        "longitude=EXCLUDED.longitude, latitude=EXCLUDED.latitude "
-        "RETURNING id;");
 
     std::string address_id = "";
     try {
@@ -37,10 +27,6 @@ int EventRepository::create_event(Event event) {
       return res;
     }
 
-    conn->prepare("insert_event", "INSERT INTO events "
-        "(title, overview, date_time, max_visitors, user_id, address_id) VALUES "
-        "($1, CASE WHEN $2='' THEN null ELSE $2 END, "
-        "$3, $4, $5, $6) RETURNING id;");
     size_t event_id = 0;
     try {
       Worker worker(*conn);
@@ -71,25 +57,11 @@ int EventRepository::create_event(Event event) {
   return res;
 }
 
-/* Возврат пустого вектора - если что-то случилось
-или нет записей, иначе непустой вектора */
 std::vector<Event> EventRepository::get_events() {
   std::vector<Event> events;
   try {
     Connection *conn = db_manager.get_free_connection();
-    conn->prepare("select_events", "SELECT events.id AS events_id, "
-                                  "events.title AS title, "
-                                  "coalesce(events.overview, '') AS description, "
-                                  "events.date_time AS date_time, "
-                                  "events.max_visitors AS max_visitors, "
-                                  "events.user_id AS user_id, "
-                                  "events.address_id AS address_id, "
-                                  "addresses.address_title AS address, "
-                                  "coalesce(addresses.longitude, 0) AS longitude, "
-                                  "coalesce(addresses.latitude, 0) AS latitude "
-                                  "FROM events INNER JOIN addresses "
-                                  "ON events.address_id = addresses.id "
-                                  "ORDER BY events.title;");
+
     try {
       Worker worker(*conn);
       Result result = worker.exec_prepared("select_events");

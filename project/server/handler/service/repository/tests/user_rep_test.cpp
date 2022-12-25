@@ -12,9 +12,9 @@ class UserRepTest : public ::testing::Test {
     DbManager db_manager;
 };
 
-TEST_F(UserRepTest, ExistenceUser) {
+TEST_F(UserRepTest, ExistenceUserById) {
     UserRepository user_rep(db_manager);
-    EXPECT_NO_THROW(user_rep.existence_user(1232));
+    EXPECT_NO_THROW(user_rep.existence_user_by_id(1232));
 }
 
 TEST_F(UserRepTest, GetUserData) {
