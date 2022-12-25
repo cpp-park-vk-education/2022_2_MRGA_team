@@ -51,7 +51,7 @@ public:
     void set_host(const string& new_host) override;
     void set_port(const string& new_port) override;
     void resolve_url() override;
-    void resolve_url(const string& host, const string& port) override;
+    void resolve_url(const string& new_host, const string& new_port) override;
     [[nodiscard]] const string& get_host() const override;
     [[nodiscard]] const string& get_port() const override;
 

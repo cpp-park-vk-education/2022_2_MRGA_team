@@ -8,7 +8,7 @@ void Deferrer::append(deferred_function func) {
     funcs.push_back(func);
 }
 Deferrer::~Deferrer() {
-    for (auto & func : funcs) {
+    for (const auto & func : funcs) {
         func();
     }
 }

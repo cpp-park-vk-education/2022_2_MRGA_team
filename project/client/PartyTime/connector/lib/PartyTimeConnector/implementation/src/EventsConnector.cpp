@@ -205,7 +205,7 @@ Response<optional<vector<Event>>> EventsConnector::my_or_visiting_events(const s
         answer.result = error_code(response_code, PartyTimeConnectorErrorCategory());
         return answer;
     }
-    Events events(res_body);
-    answer.body = events.events;
+    Events events_from_server(res_body);
+    answer.body = events_from_server.events;
     return answer;
 }

@@ -39,7 +39,7 @@ run_docker:
 	docker run -it -v "${PWD}:/project" --net=host -v ~/.gitconfig:/etc/gitconfig -v ~/.ssh:/root/.ssh:ro -w "/project" --rm $(container)
 
 cov: test
-	scripts/cov.sh 10 10
+	scripts/cov.sh 5 5
 
 get_home:
 	echo "$(HOME)"
