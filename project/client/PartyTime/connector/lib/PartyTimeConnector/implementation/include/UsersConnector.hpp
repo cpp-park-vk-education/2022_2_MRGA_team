@@ -16,7 +16,7 @@ class UsersConnector: public IUsersConnector {
     shared_ptr<IHttpConnector> connector;
 public:
     UsersConnector(shared_ptr<ILocalStorage>& store,
-                   shared_ptr<IHttpConnector>& connector);
+                    shared_ptr<IHttpConnector>& connector);
 
     Response<User> profile() override;
 

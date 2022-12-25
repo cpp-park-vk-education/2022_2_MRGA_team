@@ -12,5 +12,8 @@ class IAuthConnector {
 
     virtual Response<bool> logout() = 0;
 
+    virtual bool authorized() const = 0;
+    virtual string id() const = 0;
+
     virtual ~IAuthConnector() = default;
 };

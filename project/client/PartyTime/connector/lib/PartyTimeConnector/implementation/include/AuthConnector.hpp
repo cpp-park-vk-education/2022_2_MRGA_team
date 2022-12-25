@@ -27,6 +27,9 @@ public:
 
     Response<bool> logout() override;
 
+    bool authorized() const override;
+    string id() const override;
+
     ~AuthConnector() override = default;
 
 private:

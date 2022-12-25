@@ -15,7 +15,15 @@ Response<bool> AuthConnector::signup(const User& user) {
 Response<bool> AuthConnector::logout() {
     return {};
 }
-Response<bool> AuthConnector::login_or_signup(const User& user, const string& target, int ec_on_400) {
+bool AuthConnector::authorized() const {
+    return bool(store->get(api.auth_header));
+}
+string AuthConnector::id() const {
+    return *store->get(api.user_id);
+}
+Response<bool> AuthConnector::login_or_signup(const User &user,
+                                              const string &target,
+                                              int ec_on_400) {
     Response<bool> answer;
     error_code ec;
     string body = user.toJSON(ec);
