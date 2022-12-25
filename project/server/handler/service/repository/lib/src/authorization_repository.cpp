@@ -4,6 +4,7 @@ AuthorizationRepository::AuthorizationRepository(DbManager &dbm)
 : db_manager(dbm) {}
 
 int AuthorizationRepository::create_user(User user) {
+  
   return 1;
 }
 

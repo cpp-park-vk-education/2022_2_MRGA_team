@@ -9,16 +9,19 @@ int EventRepository::create_event(Event event) {
   int res = 0;
   try {
     Connection *conn = db_manager.get_free_connection();
+    conn->prepare("insert_address_if_need", "INSERT INTO addresses "
+        "(address_title, longitude, latitude) VALUES "
+        "($1, CASE WHEN $2=0 THEN null ELSE $2 END, "
+        "CASE WHEN $3=0 THEN NULL ELSE $3 END) "
+        "ON CONFLICT(address_title) DO UPDATE SET "
+        "longitude=EXCLUDED.longitude, latitude=EXCLUDED.latitude "
+        "RETURNING id;");
 
-    std::string query_create_or_nothing_address = "INSERT INTO addresses (address_title, longitude, latitude)"
-      " VALUES ('" + event.address.address + "', " + (((event.address.longitude - 0) >= 10e-7) ?
-      std::to_string(event.address.longitude) : "null") + ", " + (((event.address.latitude - 0) >= 10e-7) ?
-      std::to_string(event.address.latitude) : "null") + ") ON CONFLICT(address_title) DO UPDATE SET "
-      "longitude=EXCLUDED.longitude, latitude=EXCLUDED.latitude RETURNING id;";
     std::string address_id = "";
     try {
       Worker worker(*conn);
-      Result result_select1(worker.exec(query_create_or_nothing_address));
+      Result result_select1 = worker.exec_prepared("insert_address_if_need",
+        event.address.address, event.address.longitude, event.address.latitude);
       if (!result_select1.empty()) {
         address_id = result_select1.begin()["id"].as<std::string>();
       } else {
@@ -34,14 +37,16 @@ int EventRepository::create_event(Event event) {
       return res;
     }
 
-    std::string query_insert_event = "INSERT INTO events (title, overview, date_time, max_visitors, user_id, address_id) "
-      "VALUES ('" + event.title + "', '" + ((event.description != "") ? event.description : "null") + "', '" +
-      event.date_time + "', " + ((event.max_visitors ? std::to_string(*event.max_visitors) : "100")) + ", " +
-      std::to_string(event.user_id) + ", " + address_id + ") RETURNING id;";
+    conn->prepare("insert_event", "INSERT INTO events "
+        "(title, overview, date_time, max_visitors, user_id, address_id) VALUES "
+        "($1, CASE WHEN $2='' THEN null ELSE $2 END, "
+        "$3, $4, $5, $6) RETURNING id;");
     size_t event_id = 0;
     try {
       Worker worker(*conn);
-      Result result(worker.exec(query_insert_event));
+      Result result = worker.exec_prepared("insert_event", event.title,
+        event.description, event.date_time, event.max_visitors,
+        event.user_id, address_id);
 
       if (result.empty()) {
         res = -1;
@@ -72,8 +77,7 @@ std::vector<Event> EventRepository::get_events() {
   std::vector<Event> events;
   try {
     Connection *conn = db_manager.get_free_connection();
-
-    std::string query_select_events = "SELECT events.id AS events_id, "
+    conn->prepare("select_events", "SELECT events.id AS events_id, "
                                   "events.title AS title, "
                                   "coalesce(events.overview, '') AS description, "
                                   "events.date_time AS date_time, "
@@ -85,10 +89,10 @@ std::vector<Event> EventRepository::get_events() {
                                   "coalesce(addresses.latitude, 0) AS latitude "
                                   "FROM events INNER JOIN addresses "
                                   "ON events.address_id = addresses.id "
-                                  "ORDER BY events.title;";
+                                  "ORDER BY events.title;");
     try {
       Worker worker(*conn);
-      Result result(worker.exec(query_select_events));
+      Result result = worker.exec_prepared("select_events");
       if (!result.empty()) {
         for (auto row : result) {
           Address address(row["address"].as<std::string>(), row["longitude"].as<double>(),
