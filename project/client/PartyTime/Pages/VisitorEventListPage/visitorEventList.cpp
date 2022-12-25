@@ -28,7 +28,7 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
     lineEdit->setPalette(pal);
     lineEdit->setPlaceholderText("Event name");
     lineEdit->setFont(QFont("Times", -1, QFont::Bold));
-    lineEdit->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
+    lineEdit->setStyleSheet("padding: 10px; background-color: #babfd9; color: #fff; border-radius: 15px");
 
 
     comboBoxLayout->addWidget(comboBox, 0, 0, 1, 2);

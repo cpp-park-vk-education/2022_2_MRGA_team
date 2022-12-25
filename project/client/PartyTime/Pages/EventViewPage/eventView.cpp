@@ -18,6 +18,14 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     maxVisitors(new QLineEdit()),
     party(PartyTimeConnector::default_implementation("0.0.0.0", "8081"))
 {
+    // стлизация edit-ов
+    eventName->setProperty("cssClass", "createFormInput");
+    description->setProperty("cssClass", "createFormInput");
+    date->setProperty("cssClass", "createFormInput");
+    time->setProperty("cssClass", "createFormInput");
+    address->setProperty("cssClass", "createFormInput");
+    maxVisitors->setProperty("cssClass", "createFormInput");
+
     this->createEventButton->setProperty("cssClass", "createEventButton");
     this->setContentsMargins(0, 20, 0, 0);
     Navbar* navbarFactory = new Navbar("", 3);

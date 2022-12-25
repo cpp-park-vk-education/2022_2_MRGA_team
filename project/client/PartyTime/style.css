@@ -35,6 +35,17 @@ QLineEdit {
     text-align: center;
 }
 
+*[cssClass~="createFormInput"] {
+    min-width: 200px;
+    min-height: 40px;
+    padding: 5px 0px 5px 10px;
+    font-size: 16px;
+    border: 2px solid purple;
+    border-radius: 15px;
+    background-color: rgba(152, 128, 203, 1);
+    text-align: center;
+}
+
 /* Buttons*/
 QPushButton {
     min-width: 200px;

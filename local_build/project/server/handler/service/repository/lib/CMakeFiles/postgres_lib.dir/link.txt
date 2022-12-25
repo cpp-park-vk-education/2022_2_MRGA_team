@@ -1,0 +1,2 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libpostgres_lib.a CMakeFiles/postgres_lib.dir/src/authorization_repository.cpp.o CMakeFiles/postgres_lib.dir/src/db_manager.cpp.o CMakeFiles/postgres_lib.dir/src/event_repository.cpp.o CMakeFiles/postgres_lib.dir/src/session_repository.cpp.o CMakeFiles/postgres_lib.dir/src/user_repository.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libpostgres_lib.a
