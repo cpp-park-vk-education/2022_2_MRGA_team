@@ -57,6 +57,12 @@ private:
 
         Event createEvent(const Event& event, boost::system::error_code& ec);
 
+        Events myEvents(uint userId, boost::system::error_code& ec);
+
+        Events visitingEvents(uint userId, boost::system::error_code& ec);
+
+        void update_event_data(const Event &event, boost::system::error_code &ec);
+
         uint checkEventExistence(uint eventId);
 
     private:
