@@ -15,26 +15,26 @@ router::router(http::response<http::dynamic_body> &response,
 
     //get_handler    ["/api/v1/profile"]         = [&](bsv) {   service_->run_user_service(hcKey, query_params);    };
 
-    get_handler    ["/api/v1/events"]          = [&] () { events_handle(response, request); };
+    get_handler    ["/api/v1/events"]          = [&] () { eventsHandle(response, request); };
 
-    post_handler   ["/api/v1/auth/login"]      = [&] () {   login_handle(response, request) ;   };
+    post_handler   ["/api/v1/auth/login"]      = [&] () { loginHandle(response, request) ;   };
 
-    post_handler   ["/api/v1/auth/signup"]     = [&] () { signup_handle(response, request); };
+    post_handler   ["/api/v1/auth/signup"]     = [&] () { signupHandle(response, request); };
 //
-    post_handler   ["/api/v1/events/visit"]    = [&] () {   visit_events_handle(response, request); };
+    post_handler   ["/api/v1/events/visit"]    = [&] () { visitEventsHandle(response, request); };
 
-    post_handler   ["/api/v1/events/unvisit"]    = [&] () {   unvisit_events_handle(response, request); };
+    post_handler   ["/api/v1/events/unvisit"]    = [&] () { unvisitEventsHandle(response, request); };
 //
-    post_handler   ["/api/v1/events/create"]   = [&]() {  create_event_handle(response, request);   };
+    post_handler   ["/api/v1/events/create"]   = [&]() { createEventHandle(response, request);   };
 //
 //
-    put_handler    ["/api/v1/profile/setting"] = [&]() {    setting_handle(response, request) ;  };
+    put_handler    ["/api/v1/profile/setting"] = [&]() { settingHandle(response, request) ;  };
 
 
-    delete_handler ["/api/v1/auth/logout"]     = [&]() {     logout_handle(response, request)  ;};
+    delete_handler ["/api/v1/auth/logout"]     = [&]() { logoutHandle(response, request)  ;};
 }
 
-void router::events_handle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
+void router::eventsHandle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
 
     std::cerr << "=========ЗАПРОС ПРИШЕЛ В GET HANDLE==========" << std::endl;
 
@@ -58,7 +58,7 @@ void router::events_handle(http::response<http::dynamic_body> &response, const h
     }
 }
 
-void router::create_event_handle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
+void router::createEventHandle(http::response<http::dynamic_body> &response, const http::request<http::dynamic_body> &request) {
     bsv token;
     try {
         token = request.at("Authorization");
@@ -80,18 +80,17 @@ void router::create_event_handle(http::response<http::dynamic_body> &response, c
     if (ec.failed()) {
         response.result(http::status::bad_request);
         beast::ostream(response.body()) << ec.message();
-        return ;
+        return;
     }
     event.user_id = userID;
     event = service_manager_ref.event_service_.createEvent(event, ec);
     if (ec.failed()) {
         response.result(http::status::insufficient_storage);
         beast::ostream(response.body()) << ec.message();
-        return ;
+        return;
     }
     response.result(http::status::ok);
     beast::ostream(response.body()) << event.toJSON();
-    return ;
 }
 
 
@@ -116,21 +115,21 @@ void router::create_event_handle(http::response<http::dynamic_body> &response, c
     // //res = service_manager_ref.event_service_.create_event(event);
 
 
-void router::visit_events_handle(res &response, const req &request) {
+void router::visitEventsHandle(res &response, const req &request) {
     bsv token;
     try {
         token = request.at("Authorization");
     } catch (std::out_of_range &ex) {
         response.result(http::status::unauthorized);
-        beast::ostream(response.body()) << "нет хедера с токеном";
+        beast::ostream(response.body()) << "Отсутствует \"Authorization\"\n";
         return;
     }
     uint userID;
     try {
         userID = service_manager_ref.session_service_.checkSession(token.to_string());
     } catch (...) {
-        response.result(http::status::forbidden);
-        beast::ostream(response.body()) << "Ошибка авторизации";
+        response.result(http::status::unauthorized);
+        beast::ostream(response.body()) << "Ошибка авторизации\n";
         return;
     }
     char* end = nullptr;
@@ -138,83 +137,123 @@ void router::visit_events_handle(res &response, const req &request) {
     long long eventID= std::strtoll(beast::buffers_to_string(request.body().data()).c_str(), &end, 0);
     if (*end != '\0' || errno != 0 || eventID < 0) {
         response.result(http::status::bad_request);
-        beast::ostream(response.body()) << "ожидается id ивента";
+        beast::ostream(response.body()) << "Ожидается id ивента\n";
         return ;
     }
     auto ec = service_manager_ref.addVisitor(userID, eventID);
     if (ec.failed()) {
-        response.result(http::status::unavailable_for_legal_reasons);
+        response.result(http::status::gateway_timeout);
         beast::ostream(response.body()) << ec.message();
     }
     response.result(http::status::ok);
-    return ;
-    // std::cerr << "=========ЗАПРОС ПРИШЕЛ В VISIT EVENTS HANDLE==========" << std::endl;
-    // try {
-    //     bsv token = request.at("Authorization");
-    //     try {
-    //         service_manager_ref.session_service_.checkSession(token.to_string());
-    //         try {
-    //             service_manager_ref.addVisitor(beast::buffers_to_string(request.body().data()));
-    //             response.result(http::status::ok);
-    //             return;
-    //         } catch (std::exception &ex) {
-    //             response.result(http::status::unauthorized);
-    //             beast::ostream(response.body()) << ex.what();
-    //             return;
-    //         }
-    //     } catch (...) {
-    //         response.result(http::status::unauthorized);
-    //         beast::ostream(response.body()) << "Ошибка авторизации";
-    //         return;
-    //     }
-    // } catch (std::out_of_range &ex) {
-    //     response.result(http::status::forbidden);
-    //     beast::ostream(response.body()) << "нет хедера с токеном";
-    //     return;
-    // }
 }
 
-void router::unvisit_events_handle(res &response, const req &request) {
-    std::cerr << "=========ЗАПРОС ПРИШЕЛ В UNVISIT EVENTS HANDLE==========" << std::endl;
+void router::unvisitEventsHandle(res &response, const req &request) {
+    bsv token;
     try {
-        bsv token = request.at("Authorization");
-        try {
-            service_manager_ref.session_service_.checkSession(token.to_string());
-            try {
-                service_manager_ref.deleteVisitor(beast::buffers_to_string(request.body().data()));
-                response.result(http::status::ok);
-                // beast::ostream(response.body()) << event.toJSON();
-                return;
-            } catch (std::exception &ex) {
-                response.result(http::status::unauthorized);
-                beast::ostream(response.body()) << ex.what();
-                return;
-            }
-        } catch (...) {
-            response.result(http::status::unauthorized);
-            beast::ostream(response.body()) << "Ошибка авторизации";
-            return;
-        }
+        token = request.at("Authorization");
     } catch (std::out_of_range &ex) {
-        response.result(http::status::forbidden);
-        beast::ostream(response.body()) << "нет хедера с токеном";
+        response.result(http::status::unauthorized);
+        beast::ostream(response.body()) << "Отсутствует \"Authorization\"\n";
         return;
     }
+    uint userID;
+    try {
+        userID = service_manager_ref.session_service_.checkSession(token.to_string());
+    } catch (...) {
+        response.result(http::status::unauthorized);
+        beast::ostream(response.body()) << "Ошибка авторизации\n";
+        return;
+    }
+    char* end = nullptr;
+    errno = 0;
+    long long eventID= std::strtoll(beast::buffers_to_string(request.body().data()).c_str(), &end, 0);
+    if (*end != '\0' || errno != 0 || eventID < 0) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "Ожидается id ивента\n";
+        return;
+    }
+    auto ec = service_manager_ref.deleteVisitor(userID, eventID);
+    if (ec.failed()) {
+        response.result(http::status::gateway_timeout);
+        beast::ostream(response.body()) << ec.message();
+    }
+    response.result(http::status::ok);
 }
 
-void router::login_handle(res &response, const req &request) {
+void router::loginHandle(res &response, const req &request) {
+    error_code ec;
+    User user = User::fromJSON(beast::buffers_to_string(request.body().data()), ec);
+    if (ec.failed()) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "Некорректные данные\n";
+        return;
+    }
+    bool successLoginOperation;
+    ec = service_manager_ref.auth_service_.checkPassword(user.id, user.password, successLoginOperation);
+    if (ec.failed()) {
+        response.result(http::status::gateway_timeout);
+        beast::ostream(response.body()) << ec.message();
+        return;
+    }
+    if (!successLoginOperation) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "Не верный логин или пароль\n";
+        return;
+    }
+    Token token;
+    ec = service_manager_ref.createToken(user, token);
+    if (ec.failed()) {
+        response.result(http::status::gateway_timeout);
+        beast::ostream(response.body()) << ec.message();
+        return;
+    }
+    response.result(http::status::ok);
+    beast::ostream(response.body()) << token.toJSON();
+}
+
+void router::signupHandle(res &response, const req &request) {
+    error_code ec;
+    User user = User::fromJSON(beast::buffers_to_string(request.body().data()), ec);
+    if (ec.failed()) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "Некорректные данные";
+        return;
+    }
+    bool login_exist;
+    ec = service_manager_ref.auth_service_.loginExist(user.nickname, login_exist);
+    if (ec.failed()) {
+        response.result(http::status::gateway_timeout);
+        beast::ostream(response.body()) << ec.message();
+        return;
+    }
+    if (login_exist) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "Такой пользователь уже существует";
+        return;
+    }
+    ec = service_manager_ref.auth_service_.signupUser(user);
+    if (ec.failed()) {
+        response.result(http::status::gateway_timeout);
+        beast::ostream(response.body()) << ec.message();
+        return;
+    }
+    Token token;
+    ec = service_manager_ref.createToken(user, token);
+    if (ec.failed()) {
+        response.result(http::status::gateway_timeout);
+        beast::ostream(response.body()) << ec.message();
+        return;
+    }
+    response.result(http::status::ok);
+    beast::ostream(response.body()) << token.toJSON();
+}
+
+void router::logoutHandle(res &response, const req &request) {
 
 }
 
-void router::signup_handle(res &response, const req &request) {
-
-}
-
-void router::logout_handle(res &response, const req &request) {
-
-}
-
-void router::setting_handle(res &response, const req &request) {
+void router::settingHandle(res &response, const req &request) {
 
 }
 

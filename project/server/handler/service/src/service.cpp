@@ -7,8 +7,43 @@
 #include "session_repository.hpp"
 // #include "service_error_codes.hpp"
 
+#include <chrono>
+
 
 ServiceManager::AuthorizationService::AuthorizationService(DbManager &db_manager) : authorization_repository_(db_manager) {}
+
+boost::system::error_code ServiceManager::AuthorizationService::signupUser(const User &user) {
+    try {
+        authorization_repository_.create_user(user);
+    } catch (std::invalid_argument &ex) {
+        boost::system::error_code ec;
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ec;
+    }
+    return {};
+}
+
+boost::system::error_code ServiceManager::AuthorizationService::loginExist(const std::string &login, bool &positiveAnswer) {
+    try {
+        positiveAnswer = authorization_repository_.existence_nickname(login);
+    } catch (std::invalid_argument &ex) {
+        boost::system::error_code ec;
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ec;
+    }
+    return {};
+}
+
+boost::system::error_code ServiceManager::AuthorizationService::checkPassword(uint userId, const std::string &password, bool &positiveAnswer) {
+    try {
+        positiveAnswer = authorization_repository_.check_password(userId, password);
+    } catch (std::invalid_argument &ex) {
+        boost::system::error_code ec;
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ec;
+    }
+    return {};
+}
 
 ServiceManager::EventService::EventService(DbManager &db_manager) :                 event_repository_(db_manager) {}
 
@@ -71,7 +106,7 @@ uint ServiceManager::EventService::checkEventExistence(uint eventId) {
     }
 }
 
-ServiceManager::SessionService::SessionService(DbManager &db_manager) :             session_repository_(db_manager) {};
+ServiceManager::SessionService::SessionService(DbManager &db_manager) :             session_repository_(db_manager) {}
 
 uint ServiceManager::SessionService::checkSession(const std::string &token) {
     if (token == "admin02022") {
@@ -90,7 +125,8 @@ uint ServiceManager::SessionService::checkSession(const std::string &token) {
     } catch (...) {
         throw std::invalid_argument("такого id пользователя не существует");
     }
-}    
+}
+
 ServiceManager::UserService::UserService(DbManager &db_manager) :                   user_repository_(db_manager) {}
 
 void ServiceManager::UserService::addVisitor(uint eventId, uint userId) {
@@ -107,10 +143,8 @@ void ServiceManager::UserService::deleteVisitor(uint eventId, uint userId) {
 
 uint ServiceManager::UserService::checkUserExistence(uint userId) {
     try {
-        std::cerr << "Начало вызова user_repository_.existence_user()" << std::endl;
         int userExistence = user_repository_.existence_user(userId);
         if (userExistence < 0) {
-            std::cerr << "user_repository_.existence_user() вернул значение < 0" << std::endl;
             throw std::invalid_argument("такого юзера не существует");
         }
         return userId;
@@ -136,9 +170,7 @@ ServiceManager::ServiceManager(DbManager &db_manager)
 
 void ServiceManager::addVisitor(const std::string &requestBody) {
     try {
-        std::cerr << "addVisitor: Создается структура event" << std::endl;
         Event event(requestBody);
-        std::cerr << "addVisitor: event создан" << std::endl;
         try {
             uint userId = user_service_.checkUserExistence(event.user_id);
             uint eventId = event_service_.checkEventExistence(event.id);
@@ -147,7 +179,7 @@ void ServiceManager::addVisitor(const std::string &requestBody) {
             throw (std::invalid_argument(ex.what()));
         }
     } catch (std::exception &ex) {
-        throw std::invalid_argument("добавить нормальные исключения работы парсера");
+        throw std::invalid_argument("Ошибка конструктора объекта\n");
     }
 }
 
@@ -166,7 +198,7 @@ boost::system::error_code ServiceManager::addVisitor(ui userID, ui eventID) {
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
         return ec;
     }
-    return boost::system::error_code();
+    return {};
 }
 
 void ServiceManager::deleteVisitor(const std::string &requestBody) {
@@ -180,6 +212,51 @@ void ServiceManager::deleteVisitor(const std::string &requestBody) {
             throw (std::invalid_argument(ex.what()));
         }
     } catch (...) {
-        throw std::invalid_argument("добавить нормальные исключения работы парсера");
+        throw std::invalid_argument("Ошибка конструктора объекта\n");
     }
 }
+
+boost::system::error_code ServiceManager::deleteVisitor(ui userID, ui eventID) {
+    try {
+        uint userId = user_service_.checkUserExistence(userID);
+        uint eventId = event_service_.checkEventExistence(eventID);
+        user_service_.deleteVisitor(eventId, userId);
+    } catch (std::invalid_argument &ex) {
+        boost::system::error_code ec;
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ec;
+    }
+    return {};
+}
+
+boost::system::error_code ServiceManager::createToken(const User &user, Token &token) {
+    auto now = std::chrono::system_clock::now();
+    std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
+    std::string tokenString = {std::to_string(user.id) + std::ctime(&currentTime) + user.nickname};
+    token.token = tokenString;
+    try {
+        session_service_.session_repository_.create_token(token);
+    } catch (...) {
+        boost::system::error_code ec;
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ec;
+    }
+    return {};
+}
+
+
+// 504 - было соединение и пропало (если бд выкинула исключение)
+// регистрация, такой логин уже есть (), то 401
+
+// авторизация (не правильный логи или пароль) то 401
+// 504 - было соединение и пропало (если бд выкинула исключение)
+
+// 507 поменять на 504 status ... storage.
+
+// 400 во всех других случаях
+
+// юзер_id, логин пользователя, id_токена - канкат для std::string token
+
+// запрос на получение всех своих ивентов
+
+// получить ивенты пользователя, получит

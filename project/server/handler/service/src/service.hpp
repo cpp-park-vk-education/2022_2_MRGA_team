@@ -20,18 +20,30 @@ class ServiceManager {
 public:
     ServiceManager();
 
+    explicit ServiceManager(DbManager &db_manager);
+
     void addVisitor(const std::string &requestBody);
     boost::system::error_code addVisitor(ui userID, ui eventID);
 
     void deleteVisitor(const std::string &requestBody);
+    boost::system::error_code deleteVisitor(ui userID, ui eventID);
 
-    explicit ServiceManager(DbManager &db_manager);
+    boost::system::error_code createToken(const User &user, Token &token);
+
 private:
     class AuthorizationService {
     public:
         explicit AuthorizationService(DbManager &db_manager);
 
+        boost::system::error_code signupUser(const User &user);
+
+        boost::system::error_code loginExist(const std::string &login, bool &positiveAnswer);
+
+        boost::system::error_code checkPassword(uint userId, const std::string &password, bool &positiveAnswer);
+
     private:
+        friend class ServiceManager;
+
         AuthorizationRepository authorization_repository_;
     };
 
@@ -42,13 +54,15 @@ private:
         void event(bsv query_params, std::string &response_body);
 
 	    Event createEvent(uint userId, const std::string& requestBody);
+
         Event createEvent(const Event& event, boost::system::error_code& ec);
 
         uint checkEventExistence(uint eventId);
 
     private:
-        EventRepository event_repository_;
+        friend class ServiceManager;
 
+        EventRepository event_repository_;
     };
 
     class SessionService {
@@ -59,6 +73,8 @@ private:
 
 
     private:
+        friend class ServiceManager;
+
         SessionRepository session_repository_;
     };
 
@@ -74,6 +90,8 @@ private:
         uint checkUserExistence(uint userId);
 
     private:
+        friend class ServiceManager;
+
         UserRepository user_repository_;
     };
 public:
