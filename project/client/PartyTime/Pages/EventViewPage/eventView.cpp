@@ -149,6 +149,7 @@ void EventViewPage::onRemove()
 
 void EventViewPage::onCreate()
 {
+    party->events.get();
     Event event{eventName->text().toStdString(),
                     this->date->date().toString().toStdString() + " " + this->time->time().toString().toStdString(),
                     0, Address{this->address->text().toStdString(), 0},
@@ -241,4 +242,39 @@ EventViewPage::EventViewPage(const QString &headerType, const QString &navbarTyp
 EventViewPage::~EventViewPage()
 {
     delete mainLayout;
+}
+
+std::string EventViewPage::getDate(const std::string &dateTime)
+{
+    return {dateTime.begin(), dateTime.begin() + dateTime.find(' ')};
+}
+
+std::string EventViewPage::getTime(const std::string &dateTime)
+{
+    return {dateTime.begin() + dateTime.find(' ') + 1,  dateTime.end()};
+}
+
+
+void EventViewPage::showMyEvents()
+{
+    auto resultat = party->events->events();
+
+    if (!resultat.body.has_value()) {
+        std::cout << resultat.result.message() << std::endl;
+        QMessageBox errorForm;
+        errorForm.setText(QString::fromStdString(resultat.result.message()));
+        errorForm.exec();
+        return;
+    }
+
+    auto events = *resultat.body;
+    for (auto & ev: events) {
+        eventList->addEvent(new EventItem("visitor", ev.description,
+                                          ev.title,
+                                          ev.curr_visitors,
+                                          *ev.max_visitors,
+                                          getDate(ev.date_time),
+                                          getTime(ev.date_time),
+                                          ev.address.address));
+    }
 }

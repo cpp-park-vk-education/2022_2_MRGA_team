@@ -25,7 +25,10 @@ public:
     EventViewPage(const QString& headerType, const QString& navbarType,
                   const QString& eventListType, const QString& footerType);
     ~EventViewPage();
-    void redraw() {}; // параметр const std::initisializer_list<QSting>
+
+    std::string getDate(const std::string& dateTime);
+    std::string getTime(const std::string& dateTime);
+    void showMyEvents();
     EventList* getEventList() {return eventList;}
 
 private:

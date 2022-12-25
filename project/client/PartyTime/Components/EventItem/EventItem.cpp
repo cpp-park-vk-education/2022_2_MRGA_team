@@ -107,6 +107,9 @@ EventItem::EventItem(const QString &itemType) : EventItem()
     std::cout << itemType.toStdString() << std::endl;
     if (itemType != "organizer") {
         leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
+    } else {
+        subscibeButton.setText("Edit");
+        leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
     }
 
     if (itemType == "organizer") {
@@ -176,6 +179,12 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
 
 void EventItem::onSubcribeClicked()
 {
+    if (subscibeButton.text() == "Edit") {
+        // вызвать сигнал, который проброситься на какую-либо из страниц,
+        // а на странице уже вызоввется обработчик, который отобразить форму редактирования event-a
+        return;
+    }
+
     if (subscibeButton.text() == "Subscribe") {
         subscibeButton.setText("Leave");
     } else {

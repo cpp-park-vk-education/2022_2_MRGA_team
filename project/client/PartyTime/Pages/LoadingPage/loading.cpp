@@ -2,7 +2,10 @@
 
 LoadingPage::LoadingPage(QWidget *parent) : painter(parent), layout(new QVBoxLayout())
 {
-
+    QLabel* gifka = new QLabel();
+    QMovie* movie = new QMovie(":/image/setting_45px.gif");
+    gifka->setStyleSheet("padding-top: 15px;");
+    gifka->setMovie(movie);
 }
 
 LoadingPage::LoadingPage(const QString &loaderType, const QString &messageType) : layout(new QVBoxLayout())

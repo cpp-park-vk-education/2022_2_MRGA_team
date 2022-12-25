@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <boost/beast/core.hpp>
 #include <future>
+
 namespace {
     using std::string;
     using boost::beast::error_code;

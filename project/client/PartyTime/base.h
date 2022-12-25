@@ -26,7 +26,8 @@ enum pagesNumbers {
     e_main = 2,
     e_events = 3,
     e_profile = 4,
-    e_settings = 5
+    e_settings = 5,
+    e_loading = 6
 };
 
 class Base : public QMainWindow
