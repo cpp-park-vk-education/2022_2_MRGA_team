@@ -179,6 +179,28 @@ uint ServiceManager::UserService::checkUserExistence(uint userId) {
     }
 }
 
+User ServiceManager::UserService::getUserData(uint userId) {
+    try {
+        User user = user_repository_.get_user_data(userId);
+        return user;
+    } catch (...) {
+        throw std::invalid_argument("ошибка бд");
+    }
+}
+
+void ServiceManager::UserService::updateUserData(const User &user) {
+    try {
+        int success = user_repository_.update_user_data(user);
+        if (success > 0) {
+            return;
+        } else {
+            throw std::invalid_argument("ошибка бд");
+        }
+    } catch (...) {
+        throw std::invalid_argument("ошибка бд");
+    }
+}
+
 
 ServiceManager::ServiceManager()
     : db_manager_{DbManager()},

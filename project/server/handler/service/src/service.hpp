@@ -95,6 +95,10 @@ private:
 
         uint checkUserExistence(uint userId);
 
+        User getUserData(uint userId);
+
+        void updateUserData(const User &user);
+
     private:
         friend class ServiceManager;
 

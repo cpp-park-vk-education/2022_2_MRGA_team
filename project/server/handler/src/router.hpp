@@ -56,7 +56,11 @@ private:
 
     void visitingEventsHandle       (res &response, const req &request);
 
-    void eventUpdate                (res &response, const req &request);
+    void eventUpdateHandle           (res &response, const req &request);
+
+    void profileUpdateHandle         (res &response, const req &request);
+
+    void profileSettingsHandle       (res &response, const req &request);
 
 public:
     explicit router                  (res &response, const req &request, ServiceManager &service_manager);

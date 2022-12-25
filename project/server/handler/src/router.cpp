@@ -31,7 +31,7 @@ router::router(http::response<http::dynamic_body> &response,
 //
     post_handler   ["/api/v1/events/create"]   = [&]() { createEventHandle(response, request);   };
 
-    post_handler   ["/api/v1/events/visit/update"]    = [&] () { eventUpdate(response, request); };
+    post_handler   ["/api/v1/events/visit/update"]    = [&] () { eventUpdateHandle(response, request); };
 //
 //
     put_handler    ["/api/v1/profile/setting"] = [&]() { settingHandle(response, request) ;  };
@@ -300,7 +300,7 @@ void router::visitingEventsHandle(res &response, const req &request) {
     beast::ostream(response.body()) << eventsVector.toJSON();
 }
 
-void router::eventUpdate(res &response, const req &request) {
+void router::eventUpdateHandle(res &response, const req &request) {
     bsv tokenString;
     try {
         tokenString = request.at("Authorization");
@@ -335,6 +335,72 @@ void router::eventUpdate(res &response, const req &request) {
         beast::ostream(response.body()) << "Ошибка на стороне бд\n";
         return;
     }
+    response.result(http::status::ok);
+    beast::ostream(response.body()) << event.toJSON();
+}
+
+void router::profileSettingsHandle(res &response, const req &request) {
+    bsv tokenString;
+    try {
+        tokenString = request.at("Authorization");
+    } catch (std::out_of_range &ex) {
+        response.result(http::status::unauthorized);
+        beast::ostream(response.body()) << "Отсутствует \"Authorization\"\n";
+        return;
+    }
+    uint userId;
+    try {
+        userId = service_manager_ref.session_service_.checkSession(tokenString.to_string());
+    } catch (std::invalid_argument &ex) {
+        response.result(http::status::unauthorized);
+        beast::ostream(response.body()) << ex.what();
+        return;
+    }
+    User user;
+    try {
+        user = service_manager_ref.user_service_.getUserData(userId);
+    } catch (...) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "Ошибка на стороне бд\n";
+        return;
+    }
+    response.result(http::status::ok);
+    beast::ostream(response.body()) << user.toJSON();
+}
+
+void router::profileUpdateHandle(res &response, const req &request) {
+    bsv tokenString;
+    try {
+        tokenString = request.at("Authorization");
+    } catch (std::out_of_range &ex) {
+        response.result(http::status::unauthorized);
+        beast::ostream(response.body()) << "Отсутствует \"Authorization\"\n";
+        return;
+    }
+    uint userId;
+    try {
+        userId = service_manager_ref.session_service_.checkSession(tokenString.to_string());
+    } catch (std::invalid_argument &ex) {
+        response.result(http::status::unauthorized);
+        beast::ostream(response.body()) << ex.what();
+        return;
+    }
+    error_code ec;
+    User user = User::fromJSON(beast::buffers_to_string(request.body().data()), ec);
+    if (ec.failed()) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "Некорректные данные\n";
+        return;
+    }
+    try {
+        service_manager_ref.user_service_.updateUserData(user);
+    } catch (...) {
+        response.result(http::status::bad_request);
+        beast::ostream(response.body()) << "Ошибка на стороне бд\n";
+        return;
+    }
+    response.result(http::status::ok);
+    beast::ostream(response.body()) << user.toJSON();
 }
 
 
