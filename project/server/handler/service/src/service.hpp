@@ -57,6 +57,12 @@ private:
 
         Event createEvent(const Event& event, boost::system::error_code& ec);
 
+        Events myEvents(uint userId, boost::system::error_code& ec);
+
+        Events visitingEvents(uint userId, boost::system::error_code& ec);
+
+        void update_event_data(const Event &event, boost::system::error_code &ec);
+
         uint checkEventExistence(uint eventId);
 
     private:
@@ -88,6 +94,10 @@ private:
         void deleteVisitor(uint eventId, uint userId);
 
         uint checkUserExistence(uint userId);
+
+        User getUserData(uint userId);
+
+        void updateUserData(const User &user);
 
     private:
         friend class ServiceManager;

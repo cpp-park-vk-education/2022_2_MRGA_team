@@ -48,14 +48,12 @@ boost::system::error_code ServiceManager::AuthorizationService::checkPassword(ui
 ServiceManager::EventService::EventService(DbManager &db_manager) :                 event_repository_(db_manager) {}
 
 void ServiceManager::EventService::event(bsv query_params, string &response_body) {
-    if (query_params.empty()) {
-        Events events;
-        try {
-            events.events = event_repository_.get_events();
-            response_body = events.toJSON();
-        } catch (...) {
-            throw std::invalid_argument("Ошибка от бд");
-        }
+    Events events;
+    try {
+        events.events = event_repository_.get_events();
+        response_body = events.toJSON();
+    } catch (...) {
+        throw std::invalid_argument("Ошибка от бд");
     }
 }
 
@@ -106,6 +104,34 @@ uint ServiceManager::EventService::checkEventExistence(uint eventId) {
     }
 }
 
+Events ServiceManager::EventService::myEvents(uint userId, boost::system::error_code &ec) {
+    std::vector<Event> events;
+    try {
+        events = event_repository_.get_organized_events_by_user(userId);
+    } catch (...) {
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+    }
+    return events;
+}
+
+Events ServiceManager::EventService::visitingEvents(uint userId, boost::system::error_code &ec) {
+    std::vector<Event> events;
+    try {
+        events = event_repository_.get_visited_events_by_user(userId);
+    } catch (...) {
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+    }
+    return events;
+}
+
+void ServiceManager::EventService::update_event_data(const Event &event, boost::system::error_code &ec) {
+    try {
+        int success = event_repository_.update_event_data(event);
+    } catch  (...) {
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+    }
+}
+
 ServiceManager::SessionService::SessionService(DbManager &db_manager) :             session_repository_(db_manager) {}
 
 uint ServiceManager::SessionService::checkSession(const std::string &token) {
@@ -148,6 +174,28 @@ uint ServiceManager::UserService::checkUserExistence(uint userId) {
             throw std::invalid_argument("такого юзера не существует");
         }
         return userId;
+    } catch (...) {
+        throw std::invalid_argument("ошибка бд");
+    }
+}
+
+User ServiceManager::UserService::getUserData(uint userId) {
+    try {
+        User user = user_repository_.get_user_data(userId);
+        return user;
+    } catch (...) {
+        throw std::invalid_argument("ошибка бд");
+    }
+}
+
+void ServiceManager::UserService::updateUserData(const User &user) {
+    try {
+        int success = user_repository_.update_user_data(user);
+        if (success > 0) {
+            return;
+        } else {
+            throw std::invalid_argument("ошибка бд");
+        }
     } catch (...) {
         throw std::invalid_argument("ошибка бд");
     }
