@@ -6,14 +6,19 @@ EventList::EventList(QWidget* parent) : painter(parent),
     scroll(new QScrollArea()),
     scrollWidget(new painter()),
     scrollLayout(),
-    eventList(std::vector<EventItem*>())
+    eventList(std::map<unsigned int, EventItem*>())
 {
     this->setProperty("cssClass", "eventList");
-    scrollWidget->setStyleSheet("border-radius: 15px;");
+    scrollWidget->setStyleSheet("border-radius: 15px; background-color: #ffffff");
     scrollWidget->setLayout(&scrollLayout);
     scroll->setWidget(scrollWidget);
     scroll->setWidgetResizable(true);
+    scroll->setStyleSheet("border-radius: 15px; background-color: #ffffff");
     mainLayout->addWidget(scroll);
+
+    for (const auto& event : this->eventList) {
+        connect(this->eventList[event.first], &EventItem::callEditForm, this, &EventList::handleEventSignal);
+    }
 }
 
 
@@ -21,10 +26,8 @@ EventList::EventList(const QString &evnentListType, size_t size, const QString &
     scroll(new QScrollArea()),
     scrollWidget(new painter()),
     scrollLayout(),
-    eventList(std::vector<EventItem*>())
+    eventList(std::map<unsigned int, EventItem*>())
 {
-
-    std::cout << "EventListType: "  <<  evnentListType.toStdString() << std::endl;
     this->setProperty("cssClass", "eventList");
     scrollWidget->setStyleSheet("border-radius: 15px;");
     scrollWidget->setLayout(&scrollLayout);
@@ -38,9 +41,13 @@ EventList::EventList(const QString &evnentListType, size_t size, const QString &
     mainLayout->addWidget(scroll);
 
     for (size_t i = 0; i < size; ++i) {
-        EventItem* event = new EventItem(evnentListType);
-        eventList.push_back(event);
+        EventItem* event = new EventItem(evnentListType, i);
+        eventList[i] = event;
         scrollLayout.addWidget(event);
+    }
+
+    for (const auto& event : this->eventList) {
+        connect(this->eventList[event.first], &EventItem::callEditForm, this, &EventList::handleEventSignal);
     }
 }
 
@@ -49,8 +56,12 @@ EventList::EventList(const EventList &other) : painter(new QWidget)
 {
     this->eventList.clear();
     for (auto& elem : other.eventList) {
-        this->eventList.push_back(elem);
-        scrollLayout.addWidget(elem);
+        this->eventList[elem.first] = elem.second;
+        scrollLayout.addWidget(elem.second);
+    }
+
+    for (const auto& event : this->eventList) {
+        connect(this->eventList[event.first], &EventItem::callEditForm, this, &EventList::handleEventSignal);
     }
 }
 
@@ -58,9 +69,14 @@ EventList &EventList::operator=(const EventList &other)
 {
     this->eventList.clear();
     for (auto& elem : other.eventList) {
-        this->eventList.push_back(elem);
-        scrollLayout.addWidget(elem);
+        this->eventList[elem.first] = elem.second;
+        scrollLayout.addWidget(elem.second);
     }
+
+    for (const auto& event : this->eventList) {
+        connect(this->eventList[event.first], &EventItem::callEditForm, this, &EventList::handleEventSignal);
+    }
+
     return *this;
 }
 
@@ -69,22 +85,30 @@ EventList::~EventList()
 
 }
 
-void EventList::addEvent(const std::initializer_list<QString>& list)
+void EventList::addEvent(const unsigned int _newId, const std::initializer_list<QString>& list)
 {
-    EventItem* newEvent = new EventItem(list);
-    this->eventList.push_back(newEvent);
+    EventItem* newEvent = new EventItem(_newId, list);
+    this->eventList.insert(std::make_pair(newEvent->getId(), newEvent));
+    connect(this->eventList[newEvent->getId()], &EventItem::callEditForm, this, &EventList::handleEventSignal);
     scrollLayout.addWidget(newEvent);
 }
 
 void EventList::addEvent(EventItem* newEvent)
 {
-    this->eventList.push_back(newEvent);
+    this->eventList[newEvent->getId()] = newEvent;
+    connect(this->eventList[newEvent->getId()], &EventItem::callEditForm, this, &EventList::handleEventSignal);
     scrollLayout.addWidget(newEvent);
 }
 
-void EventList::removeEvent()
+void EventList::removeEvent(const unsigned int _eventId)
 {
-
+    auto key = this->eventList.find(_eventId);
+    if (key != this->eventList.end()) {
+        this->eventList.erase(key);
+        QLayoutItem* item = scrollLayout.takeAt(_eventId);
+        delete item->widget();
+        delete item;
+    }
 }
 
 void EventList::clearEventList()
@@ -102,4 +126,9 @@ EventList *EventList::create(const QString &objType)
         return new EventList();
     }
     return new EventList();
+}
+
+void EventList::handleEventSignal(unsigned int eventId)
+{
+    emit openEditForm(eventId);
 }

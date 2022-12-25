@@ -1,5 +1,6 @@
 #include "Edit.hpp"
 #include <iostream>
+#include <QIcon>
 
 UiEdit::UiEdit(QWidget *parent) : painter(parent), value(new QLineEdit()), editLayout(new QHBoxLayout(this))
 {
@@ -27,19 +28,19 @@ UiEdit::~UiEdit()
     delete editLayout;
 }
 
-UiEdit::UiEdit(const QString &className, const QString &placeholder, const QString& editType) : value(new QLineEdit()), editLayout(new QHBoxLayout(this))
+UiEdit::UiEdit(const QString &className,const QString &placeholder,
+               const QString& editType) : value(new QLineEdit()), editLayout(new QHBoxLayout(this))
 {
     value->setProperty("cssClassEdit", className);
-    if (editType == "settingsInput") {
+
+    if (editType == "defaultInput") {
         QPalette pal = value->palette();
         pal.setColor(QPalette::PlaceholderText, QColor(0, 0, 0, 100));
         value->setPalette(pal);
         value->setFont(QFont("Times", -1, QFont::Bold));
         value->setPlaceholderText(placeholder);
         editLayout->addWidget(value, Qt::AlignLeft | Qt::AlignTop);
-    }
-
-    if (editType == "dateInput") {
+    } else if (editType == "dateInput") {
         QDateEdit* dateEdit = new QDateEdit(QDate(2000, 1, 1));
         dateEdit->setStyleSheet("min-width: 200px; min-height: 50px; background: #7f1ddb; border: 1px solid #000000; border-radius: 15px;");
         QPalette pal = value->palette();
@@ -47,6 +48,16 @@ UiEdit::UiEdit(const QString &className, const QString &placeholder, const QStri
         dateEdit->setPalette(pal);
         dateEdit->setFont(QFont("Times", -1, QFont::Bold));
         editLayout->addWidget(dateEdit, Qt::AlignLeft | Qt::AlignTop);
+    } else if (editType == "createFormInput") {
+        QIcon icoLogin(":/image/gearBlack.svg");
+        value->addAction(icoLogin, QLineEdit::LeadingPosition);
+
+        QPalette pal = value->palette();
+        pal.setColor(QPalette::PlaceholderText, QColor(0, 0, 0, 100));
+        value->setPalette(pal);
+        value->setFont(QFont("Times", -1, QFont::Bold));
+        value->setPlaceholderText(placeholder);
+        editLayout->addWidget(value, Qt::AlignLeft | Qt::AlignTop);
     }
 }
 

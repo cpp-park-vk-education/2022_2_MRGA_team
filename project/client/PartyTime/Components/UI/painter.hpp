@@ -45,7 +45,6 @@ public:
 
 protected:
     void paintEvent(QPaintEvent *event);
-
 };
 
 class MyIcon : public QGraphicsPixmapItem

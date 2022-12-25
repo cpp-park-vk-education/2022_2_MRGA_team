@@ -7,13 +7,13 @@ ProfilePage::ProfilePage(QWidget *parent) : painter(parent),
     QHBoxLayout *titleContainer = new QHBoxLayout;
     mainLayout->addLayout(titleContainer);
     backButton = new QPushButton();
-    backButton->setStyleSheet("min-width: 30px; max-height: 20px; border-image: url(:/image/back-arrow.png); background-repeat: no-repeat; background-position: center; border-style:none;");
+    backButton->setStyleSheet("min-width: 30px; max-height: 20px; border-image: url(:/image/arrow_back.svg); background-repeat: no-repeat; background-position: center; border-style:none;");
     QLabel *titleLabel = new QLabel("Settings");
-    titleLabel->setStyleSheet("font-size: 30px; color: #000000; padding-top: 15px;");
+    titleLabel->setStyleSheet("font-size: 30px; color: #ffffff; padding-top: 15px;");
     titleLabel->setContentsMargins(16, 0, 16, 0);
 
     titleContainer->addWidget(backButton);
-    titleContainer->addWidget(titleLabel); // , Qt::AlignTop | Qt::AlignCenter
+    titleContainer->addWidget(titleLabel);
 
     titleContainer->setContentsMargins(0, 10, 5, 10);
     titleContainer->setAlignment(Qt::AlignCenter | Qt::AlignTop);
@@ -22,8 +22,6 @@ ProfilePage::ProfilePage(QWidget *parent) : painter(parent),
     QMovie* movie = new QMovie(":/image/setting_45px.gif");
     gifka->setStyleSheet("padding-top: 15px;");
     gifka->setMovie(movie);
-    movie->start();
-    titleContainer->addWidget(gifka);
 
     QHBoxLayout* formLayout = new QHBoxLayout();
     formLayout->setAlignment(Qt::AlignTop);

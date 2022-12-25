@@ -23,10 +23,11 @@
 enum pagesNumbers {
     e_authorization = 0,
     e_registration = 1,
-    e_profile = 2,
-    e_main = 3,
-    e_events = 4,
-    e_settings = 5
+    e_main = 2,
+    e_events = 3,
+    e_profile = 4,
+    e_settings = 5,
+    e_loading = 6
 };
 
 class Base : public QMainWindow
@@ -48,25 +49,17 @@ private:
     VisitorPage* visitorPage;
     VisitorEventListPage* visitorEventListPage;
     settings* settingsPage;
-//    std::shared_ptr<PostService> postRequestHandler;
+
 private slots:
     void onAuthPageClicked();
-    void onEnter(); // check validation function
+    void onEnter();
     void onRegistrationPageClicked();
-    void onRegister(); // check validation function
+    void onRegister();
     void onProfilePageClicked();
     void getPrev();
-    // void paintEvent(QPaintEvent* );
-    // void onSettingsPageClicked();
-    // void onSettings();
-     void onEventViewPageClicked();
-    // void onLoadingPageClicked();
-    // void onLoading();
-    // void onVisitorPageClicked();
-    // void onVisitor();
-    // void onOrganizerPageClicked();
-    // void onOrganizer();
-     void onVisitorEventListPageClicked();
-     void onSettingsPageClicked();
+    void onEventViewPageClicked();
+    void onVisitorEventListPageClicked();
+    void onSettingsPageClicked();
 };
+
 #endif // BASE_H

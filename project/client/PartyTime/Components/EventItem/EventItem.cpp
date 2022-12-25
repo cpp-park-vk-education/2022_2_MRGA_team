@@ -5,8 +5,8 @@
 
 
 
-EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
-    leftSide(new QVBoxLayout), informationLayout(new QVBoxLayout),
+EventItem::EventItem(QWidget *parent) : painter(parent), eventId(0), eventItemLayout(this),
+    leftSide(new QVBoxLayout), descrptionLayout(new QVBoxLayout), informationLayout(new QVBoxLayout),
     visitorsInfoLayout(new QVBoxLayout),
     dateTimeLayout(new QHBoxLayout),
     subscibeButton("Subscribe"),
@@ -34,15 +34,29 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     eventItemLayout.addLayout(leftSide, Qt::AlignLeft | Qt::AlignTop);
     subscibeButton.setMaximumWidth(100);
 
+    // begin block
+    QLabel* eventDescr = new QLabel("Description");
+    eventDescr->setStyleSheet("padding-left: 200px; margin: 0px; text-align: top; color: #ffffff; font-size: 24px; font-weight: 900;");
+    eventDescr->setMaximumHeight(40);
     QString textDescription = "Мероприятие клубного формата. Начало мероприятия: 23:00. Артист выходит на сцену не ранее 2:00 и является не единственным элементом ночной программы.";
     QString templateString = "<p style=\"line-height:%1%\">%2<p>";
     int myPercentage = 200;
     QString targetText = templateString.arg(myPercentage).arg(textDescription);
+
+    QHBoxLayout* descriptionTextContainer = new QHBoxLayout();
     eventDecsription.setText(targetText);
     eventDecsription.setObjectName("eventDescription");
-    eventItemLayout.addWidget(&eventDecsription, Qt::AlignLeft);
     eventDecsription.setMaximumWidth(450);
     eventDecsription.setWordWrap(true);
+    descriptionTextContainer->addWidget(&eventDecsription);
+
+    descrptionLayout->setContentsMargins(50, 0, 0, 0);
+
+    descrptionLayout->addWidget(eventDescr, Qt::AlignTop | Qt::AlignCenter);
+    descrptionLayout->addLayout(descriptionTextContainer);
+
+    eventItemLayout.addLayout(descrptionLayout);
+    // end block
 
     topContainer = new QHBoxLayout();
     this->eventTitle.setText("Max Korzh сoncert");
@@ -87,10 +101,14 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     connect(&this->subscibeButton, &QPushButton::clicked, this, &EventItem::onSubcribeClicked);
 }
 
-EventItem::EventItem(const QString &itemType) : EventItem()
+EventItem::EventItem(const QString &itemType, const unsigned int _eventId) : EventItem()
 {
+    this->eventId = _eventId;
     std::cout << itemType.toStdString() << std::endl;
     if (itemType != "organizer") {
+        leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
+    } else {
+        subscibeButton.setText("Edit");
         leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
     }
 
@@ -109,7 +127,7 @@ EventItem::~EventItem()
     delete leftSide;
 }
 
-EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("organizer")
+EventItem::EventItem(const unsigned int _eventId, const std::initializer_list<QString>& list) : EventItem("organizer", _eventId)
 {
     std::vector<QString> initFieldList(7);
     size_t i = 0;
@@ -118,6 +136,7 @@ EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("or
         ++i;
     }
 
+    this->eventId = _eventId;
     eventDecsription.setText(initFieldList[0]);
     eventTitle.setText(initFieldList[1]);
     visitors->setText(visitors->text() + initFieldList[2]);
@@ -127,13 +146,14 @@ EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("or
     address->setText(initFieldList[6]);
 }
 
-EventItem::EventItem(const QString& eventType, const std::string& _descr,
+EventItem::EventItem(const unsigned int _eventId, const QString& eventType, const std::string& _descr,
                      const std::string& _title,
                      const unsigned int& _visitors,
                      const unsigned int& _maxVisitors,
                      const std::string& _date,
                      const std::string& _time,
-                     const std::string& _address) : EventItem(eventType) {
+                     const std::string& _address) : EventItem(eventType, _eventId) {
+        this->eventId = _eventId;
         eventDecsription.setText(QString::fromStdString(_descr));
         eventTitle.setText(QString::fromStdString(_title));
         visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));
@@ -141,6 +161,23 @@ EventItem::EventItem(const QString& eventType, const std::string& _descr,
         date->setText(QString::fromStdString(_date));
         time->setText(QString::fromStdString(_time));
         address->setText(QString::fromStdString(_address));
+}
+
+void EventItem::updateState(const std::string &_descr,
+                            const std::string &_title,
+                            const unsigned int &_visitors,
+                            const unsigned int &_maxVisitors,
+                            const std::string &_date,
+                            const std::string &_time,
+                            const std::string &_address)
+{
+    eventDecsription.setText(QString::fromStdString(_descr));
+    eventTitle.setText(QString::fromStdString(_title));
+    visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));
+    maxVisitors->setText(maxVisitors->text() + QString::fromStdString(std::to_string(_maxVisitors)));
+    date->setText(QString::fromStdString(_date));
+    time->setText(QString::fromStdString(_time));
+    address->setText(QString::fromStdString(_address));
 }
 
 void EventItem::updateState(const std::initializer_list<QString> &list)
@@ -152,20 +189,23 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
 
     eventTitle.setText(initFieldList[0]);
     eventDecsription.setText(initFieldList[1]);
-    visitors->setText(visitors->text() + initFieldList[2]);
+//    visitors->setText(visitors->text() + initFieldList[2]);
     maxVisitors->setText(maxVisitors->text() + initFieldList[3]);
     date->setText(date->text() + initFieldList[4]);
     time->setText(time->text() + initFieldList[5]);
     address->setText(initFieldList[6]);
 }
 
-void EventItem::parseDateTime()
-{
-
-}
-
 void EventItem::onSubcribeClicked()
 {
+    // TODO: вызвать сигнал, который проброситься на какую-либо из страниц,
+    // а на странице уже вызоввется обработчик, который отобразить форму редактирования event-a
+
+    if (subscibeButton.text() == "Edit") {
+        emit callEditForm(this->eventId); // редактровать надо конкретный event, поэтому передадим в обработчик id event-a
+        return;
+    }
+
     if (subscibeButton.text() == "Subscribe") {
         subscibeButton.setText("Leave");
     } else {

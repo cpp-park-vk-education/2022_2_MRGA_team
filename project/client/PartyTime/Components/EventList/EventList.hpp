@@ -15,9 +15,9 @@ public:
     EventList& operator=(const EventList& other);
     ~EventList();
 
-    void addEvent(const std::initializer_list<QString>& list);
+    void addEvent(const unsigned int _newId, const std::initializer_list<QString>& list);
     void addEvent(EventItem* newEvent);
-    void removeEvent();
+    void removeEvent(const unsigned int _eventId);
     void clearEventList();
 
     void minPriceSort() {}
@@ -26,13 +26,23 @@ public:
     void updateState(){}; // const std::initializer_list<QString>&
 
     EventList* create(const QString& objType);
+    std::map<unsigned int, EventItem*>* getEventList() {return &eventList;}
+    EventItem* getEvent(const unsigned int& _eventId) {return eventList[_eventId];}
+
+private slots:
+    // обработчики сигналов с event-ов
+    void handleEventSignal(unsigned int eventId);
+
+signals:
+    void openEditForm(unsigned int eventId);
+
 
 private:
     QVBoxLayout* mainLayout;
     QScrollArea* scroll;
     painter* scrollWidget;
     QVBoxLayout scrollLayout;
-    std::vector<EventItem*> eventList;
-    std::map<int, EventItem*> eventList1;
+//    std::vector<EventItem*> eventList;
+    std::map<unsigned int, EventItem*> eventList;
     UiButton sortButton;
 };

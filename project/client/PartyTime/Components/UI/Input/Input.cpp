@@ -45,19 +45,25 @@ UiInput::UiInput(const QString &className, const QString& inputName, const QStri
 {
     if (className == "settingsInput") {
         label = new UiLabel(className, inputName);
-        edit = new UiEdit(className, placeholder, "settingsInput");
-//        edit = new UiEdit(className, placeholder, "dateInput");
+        edit = new UiEdit(className, placeholder, "defaultInput");
 
         this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
         this->layout->addWidget(edit, 1, 2, Qt::AlignLeft |  Qt::AlignTop);
     }
     if (className == "settingsInputRight") {
         label = new UiLabel(className, inputName);
-        edit = new UiEdit(className, placeholder, "settingsInput");
-//        edit = new UiEdit(className, placeholder, "dateInput");
+        edit = new UiEdit(className, placeholder, "defaultInput");
 
         this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
         this->layout->addWidget(edit, 1, 2, Qt::AlignLeft |  Qt::AlignTop);
+    }
+
+    if (className == "createFormInput") {
+        label = new UiLabel(className, inputName);
+        edit = new UiEdit(className, placeholder, "defaultInput");
+
+        this->layout->addWidget(label, 1, 1, Qt::AlignLeft |  Qt::AlignTop);
+        this->layout->addWidget(edit, 1, 4, Qt::AlignLeft |  Qt::AlignTop);
     }
 }
 
