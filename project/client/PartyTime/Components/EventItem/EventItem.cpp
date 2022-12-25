@@ -31,7 +31,6 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     userAvatar.setPixmap(scaled);
     userAvatar.setMaximumWidth(200);
     leftSide->addWidget(&userAvatar, Qt::AlignCenter | Qt::AlignTop);
-//    leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
     eventItemLayout.addLayout(leftSide, Qt::AlignLeft | Qt::AlignTop);
     subscibeButton.setMaximumWidth(100);
 
@@ -53,7 +52,6 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
 
     visitorsInfoLayout->setContentsMargins(0, 0, 0, 100);
     visitors = new QLabel("People: ");
-//    visitors->setContentsMargins(0, 0, 50, 0);
     visitors->setMaximumWidth(300);
     visitors->setStyleSheet("min-height: 30px; color: #ffffff; font-size: 18px; font-weight: 700;");
     visitorsInfoLayout->addWidget(visitors, 0, Qt::AlignLeft | Qt::AlignTop);
@@ -70,6 +68,7 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     dateTimeLayout->addWidget(date, 0, Qt::AlignLeft | Qt::AlignTop);
     time = new QLabel("22:00");
     time->setStyleSheet("color: #ffffff; font-size: 18px; font-weight: 700;");
+    time->setMinimumWidth(200);
     dateTimeLayout->addWidget(time, 1, Qt::AlignLeft | Qt::AlignTop);
 
     informationLayout->addLayout(dateTimeLayout);
@@ -85,16 +84,12 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     eventItemLayout.setAlignment(Qt::AlignLeft);
     eventItemLayout.setSizeConstraint(QLayout::SetDefaultConstraint);
 
-    dateTime->setDate(QDate(2000, 12, 12));
-    dateTime->setTime(QTime(12, 14)); // часы, минуты
-    eventItemLayout.addWidget(dateTime);
-
     connect(&this->subscibeButton, &QPushButton::clicked, this, &EventItem::onSubcribeClicked);
 }
 
 EventItem::EventItem(const QString &itemType) : EventItem()
 {
-
+    std::cout << itemType.toStdString() << std::endl;
     if (itemType != "organizer") {
         leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
     }
@@ -132,18 +127,19 @@ EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("or
     address->setText(initFieldList[6]);
 }
 
-EventItem::EventItem(const std::string& _descr,
+EventItem::EventItem(const QString& eventType, const std::string& _descr,
                      const std::string& _title,
                      const unsigned int& _visitors,
                      const unsigned int& _maxVisitors,
                      const std::string& _date,
-                     const std::string& _address) : EventItem("organizer") {
+                     const std::string& _time,
+                     const std::string& _address) : EventItem(eventType) {
         eventDecsription.setText(QString::fromStdString(_descr));
         eventTitle.setText(QString::fromStdString(_title));
         visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));
         maxVisitors->setText(maxVisitors->text() + QString::fromStdString(std::to_string(_maxVisitors)));
         date->setText(QString::fromStdString(_date));
-        time->setText(QString::fromStdString(_date));
+        time->setText(QString::fromStdString(_time));
         address->setText(QString::fromStdString(_address));
 }
 
@@ -165,6 +161,7 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
 
 void EventItem::parseDateTime()
 {
+
 }
 
 void EventItem::onSubcribeClicked()

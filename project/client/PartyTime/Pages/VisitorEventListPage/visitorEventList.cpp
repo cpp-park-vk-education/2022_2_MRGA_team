@@ -3,7 +3,7 @@
 
 VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), mainLayout(new QVBoxLayout(this)), comboBox(new QComboBox(this)),
     hideButton(new QPushButton("Search", this)),
-    lineEdit(new QLineEdit(this))
+    lineEdit(new QLineEdit(this)), party(PartyTimeConnector::default_implementation("0.0.0.0", "8081"))
 {
     // задаем id страницы
     this->setObjectName("visitorPage");
@@ -47,12 +47,13 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
                              );
 
     comboBox->setProperty("cssClaas", "comboBoxList");
-    comboBox->setFixedWidth(200);
+    comboBox->setFixedWidth(250);
     comboBox->setView(listView);
     comboBox->addItem("All events");
-    comboBox->addItem("Сlub events");
-    comboBox->addItem("Home events");
-    comboBox->addItem("Сoncerts");
+    comboBox->addItem("Subscribe events");
+    comboBox->addItem("Closest events");
+
+    std::cout << "ComboBox text: " << comboBox->currentText().toStdString() << std::endl;
 
     connect(hideButton, &QPushButton::clicked, this, &VisitorEventListPage::hideRow);
 
@@ -60,29 +61,8 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
     mainLayout->addLayout(comboBoxLayout, Qt::AlignTop | Qt::AlignCenter);
     this->eventList = new EventList("visitor", 0);
 
-    // get Event
-//    auto ptc = PartyTimeConnector::default_implementation();
-//    auto resultat = ptc->events->events();
-//    auto events = *resultat.body;
-//    std::cout << "events size: " << events.size() << std::endl;
-
-//    for (auto & ev: events) {
-//        eventList->addEvent(new EventItem(ev.description,
-//                                          ev.title,
-//                                          *ev.max_visitors,
-//                                          *ev.max_visitors,
-//                                          ev.date_time,
-//                                          ev.date_time));
-//        eventList->addEvent({
-//                                QString::fromStdString(ev.description),
-//                                QString::fromStdString(ev.title),
-//                                QString::fromStdString(ev.date_time),
-//                                QString::fromStdString(std::to_string(*ev.max_visitors)),
-//                                QString::fromStdString(std::to_string(*ev.max_visitors)),
-//                                QString::fromStdString(std::to_string(*ev.max_visitors))
-//                            });
-//    }
-
+    // GetEvent
+    updateEvents();
     mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);
 }
 
@@ -120,12 +100,45 @@ VisitorEventListPage::VisitorEventListPage(const QString &headerType, const QStr
 
 VisitorEventListPage::~VisitorEventListPage()
 {
-    //    delete mainLayout;
+
+}
+
+std::string VisitorEventListPage::getDate(const std::string &dateTime)
+{
+    return {dateTime.begin(), dateTime.begin() + dateTime.find(' ')};
+}
+
+std::string VisitorEventListPage::getTime(const std::string &dateTime)
+{
+    return {dateTime.begin() + dateTime.find(' ') + 1,  dateTime.end()};
 }
 
 void VisitorEventListPage::hideRow()
 {
     std::vector<std::string> headers;
+}
 
-//    listView->setRowHidden(lineEdit->text().toInt(), true);
+void VisitorEventListPage::updateEvents()
+{
+    auto resultat = party->events->events();
+
+    if (!resultat.body.has_value()) {
+        std::cout << resultat.result.message() << std::endl;
+        QMessageBox errorForm;
+        errorForm.setText(QString::fromStdString(resultat.result.message()));
+        errorForm.exec();
+        return;
+    }
+
+    auto events = *resultat.body;
+    for (auto & ev: events) {
+        eventList->addEvent(new EventItem("visitor", ev.description,
+                                          ev.title,
+                                          ev.curr_visitors,
+                                          *ev.max_visitors,
+                                          getDate(ev.date_time),
+                                          getTime(ev.date_time),
+                                          ev.address.address));
+    }
+
 }

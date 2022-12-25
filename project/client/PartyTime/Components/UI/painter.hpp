@@ -19,6 +19,7 @@
 #include <QScrollArea>
 #include <QMessageBox>
 #include <QTextEdit>
+#include <QDateEdit>
 #include <QTimeEdit>
 #include <QCalendarWidget>
 #include <QComboBox>

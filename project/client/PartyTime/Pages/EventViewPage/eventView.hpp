@@ -2,6 +2,7 @@
 
 #include "Header.hpp"
 #include "Navbar.hpp"
+#include "EventForm.hpp"
 #include "EventList.hpp"
 #include "footer.hpp"
 #include <../styleHelper.hpp>
@@ -9,6 +10,7 @@
 #include <QStringListModel>
 #include <../painter.hpp>
 #include "HttpConnector.hpp"
+#include "PartyTimeConnector.hpp"
 
 
 class EventViewPage : public painter {
@@ -32,20 +34,20 @@ private:
     EventList* eventList;
     Footer footer;
 
+    EventForm* form1;
     painter* form;
-    QPushButton* addButton;
-    QPushButton* closeFormButton;
-    QPushButton* createEventButton;
+    QPushButton* addButton;         // кнопка, которая открывает форму
+    QPushButton* closeFormButton;   // кнопка, которая закрывает форму
+    QPushButton* createEventButton; // кнопка, которая находится в форме
 
     QLineEdit* eventName;
     QLineEdit* description;
-    QLineEdit* date;
-    QLineEdit* time;
+    QDateEdit* date;
+    QTimeEdit* time;
     QLineEdit* address;
     QLineEdit* visitors;
     QLineEdit* maxVisitors;
-
-
+    std::shared_ptr<PartyTimeConnector> party;
 
 protected slots:
     void onAdd();

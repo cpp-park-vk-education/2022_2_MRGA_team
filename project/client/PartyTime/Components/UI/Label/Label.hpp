@@ -23,6 +23,7 @@ public:
     UiLabel *create(const QString &objectType, const QString& text);
 
     void updateState(){}; // const std::initializer_list<QString>&
+    QLabel* getLabel() {return label;}
 private:
     QLabel* label;
     QHBoxLayout* labelLayout;

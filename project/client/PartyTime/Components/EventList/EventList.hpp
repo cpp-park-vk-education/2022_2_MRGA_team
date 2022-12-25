@@ -18,6 +18,7 @@ public:
     void addEvent(const std::initializer_list<QString>& list);
     void addEvent(EventItem* newEvent);
     void removeEvent();
+    void clearEventList();
 
     void minPriceSort() {}
     void minRoadSort() {}
