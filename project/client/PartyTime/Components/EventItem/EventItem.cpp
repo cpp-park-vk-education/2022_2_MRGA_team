@@ -173,8 +173,8 @@ void EventItem::updateState(const std::string &_descr,
 {
     eventDecsription.setText(QString::fromStdString(_descr));
     eventTitle.setText(QString::fromStdString(_title));
-    visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));
-    maxVisitors->setText(maxVisitors->text() + QString::fromStdString(std::to_string(_maxVisitors)));
+    visitors->setText("People: " + QString::fromStdString(std::to_string(_visitors)));
+    maxVisitors->setText("Maximum people: " + QString::fromStdString(std::to_string(_maxVisitors)));
     date->setText(QString::fromStdString(_date));
     time->setText(QString::fromStdString(_time));
     address->setText(QString::fromStdString(_address));
