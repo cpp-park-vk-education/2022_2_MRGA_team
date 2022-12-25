@@ -36,21 +36,21 @@ public:
 private:
     ServiceManager& service_manager_ref;
 
-    void events_handle               (res &response, const req &request);
+    void eventsHandle               (res &response, const req &request);
 
-    void create_event_handle         (res &response, const req &request);
+    void createEventHandle         (res &response, const req &request);
 
-    void visit_events_handle         (res &response, const req &request);
+    void visitEventsHandle         (res &response, const req &request);
 
-    void unvisit_events_handle         (res &response, const req &request);
+    void unvisitEventsHandle         (res &response, const req &request);
 
-    void login_handle                (res &response, const req &request);
+    void loginHandle                (res &response, const req &request);
 
-    void signup_handle               (res &response, const req &request);
+    void signupHandle               (res &response, const req &request);
 
-    void logout_handle               (res &response, const req &request);
+    void logoutHandle               (res &response, const req &request);
 
-    void setting_handle              (res &response, const req &request);
+    void settingHandle              (res &response, const req &request);
 
 public:
     explicit router                  (res &response, const req &request, ServiceManager &service_manager);

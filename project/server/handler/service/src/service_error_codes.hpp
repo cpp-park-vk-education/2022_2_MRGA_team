@@ -8,7 +8,7 @@ namespace {
 
 enum class service_error_codes {
     success = 0,
-    db_side_error = -1,
+    db_side_error = -1
 };
 
 using serv_errc = service_error_codes;
@@ -23,10 +23,10 @@ class service_error_category_impl: public boost::system::error_category {
 
         switch (ec) {
         case serv_errc::success: {
-            return "все хорошо"s;
+            return "успешный ответ бд"s;
         }
         case serv_errc::db_side_error: {
-            return "ошибка на стороне базы данных";
+            return "ошибка на стороне бд"s;
         }
         default:
             return "не знаю"s;
