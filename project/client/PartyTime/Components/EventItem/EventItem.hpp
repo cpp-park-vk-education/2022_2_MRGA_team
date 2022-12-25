@@ -25,8 +25,12 @@ public:
     friend class EventList;
     friend class VisitorEventListPage;
     QPushButton* getSubscribeButton() {return &subscibeButton;}
+    void setId(unsigned int newId) {eventId = newId;}
+    unsigned int getId() {return eventId;}
 
 private:
+    unsigned int eventId;
+
     QHBoxLayout eventItemLayout;
     QVBoxLayout* leftSide;
     QVBoxLayout* descrptionLayout;
@@ -50,4 +54,7 @@ private:
 
 private slots:
     void onSubcribeClicked();
+
+signals:
+    void callEditForm(unsigned int eventId);
 };

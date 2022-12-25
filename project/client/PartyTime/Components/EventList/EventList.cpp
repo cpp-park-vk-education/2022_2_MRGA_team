@@ -103,3 +103,8 @@ EventList *EventList::create(const QString &objType)
     }
     return new EventList();
 }
+
+void EventList::handleEventSignal(unsigned int eventId)
+{
+    emit openEditForm(eventId);
+}

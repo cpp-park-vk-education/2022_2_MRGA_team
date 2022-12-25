@@ -28,6 +28,14 @@ public:
     EventList* create(const QString& objType);
     std::vector<EventItem*>* getEventList() {return &eventList;}
 
+private slots:
+    // обработчики сигналов с event-ов
+    void handleEventSignal(unsigned int eventId);
+
+signals:
+    void openEditForm(unsigned int eventId);
+
+
 private:
     QVBoxLayout* mainLayout;
     QScrollArea* scroll;

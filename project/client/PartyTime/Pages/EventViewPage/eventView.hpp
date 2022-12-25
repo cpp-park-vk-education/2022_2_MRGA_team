@@ -40,9 +40,11 @@ private:
 
     EventForm* form1;
     painter* form;
+
     QPushButton* addButton;         // кнопка, которая открывает форму
     QPushButton* closeFormButton;   // кнопка, которая закрывает форму
     QPushButton* createEventButton; // кнопка, которая находится в форме
+    QPushButton* saveChangesButton; // кнопка, которая находится в форме сохранения ивента
 
     QLineEdit* eventName;
     QLineEdit* description;
@@ -57,10 +59,7 @@ protected slots:
     void onAdd();
     void onRemove();
     void onCreate();
-
-//signals:
-//    void addItem() {}
-//    void deleteItem() {}
+    void onEdit();
 
 private:
     QListView* m_pwPending = nullptr;

@@ -5,7 +5,7 @@
 
 
 
-EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
+EventItem::EventItem(QWidget *parent) : painter(parent), eventId(0), eventItemLayout(this),
     leftSide(new QVBoxLayout), descrptionLayout(new QVBoxLayout), informationLayout(new QVBoxLayout),
     visitorsInfoLayout(new QVBoxLayout),
     dateTimeLayout(new QHBoxLayout),
@@ -34,7 +34,6 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventItemLayout(this),
     eventItemLayout.addLayout(leftSide, Qt::AlignLeft | Qt::AlignTop);
     subscibeButton.setMaximumWidth(100);
 
-//    eventItemLayout.addWidget(&eventDecsription, Qt::AlignLeft);
     // begin block
     QLabel* eventDescr = new QLabel("Description");
     eventDescr->setStyleSheet("padding-left: 200px; margin: 0px; text-align: top; color: #ffffff; font-size: 24px; font-weight: 900;");
@@ -180,6 +179,7 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
 void EventItem::onSubcribeClicked()
 {
     if (subscibeButton.text() == "Edit") {
+        emit callEditForm(eventId); // редактровать надо конкретный event, поэтому передадим в обработчик id event-a
         // вызвать сигнал, который проброситься на какую-либо из страниц,
         // а на странице уже вызоввется обработчик, который отобразить форму редактирования event-a
         return;
