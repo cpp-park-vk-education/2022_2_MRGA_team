@@ -31,6 +31,8 @@ public:
     void showMyEvents();
     EventList* getEventList() {return eventList;}
 
+    void cleanForm();
+
 private:
     QVBoxLayout* mainLayout;
     Header header;
@@ -55,11 +57,14 @@ private:
     QLineEdit* maxVisitors;
     std::shared_ptr<PartyTimeConnector> party;
 
+
+    painter* editForm;
+
 protected slots:
     void onAdd();
     void onRemove();
     void onCreate();
-    void onEdit();
+    void onEdit(const unsigned int& _eventId);
 
 private:
     QListView* m_pwPending = nullptr;
@@ -67,4 +72,7 @@ private:
 
     QAction* m_pActAdd = nullptr;
     QAction* m_pActRemove = nullptr;
+
+signals:
+    void editEvent(const unsigned int& eventId);
 };

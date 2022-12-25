@@ -101,8 +101,9 @@ EventItem::EventItem(QWidget *parent) : painter(parent), eventId(0), eventItemLa
     connect(&this->subscibeButton, &QPushButton::clicked, this, &EventItem::onSubcribeClicked);
 }
 
-EventItem::EventItem(const QString &itemType) : EventItem()
+EventItem::EventItem(const QString &itemType, const unsigned int _eventId) : EventItem()
 {
+    this->eventId = _eventId;
     std::cout << itemType.toStdString() << std::endl;
     if (itemType != "organizer") {
         leftSide->addWidget(&subscibeButton, Qt::AlignLeft | Qt::AlignTop);
@@ -126,7 +127,7 @@ EventItem::~EventItem()
     delete leftSide;
 }
 
-EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("organizer")
+EventItem::EventItem(const unsigned int _eventId, const std::initializer_list<QString>& list) : EventItem("organizer", _eventId)
 {
     std::vector<QString> initFieldList(7);
     size_t i = 0;
@@ -135,6 +136,7 @@ EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("or
         ++i;
     }
 
+    this->eventId = _eventId;
     eventDecsription.setText(initFieldList[0]);
     eventTitle.setText(initFieldList[1]);
     visitors->setText(visitors->text() + initFieldList[2]);
@@ -144,13 +146,14 @@ EventItem::EventItem(const std::initializer_list<QString>& list) : EventItem("or
     address->setText(initFieldList[6]);
 }
 
-EventItem::EventItem(const QString& eventType, const std::string& _descr,
+EventItem::EventItem(const unsigned int _eventId, const QString& eventType, const std::string& _descr,
                      const std::string& _title,
                      const unsigned int& _visitors,
                      const unsigned int& _maxVisitors,
                      const std::string& _date,
                      const std::string& _time,
-                     const std::string& _address) : EventItem(eventType) {
+                     const std::string& _address) : EventItem(eventType, _eventId) {
+        this->eventId = _eventId;
         eventDecsription.setText(QString::fromStdString(_descr));
         eventTitle.setText(QString::fromStdString(_title));
         visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));
@@ -158,6 +161,23 @@ EventItem::EventItem(const QString& eventType, const std::string& _descr,
         date->setText(QString::fromStdString(_date));
         time->setText(QString::fromStdString(_time));
         address->setText(QString::fromStdString(_address));
+}
+
+void EventItem::updateState(const std::string &_descr,
+                            const std::string &_title,
+                            const unsigned int &_visitors,
+                            const unsigned int &_maxVisitors,
+                            const std::string &_date,
+                            const std::string &_time,
+                            const std::string &_address)
+{
+    eventDecsription.setText(QString::fromStdString(_descr));
+    eventTitle.setText(QString::fromStdString(_title));
+    visitors->setText(visitors->text() + QString::fromStdString(std::to_string(_visitors)));
+    maxVisitors->setText(maxVisitors->text() + QString::fromStdString(std::to_string(_maxVisitors)));
+    date->setText(QString::fromStdString(_date));
+    time->setText(QString::fromStdString(_time));
+    address->setText(QString::fromStdString(_address));
 }
 
 void EventItem::updateState(const std::initializer_list<QString> &list)
@@ -169,7 +189,7 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
 
     eventTitle.setText(initFieldList[0]);
     eventDecsription.setText(initFieldList[1]);
-    visitors->setText(visitors->text() + initFieldList[2]);
+//    visitors->setText(visitors->text() + initFieldList[2]);
     maxVisitors->setText(maxVisitors->text() + initFieldList[3]);
     date->setText(date->text() + initFieldList[4]);
     time->setText(time->text() + initFieldList[5]);
@@ -178,10 +198,11 @@ void EventItem::updateState(const std::initializer_list<QString> &list)
 
 void EventItem::onSubcribeClicked()
 {
+    // TODO: вызвать сигнал, который проброситься на какую-либо из страниц,
+    // а на странице уже вызоввется обработчик, который отобразить форму редактирования event-a
+
     if (subscibeButton.text() == "Edit") {
-        emit callEditForm(eventId); // редактровать надо конкретный event, поэтому передадим в обработчик id event-a
-        // вызвать сигнал, который проброситься на какую-либо из страниц,
-        // а на странице уже вызоввется обработчик, который отобразить форму редактирования event-a
+        emit callEditForm(this->eventId); // редактровать надо конкретный event, поэтому передадим в обработчик id event-a
         return;
     }
 

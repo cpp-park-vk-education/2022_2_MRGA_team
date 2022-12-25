@@ -8,6 +8,8 @@
 #include <QWidget>
 #include <iostream>
 
+#include <typeinfo>
+
 EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new QVBoxLayout(this)),
     addButton(new QPushButton()),
     closeFormButton(new QPushButton()), createEventButton(new QPushButton("Create")),
@@ -46,12 +48,13 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     this->eventList = new EventList("organizer", 0);
     mainLayout->addWidget(eventList, 2, Qt::AlignTop | Qt::AlignCenter);
 
-    // Form
+    // Forms
 //    form1 = new EventForm("createFormInput", 6, "createFormButton", 1, this);
 //    QVBoxLayout* formLayout = new QVBoxLayout(form1);
 //    formLayout->setAlignment(Qt::AlignCenter);
 //    form1->hide();
 
+    // Create form
     form = new painter(this);
     form->setProperty("cssClass", "formEvent");
     form->setGeometry(300, 300, 1000, 600);
@@ -129,21 +132,19 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     inputLayout->addWidget(this->createEventButton, Qt::AlignTop | Qt::AlignCenter);
     form->hide();
 
+    // Todo: создать EditForm
+
     connect(addButton, &QPushButton::clicked, this, &EventViewPage::onAdd);
     connect(closeFormButton, &QPushButton::clicked, this, &EventViewPage::onRemove);
     connect(createEventButton, &QPushButton::clicked, this, &EventViewPage::onCreate);
-    connect(this->eventList, &EventList::openEditForm, this, &EventViewPage::onCreate);
+    connect(this->eventList, &EventList::openEditForm, this, &EventViewPage::onEdit);
 }
 
 // всплытие формы
 void EventViewPage::onAdd()
 {
-    this->eventName->clear();
-    this->description->clear();
-    this->date->clear();
-    this->time->clear();
-    this->address->clear();
-    this->maxVisitors->clear();
+    this->cleanForm();
+    createEventButton->setText("Create");
     form->show();
 }
 
@@ -151,113 +152,104 @@ void EventViewPage::onRemove()
 {
     if (form) { // form
         form->hide();
-        this->eventName->clear();
-        this->description->clear();
-        this->date->clear();
-        this->time->clear();
-        this->address->clear();
-        this->maxVisitors->clear();
     }
 }
 
 void EventViewPage::onCreate()
-{   
-    Event event{eventName->text().toStdString(),
-                    this->date->date().toString().toStdString() + " " + this->time->time().toString().toStdString(),
-                    0, Address{this->address->text().toStdString(), 0},
-                    this->description->text().toStdString(),
-                    this->maxVisitors->text().toInt(),
-                    0, 0
-               };
+{
+    if (createEventButton->text() == "Create") {
+        Event event{eventName->text().toStdString(),
+                        this->date->date().toString().toStdString() + " " + this->time->time().toString().toStdString(),
+                        0, Address{this->address->text().toStdString(), 0},
+                        this->description->text().toStdString(),
+                        this->maxVisitors->text().toInt(),
+                        0, 0
+                   };
 
-    if (event.description == "" || event.title == "" ||
-            event.date_time == "" || event.address.address == "" ||
-            this->maxVisitors->text().toStdString() == "") {
-        QMessageBox errorForm;
-        errorForm.setText("All fields must be filled");
-        errorForm.exec();
-        return;
+        if (event.description == "" || event.title == "" ||
+                event.date_time == "" || event.address.address == "" ||
+                this->maxVisitors->text().toStdString() == "") {
+            QMessageBox errorForm;
+            errorForm.setText("All fields must be filled");
+            errorForm.exec();
+            return;
+        }
+
+        std::cout << event.toJSON() << std::endl;
+
+        // createEvent
+        auto resultat = party->events->create_event(event);
+
+        if (!resultat.body.has_value()) {
+            std::cout << resultat.result.message() << std::endl;
+            QMessageBox errorForm;
+            errorForm.setText(QString::fromStdString(resultat.result.message()));
+            errorForm.exec();
+
+            form->hide();
+            return;
+        }
+
+        std::cout << "Id event-a: " << resultat.body->id << std::endl;
+
+        this->eventList->addEvent(resultat.body->id, {this->description->text(),
+                                       this->eventName->text(),
+                                        "0",
+                                       this->maxVisitors->text(),
+                                       this->date->date().toString(),
+                                       this->time->time().toString(),
+                                       this->address->text()});
+    } else {
+            // TODO: обновить event
     }
 
-    std::cout << event.toJSON() << std::endl;
-
-    // createEvent
-    auto resultat = party->events->create_event(event);
-    if (!resultat.body.has_value()) {
-        std::cout << resultat.result.message() << std::endl;
-        QMessageBox errorForm;
-        errorForm.setText(QString::fromStdString(resultat.result.message()));
-        errorForm.exec();
-
-        form->hide();
-        this->eventName->clear();
-        this->description->clear();
-        this->date->clear();
-        this->time->clear();
-        this->address->clear();
-        this->maxVisitors->clear();
-        return;
-    }
-
-    this->eventList->addEvent({this->description->text(),
-                                   this->eventName->text(),
-                                    "0",
-                                   this->maxVisitors->text(),
-                                   this->date->date().toString(),
-                                   this->time->time().toString(),
-                                   this->address->text()});
     form->hide();
 }
 
-void EventViewPage::onEdit()
+void EventViewPage::onEdit(const unsigned int& _eventId)
 {
+    createEventButton->setText("Save");
+    // Редактируем конкретный event
+    EventItem* editEvent = this->eventList->getEvent(_eventId);
+
+    // устанавливаем в форме текст, который находится в конкретных EventItem-ах
+    this->eventName->setText(editEvent->getEventName()->text());
+    this->description->setText(editEvent->getDescription()->text());
+    this->date->setDate(QDate::fromString(editEvent->getDate()->text()));
+    this->time->setTime(QTime::fromString(editEvent->getTime()->text()));
+    this->address->setText(editEvent->getAddress()->text());
+    auto pos = editEvent->getMaxVisitors()->text().toStdString().find(":") + 1;
+    QString stringMaxVisitors = QString::fromStdString(editEvent->getMaxVisitors()->text().toStdString().substr(pos));
+    this->maxVisitors->setText(stringMaxVisitors);
+
     form->show();
-    Event event{eventName->text().toStdString(),
-                    this->date->date().toString().toStdString() + " " + this->time->time().toString().toStdString(),
-                    0, Address{this->address->text().toStdString(), 0},
-                    this->description->text().toStdString(),
-                    this->maxVisitors->text().toInt(),
-                    0, 0
-               };
 
-    if (event.description == "" || event.title == "" ||
-            event.date_time == "" || event.address.address == "" ||
-            this->maxVisitors->text().toStdString() == "") {
-        QMessageBox errorForm;
-        errorForm.setText("All fields must be filled");
-        errorForm.exec();
-        return;
-    }
+    std::cout << "BEFORE UPDATE" << std::endl;
+    std::cout << editEvent->getEventName()->text().toStdString() << std::endl;
+    std::cout << editEvent->getDescription()->text().toStdString() << std::endl;
+    std::cout << editEvent->getDate()->text().toStdString() << std::endl;
+    std::cout << editEvent->getTime()->text().toStdString() << std::endl;
+    std::cout << editEvent->getAddress()->text().toStdString() << std::endl;
+    std::cout << editEvent->getMaxVisitors()->text().toStdString() << std::endl;
 
-    std::cout << event.toJSON() << std::endl;
+    editEvent->updateState(this->description->text().toStdString(),
+                           this->eventName->text().toStdString(),
+                           0,
+                           this->maxVisitors->text().toUInt(),
+                           this->date->text().toStdString(),
+                           this->time->text().toStdString(),
+                           this->address->text().toStdString()
+                           );
 
-    // createEvent
-    auto resultat = party->events->create_event(event);
-    if (!resultat.body.has_value()) {
-        std::cout << resultat.result.message() << std::endl;
-        QMessageBox errorForm;
-        errorForm.setText(QString::fromStdString(resultat.result.message()));
-        errorForm.exec();
+    std::cout << "AFTER UPDATE" << std::endl;
+    std::cout << this->description->text().toStdString() << std::endl;
+    std::cout << this->eventName->text().toStdString() << std::endl;
+    std::cout << this->maxVisitors->text().toUInt() << std::endl;
+    std::cout << this->date->text().toStdString() << std::endl;
+    std::cout << this->time->text().toStdString() << std::endl;
+    std::cout << this->address->text().toStdString() << std::endl;
 
-        form->hide();
-        this->eventName->clear();
-        this->description->clear();
-        this->date->clear();
-        this->time->clear();
-        this->address->clear();
-        this->maxVisitors->clear();
-        return;
-    }
-
-    this->eventList->addEvent({this->description->text(),
-                                   this->eventName->text(),
-                                    "0",
-                                   this->maxVisitors->text(),
-                                   this->date->date().toString(),
-                                   this->time->time().toString(),
-                                   this->address->text()});
-
-    form->hide();
+    editEvent->repaint();
 }
 
 EventViewPage::EventViewPage(const std::initializer_list<QString> typesList) : mainLayout(new QVBoxLayout())
@@ -320,7 +312,7 @@ void EventViewPage::showMyEvents()
 
     auto events = *resultat.body;
     for (auto & ev: events) {
-        eventList->addEvent(new EventItem("visitor", ev.description,
+        eventList->addEvent(new EventItem(ev.id, "visitor", ev.description,
                                           ev.title,
                                           ev.curr_visitors,
                                           *ev.max_visitors,
@@ -328,4 +320,14 @@ void EventViewPage::showMyEvents()
                                           getTime(ev.date_time),
                                           ev.address.address));
     }
+}
+
+void EventViewPage::cleanForm()
+{
+    this->eventName->clear();
+    this->description->clear();
+    this->date->clear();
+    this->time->clear();
+    this->address->clear();
+    this->maxVisitors->clear();
 }

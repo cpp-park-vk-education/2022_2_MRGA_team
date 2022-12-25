@@ -139,7 +139,8 @@ void VisitorEventListPage::updateEvents()
 
     auto events = *resultat.body;
     for (auto & ev: events) {
-        eventList->addEvent(new EventItem("visitor", ev.description,
+        std::cout << "Event id" << ev.id << std::endl;
+        eventList->addEvent(new EventItem(ev.id, "visitor", ev.description,
                                           ev.title,
                                           ev.curr_visitors,
                                           *ev.max_visitors,
