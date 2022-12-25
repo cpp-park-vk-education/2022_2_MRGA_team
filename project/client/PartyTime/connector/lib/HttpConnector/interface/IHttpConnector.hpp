@@ -20,7 +20,9 @@ struct Status {
     string str;
 };
 template <typename T> struct HTTPResponse {
-    HTTPResponse(const T& body, const unordered_map<name, value>& headers, const Status& status)
+    HTTPResponse(const T& body,
+                const unordered_map<name, value>& headers,
+                const Status& status)
     :
     response_body(body), headers(headers), status(status) {}
 
@@ -34,6 +36,7 @@ template <typename T> struct RequestResult {
     optional<HTTPResponse<T>> response;
     error_code result;
 };
+
 
 
 class IHttpConnector {

@@ -5,10 +5,14 @@
 
 enum class PartyTimeConnectorErrorCodes {
     success = 0,
-    not_success,
+    nickname_already_exists = 1u,
+    wrong_credentials = 2u,
     bad_request = 400u,
     not_authorized = 401u,
-    forbidden = 403u
+    forbidden = 403u,
+    unsufficient_storage = 507u,
+    gateway_timeout = 504u,
+
 };
 namespace {
     using std::string;
@@ -31,9 +35,6 @@ public:
             case PTCErrC::success: {
                 return "все хорошо"s;
             }
-            case PTCErrC::not_success: {
-                return "все плохо"s;
-            }
             case PTCErrC::forbidden: {
                 return "возможно ваш токен просрочен, недействителен или вам не позволено делать это действие";
             }
@@ -42,6 +43,18 @@ public:
             }
             case PTCErrC::not_authorized: {
                 return "вы не авторизованы";
+            }
+            case PTCErrC::unsufficient_storage: {
+                return "ошибка на стороне базы данных";
+            }
+            case PTCErrC::gateway_timeout: {
+                return "ошибка на стороне базы данных";
+            }
+            case PTCErrC::wrong_credentials: {
+                return "неправильный логин или пароль";
+            }
+            case PTCErrC::nickname_already_exists: {
+                return "пользователь с таким логином уже существует";
             }
             default: {
                 return "не могу сказать, плохо или хорошо"s;

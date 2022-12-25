@@ -21,17 +21,26 @@ public:
                     shared_ptr<IHttpConnector>& connector);
 
     Response<optional<vector<Event>>> events() override;
+    Response<optional<vector<Event>>> my_events() override;
+    Response<optional<vector<Event>>> visiting_events() override;
     future<Response<optional<vector<Event>>>> events_async() override;
-    Response<bool> visit(const size_t& event_id, const size_t& user_id) override;
+    Response<optional<Event>> visit(const size_t& event_id) override;
+    Response<optional<Event>> unvisit(const size_t& event_id) override;
 
     Response<optional<Event>> create_event(const Event& event) override;
     future<Response<optional<Event>>> create_event_async(const Event& event) override;
+
+    Response<optional<Event>> update_event(const Event& event) override;
 
     ~EventsConnector() override = default;
 
 private:
     bool authorized() const;
     string auth_token() const;
+    string id() const;
+
+    Response<optional<Event>> visit_or_unvisit(const size_t& event_id, const string& target);
+    Response<optional<vector<Event>>> my_or_visiting_events(const string& target);
 
 };
 

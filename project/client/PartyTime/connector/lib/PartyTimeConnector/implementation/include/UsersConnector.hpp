@@ -3,6 +3,7 @@
 #include "IUsersConnector.hpp"
 #include "ILocalStorage.hpp"
 #include "IHttpConnector.hpp"
+#include "api.h"
 #include <memory>
 
 namespace {
@@ -10,18 +11,23 @@ namespace {
 }
 // @реализация IUsersConnector
 class UsersConnector: public IUsersConnector {
-
+    PartyTimeApi api;
     shared_ptr<ILocalStorage> store;
     shared_ptr<IHttpConnector> connector;
 public:
     UsersConnector(shared_ptr<ILocalStorage>& store,
                    shared_ptr<IHttpConnector>& connector);
 
-    Response<User> profile(const size_t& id) override;
+    Response<User> profile() override;
 
-    Response<bool> setting(const User& user) override;
+    Response<User> setting(const User& user) override;
 
     virtual ~UsersConnector() override = default;
+
+private:
+    bool authorized() const;
+    string auth_token() const;
+    string id() const;
 
 };
 

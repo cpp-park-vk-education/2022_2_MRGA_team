@@ -49,17 +49,25 @@ struct PartyTimeApi {
     если order_field не задан, сортировка не производится,
     если where не задан, то отбираются все результаты запроса*/
     const string events = "/api/v1/events";
+    const string my_events = "/api/v1/my_events";
+    const string visiting_events = "/api/v1/visiting_events";
 
-    /*принимает ?event_id={int}&user_id={int}
+    /*принимает id-event
     http-method - POST*/
     const string visit_event = "/api/v1/events/visit";
     const string unvisit_event = "/api/v1/events/unvisit";
+
+    /*принимает json-event
+    http-method - POST*/
+    const string update_event = "/api/v1/events/update";
 
     /*принимает запрос через тело запроса.
     http-method - POST*/
     const string create_event = "/api/v1/events/create";
 
     const string auth_header = "Authorization";
+    const string token = "token";
+    const string user_id = "id";
 };
 /*
  user {
