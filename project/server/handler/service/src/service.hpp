@@ -65,6 +65,8 @@ private:
 
         int checkEventExistence(uint eventId);
 
+        std::vector<Event> event();
+
     private:
         friend class ServiceManager;
 

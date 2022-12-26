@@ -68,6 +68,10 @@ void ServiceManager::EventService::event(bsv query_params, string &response_body
     }
 }
 
+std::vector<Event> ServiceManager::EventService::event() {
+    return event_repository_.get_events();
+}
+
 Event ServiceManager::EventService::createEvent(uint userId, const std::string& request_body) {
     Event event(request_body);
     std::cout << "event_id" << event.id << std::endl;
