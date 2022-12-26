@@ -3,11 +3,11 @@
 #include <cstddef>
 #include <string>
 
-#include "objects.hpp"
+#include <structs.hpp>
 
 class IUserRepository {
  public:
-  virtual int existence_user(size_t user_id) = 0;
+  virtual int existence_user_by_id(size_t user_id) = 0;
   virtual User get_user_data(size_t user_id) = 0;
 
   virtual int update_user_data(User user) = 0;

@@ -10,12 +10,17 @@ class AuthorizationRepository : public IAuthorizationRepository {
  public:
   explicit AuthorizationRepository(DbManager &dbm);
 
+  /* Возвращается положительный id, если успешно created, 
+  иначе отрицательная ошибка */
   int create_user(User user);
 
-  int existence_nickname(const std::string &nickname);
-  int existence_email(const std::string &email);
+  /* Возвращается
+    положительное число - id, совпадение и nickname, и password)
+    -2 - password не совпадает
+    -3 - если не найден user c таким nickname, то есть user'а такого нет
+    иначе другое отрицательное число - ошибка при работе с БД */
+  int existence_user(User user);
 
-  int check_password(size_t user_id, const std::string &input_password);
  private:
   DbManager &db_manager;
 };

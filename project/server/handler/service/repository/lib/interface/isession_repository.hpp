@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "objects.hpp"
+#include <structs.hpp>
 
 class ISessionRepository {
  public:

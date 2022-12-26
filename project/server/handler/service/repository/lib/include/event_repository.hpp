@@ -11,8 +11,16 @@ class EventRepository : public IEventRepository {
  public:
   explicit EventRepository(DbManager &dbm);
 
+  /* Во входной структуре Event обязательно:
+    title, date_time и address (в ней обязательно текст адреса)
+  Возврат:
+    отрицательного числа - если что-то случилось,
+    положительного числа - id события, созданного в бд */
   int create_event(Event event);
 
+/* Возврат:
+    пустого вектора - если что-то случилось или нет записей,
+    иначе непустой вектора всех событий */
   std::vector<Event> get_events();
 
   int update_event_data(Event event);
