@@ -102,7 +102,61 @@ std::vector<Event> EventRepository::get_events() {
 }
 
 int EventRepository::update_event_data(Event event) {
-  return 1;
+  int res = 0;
+  try {
+    Connection *conn = db_manager.get_free_connection();
+
+    std::string address_id = "";
+    try {
+      Worker worker(*conn);
+      Result result_select1 = worker.exec_prepared("insert_address_if_need",
+        event.address.address, event.address.longitude, event.address.latitude);
+      if (!result_select1.empty()) {
+        address_id = result_select1.begin()["id"].as<std::string>();
+      } else {
+        res = -1;
+      }
+      worker.commit();
+    } catch (const std::exception &e) {
+      std::cout << e.what() << std::endl;
+      res = -1;
+    }
+    if (res < 0) {
+      db_manager.return_connection(conn);
+      return res;
+    }
+
+    size_t event_id = 0;
+    try {
+      Worker worker(*conn);
+      Result result = worker.exec_prepared("update_event", event.title,
+        event.description, event.date_time, event.max_visitors,
+        event.user_id, address_id, event.id);
+
+      if (result.empty()) {
+        res = -1;
+      } else {
+        event_id = result.begin()["id"].as<size_t>();
+      }
+      worker.commit();
+    } catch (const std::exception &e) {
+      std::cout << e.what() << std::endl;
+      res = -1;
+    }
+    if (res < 0) {
+      db_manager.return_connection(conn);
+      return res;
+    }
+    if (event.id != event_id) {
+      std::cout << "MYERROR При обновлении что-то полно не так!" << std::endl;
+    }
+    res = 1;
+    db_manager.return_connection(conn);
+  } catch (const std::exception &e) {
+    std::cout << e.what() << std::endl;
+    res = -1;
+  }
+  return res;
 }
 
 int EventRepository::delete_event(size_t event_id) {

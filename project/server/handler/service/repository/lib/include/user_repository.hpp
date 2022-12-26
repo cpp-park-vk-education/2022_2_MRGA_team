@@ -18,7 +18,7 @@ class UserRepository : public IUserRepository {
   */
   int existence_user_by_id(size_t user_id);
   User get_user_data(size_t user_id);
-
+  
   int update_user_data(User user);
 
   /*

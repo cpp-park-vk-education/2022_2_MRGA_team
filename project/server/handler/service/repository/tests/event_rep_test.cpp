@@ -3,6 +3,7 @@
 
 #include "event_repository.hpp"
 #include "user_repository.hpp"
+#include "authorization_repository.hpp"
 
 class EventRepTest : public ::testing::Test {
  protected:
@@ -30,9 +31,26 @@ TEST_F(EventRepTest, GetEventData) {
 }
 
 TEST_F(EventRepTest, UpdateEventData) {
-    Event event("Hally hopter", "2022-01-01 23:59:59", 0, Address("Кремль, Москва", 3), "For funny people!", 10);
     EventRepository event_rep(db_manager);
-    EXPECT_NO_THROW(event_rep.update_event_data(event));
+
+    Event event("Paskha", "2023-03-11 12:00:00", 0, Address("Красная площадь, 'Охотный ряд'", 12466, -43721), "Welcome to Moscow!", 10000);
+    int created_id = event_rep.create_event(event);
+
+
+    Event update_event("Masleniza", "2023-03-04 11:30:00", 0, Address("Синяя площадь, 'Второй Охотный ряд'", 12466, -43722), "Welcome to Moscow!", 15000, 0, created_id);
+    int res_code = event_rep.update_event_data(update_event);
+    EXPECT_EQ(res_code, 1);
+
+    std::vector<Event> events = event_rep.get_events();
+    Event event_data1;
+    for (const auto &event : events) {
+        if (event.id == created_id) {
+            event_data1 = event;
+            break;
+        }
+    }
+    std::cout << "HELL " << event_data1.toJSON() << std::endl;
+    EXPECT_EQ(event_data1.id, created_id);
 }
 
 TEST_F(EventRepTest, DeleteEvent) {
@@ -66,7 +84,6 @@ TEST_F(EventRepTest, GetEvents) {
             break;
         }
     }
-    std::cout << id_created << " HELL1 " << event_data1.toJSON() << std::endl;
     EXPECT_EQ(event_data1.curr_visitors, 1);
 
     user_rep.delete_visitor(id_created, 0);

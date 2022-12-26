@@ -23,6 +23,12 @@ class EventRepository : public IEventRepository {
     иначе непустой вектора всех событий */
   std::vector<Event> get_events();
 
+  /*
+  Возврат:
+   1 - если успешно обновилось,
+   0 - если нет,
+   отрицательное число - если ошибка в БД
+  */
   int update_event_data(Event event);
 
   int delete_event(size_t event_id);

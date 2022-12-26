@@ -186,6 +186,10 @@ void DbManager::set_prepare_for_conn(Connection *conn) {
   conn->prepare("remove_event_from_user", "UPDATE users SET "
     "events = array_remove(events, $1) "
     "WHERE id = $2;");
+  conn->prepare("update_event", "UPDATE events SET "
+    "title = CASE WHEN $1='' THEN null ELSE $1 END, "
+    "overview = CASE WHEN $2='' THEN null ELSE $2 END, "
+    "date_time = $3, max_visitors = $4, user_id = $5, address_id = $6 WHERE id = $7 RETURNING id;");
 }
 
 int DbManager::return_connection(Connection *conn) {
