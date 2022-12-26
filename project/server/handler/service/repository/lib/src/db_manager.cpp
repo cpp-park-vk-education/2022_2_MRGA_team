@@ -37,42 +37,10 @@ PGConnectionConfig PGConnectionConfig::from_file(const std::string &path, result
 Connection* PGConnectionByConfig(const PGConnectionConfig& config, result &res) {
     std::string uri = "postgresql://" + config.user +
     ":" + config.password + "@" + config.host + ":" + std::to_string(config.port) + "/" + config.database;
-    Connection* conn;
+    Connection *conn;
     try {
       conn = new Connection(uri);
-      conn->prepare("insert_address_if_need", "INSERT INTO addresses "
-        "(address_title, longitude, latitude) VALUES "
-        "($1, CASE WHEN $2=0 THEN null ELSE $2 END, "
-        "CASE WHEN $3=0 THEN NULL ELSE $3 END) "
-        "ON CONFLICT(address_title) DO UPDATE SET "
-        "longitude=EXCLUDED.longitude, latitude=EXCLUDED.latitude "
-        "RETURNING id;");
-      conn->prepare("insert_event", "INSERT INTO events "
-        "(title, overview, date_time, max_visitors, user_id, address_id) VALUES "
-        "($1, CASE WHEN $2='' THEN null ELSE $2 END, "
-        "$3, $4, $5, $6) RETURNING id;");
-      conn->prepare("select_events", "SELECT events.id AS events_id, "
-                                  "events.title AS title, "
-                                  "coalesce(events.overview, '') AS description, "
-                                  "events.date_time AS date_time, "
-                                  "events.max_visitors AS max_visitors, "
-                                  "events.user_id AS user_id, "
-                                  "events.address_id AS address_id, "
-                                  "addresses.address_title AS address, "
-                                  "coalesce(addresses.longitude, 0) AS longitude, "
-                                  "coalesce(addresses.latitude, 0) AS latitude "
-                                  "FROM events INNER JOIN addresses "
-                                  "ON events.address_id = addresses.id "
-                                  "ORDER BY events.title;");
-      conn->prepare("try_to_find_user", "SELECT id, nickname, passcode "
-        "FROM users "
-        "WHERE nickname = $1 "
-        "LIMIT 1;");
-      conn->prepare("insert_user", "INSERT INTO users "
-        "(nickname, passcode, email, birth_date, overview) VALUES "
-        "($1, $2, $3, "
-        "CASE WHEN $4=to_date('2300-12-31', 'YYYY-MM-DD') THEN NULL ELSE $4 END, CASE WHEN $5='' THEN NULL ELSE $5 END) "
-        "RETURNING id;");
+      DbManager::set_prepare_for_conn(conn);
     } catch(...) {
       res = ERROR;
       return nullptr;
@@ -89,39 +57,7 @@ DbManager::DbManager() : MAX_SIZE(10) {
     std::string config_data(serialize(params));
     for (size_t i = 0; i < MAX_SIZE; ++i) {
       Connection *conn = new Connection(config_data);
-      conn->prepare("insert_address_if_need", "INSERT INTO addresses "
-        "(address_title, longitude, latitude) VALUES "
-        "($1, CASE WHEN $2=0 THEN null ELSE $2 END, "
-        "CASE WHEN $3=0 THEN NULL ELSE $3 END) "
-        "ON CONFLICT(address_title) DO UPDATE SET "
-        "longitude=EXCLUDED.longitude, latitude=EXCLUDED.latitude "
-        "RETURNING id;");
-      conn->prepare("insert_event", "INSERT INTO events "
-        "(title, overview, date_time, max_visitors, user_id, address_id) VALUES "
-        "($1, CASE WHEN $2='' THEN null ELSE $2 END, "
-        "$3, $4, $5, $6) RETURNING id;");
-      conn->prepare("select_events", "SELECT events.id AS events_id, "
-                                  "events.title AS title, "
-                                  "coalesce(events.overview, '') AS description, "
-                                  "events.date_time AS date_time, "
-                                  "events.max_visitors AS max_visitors, "
-                                  "events.user_id AS user_id, "
-                                  "events.address_id AS address_id, "
-                                  "addresses.address_title AS address, "
-                                  "coalesce(addresses.longitude, 0) AS longitude, "
-                                  "coalesce(addresses.latitude, 0) AS latitude "
-                                  "FROM events INNER JOIN addresses "
-                                  "ON events.address_id = addresses.id "
-                                  "ORDER BY events.title;");
-      conn->prepare("try_to_find_user", "SELECT id, nickname, passcode "
-        "FROM users "
-        "WHERE nickname = $1 "
-        "LIMIT 1;");
-      conn->prepare("insert_user", "INSERT INTO users "
-        "(nickname, passcode, email, birth_date, overview) VALUES "
-        "($1, $2, $3, "
-        "CASE WHEN $4=to_date('2300-12-31', 'YYYY-MM-DD') THEN NULL ELSE $4 END, CASE WHEN $5='' THEN NULL ELSE $5 END) "
-        "RETURNING id;");
+      DbManager::set_prepare_for_conn(conn);
       connections[ i ] = conn;
     }
     std::cout << "соединения успешно созданы default" << std::endl;
@@ -187,6 +123,49 @@ Connection *DbManager::get_free_connection() {
   Connection *res = connections.back();
   connections.pop_back();
   return res;
+}
+
+void DbManager::set_prepare_for_conn(Connection *conn) {
+  conn->prepare("insert_address_if_need", "INSERT INTO addresses "
+    "(address_title, longitude, latitude) VALUES "
+    "($1, CASE WHEN $2=0 THEN null ELSE $2 END, "
+    "CASE WHEN $3=0 THEN NULL ELSE $3 END) "
+    "ON CONFLICT(address_title) DO UPDATE SET "
+    "longitude=EXCLUDED.longitude, latitude=EXCLUDED.latitude "
+    "RETURNING id;");
+  conn->prepare("insert_event", "INSERT INTO events "
+    "(title, overview, date_time, max_visitors, user_id, address_id) VALUES "
+    "($1, CASE WHEN $2='' THEN null ELSE $2 END, "
+    "$3, $4, $5, $6) RETURNING id;");
+  conn->prepare("select_events", "SELECT events.id AS events_id, "
+                              "events.title AS title, "
+                              "coalesce(events.overview, '') AS description, "
+                              "events.date_time AS date_time, "
+                              "events.max_visitors AS max_visitors, "
+                              "events.user_id AS user_id, "
+                              "events.address_id AS address_id, "
+                              "addresses.address_title AS address, "
+                              "coalesce(addresses.longitude, 0) AS longitude, "
+                              "coalesce(addresses.latitude, 0) AS latitude "
+                              "FROM events INNER JOIN addresses "
+                              "ON events.address_id = addresses.id "
+                              "ORDER BY events.title;");
+  conn->prepare("try_to_find_user", "SELECT id, nickname, passcode "
+    "FROM users "
+    "WHERE nickname = $1 "
+    "LIMIT 1;");
+  conn->prepare("insert_user", "INSERT INTO users "
+    "(nickname, passcode, email, birth_date, overview) VALUES "
+    "($1, $2, $3, "
+    "CASE WHEN $4=to_date('1300-11-13', 'YYYY-MM-DD') THEN NULL ELSE $4 END, CASE WHEN $5='' THEN NULL ELSE $5 END) "
+    "RETURNING id;");
+  conn->prepare("try_to_find_user_by_id", "SELECT 200 AS result "
+    "FROM users "
+    "WHERE id = $1;");
+  conn->prepare("get_user_data_by_id", "SELECT nickname, passcode, "
+    "email, birth_date, overview "
+    "FROM users "
+    "WHERE id = $1;");
 }
 
 int DbManager::return_connection(Connection *conn) {

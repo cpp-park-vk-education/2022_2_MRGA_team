@@ -48,6 +48,7 @@ class DbManager {
 
   ~DbManager();
 
+  static void set_prepare_for_conn(Connection *conn);
  private:
   std::vector<std::string> load_config(const std::string &path) const;
   std::string serialize(const std::vector<std::string> &params) const;

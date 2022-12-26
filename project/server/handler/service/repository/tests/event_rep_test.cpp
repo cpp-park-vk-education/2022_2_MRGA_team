@@ -5,9 +5,13 @@
 
 class EventRepTest : public ::testing::Test {
  protected:
-    void SetUp() override {}
+    void SetUp() override {
+        EXPECT_EQ(db_manager.count_connections(), db_manager.MAX_SIZE);
+    }
 
-    void TearDown() override {}
+    void TearDown() override {
+        EXPECT_EQ(db_manager.count_connections(), db_manager.MAX_SIZE);
+    }
 
     DbManager db_manager;
 };

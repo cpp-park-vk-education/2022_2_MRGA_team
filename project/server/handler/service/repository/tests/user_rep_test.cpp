@@ -5,16 +5,21 @@
 
 class UserRepTest : public ::testing::Test {
  protected:
-    void SetUp() override {}
+    void SetUp() override {
+        EXPECT_EQ(db_manager.count_connections(), db_manager.MAX_SIZE);
+    }
 
-    void TearDown() override {}
+    void TearDown() override {
+        EXPECT_EQ(db_manager.count_connections(), db_manager.MAX_SIZE);
+    }
 
     DbManager db_manager;
 };
 
 TEST_F(UserRepTest, ExistenceUserById) {
     UserRepository user_rep(db_manager);
-    EXPECT_NO_THROW(user_rep.existence_user_by_id(1232));
+    EXPECT_EQ(user_rep.existence_user_by_id(1232), 0);
+    EXPECT_EQ(user_rep.existence_user_by_id(0), 1);
 }
 
 TEST_F(UserRepTest, GetUserData) {

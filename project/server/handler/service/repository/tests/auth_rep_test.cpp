@@ -5,9 +5,13 @@
 
 class AuthRepTest : public ::testing::Test {
  protected:
-    void SetUp() override {}
+    void SetUp() override {
+        EXPECT_EQ(db_manager.count_connections(), db_manager.MAX_SIZE);
+    }
 
-    void TearDown() override {}
+    void TearDown() override {
+        EXPECT_EQ(db_manager.count_connections(), db_manager.MAX_SIZE);
+    }
 
     DbManager db_manager;
 };
@@ -18,7 +22,7 @@ TEST_F(AuthRepTest, CreateUser) {
     // User user("jumpy2.0", "1234", "jumpy2.0@mail.ru");
     // EXPECT_TRUE(auth_rep.create_user(user) > 0);
 
-    User user1("admin", "qwerty", "admin@admin.ru", "2003-12-01", "Im a boy");
+    User user1("admin", "qwerty", "admin@admin.ru", "", "Im a boy");
     EXPECT_TRUE(auth_rep.create_user(user1) < 0);
 }
 
