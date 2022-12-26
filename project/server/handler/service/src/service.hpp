@@ -63,7 +63,7 @@ private:
 
         void update_event_data(const Event &event, boost::system::error_code &ec);
 
-        uint checkEventExistence(uint eventId);
+        int checkEventExistence(uint eventId);
 
     private:
         friend class ServiceManager;
@@ -89,11 +89,11 @@ private:
     public:
         explicit UserService(DbManager &db_manager);
 
-        void addVisitor(uint eventId, uint userId);
+        boost::system::error_code addVisitor(uint eventId, uint userId);
 
-        void deleteVisitor(uint eventId, uint userId);
+        boost::system::error_code deleteVisitor(uint eventId, uint userId);
 
-        uint checkUserExistence(uint userId);
+        int checkUserExistence(uint userId);
 
         User getUserData(uint userId);
 

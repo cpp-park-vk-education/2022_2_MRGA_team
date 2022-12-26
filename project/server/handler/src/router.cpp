@@ -129,6 +129,7 @@ void router::visitEventsHandle(res &response, const req &request) {
     if (ec.failed()) {
         response.result(http::status::gateway_timeout);
         beast::ostream(response.body()) << ec.message();
+        return;
     }
     response.result(http::status::ok);
 }

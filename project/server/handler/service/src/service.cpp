@@ -100,13 +100,13 @@ Event ServiceManager::EventService::createEvent(const Event &event, boost::syste
     }
 }
 
-uint ServiceManager::EventService::checkEventExistence(uint eventId) {
+int ServiceManager::EventService::checkEventExistence(uint eventId) {
     try {
         std::cerr << "Начало вызова event_repository_.existence_event()" << std::endl;
-        int userExistence = event_repository_.existence_event(eventId);
-        if (userExistence < 0) {
-            std::cerr << "event_repository_.existence_event() вернул значение < 0" << std::endl;
-            throw std::invalid_argument("такого event не существует");
+        auto events = event_repository_.get_events();
+        auto it = std::find_if(events.begin(), events.end(), [&] (const auto& e) {return e.id == eventId;});
+        if (it == events.end()) {
+            return -1;
         }
         return eventId;
     } catch (...) {
@@ -156,19 +156,31 @@ uint ServiceManager::SessionService::checkSession(const std::string &token) {
 
 ServiceManager::UserService::UserService(DbManager &db_manager) :                   user_repository_(db_manager) {}
 
-void ServiceManager::UserService::addVisitor(uint eventId, uint userId) {
+boost::system::error_code ServiceManager::UserService::addVisitor(uint eventId, uint userId) {
     std::cerr << "вызов user_repository_.add_visitor()" << std::endl;
-    user_repository_.add_visitor(eventId, userId);
+    int result = user_repository_.add_visitor(eventId, userId);
+    if (result < 0) {
+        boost::system::error_code ec;
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ec;
+    }
+    return {};
     std::cerr << "отработал user_repository_.add_visitor()" << std::endl;
 }
 
-void ServiceManager::UserService::deleteVisitor(uint eventId, uint userId) {
+boost::system::error_code ServiceManager::UserService::deleteVisitor(uint eventId, uint userId) {
     std::cerr << "вызов user_repository_.delete_visitor()" << std::endl;
-    user_repository_.delete_visitor(eventId, userId);
+    int result = user_repository_.delete_visitor(eventId, userId);
+    if (result < 0) {
+        boost::system::error_code ec;
+        ec.assign(int(service_error_codes::db_side_error), service_error_category());
+        return ec;
+    }
+    return {};
     std::cerr << "отработал user_repository_.delete_visitor()" << std::endl;
 }
 
-uint ServiceManager::UserService::checkUserExistence(uint userId) {
+int ServiceManager::UserService::checkUserExistence(uint userId) {
     try {
         int userExistence = user_repository_.existence_user_by_id(userId);
         if (userExistence < 0) {
@@ -239,9 +251,17 @@ boost::system::error_code ServiceManager::addVisitor(ui userID, ui eventID) {
         // когда она вернула результат, но не нашла ивент или юзера, мы должны здесь вернуть соответствующую ошибку.
         // а в хендлере уже по этой ошибке вернуть bad_request
         // если же бд не вернула ответ, значит нужно здесь вернуть bd_side_error, а в хендлере уже 500 код, но это не точно.
-        uint userId = user_service_.checkUserExistence(userID);
-        uint eventId = event_service_.checkEventExistence(eventID);
-        user_service_.addVisitor(eventId, userId);
+        int userId = user_service_.checkUserExistence(userID);
+        int eventId = event_service_.checkEventExistence(eventID);
+        if (userId < 0 || eventId < 0) {
+            boost::system::error_code ec;
+            ec.assign(int(service_error_codes::db_side_error), service_error_category());
+            return ec;
+        }
+        auto ec = user_service_.addVisitor(eventId, userId);
+        if (ec.failed()) {
+            return ec;
+        }
     } catch (std::invalid_argument &ex) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
@@ -256,7 +276,10 @@ void ServiceManager::deleteVisitor(const std::string &requestBody) {
         try {
             uint userId = user_service_.checkUserExistence(event.user_id);
             uint eventId = event_service_.checkEventExistence(event.id);
-            user_service_.deleteVisitor(eventId, userId);
+            auto ec = user_service_.deleteVisitor(eventId, userId);
+            if (ec.failed()) {
+                return;
+            }
         } catch (std::invalid_argument &ex) {
             throw (std::invalid_argument(ex.what()));
         }
