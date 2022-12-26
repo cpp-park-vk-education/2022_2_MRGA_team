@@ -69,7 +69,7 @@ namespace {
                 return "";
             }();
         string email = [] {
-                sm::reg(&User::email, "email", sm::Required{}, sm::NotEmpty{});
+                sm::reg(&User::email, "email");
                 return "";
             }();  // UNIQUE
         string birth_date = [] {
