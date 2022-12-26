@@ -64,6 +64,9 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
     // GetEvent
     updateEvents();
     mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);
+
+    connect(this->eventList, &EventList::subscribeEvent, this, &VisitorEventListPage::subsrcibeHandler);
+    connect(this->eventList, &EventList::leaveOnEvent, this, &VisitorEventListPage::leaveEventHandler);
 }
 
 VisitorEventListPage::VisitorEventListPage(const std::initializer_list<QString> typesList) : mainLayout(new QVBoxLayout())
@@ -149,4 +152,86 @@ void VisitorEventListPage::updateEvents()
                                           ev.address.address));
     }
 
+}
+
+void VisitorEventListPage::subsrcibeHandler(unsigned int _eventId)
+{
+    if (_eventId == 0) {
+        auto resultat = party->events->events();
+
+        if (!resultat.body.has_value()) {
+            std::cout << resultat.result.message() << std::endl;
+            QMessageBox errorForm;
+            errorForm.setText(QString::fromStdString(resultat.result.message()));
+            errorForm.exec();
+            return;
+        }
+
+        auto events = *resultat.body;
+
+
+        // TODO: после отправки запроса, что на event подписались получаем обновленный event
+        // вызываем updateEvents();
+        EventItem* editEvent = this->eventList->getEvent(_eventId);
+
+        // обновленная структура
+//       {            editEvent->getEventName()->text().toStdString();
+//                    editEvent->getDescription()->text().toStdString();
+//                    editEvent->getDate()->text().toStdString();
+//                    editEvent->getTime()->text().toStdString();
+//                    editEvent->getAddress()->text().toStdString();
+//                    editEvent->getMaxVisitors()->text().toStdString();
+//        }
+
+        std::cout << editEvent->getEventName()->text().toStdString() << std::endl;
+        std::cout << editEvent->getDescription()->text().toStdString() << std::endl;
+        std::cout << editEvent->getDate()->text().toStdString() << std::endl;
+        std::cout << editEvent->getTime()->text().toStdString() << std::endl;
+        std::cout << editEvent->getAddress()->text().toStdString() << std::endl;
+        std::cout << editEvent->getMaxVisitors()->text().toStdString() << std::endl;
+    }
+
+    // TODO: отправка запроса о подписке на ивент
+    std::cout << "SUBSCRIBE EVENT" << std::endl;
+}
+
+void VisitorEventListPage::leaveEventHandler(unsigned int _eventId)
+{
+    if (_eventId == 0) {
+            auto resultat = party->events->events();
+
+            if (!resultat.body.has_value()) {
+                std::cout << resultat.result.message() << std::endl;
+                QMessageBox errorForm;
+                errorForm.setText(QString::fromStdString(resultat.result.message()));
+                errorForm.exec();
+                return;
+            }
+
+            auto events = *resultat.body;
+
+
+            // TODO: после отправки запроса, что на event подписались получаем обновленный event
+            // вызываем updateEvents();
+            EventItem* editEvent = this->eventList->getEvent(_eventId);
+
+            // обновленная структура
+    //       {            editEvent->getEventName()->text().toStdString();
+    //                    editEvent->getDescription()->text().toStdString();
+    //                    editEvent->getDate()->text().toStdString();
+    //                    editEvent->getTime()->text().toStdString();
+    //                    editEvent->getAddress()->text().toStdString();
+    //                    editEvent->getMaxVisitors()->text().toStdString();
+    //        }
+
+            std::cout << editEvent->getEventName()->text().toStdString() << std::endl;
+            std::cout << editEvent->getDescription()->text().toStdString() << std::endl;
+            std::cout << editEvent->getDate()->text().toStdString() << std::endl;
+            std::cout << editEvent->getTime()->text().toStdString() << std::endl;
+            std::cout << editEvent->getAddress()->text().toStdString() << std::endl;
+            std::cout << editEvent->getMaxVisitors()->text().toStdString() << std::endl;
+        }
+
+    // TODO: отправка запроса об отписке с ивента
+    std::cout << "LEAVE EVENT" << std::endl;
 }

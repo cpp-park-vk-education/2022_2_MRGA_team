@@ -18,6 +18,8 @@ EventList::EventList(QWidget* parent) : painter(parent),
 
     for (const auto& event : this->eventList) {
         connect(this->eventList[event.first], &EventItem::callEditForm, this, &EventList::handleEventSignal);
+        connect(this->eventList[event.first], &EventItem::subscibeOnEvent, this, &EventList::subscribeHandler);
+        connect(this->eventList[event.first], &EventItem::leaveOnEvent, this, &EventList::leaveEventHandler);
     }
 }
 

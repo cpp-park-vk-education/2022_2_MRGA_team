@@ -200,7 +200,6 @@ void EventItem::onSubcribeClicked()
 {
     // TODO: вызвать сигнал, который проброситься на какую-либо из страниц,
     // а на странице уже вызоввется обработчик, который отобразить форму редактирования event-a
-
     if (subscibeButton.text() == "Edit") {
         emit callEditForm(this->eventId); // редактровать надо конкретный event, поэтому передадим в обработчик id event-a
         return;
@@ -208,7 +207,9 @@ void EventItem::onSubcribeClicked()
 
     if (subscibeButton.text() == "Subscribe") {
         subscibeButton.setText("Leave");
+        emit subscibeOnEvent(this->eventId);
     } else {
         subscibeButton.setText("Subscribe");
+        emit leaveOnEvent(this->eventId);
     }
 }
