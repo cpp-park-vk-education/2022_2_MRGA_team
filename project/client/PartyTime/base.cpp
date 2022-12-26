@@ -87,6 +87,9 @@ void Base::onRegister()
             return;
         }
 
+
+        std::cout << "User id: " << curUser.id << std::endl;
+
         screens->setCurrentIndex(e_main);
         registrationPage->emailClear();
         registrationPage->loginClear();

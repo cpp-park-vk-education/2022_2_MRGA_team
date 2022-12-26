@@ -136,6 +136,8 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     connect(closeFormButton, &QPushButton::clicked, this, &EventViewPage::onRemove);
     connect(createEventButton, &QPushButton::clicked, this, &EventViewPage::onCreate);
     connect(this->eventList, &EventList::openEditForm, this, &EventViewPage::onEdit);
+
+    showMyEvents();
 }
 
 // всплытие формы

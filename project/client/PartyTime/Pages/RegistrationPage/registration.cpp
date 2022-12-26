@@ -75,7 +75,6 @@ registration::registration(QWidget *parent)
     birthDate->setPalette(pal);
     birthDate->setFont(QFont("Times", -1, QFont::Bold));
     birthDate->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
-    QIcon icoBirthDate(":/image/birth-date.png");
 //    birthDate->addAction(icoBirthDate, QLineEdit::LeadingPosition);
 
     formLayout->addWidget(email);
