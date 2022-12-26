@@ -54,7 +54,7 @@ Response<optional<Event>> EventsConnector::create_event(const Event &event) {
 
     Response<optional<Event>> answer;
     unordered_map<string, string> headers;
-    if (DEBUG) {
+    if (DEBUG && !authorized()) {
         store->set(api.auth_header, "admin02022");
     }
     if (!authorized()) {
@@ -153,7 +153,7 @@ Response<optional<Event>>
 EventsConnector::visit_or_unvisit(const size_t &event_id, const string &target) {
     Response<optional<Event>> answer;
     unordered_map<string, string> headers;
-    if (DEBUG) {
+    if (DEBUG && !authorized()) {
         store->set(api.auth_header, "admin02022");
     }
     if (!authorized()) {
@@ -186,7 +186,7 @@ EventsConnector::visit_or_unvisit(const size_t &event_id, const string &target) 
 Response<optional<vector<Event>>> EventsConnector::my_or_visiting_events(const string& target) {
     Response<optional<vector<Event>>> answer;
     unordered_map<string, string> headers;
-    if (DEBUG) {
+    if (DEBUG && !authorized()) {
         store->set(api.auth_header, "admin02022");
     }
     if (!authorized()) {

@@ -160,8 +160,8 @@ void EventViewPage::onCreate()
     if (createEventButton->text() == "Create") {
 
         unsigned int curUserId = QString::fromStdString(party->auth->id()).toUInt();
-        std::cout << "curUserId: " << curUserId << std::endl;
-        std::cout << "party auth: " << party->auth->id() << std::endl;
+        // std::cout << "curUserId: " << curUserId << std::endl;
+        // std::cout << "party auth: " << party->auth->id() << std::endl;
 
         Event event{eventName->text().toStdString(),
                         this->date->date().toString().toStdString() + " " + this->time->time().toString().toStdString(),
@@ -180,7 +180,7 @@ void EventViewPage::onCreate()
             return;
         }
 
-        std::cout << event.toJSON() << std::endl;
+        // std::cout << event.toJSON() << std::endl;
 
         // createEvent
         auto resultat = party->events->create_event(event);
@@ -218,13 +218,13 @@ void EventViewPage::onCreate()
                                this->address->text().toStdString()
                                );
 
-        std::cout << "AFTER UPDATE" << std::endl;
-        std::cout << editEvent->getEventName()->text().toStdString() << std::endl;
-        std::cout << editEvent->getDescription()->text().toStdString() << std::endl;
-        std::cout << editEvent->getDate()->text().toStdString() << std::endl;
-        std::cout << editEvent->getTime()->text().toStdString() << std::endl;
-        std::cout << editEvent->getAddress()->text().toStdString() << std::endl;
-        std::cout << editEvent->getMaxVisitors()->text().toStdString() << std::endl;
+        // std::cout << "AFTER UPDATE" << std::endl;
+        // std::cout << editEvent->getEventName()->text().toStdString() << std::endl;
+        // std::cout << editEvent->getDescription()->text().toStdString() << std::endl;
+        // std::cout << editEvent->getDate()->text().toStdString() << std::endl;
+        // std::cout << editEvent->getTime()->text().toStdString() << std::endl;
+        // std::cout << editEvent->getAddress()->text().toStdString() << std::endl;
+        // std::cout << editEvent->getMaxVisitors()->text().toStdString() << std::endl;
 
         editEvent->repaint();
     }
