@@ -47,6 +47,9 @@ public:
     QPushButton* getSubscribeButton() {return &subscibeButton;}
     void setSubcribeButtonText(const QString& stateEvent) {this->subscibeButton.setText(stateEvent);}
 
+    QPushButton* getDeleteButton() {return deleteButton;}
+    QHBoxLayout* getLayout() {return &eventItemLayout;}
+
 private:
     unsigned int eventId;
 

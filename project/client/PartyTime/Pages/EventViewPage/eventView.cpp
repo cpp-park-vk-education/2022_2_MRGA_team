@@ -337,15 +337,17 @@ void EventViewPage::loadEvents()
         std::cout << "EVENT ID: " << ev.id << std::endl;
         std::cout << "USER ID: " << ev.user_id << std::endl;
         // тут надо будет копировать event-ы а не создававать
-        eventList->addEvent(new EventItem(ev.id, "visitor", ev.description,
-                                          ev.title,
-                                          ev.curr_visitors,
-                                          *ev.max_visitors,
-                                          getDate(ev.date_time),
-                                          getTime(ev.date_time),
-                                          ev.address.address));
+        eventList->addEvent(new EventItem("organizer", ev.id));
+        eventList->getEvent(ev.id)->updateState(ev.description,
+                                                ev.title,
+                                                ev.curr_visitors,
+                                                *ev.max_visitors,
+                                                getDate(ev.date_time),
+                                                getTime(ev.date_time),
+                                                ev.address.address);
 
         eventList->getEvent(ev.id)->setSubcribeButtonText("Edit");
+//        eventList->getEvent(ev.id)->getLayout()->addWidget(eventList->getEvent(ev.id)->getDeleteButton(), Qt::AlignTop);
     }
 
 }
