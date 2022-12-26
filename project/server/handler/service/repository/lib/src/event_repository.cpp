@@ -78,7 +78,6 @@ std::vector<Event> EventRepository::get_events() {
         }
       }
 
-      worker.commit();
       db_manager.return_connection(conn);
     } catch (const std::exception &e) {
       db_manager.return_connection(conn);
