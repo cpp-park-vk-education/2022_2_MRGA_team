@@ -55,6 +55,17 @@ User UserRepository::get_user_data(size_t user_id) {
         birth_date = ((birth_date == "1300-11-13") ? "" : birth_date);
         std::string description = result_select_user_data.begin()["overview"].as<std::string>();
         User user(nickname, password, email, birth_date, description, user_id);
+
+        std::set<unsigned int> some_events;
+        auto arr = result_select_user_data.begin()["events"].as_array();
+        std::pair<pqxx::array_parser::juncture, string> elem;
+        do {
+          elem = arr.get_next();
+          if (elem.first == pqxx::array_parser::juncture::string_value) {
+            some_events.insert(std::stoul(elem.second));
+          }
+        } while (elem.first != pqxx::array_parser::juncture::done);
+        user.events = some_events;
         db_manager.return_connection(conn);
         return user;
       } else {
