@@ -1,0 +1,14 @@
+AlignTrailingComments: false
+# AllowShortFunctionsOnASingleLine: false
+# AllowShortIfStatementsOnASingleLine: true
+
+# AllowShortLoopsOnASingleLine: true
+AlignConsecutiveAssignments: true
+# BreakBeforeBinaryOperators: true
+IndentWidth: 4
+SortIncludes: false
+NamespaceIndentation: All
+MaxEmptyLinesToKeep: 2
+SpacesBeforeTrailingComments: 2
+SpacesInSquareBrackets: true
+PenaltyBreakComment: 2

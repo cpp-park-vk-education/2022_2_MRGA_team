@@ -1,0 +1,39 @@
+on: push
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        container: yakwilik/mrga_backend
+        steps:
+            - uses: actions/checkout@v2
+            - run: cd project/client/PartyTime/connector && make build
+    check:
+        runs-on: ubuntu-latest
+        container: yakwilik/linters
+        steps:
+            - uses: actions/checkout@v2
+            - run: cd project/client/PartyTime/connector && make check
+    test:
+        runs-on: ubuntu-latest
+        container: yakwilik/mrga_backend
+        steps:
+            - uses: actions/checkout@v2
+            - run: cd project/client/PartyTime/connector && make test
+    coverage:
+        runs-on: ubuntu-latest
+        container: yakwilik/mrga_backend
+        steps:
+            - uses: actions/checkout@v2
+            - run:  cd project/client/PartyTime/connector && make cov
+    sanitize:
+        runs-on: ubuntu-latest
+        container: yakwilik/mrga_backend
+        steps:
+            - uses: actions/checkout@v2
+            - run:  cd project/client/PartyTime/connector && make sanitize
+    memtest:
+        runs-on: ubuntu-latest
+        container: yakwilik/mrga_backend
+        steps:
+            - uses: actions/checkout@v2
+            - run:  cd project/client/PartyTime/connector && make memtest
