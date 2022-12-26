@@ -33,6 +33,7 @@
         <file>white-back-arrow.png</file>
         <file>purple-back-arrow.png</file>
         <file>close-window.png</file>
+        <file>birth-date.png</file>
     </qresource>
     <qresource prefix="/css">
         <file>style.css</file>

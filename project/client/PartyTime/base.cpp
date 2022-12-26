@@ -9,7 +9,8 @@ Base::Base(QWidget *parent)
       profilePage(),
       myEvents(new EventViewPage),
       visitorEventListPage(new VisitorEventListPage()),
-      settingsPage(new settings)
+      settingsPage(new settings),
+      party(PartyTimeConnector::default_implementation("0.0.0.0", "8081"))
 {
     setWindowTitle("PartyTime");
 
@@ -27,34 +28,24 @@ Base::Base(QWidget *parent)
     // главная
     connect(visitorEventListPage->navbar.getMainButton()->getButton(),  &QPushButton::clicked, this, &Base::onVisitorEventListPageClicked);
     connect(visitorEventListPage->navbar.getEventsButton()->getButton(),  &QPushButton::clicked, this, &Base::onEventViewPageClicked);
-//    connect(visitorEventListPage->navbar.getProfileButton()->getButton(),  &QPushButton::clicked, this, &Base::onProfilePageClicked);
     connect(visitorEventListPage->navbar.getLogoutButton()->getButton(),  &QPushButton::clicked, this, &Base::onAuthPageClicked);
     connect(visitorEventListPage->comboBox, &QComboBox::currentTextChanged, this, &Base::onVisitorEventListPageClicked);
 
     // профиль
     connect(profilePage.navbar.getMainButton()->getButton(),  &QPushButton::clicked, this, &Base::onVisitorEventListPageClicked);
     connect(profilePage.navbar.getEventsButton()->getButton(),  &QPushButton::clicked, this, &Base::onEventViewPageClicked);
-//    connect(profilePage.navbar.getProfileButton()->getButton(),  &QPushButton::clicked, this, &Base::onProfilePageClicked);
     connect(profilePage.navbar.getLogoutButton()->getButton(),  &QPushButton::clicked, this, &Base::onAuthPageClicked);
     connect(&profilePage, &ProfilePage::back, this, &Base::getPrev);
 
     // мои ивенты
     connect(myEvents->navbar.getMainButton()->getButton(),  &QPushButton::clicked, this, &Base::onVisitorEventListPageClicked);
     connect(myEvents->navbar.getProfileButton()->getButton(),  &QPushButton::clicked, this, &Base::onProfilePageClicked);
-//    connect(myEvents->navbar.getEventsButton()->getButton(),  &QPushButton::clicked, this, &Base::onEventViewPageClicked);
     connect(myEvents->navbar.getLogoutButton()->getButton(),  &QPushButton::clicked, this, &Base::onAuthPageClicked);
-//    connect(myEvents->navbar.getSettingsButton()->getButton(),  &QPushButton::clicked, this, &Base::onSettingsPageClicked);
 
     screens->insertWidget(e_authorization, authorizationPage);
     screens->insertWidget(e_registration, registrationPage);
     screens->insertWidget(e_events, myEvents);
     screens->insertWidget(e_main, visitorEventListPage);
-//    screens->insertWidget(e_profile, &profilePage);
-//    screens->insertWidget(e_settings, settingsPage);
-//    screens->insertWidget(0, visitorEventListPage);
-//    screens->insertWidget(1, &profilePage);
-//    screens->insertWidget(2, myEvents);
-//    screens->insertWidget(3, settingsPage);
 }
 
 void Base::onAuthPageClicked() {
@@ -71,43 +62,60 @@ void Base::onRegister()
         if (registrationPage->checkUserInputData()) {
             throw "User input isn't correct !";
         }
-        screens->setCurrentIndex(e_authorization);
+    }
+    catch (const char* exception) {
+        std::cout << "Error: " << exception << "\n";
+        screens->setCurrentIndex(e_registration);
+        return;
+    }
+
+        // структура user-a
+        User curUser = {this->registrationPage->getNickNameText().toStdString(),
+                    this->registrationPage->getPasswordText().toStdString(),
+                    this->registrationPage->getEmailText().toStdString(),
+                    this->registrationPage->getBirthDateText().toStdString(),};
+
+        // зарегистрировали
+        auto resultat = party->auth->signup(curUser);
+
+        // Ошибка
+        if (resultat.result.failed()) {
+            std::cout << resultat.result.message() << std::endl;
+            QMessageBox errorForm;
+            errorForm.setText(QString::fromStdString(resultat.result.message()));
+            errorForm.exec();
+            return;
+        }
+
+        screens->setCurrentIndex(e_main);
         registrationPage->emailClear();
         registrationPage->loginClear();
         registrationPage->passwordClear();
         registrationPage->passwordRepeatClear();
-    } catch (const char* exception) {
-        std::cout << "Error: " << exception << "\n";
-        screens->setCurrentIndex(e_registration);
-    }
+        registrationPage->birthDateClear();
 }
 
 void Base::onProfilePageClicked()
 {
 
     screens->setCurrentIndex(e_profile);
-//    screens->setCurrentIndex(1);
 }
 
 void Base::getPrev()
 {
-//    screens->setCurrentIndex(screens->currentIndex() - 1);
     screens->setCurrentIndex(e_main);
 }
 
 void Base::onEventViewPageClicked()
 {
     screens->setCurrentIndex(e_events);
-//    screens->setCurrentIndex(2);
+
 
 }
 
 void Base::onVisitorEventListPageClicked()
 {
     screens->setCurrentIndex(e_main);
-//    visitorEventListPage->navbar.getMainButton()->getButton()->setStyleSheet("");
-//    visitorEventListPage->navbar.getMainButton()->getButton()->setProperty("cssClass", "activeButton");
-//    screens->setCurrentIndex(0);
     visitorEventListPage->eventList->clearEventList();
     visitorEventListPage->updateEvents();
     std::cout << visitorEventListPage->comboBox->currentText().toStdString() << std::endl;
@@ -116,7 +124,6 @@ void Base::onVisitorEventListPageClicked()
 void Base::onSettingsPageClicked()
 {
     screens->setCurrentIndex(e_settings);
-//    screens->setCurrentIndex(3);
 }
 
 void Base::onRegistrationPageClicked() {
@@ -131,13 +138,30 @@ void Base::onEnter()
         if (authorizationPage->checkUserInputData()) {
             throw "User input isn't correct !";
         }
-        screens->setCurrentIndex(e_main);
-        authorizationPage->loginClear();
-        authorizationPage->passwordClear();
     } catch (const char* exception) {
-        std::cout << "Error: " << exception << "\n";
-        screens->setCurrentIndex(e_authorization);
+            std::cout << "Error: " << exception << "\n";
+            screens->setCurrentIndex(e_authorization);
+            return;
     }
+
+    // структура user-a
+    User curUser(this->authorizationPage->getNickName(), this->authorizationPage->getPassword(), "", ""); // TODO: не должно быть пустых полей
+
+    // запрос на авторизацию
+    auto resultat = party->auth->login(curUser);
+
+    // Ошибка
+    if (resultat.result.failed()) {
+        std::cout << resultat.result.message() << std::endl;
+        QMessageBox errorForm;
+        errorForm.setText(QString::fromStdString(resultat.result.message()));
+        errorForm.exec();
+        return;
+    }
+
+    screens->setCurrentIndex(e_main);
+    authorizationPage->loginClear();
+    authorizationPage->passwordClear();
 }
 
 Base::~Base()

@@ -4,6 +4,7 @@
 //#include <painter.hpp>
 #include "Header.hpp"
 #include <../styleHelper.hpp>
+#include "PartyTimeConnector.hpp"
 
 #define MIN_CHAR_SIZE_IN_INPUT 6
 #define MIN_CHAR_SIZE_IN_PASSWORD 12
@@ -40,6 +41,15 @@ public:
     void loginClear() {this->login->setText("");}
     void passwordClear() {this->password->setText("");}
     void passwordRepeatClear() {this->repeatPassword->setText("");}
+    void birthDateClear() {this->birthDate->setDate(QDate(2022, 12, 26));}
+
+
+    // гетеры для input-ов
+    QString getEmailText() {return email->text();}
+    QString getNickNameText() {return login->text();}
+    QString getPasswordText() {return password->text();}
+    QString getBirthDateText() {return birthDate->date().toString();}
+
 
 private:
     QGridLayout* registrationMainLayout;
@@ -57,8 +67,11 @@ private:
     QLineEdit* login;
     QLineEdit* password;
     QLineEdit* repeatPassword;
+    QDateEdit* birthDate;
 
     QPushButton* enterButton;
+
+    std::shared_ptr<PartyTimeConnector> party;
 };
 
 #endif // REGISTRATION_H

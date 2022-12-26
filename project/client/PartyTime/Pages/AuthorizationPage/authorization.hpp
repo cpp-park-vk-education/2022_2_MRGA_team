@@ -35,6 +35,10 @@ public:
    void loginClear() {this->login->setText("");}
    void passwordClear() {this->password->setText("");}
 
+   // гетеры для input-ов
+   std::string getNickName() {return login->text().toStdString();}
+   std::string getPassword() {return password->text().toStdString();}
+
 private:
    QGridLayout* authMainLayout;
    QVBoxLayout* titleLayout;

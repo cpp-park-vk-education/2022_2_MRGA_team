@@ -20,6 +20,8 @@
 #include "visitorEventList.hpp"
 #include "settings.hpp"
 
+#include "PartyTimeConnector.hpp"
+
 enum pagesNumbers {
     e_authorization = 0,
     e_registration = 1,
@@ -49,6 +51,8 @@ private:
     VisitorPage* visitorPage;
     VisitorEventListPage* visitorEventListPage;
     settings* settingsPage;
+
+    std::shared_ptr<PartyTimeConnector> party;
 
 private slots:
     void onAuthPageClicked();
