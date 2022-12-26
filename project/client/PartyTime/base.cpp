@@ -110,8 +110,8 @@ void Base::getPrev()
 
 void Base::onEventViewPageClicked()
 {
-//    this->myEvents->eventList->clearEventList();
-    this->myEvents->showMyEvents();
+    this->myEvents->eventList->clearEventList();
+    this->myEvents->loadEvents();
     screens->setCurrentIndex(e_events);
 }
 

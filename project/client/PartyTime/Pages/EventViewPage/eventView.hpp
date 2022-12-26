@@ -28,7 +28,7 @@ public:
 
     std::string getDate(const std::string& dateTime);
     std::string getTime(const std::string& dateTime);
-    void showMyEvents();
+    void loadEvents();
     EventList* getEventList() {return eventList;}
 
     void cleanForm();

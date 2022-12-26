@@ -137,7 +137,7 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     connect(createEventButton, &QPushButton::clicked, this, &EventViewPage::onCreate);
     connect(this->eventList, &EventList::openEditForm, this, &EventViewPage::onEdit);
 
-    showMyEvents();
+    loadEvents();
 }
 
 // всплытие формы
@@ -180,7 +180,7 @@ void EventViewPage::onCreate()
             return;
         }
 
-//        std::cout << event.toJSON() << std::endl;
+        std::cout << event.toJSON() << std::endl;
 
         // createEvent
         auto resultat = party->events->create_event(event);
@@ -195,13 +195,12 @@ void EventViewPage::onCreate()
             return;
         }
 
-
 //        std::cout << "Id user-a: " << resultat.body->user_id << std::endl;
 //        std::cout << "Id event-a: " << resultat.body->id << std::endl;
 
         this->eventList->addEvent(resultat.body->id, {this->description->text(),
                                        this->eventName->text(),
-                                        "0",
+                                        QString::number(curUserId),
                                        this->maxVisitors->text(),
                                        this->date->date().toString(),
                                        this->time->time().toString(),
@@ -308,7 +307,8 @@ std::string EventViewPage::getTime(const std::string &dateTime)
 }
 
 
-void EventViewPage::showMyEvents()
+
+void EventViewPage::loadEvents()
 {
     auto resultat = party->events->events();
 
@@ -319,8 +319,6 @@ void EventViewPage::showMyEvents()
         errorForm.exec();
         return;
     }
-
-    auto events = *resultat.body;
 
     // TODO: добавить все мои event-ы в EventList
 
@@ -333,7 +331,27 @@ void EventViewPage::showMyEvents()
 //                                          getTime(ev.date_time),
 //                                          ev.address.address));
 //    }
+
+    auto events = *resultat.body;
+    for (auto & ev: events) {
+        std::cout << "EVENT ID: " << ev.id << std::endl;
+        std::cout << "USER ID: " << ev.user_id << std::endl;
+        // тут надо будет копировать event-ы а не создававать
+        eventList->addEvent(new EventItem(ev.id, "visitor", ev.description,
+                                          ev.title,
+                                          ev.curr_visitors,
+                                          *ev.max_visitors,
+                                          getDate(ev.date_time),
+                                          getTime(ev.date_time),
+                                          ev.address.address));
+
+        eventList->getEvent(ev.id)->setSubcribeButtonText("Edit");
+    }
+
 }
+
+
+
 
 void EventViewPage::cleanForm()
 {
