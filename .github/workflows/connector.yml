@@ -9,7 +9,7 @@ jobs:
             - run: cd project/client/PartyTime/connector && make build
     check:
         runs-on: ubuntu-latest
-        container: yakwilik/mrga_backend
+        container: yakwilik/linters
         steps:
             - uses: actions/checkout@v2
             - run: cd project/client/PartyTime/connector && make check

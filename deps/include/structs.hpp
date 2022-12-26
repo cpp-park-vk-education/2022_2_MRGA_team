@@ -330,10 +330,10 @@ namespace {
     };
 
 namespace __structs__{
-    static Event __event__;
-    static Events __events__;
-    static Token __token__;
-    static User __user__;
+    // static Event __event__;
+    // static Events __events__;
+    // static Token __token__;
+    // static User __user__;
 };
 
 //}
