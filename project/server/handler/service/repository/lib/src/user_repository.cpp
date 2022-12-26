@@ -104,12 +104,12 @@ int UserRepository::add_visitor(size_t event_id, size_t user_id) {
       if (!result_insert_event_into_user.empty()) {
         res = -1;
       }
-      worker.commit();
       
       Result result_insert_visitors_into_event = worker.exec_prepared("add_user_into_event", user_id, event_id);
       if (!result_insert_visitors_into_event.empty()) {
         res = -1;
       }
+      worker.commit();
     } catch (const std::exception &e) {
       std::cout << e.what() << std::endl;
       res = -1;

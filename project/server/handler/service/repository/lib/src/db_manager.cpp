@@ -146,8 +146,9 @@ void DbManager::set_prepare_for_conn(Connection *conn) {
                               "events.address_id AS address_id, "
                               "addresses.address_title AS address, "
                               "coalesce(addresses.longitude, 0) AS longitude, "
-                              "coalesce(addresses.latitude, 0) AS latitude "
-                              "FROM events INNER JOIN addresses "
+                              "coalesce(addresses.latitude, 0) AS latitude, "
+                              "coalesce(events.users, '{}') AS users "
+                              "FROM events LEFT JOIN addresses "
                               "ON events.address_id = addresses.id "
                               "ORDER BY events.title;");
   conn->prepare("try_to_find_user", "SELECT id, nickname, passcode "

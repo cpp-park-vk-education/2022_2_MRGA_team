@@ -1,4 +1,5 @@
 #include "event_repository.hpp"
+#include "user_repository.hpp"
 
 EventRepository::EventRepository(DbManager &dbm): db_manager(dbm) {}
 
@@ -70,10 +71,21 @@ std::vector<Event> EventRepository::get_events() {
           Address address(row["address"].as<std::string>(), row["longitude"].as<double>(),
           row["latitude"].as<double>(), row["address_id"].as<size_t>());
 
+          std::set<unsigned int> some_users;
+          auto arr = row["users"].as_array();
+          std::pair<pqxx::array_parser::juncture, std::string> elem;
+          do {
+            elem = arr.get_next();
+            if (elem.first == pqxx::array_parser::juncture::string_value) {
+              some_users.insert(std::stoul(elem.second));
+            }
+          } while (elem.first != pqxx::array_parser::juncture::done);
+
           std::string some_overview = row["description"].as<std::string>();
+
           Event event(row["title"].as<std::string>(), row["date_time"].as<std::string>(),
             row["user_id"].as<size_t>(), address, ((some_overview == "null") ? "" : some_overview),
-            row["max_visitors"].as<size_t>(), 0, row["events_id"].as<size_t>());
+            row["max_visitors"].as<size_t>(), some_users.size(), row["events_id"].as<size_t>());
           events.push_back(event);
         }
       }

@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "event_repository.hpp"
+#include "user_repository.hpp"
 
 class EventRepTest : public ::testing::Test {
  protected:
@@ -23,9 +24,9 @@ TEST_F(EventRepTest, CreateEvent) {
     EXPECT_TRUE(event_rep.create_event(event) > 0);
 }
 
-TEST_F(EventRepTest, GetEvents) {
+TEST_F(EventRepTest, GetEventData) {
     EventRepository event_rep(db_manager);
-    EXPECT_NO_THROW(std::vector<Event> events(event_rep.get_events()));
+    EXPECT_NO_THROW(Event event = event_rep.get_event_data(12332));
 }
 
 TEST_F(EventRepTest, UpdateEventData) {
@@ -44,9 +45,43 @@ TEST_F(EventRepTest, ExistenceEvent) {
     EXPECT_NO_THROW(event_rep.existence_event(1343));
 }
 
-TEST_F(EventRepTest, GetEventData) {
+TEST_F(EventRepTest, GetEvents) {
     EventRepository event_rep(db_manager);
     EXPECT_NO_THROW(Event event_data = event_rep.get_event_data(1343));
+
+
+    Event event_for_create("Happy Birthday Jackson", "2022-01-01", 0, Address("Мэрия 'Москва'", 3, -15));
+    int id_created = event_rep.create_event(event_for_create);
+    EXPECT_TRUE(id_created > 0);
+
+    UserRepository user_rep(db_manager);
+    int res_code = user_rep.add_visitor(id_created, 0);
+    EXPECT_EQ(res_code, 1);
+
+    std::vector<Event> events = event_rep.get_events();
+    Event event_data1;
+    for (const auto &event : events) {
+        if (event.id == id_created) {
+            event_data1 = event;
+            break;
+        }
+    }
+    std::cout << id_created << " HELL1 " << event_data1.toJSON() << std::endl;
+    EXPECT_EQ(event_data1.curr_visitors, 1);
+
+    user_rep.delete_visitor(id_created, 0);
+
+    events = event_rep.get_events();
+    for (const auto &event : events) {
+        if (event.id == id_created) {
+            event_data1 = event;
+            break;
+        }
+    }
+
+    EXPECT_EQ(event_data1.curr_visitors, 0);
+
+
 }
 
 TEST_F(EventRepTest, GetVisitedEventsByUser) {
