@@ -1,7 +1,9 @@
-<<<<<<< HEAD
-# This file is used to ignore files which are generated
-# ----------------------------------------------------------------------------
-
+.vscode/settings.json
+**/.DS_Store
+**/.idea/
+**/build
+**/cmake-build-debug
+**/*.vscode
 **/Testing
 **/*valgrind
 *~
@@ -21,6 +23,10 @@
 .#*
 *.*#
 core
+<<<<<<< HEAD
+=======
+*settings*
+>>>>>>> origin/deps
 !core/
 tags
 .DS_Store
@@ -84,6 +90,9 @@ build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug
 **/valgrind*
 =======
 build/
+build-client-Desktop_x86_darwin_generic_mach_o_64bit-Debug/
 .vscode/
 .DS_Store
+**.DS_*
 build-PartyTime-Desktop_x86_darwin_generic_mach_o_64bit-Debug/
+.DS_Store/
