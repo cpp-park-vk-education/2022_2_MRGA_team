@@ -32,10 +32,13 @@ public:
 private slots:
     // обработчики сигналов с event-ов
     void handleEventSignal(unsigned int eventId);
+    void subscribeHandler(unsigned int _eventId) {emit this->subscribeEvent(_eventId);}
+    void leaveEventHandler(unsigned int _eventId) {emit this->leaveOnEvent(_eventId);}
 
 signals:
     void openEditForm(unsigned int eventId);
-
+    void subscribeEvent(unsigned int eventId);
+    void leaveOnEvent(unsigned int eventId);
 
 private:
     QVBoxLayout* mainLayout;

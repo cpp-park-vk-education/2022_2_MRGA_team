@@ -41,6 +41,8 @@ private:
 private slots:
     void hideRow();
     void updateEvents();
+    void subsrcibeHandler(unsigned int _eventId);
+    void leaveEventHandler(unsigned int _eventId);
 
 signals:
     void updateEventsSignal();

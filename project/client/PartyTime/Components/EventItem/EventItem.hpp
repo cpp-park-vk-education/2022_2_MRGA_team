@@ -73,4 +73,6 @@ private slots:
 
 signals:
     void callEditForm(unsigned int eventId);
+    void subscibeOnEvent(unsigned int eventId);
+    void leaveOnEvent(unsigned int eventId);
 };
