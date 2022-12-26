@@ -50,11 +50,10 @@ User UserRepository::get_user_data(size_t user_id) {
         std::string nickname = result_select_user_data.begin()["nickname"].as<std::string>();
         std::string password = result_select_user_data.begin()["passcode"].as<std::string>();
         std::string email = result_select_user_data.begin()["email"].as<std::string>();
-        std::string birth_date = result_select_user_data.begin()["birth_date"].as<std::string>();
-        birth_date = (birth_date == "null") ? "" : birth_date;
-        std::string description = result_select_user_data.begin()["overview"].as<std::string>();
-        description = (description == "null") ? "" : description;
 
+        std::string birth_date = result_select_user_data.begin()["birth_date"].as<std::string>();
+        birth_date = ((birth_date == "1300-11-13") ? "" : birth_date);
+        std::string description = result_select_user_data.begin()["overview"].as<std::string>();
         User user(nickname, password, email, birth_date, description, user_id);
         db_manager.return_connection(conn);
         return user;

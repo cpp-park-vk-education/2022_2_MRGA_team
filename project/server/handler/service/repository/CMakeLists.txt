@@ -27,6 +27,7 @@ if(WITH_TESTING)
     set(CMAKE_EXE_LINKER_FLAGS ${CMAKE_EXE_LINKER_FLAGS} ${MY_TEST_LINKER_FLAGS})
 endif()
 
+include_directories(SYSTEM /deps)
 link_directories(/usr/local/lib)
 include_directories(SYSTEM /usr/local/include)
 include_directories(SYSTEM ../../../../../deps/include)

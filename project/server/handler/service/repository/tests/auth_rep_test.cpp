@@ -27,7 +27,7 @@ TEST_F(AuthRepTest, CreateUser) {
 }
 
 TEST_F(AuthRepTest, ExistenceUser) {
-    AuthorizationRepository auth_rep(db_manager); // Надо еще проверить что полностью существует, что пароли не сходятся
+    AuthorizationRepository auth_rep(db_manager);
 
     User user("jumpy3.0", "1234", ""); // Несуществующий
     EXPECT_EQ(auth_rep.existence_user(user), -3);

@@ -18,6 +18,7 @@ services:
     image: yakwilik/mrga_backend
     network_mode: "host"
     volumes:
+      - "${PWD}/../../../../../deps:/deps"
       - "${PWD}:/project"
     working_dir: /project
     stdin_open: true # docker run -i

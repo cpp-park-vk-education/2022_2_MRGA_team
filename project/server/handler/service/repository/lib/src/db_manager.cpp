@@ -163,7 +163,8 @@ void DbManager::set_prepare_for_conn(Connection *conn) {
     "FROM users "
     "WHERE id = $1;");
   conn->prepare("get_user_data_by_id", "SELECT nickname, passcode, "
-    "email, birth_date, overview "
+    "email, coalesce(birth_date, '1300-11-13') AS birth_date, "
+    "coalesce(overview, '') AS overview "
     "FROM users "
     "WHERE id = $1;");
 }
