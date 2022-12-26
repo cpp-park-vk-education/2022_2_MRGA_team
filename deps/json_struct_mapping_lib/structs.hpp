@@ -6,6 +6,7 @@
 #include <utility>
 #include <vector>
 #include <optional>
+#include <set>
 #include <unordered_map>
 #include "struct_mapping.hpp"
 #include "structs_error_codes.hpp"
@@ -16,6 +17,7 @@ namespace {
     using std::ostringstream;
     using std::string;
     using std::optional;
+    using std::set;
     using std::vector;
     using std::unordered_map;
     using key = string;
@@ -80,6 +82,10 @@ namespace {
                 sm::reg(&User::description, "description");
                 return "";
             }();  // ALLOW NULL
+        set<ui> events = []()-> set<ui> {
+            sm::reg(&User::events, "events");
+            return {};
+        }();
         static User fromJSON(const string &json, std::error_code& ec) {
             stringstream ss(json);
             User ev;
