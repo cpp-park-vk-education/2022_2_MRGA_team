@@ -62,6 +62,8 @@ private:
 
     void profileSettingsHandle       (res &response, const req &request);
 
+    void profileHandle               (res &response, const req &request);
+
 public:
     explicit router                  (res &response, const req &request, ServiceManager &service_manager);
 
