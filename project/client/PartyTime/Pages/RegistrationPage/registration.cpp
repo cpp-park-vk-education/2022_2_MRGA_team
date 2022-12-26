@@ -6,7 +6,8 @@ registration::registration(QWidget *parent)
       registrationMainLayout(new QGridLayout(this)), headerLayout(new QHBoxLayout()), titleLayout(new QVBoxLayout()),
       formLayout(new QVBoxLayout()), buttonsLayout(new QVBoxLayout()),
       backButton(new QPushButton()), appTitle(new QLabel(this)), appLogo(new QLabel(this)),
-      email(new QLineEdit()), login(new QLineEdit()), password(new QLineEdit()), repeatPassword(new QLineEdit()), enterButton(new QPushButton("Зарегистрироваться"))
+      email(new QLineEdit()), login(new QLineEdit()), password(new QLineEdit()), repeatPassword(new QLineEdit()), birthDate(new QDateEdit()),
+      enterButton(new QPushButton("Зарегистрироваться")), party(PartyTimeConnector::default_implementation("0.0.0.0", "8081"))
 {    
     this->setObjectName("registration");
     registrationMainLayout->setSpacing(10);
@@ -61,7 +62,6 @@ registration::registration(QWidget *parent)
     password->addAction(icoPassword, QLineEdit::LeadingPosition);
 
     repeatPassword->setMaximumWidth(400);
-    repeatPassword->setObjectName("regRepeatPassword");
     repeatPassword->setPalette(pal);
     repeatPassword->setPlaceholderText("Repeat password");
     repeatPassword->setEchoMode(QLineEdit::Password);
@@ -70,10 +70,19 @@ registration::registration(QWidget *parent)
     QIcon icoConfirmPassword(":/image/confirmPassword.png");
     repeatPassword->addAction(icoConfirmPassword, QLineEdit::LeadingPosition);
 
+    birthDate->setMaximumWidth(400);
+    birthDate->setObjectName("regBirthDate");
+    birthDate->setPalette(pal);
+    birthDate->setFont(QFont("Times", -1, QFont::Bold));
+    birthDate->setStyleSheet("background-color: #babfd9; color: #fff; border-radius: 15px");
+    QIcon icoBirthDate(":/image/birth-date.png");
+//    birthDate->addAction(icoBirthDate, QLineEdit::LeadingPosition);
+
     formLayout->addWidget(email);
     formLayout->addWidget(login);
     formLayout->addWidget(password);
     formLayout->addWidget(repeatPassword);
+    formLayout->addWidget(birthDate);
     registrationMainLayout->addLayout(formLayout, 2, 0, 1, 1, Qt::AlignCenter | Qt::AlignTop);
 
     buttonsLayout->setSpacing(0);
