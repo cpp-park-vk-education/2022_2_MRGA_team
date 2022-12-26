@@ -167,6 +167,12 @@ void DbManager::set_prepare_for_conn(Connection *conn) {
     "coalesce(overview, '') AS overview "
     "FROM users "
     "WHERE id = $1;");
+  conn->prepare("insert_new_token", "INSERT INTO tokens "
+    "(token_content, expire_date_time, user_id) VALUES "
+    "($1, $2, $3) RETURNING id;");
+  conn->prepare("try_to_find_token_for_user", "SELECT user_id "
+    "FROM tokens "
+    "WHERE token_content = $1;");
 }
 
 int DbManager::return_connection(Connection *conn) {

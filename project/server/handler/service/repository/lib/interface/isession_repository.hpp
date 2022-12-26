@@ -12,5 +12,5 @@ class ISessionRepository {
   virtual int delete_token(Token token) = 0;
 
   virtual int check_token(const std::string &token) = 0;
-  virtual User get_user_by_token(Token token) = 0;
+  // virtual User get_user_by_token(Token token) = 0;
 };
