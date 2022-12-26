@@ -61,7 +61,7 @@ namespace {
                 return 0;
             }();
         string nickname = [] {
-                sm::reg(&User::nickname, "nickname", sm::NotEmpty{}, sm::Required{}, sm::NotEmpty{});
+                sm::reg(&User::nickname, "nickname", sm::NotEmpty{}, sm::Required{});
                 return "";
             }();  // UNIQUE
         string password = [] {
@@ -69,7 +69,7 @@ namespace {
                 return "";
             }();
         string email = [] {
-                sm::reg(&User::email, "email", sm::Required{}, sm::NotEmpty{});
+                sm::reg(&User::email, "email");
                 return "";
             }();  // UNIQUE
         string birth_date = [] {
