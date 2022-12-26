@@ -3,37 +3,37 @@ on: push
 jobs:
     build:
         runs-on: ubuntu-latest
-        container: yakwilik/cxx_project:26102022_2
+        container: yakwilik/mrga_backend
         steps:
             - uses: actions/checkout@v2
-            - run: cd project/client/connector && make build
+            - run: cd project/client/PartyTime/connector && make build
     check:
         runs-on: ubuntu-latest
-        container: yakwilik/cxx_project:26102022_2
+        container: yakwilik/mrga_backend
         steps:
             - uses: actions/checkout@v2
-            - run: cd project/client/connector && make check
+            - run: cd project/client/PartyTime/connector && make check
     test:
         runs-on: ubuntu-latest
-        container: yakwilik/cxx_project:26102022_2
+        container: yakwilik/mrga_backend
         steps:
             - uses: actions/checkout@v2
-            - run: cd project/client/connector && make test
+            - run: cd project/client/PartyTime/connector && make test
     coverage:
         runs-on: ubuntu-latest
-        container: yakwilik/cxx_project:26102022_2
+        container: yakwilik/mrga_backend
         steps:
             - uses: actions/checkout@v2
-            - run:  cd project/client/connector && make cov
+            - run:  cd project/client/PartyTime/connector && make cov
     sanitize:
         runs-on: ubuntu-latest
-        container: yakwilik/cxx_project:26102022_2
+        container: yakwilik/mrga_backend
         steps:
             - uses: actions/checkout@v2
-            - run:  cd project/client/connector && make sanitize
+            - run:  cd project/client/PartyTime/connector && make sanitize
     memtest:
         runs-on: ubuntu-latest
-        container: yakwilik/cxx_project:26102022_2
+        container: yakwilik/mrga_backend
         steps:
             - uses: actions/checkout@v2
-            - run:  cd project/client/connector && make memtest
+            - run:  cd project/client/PartyTime/connector && make memtest
