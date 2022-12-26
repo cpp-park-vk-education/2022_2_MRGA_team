@@ -19,8 +19,8 @@ int AuthorizationRepository::create_user(User user) {
       } else {
         res = -1;
       }
-      worker.commit();
       res = user_id;
+      worker.commit();
     } catch (const std::exception &e) {
       std::cout << e.what() << std::endl;
       res = -1;
