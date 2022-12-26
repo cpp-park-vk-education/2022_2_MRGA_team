@@ -12,9 +12,12 @@
 
 ServiceManager::AuthorizationService::AuthorizationService(DbManager &db_manager) : authorization_repository_(db_manager) {}
 
-boost::system::error_code ServiceManager::AuthorizationService::signupUser(const User &user) {
+boost::system::error_code ServiceManager::AuthorizationService::signupUser(User &user) {
     try {
-        authorization_repository_.create_user(user);
+        uint userId = authorization_repository_.create_user(user);
+        if (userId > 0) {
+            user.id = userId;
+        }
     } catch (std::invalid_argument &ex) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
@@ -23,12 +26,12 @@ boost::system::error_code ServiceManager::AuthorizationService::signupUser(const
     return {};
 }
 
-boost::system::error_code ServiceManager::AuthorizationService::loginExist(const std::string &login, bool &positiveAnswer) {
+boost::system::error_code ServiceManager::AuthorizationService::loginExist(const std::string &login, bool &loginExists) {
     try {
         User user;
         user.nickname = login;
         auto result = authorization_repository_.existence_user(user);
-        positiveAnswer = (result == -2);
+        loginExists = (result == -2);
     } catch (std::invalid_argument &ex) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
@@ -284,7 +287,7 @@ boost::system::error_code ServiceManager::deleteVisitor(ui userID, ui eventID) {
 boost::system::error_code ServiceManager::createToken(const User &user, Token &token) {
     auto now = std::chrono::system_clock::now();
     std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
-    std::string tokenString = {std::to_string(user.id) + std::ctime(&currentTime) + user.nickname};
+    std::string tokenString = {std::to_string(user.id) + user.nickname + std::ctime(&currentTime)};
     token.token = tokenString;
     try {
         session_service_.session_repository_.create_token(token);
@@ -295,20 +298,3 @@ boost::system::error_code ServiceManager::createToken(const User &user, Token &t
     }
     return {};
 }
-
-
-// 504 - было соединение и пропало (если бд выкинула исключение)
-// регистрация, такой логин уже есть (), то 401
-
-// авторизация (не правильный логи или пароль) то 401
-// 504 - было соединение и пропало (если бд выкинула исключение)
-
-// 507 поменять на 504 status ... storage.
-
-// 400 во всех других случаях
-
-// юзер_id, логин пользователя, id_токена - канкат для std::string token
-
-// запрос на получение всех своих ивентов
-
-// получить ивенты пользователя, получит

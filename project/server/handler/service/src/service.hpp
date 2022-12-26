@@ -35,7 +35,7 @@ private:
     public:
         explicit AuthorizationService(DbManager &db_manager);
 
-        boost::system::error_code signupUser(const User &user);
+        boost::system::error_code signupUser(User &user);
 
         boost::system::error_code loginExist(const std::string &login, bool &positiveAnswer);
 
