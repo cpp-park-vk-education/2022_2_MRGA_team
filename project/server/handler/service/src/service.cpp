@@ -40,10 +40,13 @@ boost::system::error_code ServiceManager::AuthorizationService::loginExist(const
     return {};
 }
 
-boost::system::error_code ServiceManager::AuthorizationService::checkPassword(const User &user, bool &positiveAnswer) {
+boost::system::error_code ServiceManager::AuthorizationService::checkPassword(User &user, bool &positiveAnswer) {
     try {
-        int result = authorization_repository_.existence_user(user);
-        positiveAnswer = result > 0;
+        int userId = authorization_repository_.existence_user(user);
+        if (userId > 0) {
+            user.id = userId;
+        }
+        positiveAnswer = userId > 0;
     } catch (std::invalid_argument &ex) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
@@ -142,22 +145,13 @@ void ServiceManager::EventService::update_event_data(const Event &event, boost::
 ServiceManager::SessionService::SessionService(DbManager &db_manager) :             session_repository_(db_manager) {}
 
 uint ServiceManager::SessionService::checkSession(const std::string &token) {
-    if (token == "admin02022") {
-        return 0;  // user_id
+    int userId = session_repository_.check_token(token);
+    if (userId == -2) {
+        throw std::invalid_argument("Токен не валидный\n");
+    } else if (userId == -1) {
+        throw std::invalid_argument("Ошибка на стороне бд\n");
     }
-
-    int result = session_repository_.check_token(token);
-    if (result == -1) {
-        throw std::invalid_argument("токен не валидный");
-    }
-    Token tok;
-    tok.token = token;
-    try {
-        User user = session_repository_.get_user_by_token(tok);
-        return user.id;
-    } catch (...) {
-        throw std::invalid_argument("такого id пользователя не существует");
-    }
+    return userId;
 }
 
 ServiceManager::UserService::UserService(DbManager &db_manager) :                   user_repository_(db_manager) {}
@@ -289,12 +283,14 @@ boost::system::error_code ServiceManager::createToken(const User &user, Token &t
     std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
     std::string tokenString = {std::to_string(user.id) + user.nickname + std::ctime(&currentTime)};
     token.token = tokenString;
-    try {
-        session_service_.session_repository_.create_token(token);
-    } catch (...) {
+    token.user_id = user.id;
+    int tokenId = session_service_.session_repository_.create_token(token);
+    if (tokenId < 0) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
         return ec;
+    } else {
+        token.id = tokenId;
     }
     return {};
 }
