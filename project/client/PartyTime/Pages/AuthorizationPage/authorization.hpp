@@ -21,7 +21,7 @@ public:
 //   validate methods
    bool validateLogin(); // Zela_28TP - корректный логин
    bool validatePassword(); // Pink@floY_D.2022 - надежный пароль
-   bool isUserPasswordMatchUser();
+   bool isUserPasswordMatchUser(); //
 
 //   warning methods
    void loginWarning();

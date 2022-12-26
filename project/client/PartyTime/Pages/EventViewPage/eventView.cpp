@@ -17,7 +17,7 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     date(new QDateEdit()), time(new QTimeEdit()),
     address(new QLineEdit()),
 //    visitors(new QLineEdit()),
-    maxVisitors(new QLineEdit()),
+    maxVisitors(new QLineEdit()), curEventId(0),
     party(PartyTimeConnector::default_implementation("0.0.0.0", "8081"))
 {
     // стлизация edit-ов
@@ -132,8 +132,6 @@ EventViewPage::EventViewPage(QWidget *parent) : painter(parent), mainLayout(new 
     inputLayout->addWidget(this->createEventButton, Qt::AlignTop | Qt::AlignCenter);
     form->hide();
 
-    // Todo: создать EditForm
-
     connect(addButton, &QPushButton::clicked, this, &EventViewPage::onAdd);
     connect(closeFormButton, &QPushButton::clicked, this, &EventViewPage::onRemove);
     connect(createEventButton, &QPushButton::clicked, this, &EventViewPage::onCreate);
@@ -200,7 +198,27 @@ void EventViewPage::onCreate()
                                        this->time->time().toString(),
                                        this->address->text()});
     } else {
-            // TODO: обновить event
+        // TODO: обновить event
+        EventItem* editEvent = this->eventList->getEvent(this->curEventId);
+
+        editEvent->updateState(this->description->text().toStdString(),
+                               this->eventName->text().toStdString(),
+                               0,
+                               this->maxVisitors->text().toUInt(),
+                               this->date->text().toStdString(),
+                               this->time->text().toStdString(),
+                               this->address->text().toStdString()
+                               );
+
+        std::cout << "AFTER UPDATE" << std::endl;
+        std::cout << editEvent->getEventName()->text().toStdString() << std::endl;
+        std::cout << editEvent->getDescription()->text().toStdString() << std::endl;
+        std::cout << editEvent->getDate()->text().toStdString() << std::endl;
+        std::cout << editEvent->getTime()->text().toStdString() << std::endl;
+        std::cout << editEvent->getAddress()->text().toStdString() << std::endl;
+        std::cout << editEvent->getMaxVisitors()->text().toStdString() << std::endl;
+
+        editEvent->repaint();
     }
 
     form->hide();
@@ -208,7 +226,9 @@ void EventViewPage::onCreate()
 
 void EventViewPage::onEdit(const unsigned int& _eventId)
 {
+    this->curEventId = _eventId;
     createEventButton->setText("Save");
+
     // Редактируем конкретный event
     EventItem* editEvent = this->eventList->getEvent(_eventId);
 
@@ -231,25 +251,6 @@ void EventViewPage::onEdit(const unsigned int& _eventId)
     std::cout << editEvent->getTime()->text().toStdString() << std::endl;
     std::cout << editEvent->getAddress()->text().toStdString() << std::endl;
     std::cout << editEvent->getMaxVisitors()->text().toStdString() << std::endl;
-
-    editEvent->updateState(this->description->text().toStdString(),
-                           this->eventName->text().toStdString(),
-                           0,
-                           this->maxVisitors->text().toUInt(),
-                           this->date->text().toStdString(),
-                           this->time->text().toStdString(),
-                           this->address->text().toStdString()
-                           );
-
-    std::cout << "AFTER UPDATE" << std::endl;
-    std::cout << this->description->text().toStdString() << std::endl;
-    std::cout << this->eventName->text().toStdString() << std::endl;
-    std::cout << this->maxVisitors->text().toUInt() << std::endl;
-    std::cout << this->date->text().toStdString() << std::endl;
-    std::cout << this->time->text().toStdString() << std::endl;
-    std::cout << this->address->text().toStdString() << std::endl;
-
-    editEvent->repaint();
 }
 
 EventViewPage::EventViewPage(const std::initializer_list<QString> typesList) : mainLayout(new QVBoxLayout())
@@ -327,7 +328,9 @@ void EventViewPage::cleanForm()
     this->eventName->clear();
     this->description->clear();
     this->date->clear();
+    this->date->setDate(QDate(2022, 12, 22));
     this->time->clear();
+    this->time->setTime(QTime(0, 0, 0));
     this->address->clear();
     this->maxVisitors->clear();
 }

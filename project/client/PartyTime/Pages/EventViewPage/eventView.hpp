@@ -55,10 +55,8 @@ private:
     QLineEdit* address;
 //    QLineEdit* visitors;
     QLineEdit* maxVisitors;
+    unsigned int curEventId; // для обновления event-a
     std::shared_ptr<PartyTimeConnector> party;
-
-
-    painter* editForm;
 
 protected slots:
     void onAdd();
