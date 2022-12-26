@@ -57,7 +57,12 @@ TEST_F(UserRepTest, UpdateUserData) {
 
 TEST_F(UserRepTest, AddVisitor) {
     UserRepository user_rep(db_manager);
-    EXPECT_NO_THROW(user_rep.add_visitor(1234, 235213));
+    EXPECT_EQ(user_rep.add_visitor(1234, 235213), 1);
+    EXPECT_EQ(user_rep.add_visitor(1, 0), 1);
+    EXPECT_EQ(user_rep.add_visitor(1, 0), 1);
+    User got_user = user_rep.get_user_data(0);
+    EXPECT_EQ(got_user.events.size(), 1);
+    EXPECT_EQ(*got_user.events.begin(), 1);
 }
 
 TEST_F(UserRepTest, DeleteVisitor) {

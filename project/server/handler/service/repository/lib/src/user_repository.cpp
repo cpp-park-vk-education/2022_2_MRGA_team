@@ -94,9 +94,78 @@ int UserRepository::update_user_data(User user) {
 }
 
 int UserRepository::add_visitor(size_t event_id, size_t user_id) {
-  return 1;
+  int res = 0;
+  try {
+    Connection *conn = db_manager.get_free_connection();
+
+    try {
+      Worker worker(*conn);
+      Result result_insert_event_into_user = worker.exec_prepared("add_event_into_user", event_id, user_id);
+      if (!result_insert_event_into_user.empty()) {
+        res = -1;
+      }
+      worker.commit();
+      
+      Result result_insert_visitors_into_event = worker.exec_prepared("add_user_into_event", user_id, event_id);
+      if (!result_insert_visitors_into_event.empty()) {
+        res = -1;
+      }
+      worker.commit();
+    } catch (const std::exception &e) {
+      std::cout << e.what() << std::endl;
+      res = -1;
+    }
+
+    if (res < 0) {
+      db_manager.return_connection(conn);
+      return res;
+    }
+    db_manager.return_connection(conn);
+  } catch (const std::exception &e) {
+    std::cout << e.what() << std::endl;
+    res = -1;
+  }
+  if (res < 0) {
+    return res;
+  }
+  res = 1;
+  return res;
 }
 
 int UserRepository::delete_visitor(size_t event_id, size_t user_id) {
-  return 1;
+  int res = 0;
+  try {
+    Connection *conn = db_manager.get_free_connection();
+
+    try {
+      Worker worker(*conn);
+      Result result_insert_visitors_into_event = worker.exec_prepared("add_user_into_event", user_id, event_id);
+      if (result_insert_visitors_into_event.empty()) {
+        res = -1;
+      }
+      Result result_insert_event_into_user = worker.exec_prepared("add_event_into_user", event_id, user_id);
+      if (result_insert_event_into_user.empty()) {
+        res = -1;
+      }
+
+      worker.commit();
+    } catch (const std::exception &e) {
+      std::cout << e.what() << std::endl;
+      res = -1;
+    }
+
+    if (res < 0) {
+      db_manager.return_connection(conn);
+      return res;
+    }
+    db_manager.return_connection(conn);
+  } catch (const std::exception &e) {
+    std::cout << e.what() << std::endl;
+    res = -1;
+  }
+  if (res < 0) {
+    return res;
+  }
+  res = 1;
+  return res;
 }

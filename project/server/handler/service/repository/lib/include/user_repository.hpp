@@ -21,8 +21,18 @@ class UserRepository : public IUserRepository {
 
   int update_user_data(User user);
 
+  /*
+  Возврат:
+   1 - если успешно добавился,
+   отрицательное число - если ошибка в БД
+  */
   int add_visitor(size_t event_id, size_t user_id);
-
+  /*
+  Не идет проверка, если такие id. Просто тогда ничего не произойдет.
+  Возврат:
+   1 - если успешно удалился,
+   отрицательное число - если ошибка в БД
+  */
   int delete_visitor(size_t event_id, size_t user_id);
  private:
   DbManager &db_manager;

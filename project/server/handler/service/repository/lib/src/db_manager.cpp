@@ -173,6 +173,18 @@ void DbManager::set_prepare_for_conn(Connection *conn) {
   conn->prepare("try_to_find_token_for_user", "SELECT user_id "
     "FROM tokens "
     "WHERE token_content = $1;");
+  conn->prepare("add_user_into_event", "UPDATE events SET "
+    "users = array_append(users, $1) "
+    "WHERE id = $2;");
+  conn->prepare("add_event_into_user", "UPDATE users SET "
+    "events = array_append(events, $1) "
+    "WHERE id = $2;");
+  conn->prepare("remove_user_from_event", "UPDATE events SET "
+    "users = array_remove(users, $1) "
+    "WHERE id = $2;");
+  conn->prepare("remove_event_from_user", "UPDATE users SET "
+    "events = array_remove(events, $1) "
+    "WHERE id = $2;");
 }
 
 int DbManager::return_connection(Connection *conn) {
