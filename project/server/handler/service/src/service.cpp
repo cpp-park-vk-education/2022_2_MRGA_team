@@ -40,10 +40,13 @@ boost::system::error_code ServiceManager::AuthorizationService::loginExist(const
     return {};
 }
 
-boost::system::error_code ServiceManager::AuthorizationService::checkPassword(const User &user, bool &positiveAnswer) {
+boost::system::error_code ServiceManager::AuthorizationService::checkPassword(User &user, bool &positiveAnswer) {
     try {
-        int result = authorization_repository_.existence_user(user);
-        positiveAnswer = result > 0;
+        int userId = authorization_repository_.existence_user(user);
+        if (userId > 0) {
+            user.id = userId;
+        }
+        positiveAnswer = userId > 0;
     } catch (std::invalid_argument &ex) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
@@ -280,12 +283,14 @@ boost::system::error_code ServiceManager::createToken(const User &user, Token &t
     std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
     std::string tokenString = {std::to_string(user.id) + user.nickname + std::ctime(&currentTime)};
     token.token = tokenString;
-    try {
-        session_service_.session_repository_.create_token(token);
-    } catch (...) {
+    token.user_id = user.id;
+    int tokenId = session_service_.session_repository_.create_token(token);
+    if (tokenId < 0) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
         return ec;
+    } else {
+        token.id = tokenId;
     }
     return {};
 }
