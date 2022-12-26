@@ -158,9 +158,14 @@ void EventViewPage::onRemove()
 void EventViewPage::onCreate()
 {
     if (createEventButton->text() == "Create") {
+
+        unsigned int curUserId = QString::fromStdString(party->auth->id()).toUInt();
+        std::cout << "curUserId: " << curUserId << std::endl;
+        std::cout << "party auth: " << party->auth->id() << std::endl;
+
         Event event{eventName->text().toStdString(),
                         this->date->date().toString().toStdString() + " " + this->time->time().toString().toStdString(),
-                        0, Address{this->address->text().toStdString(), 0},
+                        curUserId, Address{this->address->text().toStdString(), 0},
                         this->description->text().toStdString(),
                         this->maxVisitors->text().toInt(),
                         0, 0
@@ -175,7 +180,7 @@ void EventViewPage::onCreate()
             return;
         }
 
-        std::cout << event.toJSON() << std::endl;
+//        std::cout << event.toJSON() << std::endl;
 
         // createEvent
         auto resultat = party->events->create_event(event);
@@ -190,7 +195,9 @@ void EventViewPage::onCreate()
             return;
         }
 
-        std::cout << "Id event-a: " << resultat.body->id << std::endl;
+
+//        std::cout << "Id user-a: " << resultat.body->user_id << std::endl;
+//        std::cout << "Id event-a: " << resultat.body->id << std::endl;
 
         this->eventList->addEvent(resultat.body->id, {this->description->text(),
                                        this->eventName->text(),
@@ -314,15 +321,18 @@ void EventViewPage::showMyEvents()
     }
 
     auto events = *resultat.body;
-    for (auto & ev: events) {
-        eventList->addEvent(new EventItem(ev.id, "visitor", ev.description,
-                                          ev.title,
-                                          ev.curr_visitors,
-                                          *ev.max_visitors,
-                                          getDate(ev.date_time),
-                                          getTime(ev.date_time),
-                                          ev.address.address));
-    }
+
+    // TODO: добавить все мои event-ы в EventList
+
+//    for (auto & ev: events) {
+//        eventList->addEvent(new EventItem(ev.id, "visitor", ev.description,
+//                                          ev.title,
+//                                          ev.curr_visitors,
+//                                          *ev.max_visitors,
+//                                          getDate(ev.date_time),
+//                                          getTime(ev.date_time),
+//                                          ev.address.address));
+//    }
 }
 
 void EventViewPage::cleanForm()

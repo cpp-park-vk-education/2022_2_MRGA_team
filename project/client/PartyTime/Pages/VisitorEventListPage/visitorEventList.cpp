@@ -61,12 +61,12 @@ VisitorEventListPage::VisitorEventListPage(QWidget *parent) : painter(parent), m
     mainLayout->addLayout(comboBoxLayout, Qt::AlignTop | Qt::AlignCenter);
     this->eventList = new EventList("visitor", 0);
 
+    connect(this->eventList, &EventList::subscribeEvent, this, &VisitorEventListPage::subsrcibeHandler);
+    connect(this->eventList, &EventList::leaveOnEvent, this, &VisitorEventListPage::leaveEventHandler);
+
     // GetEvent
     updateEvents();
     mainLayout->addWidget(this->eventList, 2, Qt::AlignTop | Qt::AlignCenter);
-
-    connect(this->eventList, &EventList::subscribeEvent, this, &VisitorEventListPage::subsrcibeHandler);
-    connect(this->eventList, &EventList::leaveOnEvent, this, &VisitorEventListPage::leaveEventHandler);
 }
 
 VisitorEventListPage::VisitorEventListPage(const std::initializer_list<QString> typesList) : mainLayout(new QVBoxLayout())
@@ -192,7 +192,7 @@ void VisitorEventListPage::subsrcibeHandler(unsigned int _eventId)
     }
 
     // TODO: отправка запроса о подписке на ивент
-    std::cout << "SUBSCRIBE EVENT" << std::endl;
+    std::cout << "SUBSCRIBE EVENT: " << this->eventList->getEvent(_eventId)->getId() << std::endl;
 }
 
 void VisitorEventListPage::leaveEventHandler(unsigned int _eventId)
@@ -233,5 +233,5 @@ void VisitorEventListPage::leaveEventHandler(unsigned int _eventId)
         }
 
     // TODO: отправка запроса об отписке с ивента
-    std::cout << "LEAVE EVENT" << std::endl;
+    std::cout << "LEAVE EVENT: " << this->eventList->getEvent(_eventId)->getId() << std::endl;
 }

@@ -19,6 +19,7 @@ public:
    QPushButton* getRegistrationButton();
 
 //   validate methods
+
    bool validateLogin(); // Zela_28TP - корректный логин
    bool validatePassword(); // Pink@floY_D.2022 - надежный пароль
    bool isUserPasswordMatchUser(); //
@@ -52,7 +53,6 @@ private:
    QLineEdit* password;
    QPushButton* enterButton;
    QPushButton* registrationButton;
-
 };
 
 #endif // AUTHORIZATION_H

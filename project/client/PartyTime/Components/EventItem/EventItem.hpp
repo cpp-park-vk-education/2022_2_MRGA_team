@@ -33,7 +33,7 @@ public:
 
     friend class EventList;
     friend class VisitorEventListPage;
-    QPushButton* getSubscribeButton() {return &subscibeButton;}
+
     void setId(unsigned int newId) {eventId = newId;}
     unsigned int getId() {return eventId;}
 
@@ -43,6 +43,9 @@ public:
     QLabel* getTime(){return this->time;}
     QLabel* getAddress(){return this->address;}
     QLabel* getMaxVisitors(){return this->maxVisitors;}
+
+    QPushButton* getSubscribeButton() {return &subscibeButton;}
+    void setSubcribeButtonText(const QString& stateEvent) {this->subscibeButton.setText(stateEvent);}
 
 private:
     unsigned int eventId;

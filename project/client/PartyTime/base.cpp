@@ -88,7 +88,7 @@ void Base::onRegister()
         }
 
 
-        std::cout << "User id: " << curUser.id << std::endl;
+        std::cout << "User id: " << party->auth->id() << std::endl;
 
         screens->setCurrentIndex(e_main);
         registrationPage->emailClear();
@@ -100,7 +100,6 @@ void Base::onRegister()
 
 void Base::onProfilePageClicked()
 {
-
     screens->setCurrentIndex(e_profile);
 }
 
@@ -111,16 +110,16 @@ void Base::getPrev()
 
 void Base::onEventViewPageClicked()
 {
+//    this->myEvents->eventList->clearEventList();
+    this->myEvents->showMyEvents();
     screens->setCurrentIndex(e_events);
-
-
 }
 
 void Base::onVisitorEventListPageClicked()
 {
+    this->visitorEventListPage->eventList->clearEventList();
+    this->visitorEventListPage->updateEvents();
     screens->setCurrentIndex(e_main);
-    visitorEventListPage->eventList->clearEventList();
-    visitorEventListPage->updateEvents();
     std::cout << visitorEventListPage->comboBox->currentText().toStdString() << std::endl;
 }
 

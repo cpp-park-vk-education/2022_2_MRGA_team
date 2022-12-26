@@ -48,6 +48,10 @@ Response<optional<Event>> EventsConnector::unvisit(const size_t &event_id) {
 }
 
 Response<optional<Event>> EventsConnector::create_event(const Event &event) {
+
+    auto newEvent = event;
+    std::cout << newEvent.toJSON() << std::endl;
+
     Response<optional<Event>> answer;
     unordered_map<string, string> headers;
     if (DEBUG) {

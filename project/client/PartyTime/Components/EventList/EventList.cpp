@@ -50,6 +50,8 @@ EventList::EventList(const QString &evnentListType, size_t size, const QString &
 
     for (const auto& event : this->eventList) {
         connect(this->eventList[event.first], &EventItem::callEditForm, this, &EventList::handleEventSignal);
+        connect(this->eventList[event.first], &EventItem::subscibeOnEvent, this, &EventList::subscribeHandler);
+        connect(this->eventList[event.first], &EventItem::leaveOnEvent, this, &EventList::leaveEventHandler);
     }
 }
 
@@ -64,12 +66,15 @@ EventList::EventList(const EventList &other) : painter(new QWidget)
 
     for (const auto& event : this->eventList) {
         connect(this->eventList[event.first], &EventItem::callEditForm, this, &EventList::handleEventSignal);
+        connect(this->eventList[event.first], &EventItem::subscibeOnEvent, this, &EventList::subscribeHandler);
+        connect(this->eventList[event.first], &EventItem::leaveOnEvent, this, &EventList::leaveEventHandler);
     }
 }
 
 EventList &EventList::operator=(const EventList &other)
 {
     this->eventList.clear();
+
     for (auto& elem : other.eventList) {
         this->eventList[elem.first] = elem.second;
         scrollLayout.addWidget(elem.second);
@@ -77,6 +82,8 @@ EventList &EventList::operator=(const EventList &other)
 
     for (const auto& event : this->eventList) {
         connect(this->eventList[event.first], &EventItem::callEditForm, this, &EventList::handleEventSignal);
+        connect(this->eventList[event.first], &EventItem::subscibeOnEvent, this, &EventList::subscribeHandler);
+        connect(this->eventList[event.first], &EventItem::leaveOnEvent, this, &EventList::leaveEventHandler);
     }
 
     return *this;
@@ -92,6 +99,8 @@ void EventList::addEvent(const unsigned int _newId, const std::initializer_list<
     EventItem* newEvent = new EventItem(_newId, list);
     this->eventList.insert(std::make_pair(newEvent->getId(), newEvent));
     connect(this->eventList[newEvent->getId()], &EventItem::callEditForm, this, &EventList::handleEventSignal);
+    connect(this->eventList[newEvent->getId()], &EventItem::subscibeOnEvent, this, &EventList::subscribeHandler);
+    connect(this->eventList[newEvent->getId()], &EventItem::leaveOnEvent, this, &EventList::leaveEventHandler);
     scrollLayout.addWidget(newEvent);
 }
 
@@ -99,6 +108,8 @@ void EventList::addEvent(EventItem* newEvent)
 {
     this->eventList[newEvent->getId()] = newEvent;
     connect(this->eventList[newEvent->getId()], &EventItem::callEditForm, this, &EventList::handleEventSignal);
+    connect(this->eventList[newEvent->getId()], &EventItem::subscibeOnEvent, this, &EventList::subscribeHandler);
+    connect(this->eventList[newEvent->getId()], &EventItem::leaveOnEvent, this, &EventList::leaveEventHandler);
     scrollLayout.addWidget(newEvent);
 }
 

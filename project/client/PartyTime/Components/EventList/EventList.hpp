@@ -3,6 +3,7 @@
 #include "EventItem.hpp"
 #include <vector>
 #include <map>
+#include <iostream>
 
 class EventList : public painter {
     Q_OBJECT
@@ -32,8 +33,8 @@ public:
 private slots:
     // обработчики сигналов с event-ов
     void handleEventSignal(unsigned int eventId);
-    void subscribeHandler(unsigned int _eventId) {emit this->subscribeEvent(_eventId);}
-    void leaveEventHandler(unsigned int _eventId) {emit this->leaveOnEvent(_eventId);}
+    void subscribeHandler(unsigned int _eventId) {std::cout << "EVENTLIST Subscribe" << std::endl; emit this->subscribeEvent(_eventId);}
+    void leaveEventHandler(unsigned int _eventId) {std::cout << "EVENTLIST Leave" << std::endl; emit this->leaveOnEvent(_eventId);}
 
 signals:
     void openEditForm(unsigned int eventId);

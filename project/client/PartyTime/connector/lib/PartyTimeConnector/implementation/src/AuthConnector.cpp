@@ -51,9 +51,15 @@ Response<bool> AuthConnector::login_or_signup(const User &user,
     }
     string resp_body = request_result.response->response_body;
     Token token(resp_body);
+
+    std::cout << token.toJSON() << std::endl;
+
     store->set(api.token, resp_body);
     store->set(api.auth_header, token.token);
     store->set(api.user_id, std::to_string(token.user_id));
+
+    std::cout << "Store value: " << *store->get(api.user_id) << std::endl;
+
     answer.body = true;
 
     return answer;
