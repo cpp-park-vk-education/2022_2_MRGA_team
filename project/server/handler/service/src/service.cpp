@@ -246,11 +246,6 @@ void ServiceManager::addVisitor(const std::string &requestBody) {
 
 boost::system::error_code ServiceManager::addVisitor(ui userID, ui eventID) {
     try {
-        // существование юзера и ивента нужно проверять отдельно, чтобы можно было разные коды ошибок возвращать
-        //  также нужно уметь различать, когда бд вернула результат, а когда там произошла ошибка.
-        // когда она вернула результат, но не нашла ивент или юзера, мы должны здесь вернуть соответствующую ошибку.
-        // а в хендлере уже по этой ошибке вернуть bad_request
-        // если же бд не вернула ответ, значит нужно здесь вернуть bd_side_error, а в хендлере уже 500 код, но это не точно.
         int userId = user_service_.checkUserExistence(userID);
         int eventId = event_service_.checkEventExistence(eventID);
         if (userId < 0 || eventId < 0) {
@@ -270,29 +265,19 @@ boost::system::error_code ServiceManager::addVisitor(ui userID, ui eventID) {
     return {};
 }
 
-void ServiceManager::deleteVisitor(const std::string &requestBody) {
-    try {
-        Event event(requestBody);
-        try {
-            uint userId = user_service_.checkUserExistence(event.user_id);
-            uint eventId = event_service_.checkEventExistence(event.id);
-            auto ec = user_service_.deleteVisitor(eventId, userId);
-            if (ec.failed()) {
-                return;
-            }
-        } catch (std::invalid_argument &ex) {
-            throw (std::invalid_argument(ex.what()));
-        }
-    } catch (...) {
-        throw std::invalid_argument("Ошибка конструктора объекта\n");
-    }
-}
-
 boost::system::error_code ServiceManager::deleteVisitor(ui userID, ui eventID) {
     try {
-        uint userId = user_service_.checkUserExistence(userID);
-        uint eventId = event_service_.checkEventExistence(eventID);
-        user_service_.deleteVisitor(eventId, userId);
+        int userId = user_service_.checkUserExistence(userID);
+        int eventId = event_service_.checkEventExistence(eventID);
+        if (userId < 0 || eventId < 0) {
+            boost::system::error_code ec;
+            ec.assign(int(service_error_codes::db_side_error), service_error_category());
+            return ec;
+        }
+        auto ec = user_service_.deleteVisitor(eventId, userId);
+        if (ec.failed()) {
+            return ec;
+        }
     } catch (std::invalid_argument &ex) {
         boost::system::error_code ec;
         ec.assign(int(service_error_codes::db_side_error), service_error_category());
