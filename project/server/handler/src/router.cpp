@@ -131,7 +131,15 @@ void router::visitEventsHandle(res &response, const req &request) {
         beast::ostream(response.body()) << ec.message();
         return;
     }
+    auto events = service_manager_ref.event_service_.event();
+    auto it = std::find_if(events.begin(), events.end(), [&] (const auto& e) {return e.id == eventID;});
+    if (it == events.end()) {
+        response.result(http::status::gateway_timeout);
+        beast::ostream(response.body()) << "не нашел ивент, который нужно вывести";
+        return;
+    }
     response.result(http::status::ok);
+    beast::ostream(response.body()) << (*it).toJSON();
 }
 
 
@@ -165,7 +173,15 @@ void router::unvisitEventsHandle(res &response, const req &request) {
         response.result(http::status::gateway_timeout);
         beast::ostream(response.body()) << ec.message();
     }
+    auto events = service_manager_ref.event_service_.event();
+    auto it = std::find_if(events.begin(), events.end(), [&] (const auto& e) {return e.id == eventID;});
+    if (it == events.end()) {
+        response.result(http::status::gateway_timeout);
+        beast::ostream(response.body()) << "не нашел ивент, который нужно вывести";
+        return;
+    }
     response.result(http::status::ok);
+    beast::ostream(response.body()) << (*it).toJSON();
 }
 
 

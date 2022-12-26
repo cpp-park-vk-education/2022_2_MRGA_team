@@ -10,6 +10,7 @@
 #include <chrono>
 
 
+
 ServiceManager::AuthorizationService::AuthorizationService(DbManager &db_manager) : authorization_repository_(db_manager) {}
 
 boost::system::error_code ServiceManager::AuthorizationService::signupUser(User &user) {
@@ -65,6 +66,10 @@ void ServiceManager::EventService::event(bsv query_params, string &response_body
     } catch (...) {
         throw std::invalid_argument("Ошибка от бд");
     }
+}
+
+std::vector<Event> ServiceManager::EventService::event() {
+    return event_repository_.get_events();
 }
 
 Event ServiceManager::EventService::createEvent(uint userId, const std::string& request_body) {
@@ -287,9 +292,18 @@ boost::system::error_code ServiceManager::deleteVisitor(ui userID, ui eventID) {
 }
 
 boost::system::error_code ServiceManager::createToken(const User &user, Token &token) {
-    auto now = std::chrono::system_clock::now();
-    std::time_t currentTime = std::chrono::system_clock::to_time_t(now);
-    std::string tokenString = {std::to_string(user.id) + user.nickname + std::ctime(&currentTime)};
+    std::time_t t =std::time(nullptr);
+    std::tm* now = std::localtime(&t);
+
+    std::string curTimeStr = std::to_string(now->tm_year) +
+            std::to_string(now->tm_mon) +
+            std::to_string(now->tm_sec) +
+            std::to_string(now->tm_hour) +
+            std::to_string(now->tm_min) +
+            std::to_string(now->tm_sec);
+
+
+    std::string tokenString = {std::to_string(user.id) + user.nickname + curTimeStr};
     token.token = tokenString;
     token.user_id = user.id;
     int tokenId = session_service_.session_repository_.create_token(token);
